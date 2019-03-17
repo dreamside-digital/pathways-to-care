@@ -1,0 +1,50 @@
+@import url('https://fonts.googleapis.com/css?family=Judson:400,400i,700|Lato:400,700');
+
+html {
+  font-size: 18px;
+}
+
+body {
+  font-family: 'Lato', 'Helvetica', 'Arial', sans-serif;
+  font-size: 18px;
+  line-height: 26px;
+}
+
+h1, h2, h3, h4, h5 {
+  font-family: 'Judson', 'Georgia', serif;
+}
+
+h1 {
+  font-size: 3.333rem;
+}
+
+h2 {
+  font-size: 2.222rem;
+}
+
+h3 {
+  font-size: 1.667rem;
+}
+
+h4 {
+  font-size: 1.14rem;
+}
+
+a {
+  color: $secondary;
+
+  &:active, &:hover, &:focus {
+    color: transparentize($secondary, 0.1);
+  }
+}
+
+.title {
+  text-align: center;
+}
+
+.dropdown-menu {
+  button {
+    font-size: 18px;
+    text-transform: none;
+  }
+}

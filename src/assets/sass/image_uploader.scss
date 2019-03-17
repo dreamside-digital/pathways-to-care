@@ -1,0 +1,21 @@
+.image-uploader-container {
+  padding: 1rem;
+  margin-bottom: 2rem;
+  background-color: #fff;
+  border-radius: 8px;
+
+  .form-group {
+    align-items: center;
+    text-align: center;
+  }
+
+  .image-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    img {
+      max-width: 300px;
+    }
+  }
+}

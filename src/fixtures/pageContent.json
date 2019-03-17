@@ -1,0 +1,7 @@
+[{
+  "type": "section",
+  "content": [
+    { "type": "header", "text": "Header placeholder" },
+    { "type": "paragraph", "text": "<p>Paragraph placeholder</p>" }
+  ]
+}]
