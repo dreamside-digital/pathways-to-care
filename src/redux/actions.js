@@ -78,7 +78,7 @@ export function deploy() {
       .auth()
       .currentUser.getIdToken(/* forceRefresh */ true)
       .then(token => {
-        return axios.get(url, {
+        return axios.post(url, {
           headers: { Authorization: "Bearer " + token }
         });
       })
