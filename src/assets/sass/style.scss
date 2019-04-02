@@ -36,9 +36,7 @@
 @import "theme/variables";
 @import "theme/mixins";
 
-@import url('https://fonts.googleapis.com/css?family=Poppins:300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i');
-
-@import url('https://fonts.googleapis.com/css?family=Niramit:300,300i,400,400i,500,500i,600,600i,700,700i');
+@import url('https://fonts.googleapis.com/css?family=Nunito:400,900|Open+Sans:400,600,800');
 
 body {
   font-family: $body-font;
@@ -55,6 +53,7 @@ body {
 ------------------------*/
 
 h1, h2, h3, h4, h5, h6 {
+  font-family: $header-font;
   font-weight: normal;
   margin-top: 0px;
   margin-bottom: 0px;
@@ -533,8 +532,8 @@ section {
 }
 
 .step-num {
-  background: rgb(255, 120, 16);
-  background: linear-gradient(90deg, rgba(255, 120, 16, 1) 0%, rgba(255, 94, 44, 1) 50%);
+  background: $theme-primary3;
+  background: linear-gradient(90deg, $theme-secondary3 0%, $theme-primary3 50%);
   border: 5px solid #fff;
   border-radius: 50%;
   color: $white;

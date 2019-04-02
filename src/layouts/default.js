@@ -15,9 +15,9 @@ import "../assets/css/themify-icons.css";
 import "../assets/css/audioplayer/media-player.css";
 import "../assets/css/magnific-popup/magnific-popup.css";
 import "../assets/css/owl-carousel/owl.carousel.css";
-import "../assets/css/base.css";
-import "../assets/css/style.css";
-import "../assets/css/responsive.css";
+import "../assets/sass/base.scss";
+import "../assets/sass/style.scss";
+import "../assets/sass/responsive.scss";
 
 import favicon from '../assets/images/icon.png'
 
@@ -52,17 +52,6 @@ const DefaultLayout = props => (
     <AccountButton />
 
     <div className="page-wrapper">
-
-      <div id="ht-preloader">
-        <div className="loader clear-loader">
-          <div className="loader-text">Loading</div>
-          <div className="loader-dots"> <span></span>
-            <span></span>
-            <span></span>
-            <span></span>
-          </div>
-        </div>
-      </div>
 
       <Navigation />
       <Fragment>{props.children}</Fragment>

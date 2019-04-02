@@ -12,6 +12,11 @@ import Editable from "../components/editables/Editable";
 import PlainTextEditor from "../components/editingTools/PlainTextEditor";
 import RichTextEditor from "../components/editingTools/RichTextEditor";
 
+import headerImage from "../assets/images/ptc-header.png";
+import backgroundPattern from "../assets/images/pattern/01.png"
+import backgroundBanner from "../assets/images/banner/01.png"
+
+
 const mapDispatchToProps = dispatch => {
   return {
     onUpdatePageData: (page, id, data) => {
@@ -55,25 +60,23 @@ class HomePage extends React.Component {
       <Layout>
         <EditablesContext.Provider value={ { showEditingControls: isEditingPage, theme: theme } }>
 
-        <section className="fullscreen-banner p-0 banner o-hidden" data-bg-img="images/pattern/01.png">
-          <div className="insideText">Loptus</div>
+        <section className="fullscreen-banner p-0 banner o-hidden" data-bg-img={ backgroundPattern }>
           <div className="align-center">
             <div className="container">
               <div className="row align-items-center">
                 <div className="col-lg-5 col-md-12 order-lg-12">
                   <div className="mouse-parallax">
                     <div className="bnr-img1 wow fadeInRight" data-wow-duration="1s" data-wow-delay="4s">
-                      <img className="img-center rotateme" src="images/banner/01.png" alt="" />
+                      <img className="img-center rotateme" src={ backgroundBanner } alt="" />
                     </div>
-                    <img className="img-center bnr-img2 wow zoomIn" data-wow-duration="2s" data-wow-delay="5s" src="images/banner/02.png" alt="" />
+                    <img className="img-center bnr-img2 wow zoomIn" data-wow-duration="2s" data-wow-delay="5s" src={ headerImage } alt="" />
                   </div>
                 </div>
                 <div className="col-lg-7 col-md-12 order-lg-1 md-mt-5">
-                  <h1 className="mb-4 wow bounceInLeft" data-wow-duration="3s" data-wow-delay="2s">Looking For Most Powerfull <span className="font-w-5">Digital Marketing</span> Template</h1>
+                  <h1 className="mb-4 wow bounceInLeft" data-wow-duration="3s" data-wow-delay="2s">
+                    Pathways to Care
+                  </h1>
                   <p className="lead wow fadeInUp" data-wow-duration="1s" data-wow-delay="1s">Start working with an company that provide everything you need to generate awareness, drive traffic, connect with customers.</p>
-                  <div className="d-flex align-items-center"> <a className="btn btn-theme" href="#"><span>Learn More</span></a>
-                    <a className="play-btn popup-youtube ml-4 d-flex align-items-center" href="https://www.youtube.com/watch?v=P_wKDMcr1Tg"><span>Play Now</span><img className="img-fluid pulse radius-4" src="images/play.png" alt="" /></a>
-                  </div>
                 </div>
               </div>
             </div>
@@ -92,7 +95,7 @@ class HomePage extends React.Component {
                 <div className="section-title mb-4">
                   <h6>Featured</h6>
                   <h2 className="title">Join our first Provincial Community Consultation</h2>
-                  <p>Black Ontarians face significantly poorer mental health and addictions outcomes and barriers to the appropriate care due to anti-Black racism, and the failure of policy frameworks, and mainstream service providers to address the specific mental health and addictions needs of Black Ontarians.</p>
+                  <p className="text-white">Black Ontarians face significantly poorer mental health and addictions outcomes and barriers to the appropriate care due to anti-Black racism, and the failure of policy frameworks, and mainstream service providers to address the specific mental health and addictions needs of Black Ontarians.</p>
                 </div>
               </div>
             </div>
@@ -223,84 +226,84 @@ class HomePage extends React.Component {
               </div>
             </div>
 
-            <div class="row">
-              <div class="col-lg-4 col-md-12">
-                <div class="featured-item text-center style-2">
-                  <div class="featured-icon">
-                    <img class="img-center" src="images/feature/01.png" alt="" />
+            <div className="row">
+              <div className="col-lg-4 col-md-12">
+                <div className="featured-item text-center style-2">
+                  <div className="featured-icon">
+                    <img className="img-center" src="images/feature/01.png" alt="" />
                   </div>
-                  <div class="featured-title">
+                  <div className="featured-title">
                     <h5>Online Marketing</h5>
                   </div>
-                  <div class="featured-desc">
+                  <div className="featured-desc">
                     <p>Design must be functional, and futionality must translated into, and futionality must translated into.</p>
                   </div>
                 </div>
               </div>
-              <div class="col-lg-4 col-md-12 md-mt-5">
-                <div class="featured-item text-center style-2">
-                  <div class="featured-icon">
-                    <img class="img-center" src="images/feature/02.png" alt="" />
+              <div className="col-lg-4 col-md-12 md-mt-5">
+                <div className="featured-item text-center style-2">
+                  <div className="featured-icon">
+                    <img className="img-center" src="images/feature/02.png" alt="" />
                   </div>
-                  <div class="featured-title">
+                  <div className="featured-title">
                     <h5>Data Analysis</h5>
                   </div>
-                  <div class="featured-desc">
+                  <div className="featured-desc">
                     <p>Design must be functional, and futionality must translated into, and futionality must translated into.</p>
                   </div>
                 </div>
               </div>
-              <div class="col-lg-4 col-md-12 md-mt-5">
-                <div class="featured-item text-center style-2">
-                  <div class="featured-icon">
-                    <img class="img-center" src="images/feature/03.png" alt="" />
+              <div className="col-lg-4 col-md-12 md-mt-5">
+                <div className="featured-item text-center style-2">
+                  <div className="featured-icon">
+                    <img className="img-center" src="images/feature/03.png" alt="" />
                   </div>
-                  <div class="featured-title">
+                  <div className="featured-title">
                     <h5>SEO Optimization</h5>
                   </div>
-                  <div class="featured-desc">
-                    <p>Design must be functional, and futionality must translated into, and futionality must translated into.</p>
-                  </div>
-                </div>
-              </div>
-
-              <div class="col-lg-4 col-md-12 md-mt-5">
-                <div class="featured-item text-center style-2">
-                  <div class="featured-icon">
-                    <img class="img-center" src="images/feature/03.png" alt="" />
-                  </div>
-                  <div class="featured-title">
-                    <h5>SEO Optimization</h5>
-                  </div>
-                  <div class="featured-desc">
+                  <div className="featured-desc">
                     <p>Design must be functional, and futionality must translated into, and futionality must translated into.</p>
                   </div>
                 </div>
               </div>
 
-              <div class="col-lg-4 col-md-12 md-mt-5">
-                <div class="featured-item text-center style-2">
-                  <div class="featured-icon">
-                    <img class="img-center" src="images/feature/03.png" alt="" />
+              <div className="col-lg-4 col-md-12 md-mt-5">
+                <div className="featured-item text-center style-2">
+                  <div className="featured-icon">
+                    <img className="img-center" src="images/feature/03.png" alt="" />
                   </div>
-                  <div class="featured-title">
+                  <div className="featured-title">
                     <h5>SEO Optimization</h5>
                   </div>
-                  <div class="featured-desc">
+                  <div className="featured-desc">
                     <p>Design must be functional, and futionality must translated into, and futionality must translated into.</p>
                   </div>
                 </div>
               </div>
 
-              <div class="col-lg-4 col-md-12 md-mt-5">
-                <div class="featured-item text-center style-2">
-                  <div class="featured-icon">
-                    <img class="img-center" src="images/feature/03.png" alt="" />
+              <div className="col-lg-4 col-md-12 md-mt-5">
+                <div className="featured-item text-center style-2">
+                  <div className="featured-icon">
+                    <img className="img-center" src="images/feature/03.png" alt="" />
                   </div>
-                  <div class="featured-title">
+                  <div className="featured-title">
                     <h5>SEO Optimization</h5>
                   </div>
-                  <div class="featured-desc">
+                  <div className="featured-desc">
+                    <p>Design must be functional, and futionality must translated into, and futionality must translated into.</p>
+                  </div>
+                </div>
+              </div>
+
+              <div className="col-lg-4 col-md-12 md-mt-5">
+                <div className="featured-item text-center style-2">
+                  <div className="featured-icon">
+                    <img className="img-center" src="images/feature/03.png" alt="" />
+                  </div>
+                  <div className="featured-title">
+                    <h5>SEO Optimization</h5>
+                  </div>
+                  <div className="featured-desc">
                     <p>Design must be functional, and futionality must translated into, and futionality must translated into.</p>
                   </div>
                 </div>

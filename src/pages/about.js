@@ -269,7 +269,7 @@ class AboutPage extends React.Component {
                 </div>
               </div>
 
-              <div class="row">
+              <div className="row">
                 <div className="col-lg-4 col-md-6">
                 <div className="featured-item text-center">
                   <div className="featured-icon">

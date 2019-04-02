@@ -1,29 +1,46 @@
 
 //    Font Family
 
-$body-font : 'Poppins', sans-serif;
-$font2 : 'Niramit', sans-serif;
+$body-font : 'Open Sans', sans-serif;
+$header-font: 'Nunito', sans-serif;
+$font2 : 'Nunito', sans-serif;
+
+
+/*--------------------------- Custom colours ----------------------*/
+$theme-primary: #1F193E; /*purple*/
+$theme-primary2: #F5DEB5; /*yellow*/
+$theme-primary3: #933238; /*red*/
+
+$theme-secondary: #BBB1D7; /*purple*/
+$theme-secondary2: #f5ebe1; /*yellow*/
+$theme-secondary3: #D97B77; /*red*/
+
+$theme-light: #D0C5DB; /*purple*/
+$theme-light2: #F9F6F0; /*yellow-white*/
+$theme-light3: #FCD6D6; /*red*/
+
+$theme-dark: #1F193E; /*purple*/
 
 
 /*--------------------------- Color variations ----------------------*/
 
-$theme-color	: #ff7810;
-$theme-color2	: #ffb72f;
+$theme-color	: #d5566d;
+$theme-color2	: #933238;
 $title-color	: #1c2045;
-$body-color		: #5c5c5c;
-$white			: #ffffff;
-$black			: #111121;
+$body-color		: $theme-dark;
+$white			: $theme-light2;
+$black			: $theme-dark;
 $grey			: #999999;
 $rgba			: rgba(255,255,255,0.8);
 
 
 /*--------------------------- background Color variations ----------------------*/
 
-$themebg : #ff7810;
-$themebg2 : #ffb72f;
-$darkbg : #141414;
-$whitebg : #ffffff;
-$greybg : #f3f6ff;
+$themebg : #933238;
+$themebg2 : #d5566d;
+$darkbg : $theme-dark;
+$whitebg : #fff;
+$greybg : $theme-secondary2;
 
 
 

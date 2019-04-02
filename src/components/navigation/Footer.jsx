@@ -6,7 +6,6 @@ const Footer = (props) => {
 
   return (
     <footer className="footer white-bg pos-r o-hidden bg-contain" data-bg-img="images/pattern/01.png">
-      <div className="round-p-animation"></div>
       <div className="primary-footer">
         <div className="container py-5">
           <div className="row">
