@@ -1,0 +1,396 @@
+/* ------------------------------------------------
+  Project:   Loptus - Digital Marketing Agency Responsive HTML5 Template
+  Author:    ThemeHt
+
+  NOTE: This is Color customizer stylesheet of template.
+------------------------------------------------ */
+
+$theme-color  : #ff156a;
+$theme-color2 : #631470;
+$white : #ffffff;
+
+/* ------------------------
+    General
+------------------------*/
+
+::-moz-selection {
+  background: $theme-color;
+  color: $white;
+  text-shadow: none;
+  background: $theme-color;
+  color: $white;
+  text-shadow: none;
+}
+
+::selection {
+  background: $theme-color;
+  color: $white;
+  text-shadow: none;
+}
+
+/* ------------------------
+    Background Color
+------------------------*/
+
+.theme-bg, div.color-customizer a.opener, .btn:hover, .nav-item.dropdown .dropdown-menu a:hover {
+  background-color: $theme-color;
+}
+
+.owl-carousel {
+  .owl-nav button {
+    &.owl-prev:hover, &.owl-next:hover {
+      background-color: $theme-color;
+    }
+  }
+  &.owl-theme .owl-dots .owl-dot {
+    &:hover span, &.active span {
+      background-color: $theme-color;
+    }
+  }
+}
+
+.portfolio-filter button {
+  &.is-checked, &:hover {
+    background-color: $theme-color;
+  }
+}
+
+.scroll-top a {
+  background-color: $theme-color;
+}
+
+.tab .nav-tabs {
+  .nav-link {
+    &.active, &:hover {
+      background-color: $theme-color;
+    }
+  }
+  &.active > a:focus, > a:hover {
+    background-color: $theme-color;
+  }
+}
+
+.pagination > li.active .page-link {
+  background-color: $theme-color;
+}
+
+.page-link {
+  &:hover, &:focus {
+    background-color: $theme-color;
+  }
+}
+
+.section-title h6, .list-icon-2 li::before, .play-btn span::before {
+  background-color: $theme-color;
+}
+
+.ht-nav-toggle span {
+  background-color: $theme-color;
+  &::before, &::after {
+    background-color: $theme-color;
+  }
+}
+
+.step-num, .popup-link:hover {
+  background-color: $theme-color;
+}
+
+.testimonial {
+  background-color: $theme-color;
+  &.style-2 .testimonial-caption h5 {
+    background-color: $theme-color;
+  }
+}
+
+.accordion {
+  .card {
+    &.active a, a:hover {
+      background-color: $theme-color;
+    }
+  }
+  .card-header a span {
+    &::before, &::after {
+      background-color: $theme-color;
+    }
+  }
+}
+
+#ht-main-nav .ht-nav-toggle:hover span {
+  &::before, &::after {
+    background-color: $theme-color;
+  }
+}
+
+.footer-list li a:hover {
+  background-color: $theme-color;
+}
+
+/* ------------------------
+  Background Color Hover
+------------------------*/
+
+.btn.btn-theme, .step-num {
+  background: rgb(255, 21, 106);
+  background: linear-gradient(90deg, rgba(255, 21, 106, 1) 0%, rgba(187, 13, 76, 1) 90%);
+  color: $white;
+}
+
+.btn.btn-theme:hover {
+  background: rgb(255, 21, 106);
+  background: linear-gradient(90deg, rgba(187, 13, 76, 1) 0%, rgba(255, 21, 106, 1) 90%);
+}
+
+.owl-carousel .owl-nav button {
+  &.owl-prev:hover, &.owl-next:hover {
+    background: rgb(255, 21, 106);
+    background: linear-gradient(90deg, rgba(187, 13, 76, 1) 0%, rgba(255, 21, 106, 1) 90%);
+  }
+}
+
+/* ------------------------
+    Color
+------------------------*/
+
+a, button, input {
+  color: $theme-color;
+}
+
+a {
+  &:focus, &:hover {
+    color: $theme-color;
+  }
+}
+
+.text-theme, .loader {
+  color: $theme-color;
+}
+
+.navbar-nav {
+  .nav-link {
+    &:hover, &:focus {
+      color: $theme-color;
+    }
+  }
+  .nav-item .nav-link.active, .nav-link.highlighted {
+    color: $theme-color;
+  }
+}
+
+#header-wrap.fixed-header .navbar-nav .nav-link.highlighted {
+  color: $theme-color;
+}
+
+.header-2 #header-wrap.fixed-header {
+  .search-button {
+    color: $theme-color;
+  }
+  .navbar-nav {
+    .nav-link:hover, .nav-item .nav-link.active {
+      color: $theme-color;
+    }
+  }
+}
+
+h1 span, .btn-simple:hover {
+  color: $theme-color;
+}
+
+.btn {
+  &.btn-white {
+    &:hover, &.btn-border:hover {
+      color: $theme-color;
+    }
+  }
+  &:focus, &.focus {
+    color: $theme-color;
+  }
+}
+
+.breadcrumb-item {
+  &.active, a:hover {
+    color: $theme-color;
+  }
+}
+
+.list-icon li i, .counter.style-2 h5 {
+  color: $theme-color;
+}
+
+.tab.style-2 .nav-tabs {
+  .nav-link {
+    &.active, &:hover {
+      color: $theme-color;
+    }
+  }
+  &.active > a:focus, > a:hover {
+    color: $theme-color;
+  }
+}
+
+.team-member {
+  .team-description span, .team-social-icon ul li a:hover {
+    color: $theme-color;
+  }
+}
+
+.price-title, .price-list li i {
+  color: $theme-color;
+}
+
+.post .post-desc {
+  .post-date, h5 a:hover {
+    color: $theme-color;
+  }
+}
+
+.post-author span, .portfolio-title span, .search-button {
+  color: $theme-color;
+}
+
+.widget {
+  .widget-categories li a:hover, .recent-post-desc a:hover {
+    color: $theme-color;
+  }
+}
+
+.portfolio-meta li i, .countdown > li p {
+  color: $theme-color;
+}
+
+.contact-info li {
+  i, a:hover {
+    color: $theme-color;
+  }
+}
+
+.sidebar-links li {
+  &.active a, a:hover {
+    color: $theme-color;
+  }
+}
+
+.team-description .team-icon li a:hover {
+  color: $theme-color;
+}
+
+.scroll-top a {
+  &:hover, &:focus {
+    color: $theme-color;
+  }
+}
+
+/* ------------------------
+    Border Color
+------------------------*/
+
+.owl-carousel.owl-theme .owl-dots .owl-dot span::before, .form-control:focus, .reply a:hover, .pagination > li.active .page-link {
+  border-color: $theme-color;
+}
+
+.page-link {
+  &:hover, &:focus {
+    border-color: $theme-color;
+  }
+}
+
+.owl-carousel .owl-nav button {
+  &.owl-prev:hover, &.owl-next:hover {
+    border-color: $theme-color;
+  }
+}
+
+.search-input {
+  border-color: $theme-color;
+}
+
+.round-p-animation {
+  border-color: rgba(255, 21, 106, 0.1);
+}
+
+/* ------------------------
+  Border Color Hover
+------------------------*/
+
+.btn {
+  &.btn-theme:hover, &.btn-border {
+    border-color: $theme-color2;
+  }
+}
+
+.testimonial::before {
+  border-top-color: $theme-color;
+}
+
+.tab.style-2 .nav-tabs {
+  .nav-link {
+    &.active, &:hover {
+      border-top-color: $theme-color;
+    }
+  }
+  &.active > a:focus, > a:hover {
+    border-top-color: $theme-color;
+  }
+}
+
+/* ------------------------
+    Round Animated Image
+------------------------*/
+
+.round-animation {
+  background-image: linear-gradient(120deg, #ff7810 0%, #ffb72f 100%);
+  &:before, &:after {
+    background-image: linear-gradient(120deg, rgba(255, 21, 106, 0.55) 0%, rgba(187, 13, 76, 0.89) 100%);
+  }
+}
+
+@media (max-width: 992px) {
+  /* ------------------------
+      Background Color
+  ------------------------*/
+  .navbar-nav .nav-link {
+    &:hover, &.active, &:focus {
+      background: $theme-color;
+    }
+  }
+  #header-wrap.fixed-header .navbar-nav .nav-link {
+    &:hover, &.active {
+      background: $theme-color;
+    }
+  }
+  .navbar-toggler {
+    background: $theme-color;
+  }
+  .navbar-nav {
+    .nav-link {
+      &:hover, &:focus {
+        color: $white;
+      }
+    }
+    .nav-item .nav-link.active, .nav-link.highlighted {
+      color: $white;
+    }
+  }
+  #header-wrap.fixed-header .navbar-nav .nav-link.highlighted {
+    color: $white;
+  }
+  .header-2 {
+    #header-wrap.fixed-header .navbar-nav .nav-link {
+      color: $white;
+    }
+    .navbar-nav {
+      .nav-link:hover, .nav-item .nav-link.active {
+        color: $white;
+      }
+    }
+    #header-wrap.fixed-header {
+      .search-button {
+        color: $white;
+      }
+      .navbar-nav {
+        .nav-link:hover, .nav-item .nav-link.active {
+          color: $white;
+        }
+      }
+    }
+  }
+}

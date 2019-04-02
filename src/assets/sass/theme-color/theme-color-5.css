@@ -1,0 +1,248 @@
+/* ------------------------------------------------
+  Project:   Loptus - Digital Marketing Agency Responsive HTML5 Template
+  Author:    ThemeHt
+
+  NOTE: This is Color customizer stylesheet of template.
+------------------------------------------------ */
+/* ------------------------
+    General
+------------------------*/
+::-moz-selection {
+  background: #3414bc;
+  color: #ffffff;
+  text-shadow: none;
+  background: #3414bc;
+  color: #ffffff;
+  text-shadow: none; }
+
+::selection {
+  background: #3414bc;
+  color: #ffffff;
+  text-shadow: none; }
+
+/* ------------------------
+    Background Color
+------------------------*/
+.theme-bg, div.color-customizer a.opener, .btn:hover, .nav-item.dropdown .dropdown-menu a:hover {
+  background-color: #3414bc; }
+
+.owl-carousel .owl-nav button.owl-prev:hover, .owl-carousel .owl-nav button.owl-next:hover {
+  background-color: #3414bc; }
+.owl-carousel.owl-theme .owl-dots .owl-dot:hover span, .owl-carousel.owl-theme .owl-dots .owl-dot.active span {
+  background-color: #3414bc; }
+
+.portfolio-filter button.is-checked, .portfolio-filter button:hover {
+  background-color: #3414bc; }
+
+.scroll-top a {
+  background-color: #3414bc; }
+
+.tab .nav-tabs .nav-link.active, .tab .nav-tabs .nav-link:hover {
+  background-color: #3414bc; }
+.tab .nav-tabs.active > a:focus, .tab .nav-tabs > a:hover {
+  background-color: #3414bc; }
+
+.pagination > li.active .page-link {
+  background-color: #3414bc; }
+
+.page-link:hover, .page-link:focus {
+  background-color: #3414bc; }
+
+.section-title h6, .list-icon-2 li::before, .play-btn span::before {
+  background-color: #3414bc; }
+
+.ht-nav-toggle span {
+  background-color: #3414bc; }
+  .ht-nav-toggle span::before, .ht-nav-toggle span::after {
+    background-color: #3414bc; }
+
+.step-num, .popup-link:hover {
+  background-color: #3414bc; }
+
+.testimonial {
+  background-color: #3414bc; }
+  .testimonial.style-2 .testimonial-caption h5 {
+    background-color: #3414bc; }
+
+.accordion .card.active a, .accordion .card a:hover {
+  background-color: #3414bc; }
+.accordion .card-header a span::before, .accordion .card-header a span::after {
+  background-color: #3414bc; }
+
+#ht-main-nav .ht-nav-toggle:hover span::before, #ht-main-nav .ht-nav-toggle:hover span::after {
+  background-color: #3414bc; }
+
+.footer-list li a:hover {
+  background-color: #3414bc; }
+
+.featured-item.style-4:hover .featured-icon i, .featured-item.style-4.active .featured-icon i {
+  background-color: #3414bc; }
+
+/* ------------------------
+  Background Color Hover
+------------------------*/
+.btn.btn-theme, .step-num {
+  background: #3414bc;
+  background: linear-gradient(90deg, #3414bc 0%, #c9008b 90%);
+  color: #ffffff; }
+
+.btn.btn-theme:hover {
+  background: #3414bc;
+  background: linear-gradient(90deg, #c9008b 0%, #3414bc 90%); }
+
+.owl-carousel .owl-nav button.owl-prev:hover, .owl-carousel .owl-nav button.owl-next:hover {
+  background: #3414bc;
+  background: linear-gradient(90deg, #c9008b 0%, #3414bc 90%); }
+
+/* ------------------------
+    Color
+------------------------*/
+a, button, input {
+  color: #3414bc; }
+
+a:focus, a:hover {
+  color: #3414bc; }
+
+.text-theme, .loader {
+  color: #3414bc; }
+
+.navbar-nav .nav-link:hover, .navbar-nav .nav-link:focus {
+  color: #3414bc; }
+.navbar-nav .nav-item .nav-link.active, .navbar-nav .nav-link.highlighted {
+  color: #3414bc; }
+
+#header-wrap.fixed-header .navbar-nav .nav-link.highlighted {
+  color: #3414bc; }
+
+.header-2 #header-wrap.fixed-header .search-button {
+  color: #3414bc; }
+.header-2 #header-wrap.fixed-header .navbar-nav .nav-link:hover, .header-2 #header-wrap.fixed-header .navbar-nav .nav-item .nav-link.active {
+  color: #3414bc; }
+
+h1 span, .btn-simple:hover {
+  color: #3414bc; }
+
+.btn.btn-white:hover, .btn.btn-white.btn-border:hover {
+  color: #3414bc; }
+.btn:focus, .btn.focus {
+  color: #3414bc; }
+
+.breadcrumb-item.active, .breadcrumb-item a:hover {
+  color: #3414bc; }
+
+.list-icon li i, .counter.style-2 h5 {
+  color: #3414bc; }
+
+.tab.style-2 .nav-tabs .nav-link.active, .tab.style-2 .nav-tabs .nav-link:hover {
+  color: #3414bc; }
+.tab.style-2 .nav-tabs.active > a:focus, .tab.style-2 .nav-tabs > a:hover {
+  color: #3414bc; }
+
+.team-member .team-description span, .team-member .team-social-icon ul li a:hover {
+  color: #3414bc; }
+
+.price-title, .price-list li i {
+  color: #3414bc; }
+
+.post .post-desc .post-date, .post .post-desc h5 a:hover {
+  color: #3414bc; }
+
+.post-author span, .portfolio-title span, .search-button {
+  color: #3414bc; }
+
+.widget .widget-categories li a:hover, .widget .recent-post-desc a:hover {
+  color: #3414bc; }
+
+.portfolio-meta li i, .countdown > li p {
+  color: #3414bc; }
+
+.contact-info li i, .contact-info li a:hover {
+  color: #3414bc; }
+
+.sidebar-links li.active a, .sidebar-links li a:hover {
+  color: #3414bc; }
+
+.team-description .team-icon li a:hover {
+  color: #3414bc; }
+
+.scroll-top a:hover, .scroll-top a:focus {
+  color: #3414bc; }
+
+.featured-item.style-4 .featured-icon i {
+  color: #3414bc; }
+
+/* ------------------------
+    Border Color
+------------------------*/
+.owl-carousel.owl-theme .owl-dots .owl-dot span::before, .form-control:focus, .reply a:hover, .pagination > li.active .page-link {
+  border-color: #3414bc; }
+
+.page-link:hover, .page-link:focus {
+  border-color: #3414bc; }
+
+.owl-carousel .owl-nav button.owl-prev:hover, .owl-carousel .owl-nav button.owl-next:hover {
+  border-color: #3414bc; }
+
+.search-input {
+  border-color: #3414bc; }
+
+.round-p-animation {
+  border-color: rgba(52, 20, 188, 0.1); }
+
+/* ------------------------
+  Border Color Hover
+------------------------*/
+.btn.btn-theme:hover, .btn.btn-border {
+  border-color: #c9008b; }
+
+.testimonial::before {
+  border-top-color: #3414bc; }
+
+.tab.style-2 .nav-tabs .nav-link.active, .tab.style-2 .nav-tabs .nav-link:hover {
+  border-top-color: #3414bc; }
+.tab.style-2 .nav-tabs.active > a:focus, .tab.style-2 .nav-tabs > a:hover {
+  border-top-color: #3414bc; }
+
+/* ------------------------
+    Round Animated Image
+------------------------*/
+.round-animation {
+  background-image: linear-gradient(120deg, #ff7810 0%, #ffb72f 100%); }
+  .round-animation:before, .round-animation:after {
+    background-image: linear-gradient(120deg, rgba(52, 20, 188, 0.55) 0%, rgba(201, 0, 139, 0.89) 100%); }
+
+[data-overlay].grediant-overlay:before {
+  background: #3414bc;
+  background: linear-gradient(30deg, #3414bc 0%, #c9008b 90%); }
+
+@media (max-width: 992px) {
+  /* ------------------------
+      Background Color
+  ------------------------*/
+  .navbar-nav .nav-link:hover, .navbar-nav .nav-link.active, .navbar-nav .nav-link:focus {
+    background: #3414bc; }
+
+  #header-wrap.fixed-header .navbar-nav .nav-link:hover, #header-wrap.fixed-header .navbar-nav .nav-link.active {
+    background: #3414bc; }
+
+  .navbar-toggler {
+    background: #3414bc; }
+
+  .navbar-nav .nav-link:hover, .navbar-nav .nav-link:focus {
+    color: #ffffff; }
+  .navbar-nav .nav-item .nav-link.active, .navbar-nav .nav-link.highlighted {
+    color: #ffffff; }
+
+  #header-wrap.fixed-header .navbar-nav .nav-link.highlighted {
+    color: #ffffff; }
+
+  .header-2 #header-wrap.fixed-header .navbar-nav .nav-link {
+    color: #ffffff; }
+  .header-2 .navbar-nav .nav-link:hover, .header-2 .navbar-nav .nav-item .nav-link.active {
+    color: #ffffff; }
+  .header-2 #header-wrap.fixed-header .search-button {
+    color: #ffffff; }
+  .header-2 #header-wrap.fixed-header .navbar-nav .nav-link:hover, .header-2 #header-wrap.fixed-header .navbar-nav .nav-item .nav-link.active {
+    color: #ffffff; } }
+
+/*# sourceMappingURL=theme-color-5.css.map */

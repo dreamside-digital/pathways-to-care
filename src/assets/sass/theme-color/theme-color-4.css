@@ -1,0 +1,242 @@
+/* ------------------------------------------------
+  Project:   Loptus - Digital Marketing Agency Responsive HTML5 Template
+  Author:    ThemeHt
+
+  NOTE: This is Color customizer stylesheet of template.
+------------------------------------------------ */
+/* ------------------------
+    General
+------------------------*/
+::-moz-selection {
+  background: #574af6;
+  color: #ffffff;
+  text-shadow: none;
+  background: #574af6;
+  color: #ffffff;
+  text-shadow: none; }
+
+::selection {
+  background: #574af6;
+  color: #ffffff;
+  text-shadow: none; }
+
+/* ------------------------
+    Background Color
+------------------------*/
+.theme-bg, div.color-customizer a.opener, .btn:hover, .nav-item.dropdown .dropdown-menu a:hover {
+  background-color: #574af6; }
+
+.owl-carousel .owl-nav button.owl-prev:hover, .owl-carousel .owl-nav button.owl-next:hover {
+  background-color: #574af6; }
+.owl-carousel.owl-theme .owl-dots .owl-dot:hover span, .owl-carousel.owl-theme .owl-dots .owl-dot.active span {
+  background-color: #574af6; }
+
+.portfolio-filter button.is-checked, .portfolio-filter button:hover {
+  background-color: #574af6; }
+
+.scroll-top a {
+  background-color: #574af6; }
+
+.tab .nav-tabs .nav-link.active, .tab .nav-tabs .nav-link:hover {
+  background-color: #574af6; }
+.tab .nav-tabs.active > a:focus, .tab .nav-tabs > a:hover {
+  background-color: #574af6; }
+
+.pagination > li.active .page-link {
+  background-color: #574af6; }
+
+.page-link:hover, .page-link:focus {
+  background-color: #574af6; }
+
+.section-title h6, .list-icon-2 li::before, .play-btn span::before {
+  background-color: #574af6; }
+
+.ht-nav-toggle span {
+  background-color: #574af6; }
+  .ht-nav-toggle span::before, .ht-nav-toggle span::after {
+    background-color: #574af6; }
+
+.step-num, .popup-link:hover {
+  background-color: #574af6; }
+
+.testimonial {
+  background-color: #574af6; }
+  .testimonial.style-2 .testimonial-caption h5 {
+    background-color: #574af6; }
+
+.accordion .card.active a, .accordion .card a:hover {
+  background-color: #574af6; }
+.accordion .card-header a span::before, .accordion .card-header a span::after {
+  background-color: #574af6; }
+
+#ht-main-nav .ht-nav-toggle:hover span::before, #ht-main-nav .ht-nav-toggle:hover span::after {
+  background-color: #574af6; }
+
+.footer-list li a:hover {
+  background-color: #574af6; }
+
+/* ------------------------
+  Background Color Hover
+------------------------*/
+.btn.btn-theme, .step-num {
+  background: #574af6;
+  background: linear-gradient(90deg, #574af6 0%, #8980f2 90%);
+  color: #ffffff; }
+
+.btn.btn-theme:hover {
+  background: #574af6;
+  background: linear-gradient(90deg, #8980f2 0%, #574af6 90%); }
+
+.owl-carousel .owl-nav button.owl-prev:hover, .owl-carousel .owl-nav button.owl-next:hover {
+  background: #574af6;
+  background: linear-gradient(90deg, #8980f2 0%, #574af6 90%); }
+
+/* ------------------------
+    Color
+------------------------*/
+a, button, input {
+  color: #574af6; }
+
+a:focus, a:hover {
+  color: #574af6; }
+
+.text-theme, .loader {
+  color: #574af6; }
+
+.navbar-nav .nav-link:hover, .navbar-nav .nav-link:focus {
+  color: #574af6; }
+.navbar-nav .nav-item .nav-link.active, .navbar-nav .nav-link.highlighted {
+  color: #574af6; }
+
+#header-wrap.fixed-header .navbar-nav .nav-link.highlighted {
+  color: #574af6; }
+
+.header-2 #header-wrap.fixed-header .search-button {
+  color: #574af6; }
+.header-2 #header-wrap.fixed-header .navbar-nav .nav-link:hover, .header-2 #header-wrap.fixed-header .navbar-nav .nav-item .nav-link.active {
+  color: #574af6; }
+
+h1 span, .btn-simple:hover {
+  color: #574af6; }
+
+.btn.btn-white:hover, .btn.btn-white.btn-border:hover {
+  color: #574af6; }
+.btn:focus, .btn.focus {
+  color: #574af6; }
+
+.breadcrumb-item.active, .breadcrumb-item a:hover {
+  color: #574af6; }
+
+.list-icon li i, .counter.style-2 h5 {
+  color: #574af6; }
+
+.tab.style-2 .nav-tabs .nav-link.active, .tab.style-2 .nav-tabs .nav-link:hover {
+  color: #574af6; }
+.tab.style-2 .nav-tabs.active > a:focus, .tab.style-2 .nav-tabs > a:hover {
+  color: #574af6; }
+
+.team-member .team-description span, .team-member .team-social-icon ul li a:hover {
+  color: #574af6; }
+
+.price-title, .price-list li i {
+  color: #574af6; }
+
+.post .post-desc .post-date, .post .post-desc h5 a:hover {
+  color: #574af6; }
+
+.post-author span, .portfolio-title span, .search-button {
+  color: #574af6; }
+
+.widget .widget-categories li a:hover, .widget .recent-post-desc a:hover {
+  color: #574af6; }
+
+.portfolio-meta li i, .countdown > li p {
+  color: #574af6; }
+
+.contact-info li i, .contact-info li a:hover {
+  color: #574af6; }
+
+.sidebar-links li.active a, .sidebar-links li a:hover {
+  color: #574af6; }
+
+.team-description .team-icon li a:hover {
+  color: #574af6; }
+
+.scroll-top a:hover, .scroll-top a:focus {
+  color: #574af6; }
+
+/* ------------------------
+    Border Color
+------------------------*/
+.owl-carousel.owl-theme .owl-dots .owl-dot span::before, .form-control:focus, .reply a:hover, .pagination > li.active .page-link {
+  border-color: #574af6; }
+
+.page-link:hover, .page-link:focus {
+  border-color: #574af6; }
+
+.owl-carousel .owl-nav button.owl-prev:hover, .owl-carousel .owl-nav button.owl-next:hover {
+  border-color: #574af6; }
+
+.search-input {
+  border-color: #574af6; }
+
+.round-p-animation {
+  border-color: rgba(87, 74, 246, 0.1); }
+
+/* ------------------------
+  Border Color Hover
+------------------------*/
+.btn.btn-theme:hover, .btn.btn-border {
+  border-color: #8980f2; }
+
+.testimonial::before {
+  border-top-color: #574af6; }
+
+.tab.style-2 .nav-tabs .nav-link.active, .tab.style-2 .nav-tabs .nav-link:hover {
+  border-top-color: #574af6; }
+.tab.style-2 .nav-tabs.active > a:focus, .tab.style-2 .nav-tabs > a:hover {
+  border-top-color: #574af6; }
+
+/* ------------------------
+    Round Animated Image
+------------------------*/
+.round-animation {
+  background-image: linear-gradient(120deg, #ff7810 0%, #ffb72f 100%); }
+  .round-animation:before, .round-animation:after {
+    background-image: linear-gradient(120deg, rgba(87, 74, 246, 0.55) 0%, rgba(137, 128, 242, 0.89) 100%); }
+
+[data-overlay].grediant-overlay:before {
+  background: #574af6;
+  background: linear-gradient(90deg, #574af6 0%, #8980f2 50%); }
+
+@media (max-width: 992px) {
+  /* ------------------------
+      Background Color
+  ------------------------*/
+  .navbar-nav .nav-link:hover, .navbar-nav .nav-link.active, .navbar-nav .nav-link:focus {
+    background: #574af6; }
+
+  #header-wrap.fixed-header .navbar-nav .nav-link:hover, #header-wrap.fixed-header .navbar-nav .nav-link.active {
+    background: #574af6; }
+
+  .navbar-toggler {
+    background: #574af6; }
+
+  .navbar-nav .nav-link:hover, .navbar-nav .nav-link:focus {
+    color: #ffffff; }
+  .navbar-nav .nav-item .nav-link.active, .navbar-nav .nav-link.highlighted {
+    color: #ffffff; }
+
+  #header-wrap.fixed-header .navbar-nav .nav-link.highlighted {
+    color: #ffffff; }
+
+  .header-2 #header-wrap.fixed-header .navbar-nav .nav-link {
+    color: #ffffff; }
+  .header-2 .navbar-nav .nav-link:hover, .header-2 .navbar-nav .nav-item .nav-link.active {
+    color: #ffffff; }
+  .header-2 #header-wrap.fixed-header .search-button {
+    color: #ffffff; }
+  .header-2 #header-wrap.fixed-header .navbar-nav .nav-link:hover, .header-2 #header-wrap.fixed-header .navbar-nav .nav-item .nav-link.active {
+    color: #ffffff; } }
+
+/*# sourceMappingURL=theme-color-4.css.map */

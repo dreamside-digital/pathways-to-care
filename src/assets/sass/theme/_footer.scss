@@ -1,0 +1,125 @@
+/* ------------------------
+    Footer
+------------------------*/
+
+.primary-footer {
+  position: relative;
+  z-index: 99;
+}
+
+.secondary-footer {
+  padding: 30px 0;
+  background: $greybg;
+  color: $black;
+  font-weight: 500;
+  text-transform: uppercase;
+}
+
+.footer-logo img {
+  height: 70px;
+}
+
+.primary-footer {
+  color: $black;
+  a {
+    color: $black;
+  }
+  h5 {
+    margin-bottom: 20px;
+  }
+}
+
+.media-icon {
+  &.list-inline li {
+    display: inline-block;
+  }
+  li {
+    margin-bottom: 15px;
+    font-size: 16px;
+    font-weight: 400;
+    &:last-child {
+      margin-bottom: 0;
+    }
+    a:hover {
+      color: $theme-color;
+    }
+  }
+}
+
+.footer-list li {
+  margin-bottom: 15px;
+  text-transform: capitalize;
+  &:last-child {
+    margin-bottom: 0;
+  }
+  a {
+    position: relative;
+    z-index: 99;
+    font-size: 16px;
+    padding: 2px 0;
+    font-weight: 400;
+    color: $black;
+    &:hover {
+      background: $themebg;
+      color: $white;
+      padding: 2px 10px;
+    }
+  }
+}
+
+.ht-theme-info {
+  display: inline-block;
+  padding: 40px;
+  z-index: 2;
+}
+
+.footer-logo {
+  margin-bottom: 15px;
+}
+
+.round-p-animation {
+  position: absolute;
+  bottom: 0;
+  right: -100px;
+  margin-top: -50px;
+  z-index: 9;
+  background: transparent;
+  width: 200px;
+  height: 200px;
+  border: 10px solid rgba(255, 120, 16, 0.1);
+  -webkit-border-radius: 100%;
+  border-radius: 100%;
+  text-align: center;
+  display: inline-block;
+  @include transition(.15s ease-in-out);
+  @include transition-property(color, background, border-color);
+  &:after {
+    content: '';
+    border: 10px solid;
+    border-color: inherit;
+    width: 270%;
+    height: 270%;
+    -webkit-border-radius: 100%;
+    border-radius: 100%;
+    position: absolute;
+    left: -85%;
+    top: -85%;
+    opacity: 1;
+    @include animation(2s videomodule-anim linear infinite);
+  }
+  &:before {
+    content: '';
+    border: 10px solid;
+    border-color: inherit;
+    width: 270%;
+    height: 270%;
+    -webkit-border-radius: 100%;
+    border-radius: 100%;
+    position: absolute;
+    left: -85%;
+    top: -85%;
+    opacity: 1;
+    @include animation(2s videomodule-anim linear infinite);
+    @include animation-delay(.5s);
+  }
+}

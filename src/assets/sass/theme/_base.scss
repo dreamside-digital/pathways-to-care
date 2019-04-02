@@ -1,0 +1,718 @@
+/* ------------------------------------------------
+  Project:   Loptus - Digital Marketing Agency Responsive HTML5 Template
+  Author:    ThemeHt
+------------------------------------------------ */
+/* ------------------------
+    Table of Contents
+
+  1. General
+  2. Transition
+  3. Transform translate
+  4. Box Shadow
+  5. Custom Margin
+  6. Custom Padding  
+  7. Padding
+  8. Margin
+  9. Pre Loader
+  10. Row Eq Height
+  11. Background Overlay
+  12. Scroll to Top
+  13. Subscribe Form
+  14. Header Search
+  15. Header
+  16. Footer
+  17. Page Title
+  18. Flat Icon
+
+ 
+/* ------------------------
+    General
+------------------------*/
+
+a {
+  &:focus {
+    text-decoration: none !important;
+    color: $theme-color;
+    text-decoration: none !important;
+  }
+  &:hover {
+    color: $theme-color;
+    text-decoration: none !important;
+  }
+  outline: medium none !important;
+  color: $theme-color;
+}
+
+button, input {
+  outline: medium none !important;
+  color: $theme-color;
+}
+
+*::-moz-selection, ::-moz-selection, ::selection {
+  background: $theme-color;
+  color: $white;
+  text-shadow: none;
+}
+
+/* ------------------------
+    Transition
+------------------------*/
+
+a, i, .btn, button, img, span, .animatedBackground, .navbar-nav .nav-link:before, .dropdown-item {
+  @include transition(all 0.5s ease-in-out 0s);
+}
+
+.portfolio-item {
+  &:before, &:after {
+    @include transition(all 0.5s ease-in-out 0s);
+  }
+}
+
+.owl-item, .cases-item, .cases-description {
+  @include transition(all 0.5s ease-in-out 0s);
+}
+
+.featured-item {
+  .featured-icon i {
+    @include transition(all 0.5s ease-in-out 0s);
+  }
+  @include transition(all 0.5s ease-in-out 0s);
+}
+
+.featured-icon, .price-table, .portfolio-filter button, .post .post-desc, .sidebar-links li a, .team-description {
+  @include transition(all 0.5s ease-in-out 0s);
+}
+
+/* ------------------------
+    Transform translate
+------------------------*/
+
+/*--translate-X--*/
+
+.transform-x, .bnr-animation, .text-center .title:before {
+  @include transform(translateX(-50%));
+}
+
+/*--translate-Y--*/
+
+.transform-y, .bnr-img2, .image-column, .counter i, .align-center, .clear-loader, .widget-searchbox .search-btn, .featured-item.style-3 .featured-icon, .post-queto .item span {
+  @include transform(translateY(-50%));
+}
+
+/*--translate-XY--*/
+
+.clear-loader, .pattern-3, .video-btn-pos, .insideText {
+  @include transform(translateX(-50%) translateY(-50%));
+}
+
+/*--translate-X-5--*/
+
+.navbar-nav .dropdown-menu .nav-link {
+  &:focus, &:hover {
+    @include transform(translateX(5px));
+  }
+}
+
+/*--translate-Y-5--*/
+
+.featured-item:hover {
+  @include transform(translateY(5px));
+}
+
+/* ------------------------
+    Box Shadow
+------------------------*/
+
+.box-shadow, .boxed-view, .btn, .dropdown > .dropdown-menu, #header-wrap.fixed-header, #ht-main-nav, .search-input {
+  @include box-shadow(0px 15px 35px rgba(0, 0, 0, 0.1));
+}
+
+.featured-item {
+  &.style-2 {
+    @include box-shadow(0px 15px 35px rgba(0, 0, 0, 0.1));
+  }
+  &.style-4 {
+    &:hover, .featured-icon i, &.active, &:before, &:after {
+      @include box-shadow(0px 15px 35px rgba(0, 0, 0, 0.1));
+    }
+  }
+}
+
+.testimonial {
+  .testimonial-img img, .testimonial-quote {
+    @include box-shadow(0px 15px 35px rgba(0, 0, 0, 0.1));
+  }
+}
+
+.price-table, .tab .nav-tabs .nav-link, .post, .post-author-img, .post.style-2 .post-desc, .work-process.style-2 .step-num, .cases-item:hover, .active.center .cases-item, .tab.style-2 .tab-content, .featured-item:hover, .form-control, .info-inner, .accordion .card-header, .media-holder .media {
+  @include box-shadow(0px 15px 35px rgba(0, 0, 0, 0.1));
+}
+
+.team-member {
+  &:hover .team-description, &.active .team-description, &:hover .team-social-icon, &.active .team-social-icon {
+    @include box-shadow(0px 15px 35px rgba(0, 0, 0, 0.1));
+  }
+}
+
+/* ------------------------
+    Custom Margin
+------------------------*/
+
+.custom-mt-5 {
+  z-index: 99;
+  position: relative;
+  margin-top: -50px;
+}
+
+.custom-mt-7 {
+  z-index: 99;
+  position: relative;
+  margin-top: -70px;
+}
+
+.custom-mt-10 {
+  z-index: 99;
+  position: relative;
+  margin-top: -100px;
+}
+
+.custom-mt-12 {
+  z-index: 99;
+  position: relative;
+  margin-top: -120px;
+}
+
+.custom-mt-15 {
+  z-index: 99;
+  position: relative;
+  margin-top: -150px;
+}
+
+.custom-mt-20 {
+  z-index: 99;
+  position: relative;
+  margin-top: -200px;
+}
+
+.custom-mt-25 {
+  z-index: 99;
+  position: relative;
+  margin-top: -250px;
+}
+
+/* ------------------------
+    Custom Padding
+------------------------*/
+
+.custom-pt-18 {
+  padding-top: 180px;
+}
+
+.custom-pb-18 {
+  padding-bottom: 180px;
+}
+
+/* ------------------------
+    Padding
+------------------------*/
+
+.px-10 {
+  padding-left: 100px !important;
+  padding-right: 100px !important;
+}
+
+.px-15 {
+  padding-left: 150px !important;
+  padding-right: 150px !important;
+}
+
+.px-20 {
+  padding-left: 200px !important;
+  padding-right: 200px !important;
+}
+
+.py-8 {
+  padding-top: 80px !important;
+  padding-bottom: 80px !important;
+}
+
+.py-10 {
+  padding-top: 100px !important;
+  padding-bottom: 100px !important;
+}
+
+.py-15 {
+  padding-top: 150px !important;
+  padding-bottom: 150px !important;
+}
+
+.py-20 {
+  padding-top: 200px !important;
+  padding-bottom: 200px !important;
+}
+
+.pl-10 {
+  padding-left: 100px !important;
+}
+
+.pr-10 {
+  padding-right: 100px !important;
+}
+
+.pt-8 {
+  padding-top: 80px !important;
+}
+
+.pt-10 {
+  padding-top: 100px !important;
+}
+
+.pt-15 {
+  padding-top: 150px !important;
+}
+
+.pt-20 {
+  padding-top: 200px !important;
+}
+
+.pb-10 {
+  padding-bottom: 100px !important;
+}
+
+.pb-15 {
+  padding-bottom: 150px !important;
+}
+
+.pb-17 {
+  padding-bottom: 170px !important;
+}
+
+.pb-20 {
+  padding-bottom: 200px !important;
+}
+
+/* ------------------------
+    Margin
+------------------------*/
+
+.mt-8 {
+  margin-top: 80px !important;
+}
+
+.mt-10 {
+  margin-top: 100px !important;
+}
+
+.mt-15 {
+  margin-top: 150px !important;
+}
+
+.my-8 {
+  margin-top: 80px !important;
+  margin-bottom: 80px !important;
+}
+
+.my-10 {
+  margin-top: 100px !important;
+  margin-bottom: 100px !important;
+}
+
+.my-15 {
+  margin-top: 150px !important;
+  margin-bottom: 150px !important;
+}
+
+.my-20 {
+  margin-top: 200px !important;
+  margin-bottom: 200px !important;
+}
+
+/* ------------------------
+    Pre Loader
+------------------------*/
+
+#ht-preloader {
+  background: $whitebg;
+  bottom: 0;
+  height: 100%;
+  left: 0;
+  overflow: hidden !important;
+  position: fixed;
+  right: 0;
+  text-align: center;
+  top: 0;
+  width: 100%;
+  z-index: 99999;
+}
+
+.clear-loader {
+  z-index: 999;
+  box-sizing: border-box;
+  display: inline-block;
+  left: 50%;
+  position: absolute;
+  text-align: center;
+  top: 50%;
+}
+
+.loader {
+  display: flex;
+  font-size: 2em;
+  color: $theme-color;
+}
+
+.loader-dots {
+  display: flex;
+  position: relative;
+  top: 20px;
+  left: -10px;
+  width: 100px;
+  @include animation(dots 4s ease infinite 1s);
+  span {
+    position: relative;
+    width: 10px;
+    height: 10px;
+    margin-right: 10px;
+    border-radius: 100%;
+    background-color: black;
+    &:nth-child(1) {
+      width: 0px;
+      height: 0px;
+      margin: 5px;
+      margin-right: 15px;
+      @include animation(show-dot 4s ease-out infinite 1s);
+    }
+    &:nth-child(4) {
+      background-color: transparent;
+      @include animation(dot-fall-left 4s linear infinite 1s);
+      &:before {
+        position: absolute;
+        width: 10px;
+        height: 10px;
+        margin-right: 10px;
+        border-radius: 100%;
+        background: $black;
+        content: '';
+        @include animation(dot-fall-top 4s cubic-bezier(0.46, 0.02, 0.94, 0.54) infinite 1s);
+      }
+    }
+  }
+}
+
+/* ------------------------
+    Row Eq Height
+------------------------*/
+
+.row-eq-height {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  > [class*='col-'] > div {
+    height: 100%;
+  }
+  .align-item-middle > div {
+    height: auto;
+  }
+}
+
+/* ------------------------
+    Background Overlay
+------------------------*/
+
+[data-overlay] {
+  position: relative;
+  z-index: 0;
+  &:before {
+    position: absolute;
+    content: '';
+    background-color: #000000;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    z-index: -1;
+  }
+}
+
+.slide-overlay:before {
+  position: absolute;
+  content: '';
+  background-color: #000000;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  z-index: -1;
+}
+
+[data-overlay] {
+  &.white-overlay:before {
+    background-color: $whitebg;
+  }
+  &.theme-overlay:before {
+    background-color: $theme-color;
+  }
+  &.grediant-overlay:before {
+    background: rgb(255, 120, 16);
+    background: linear-gradient(90deg, rgba(255, 120, 16, 1) 0%, rgba(255, 183, 47, 1) 50%);
+  }
+}
+
+[data-overlay="1"]:before {
+  opacity: 0.1;
+}
+
+[data-overlay="2"]:before {
+  opacity: 0.2;
+}
+
+[data-overlay="3"]:before {
+  opacity: 0.3;
+}
+
+[data-overlay="4"]:before {
+  opacity: 0.4;
+}
+
+[data-overlay="5"]:before {
+  opacity: 0.5;
+}
+
+[data-overlay="6"]:before {
+  opacity: 0.6;
+}
+
+[data-overlay="7"]:before {
+  opacity: 0.7;
+}
+
+[data-overlay="8"]:before {
+  opacity: 0.8;
+}
+
+[data-overlay="9"]:before {
+  opacity: 0.9;
+}
+
+[data-overlay="10"]:before {
+  opacity: 1;
+}
+
+[data-overlay="0"]:before {
+  opacity: 0;
+}
+
+/* ------------------------
+    Scroll to Top
+------------------------*/
+
+.scroll-top {
+  position: fixed;
+  bottom: 30px;
+  right: 30px;
+  z-index: 600;
+  opacity: 0;
+  visibility: hidden;
+  @include transition(all 0.8s ease-in-out);
+  @include transform(translate3d(0, 200%, 0));
+  a {
+    display: block;
+    height: 60px;
+    width: 60px;
+    line-height: 60px;
+    text-align: center;
+    border-radius: 7px;
+    @include box-shadow(0 0 15px 6px rgba(0, 0, 0, 0.1));
+    @include transition(all 0.3s ease-in-out);
+    font-size: 32px;
+    color: $white;
+    background: $theme-color;
+    &:visited {
+      display: block;
+      height: 60px;
+      width: 60px;
+      line-height: 60px;
+      text-align: center;
+      border-radius: 7px;
+      @include box-shadow(0 0 15px 6px rgba(0, 0, 0, 0.1));      
+     @include transition(all 0.3s ease-in-out);
+      font-size: 32px;
+      color: $white;
+      background: $theme-color;
+    }
+    &:hover, &:focus {
+      color: $theme-color;
+      background: $whitebg;
+    }
+  }
+  &.scroll-visible {
+    opacity: 1;
+    visibility: visible;
+    @include transform(translate3d(0, 0, 0));
+  }
+}
+
+ /* ------------------------
+    Subscribe Form
+------------------------*/
+
+.subscribe-form {
+  margin: 0;
+  padding: 0;
+  position: relative;
+  width: 350px;
+}
+
+#mc-form {
+  width: 100%;
+  input[type="email"] {
+    width: 100%;
+    border: 2px solid #e2dfdf;
+    background: $whitebg;
+    border-radius: 5px;
+    color: $black;
+    font-size: 14px;
+    padding: 0 20px;
+    height: 50px;
+    &::-webkit-input-placeholder, &::-moz-placeholder, &:-ms-input-placeholder {
+      color: $black;
+    }
+    &.placeholder {
+      color: $black !important;
+    }
+  }
+  .btn {
+    position: absolute;
+    border-radius: 0px;
+    top: 0;
+    right: 0;
+    padding: 12px 25px;
+    transition: 0.20s;
+    height: 50px;
+  }
+}
+
+
+/* ------------------------
+    Page Title
+------------------------*/
+
+.page-title {
+  display: block;
+  position: relative;
+  padding: 200px 0;
+  h1 {
+    font-size: 50px;
+    color: $title-color;
+    line-height: 60px;
+    font-weight: 700;
+    margin-bottom: 30px;
+  }
+}
+
+.breadcrumb {
+  padding: 0;
+  background: none;
+  display: inline-block;
+  border-radius: 0;
+  margin: 0;
+  text-transform: uppercase;
+  color: $black;
+  font-weight: 700;
+}
+
+.breadcrumb-item {
+  display: inline-block;
+  a {
+    color: $black;
+  }
+  &.active, a:hover {
+    color: $theme-color;
+  }
+}
+
+.page-title-pattern {
+  bottom: 0;
+  position: absolute;
+}
+
+/* ------------------------
+    Flat Icon
+------------------------*/
+@font-face {
+  font-family: "Flaticon";
+  src: url("../fonts/Flaticon.eot");
+  src: url("../fonts/Flaticon.eot?#iefix") format("embedded-opentype"), url("../fonts/Flaticon.woff") format("woff"), url("../fonts/Flaticon.ttf") format("truetype"), url("../fonts/Flaticon.svg#Flaticon") format("svg");
+  font-weight: normal;
+  font-style: normal;
+}
+
+
+@media screen and (-webkit-min-device-pixel-ratio: 0) {
+  @font-face {
+    font-family: "Flaticon";
+    src: url("../fonts/Flaticon.svg#Flaticon") format("svg");
+  }
+}
+
+[class^="flaticon-"]:before, [class*=" flaticon-"]:before, [class^="flaticon-"]:after, [class*=" flaticon-"]:after {
+  font-family: Flaticon;
+  font-style: normal;
+}
+
+.flaticon-email:before {
+  content: "\f100";
+}
+
+.flaticon-call:before {
+  content: "\f101";
+}
+
+.flaticon-location:before {
+  content: "\f102";
+}
+
+.flaticon-play-button:before {
+  content: "\f103";
+}
+
+.flaticon-user:before {
+  content: "\f104";
+}
+
+.flaticon-check:before {
+  content: "\f105";
+}
+
+.flaticon-development:before {
+  content: "\f106";
+}
+
+.flaticon-like:before {
+  content: "\f107";
+}
+
+.flaticon-checked:before {
+  content: "\f108";
+}
+
+.flaticon-tick:before {
+  content: "\f109";
+}
+
+.flaticon-plus:before {
+  content: "\f10a";
+}
+
+.flaticon-more:before {
+  content: "\f10b";
+}
+
+.flaticon-quotation:before {
+  content: "\f10c";
+}
+
+.flaticon-upload:before {
+  content: "\f10d";
+}

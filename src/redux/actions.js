@@ -78,13 +78,15 @@ export function deploy() {
       .auth()
       .currentUser.getIdToken(/* forceRefresh */ true)
       .then(token => {
-        return axios.post(url, {
+        return axios({
+          method: "POST",
+          url: url,
           headers: { Authorization: "Bearer " + token }
         });
       })
       .then(res => {
         console.log(res);
-        if (res.data.status === "success") {
+        if (res.data.status === "ok") {
           dispatch(
             showNotification(
               "The website is being published - this will take a few minutes. Time to go grab a coffee :)",
