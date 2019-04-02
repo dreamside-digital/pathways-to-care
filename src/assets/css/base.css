@@ -1466,8 +1466,7 @@ a, i, .btn, button, img, span, .animatedBackground, .navbar-nav .nav-link:before
 .team-member img {
   width: 100%; }
 .team-member p {
-  margin: 15px 0;
-  color: #ffffff; }
+  margin: 15px 0; }
 
 .team-description .team-icon li a {
   color: #111121; }

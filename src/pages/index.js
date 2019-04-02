@@ -101,9 +101,6 @@ class HomePage extends React.Component {
         </section>
 
 
-
-
-
         <section className="grey-bg pos-r">
           <div className="pattern-3">
             <img className="img-fluid rotateme" src="images/pattern/03.png" alt=""/>
