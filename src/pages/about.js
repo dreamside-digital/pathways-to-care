@@ -1,16 +1,27 @@
 import React from "react";
 import { graphql } from "gatsby";
 import { connect } from "react-redux";
-import { EditablesContext, theme, EditableText, EditableParagraph } from 'react-easy-editables';
+
 import {
   updatePage,
   loadPageData,
 } from "../redux/actions";
 
+import {
+  EditablesContext,
+  theme,
+  EditableText,
+  EditableParagraph,
+  EditableImageUpload,
+  EditableLink,
+} from 'react-easy-editables';
+
 import Layout from "../layouts/default.js";
-import Editable from "../components/editables/Editable";
-import PlainTextEditor from "../components/editingTools/PlainTextEditor";
-import RichTextEditor from "../components/editingTools/RichTextEditor";
+
+import  headerImage  from "../assets/images/pattern/05.png";
+import headerBg from "../assets/images/bg/06.png";
+import pattern03 from "../assets/images/pattern/03.png";
+
 
 const mapDispatchToProps = dispatch => {
   return {
@@ -55,15 +66,17 @@ class AboutPage extends React.Component {
       <Layout>
         <EditablesContext.Provider value={ { showEditingControls: isEditingPage, theme: theme } }>
 
-          <section className="page-title o-hidden text-center grey-bg bg-contain animatedBackground" data-bg-img="images/pattern/05.png">
+          <section className="page-title o-hidden text-center grey-bg bg-contain animatedBackground" data-bg-img={ headerImage }>
             <div className="container">
               <div className="row align-items-center">
                 <div className="col-md-12">
-                  <h1 className="title">About Us</h1>
+                  <h1 className="title">
+                    <EditableText content={content["page-title"]} onSave={this.onSave("page-title")} />
+                  </h1>
                 </div>
               </div>
             </div>
-            <div className="page-title-pattern"><img className="img-fluid" src="images/bg/06.png" alt="" /></div>
+            <div className="page-title-pattern"><img className="img-fluid" src={ headerBg } alt="" /></div>
           </section>
 
 
@@ -72,21 +85,23 @@ class AboutPage extends React.Component {
 
           <section className="pos-r o-hidden">
             <div className="pattern-3">
-              <img className="img-fluid rotateme" src="images/pattern/03.png" alt="" />
+              <img className="img-fluid rotateme" src={ pattern03 } alt="" />
             </div>
             <div className="container">
 
               <div className="row align-items-center">
                 <div className="col-lg-6 col-md-12 md-mt-5">
                   <div className="section-title mb-4">
-                    <h2 className="title">Mission</h2>
+                    <h2 className="title">
+                      <EditableText content={content["mission-title"]} onSave={this.onSave("mission-title")} />
+                    </h2>
                   </div>
-                  <p>The Pathways to Care project aims to remove barriers and improve access to mental health and addiction services for Black children, youth and their families in Ontario by making interventions at the policy, sector, and population levels</p>
+                  <EditableParagraph content={content["mission-description"]} onSave={this.onSave("mission-description")} />
                 </div>
 
                 <div className="col-lg-6 col-md-12">
                   <div className="info-img pos-r">
-                    <img className="img-fluid topBottom" src="images/about/02.png" alt=""/>
+                    <EditableImageUpload classes={"img-fluid"} content={content["mission-image"]} onSave={this.onSave("mission-image")} />
                   </div>
                 </div>
               </div>
@@ -97,22 +112,24 @@ class AboutPage extends React.Component {
 
           <section className="pos-r o-hidden">
             <div className="pattern-3">
-              <img className="img-fluid rotateme" src="images/pattern/03.png" alt="" />
+              <img className="img-fluid rotateme" src={ pattern03 } alt="" />
             </div>
             <div className="container">
 
               <div className="row align-items-center">
                 <div className="col-lg-6 col-md-12">
                   <div className="info-img pos-r">
-                    <img className="img-fluid topBottom" src="images/about/02.png" alt=""/>
+                    <EditableImageUpload classes={"img-fluid"} content={content["vision-image"]} onSave={this.onSave("vision-image")} />
                   </div>
                 </div>
 
                 <div className="col-lg-6 col-md-12 md-mt-5">
                   <div className="section-title mb-4">
-                    <h2 className="title">Vision</h2>
+                    <h2 className="title">
+                      <EditableText content={content["vision-title"]} onSave={this.onSave("vision-title")} />
+                    </h2>
                   </div>
-                  <p>Through  province-wide engagement with Black children, youth and their families, the project will conduct mapping exercises and needs  assessments; develop a comprehensive mental health strategy and practice framework for Black youth; define and improve  the pathways to care for Black children and youth who need mental health and addiction services; and  develop resource tools and capacity building supports to increase the capacity of agencies to deliver culturally safe and responsive mental health and addiction services. The primary aim is to improve how mental health and addiction services are provided to Black children, youth and their families in Ontario.</p>
+                  <EditableParagraph content={content["vision-description"]} onSave={this.onSave("vision-description")} />
                 </div>
               </div>
             </div>
@@ -125,7 +142,9 @@ class AboutPage extends React.Component {
               <div className="row">
                 <div className="col-sm-12">
                   <div className="section-title mb-4">
-                    <h2 className="title">Project Roadmap</h2>
+                    <h2 className="title">
+                      <EditableText content={content["roadmap-title"]} onSave={this.onSave("roadmap-title")} />
+                    </h2>
                   </div>
                   <div className="tab style-2 ">
                     <nav>
@@ -213,8 +232,10 @@ class AboutPage extends React.Component {
               <div className="row align-items-center">
                 <div className="col-lg-4 col-md-6">
                   <div className="section-title mb-0">
-                    <h2 className="title">Target Cities</h2>
-                    <p className="mb-0">Deos et accusamus et iusto odio dignissimos qui blanditiis praesentium voluptatum dele corrupti quos dolores et quas molestias.</p>
+                    <h2 className="title">
+                      <EditableText content={content["cities-title"]} onSave={this.onSave("cities-title")} />
+                    </h2>
+                    <EditableParagraph classes="mb-0" content={content["cities-description"]} onSave={this.onSave("cities-description")} />
                   </div>
                 </div>
                 <div className="col-lg-8 col-md-6 sm-mt-5">
@@ -231,7 +252,9 @@ class AboutPage extends React.Component {
               <div className="row">
                 <div className="col-lg-12">
                   <div className="section-title mb-0 text-center">
-                    <h2 className="title">Stakeholders</h2>
+                    <h2 className="title">
+                      <EditableText content={content["stakeholders-title"]} onSave={this.onSave("stakeholders-title")} />
+                    </h2>
                   </div>
                 </div>
               </div>
@@ -329,7 +352,7 @@ export default connect(mapStateToProps, mapDispatchToProps)(AboutPage);
 
 export const query = graphql`
   query {
-    pages(id: { eq: "home" }) {
+    pages(id: { eq: "about" }) {
       id
       content
       title

@@ -21,9 +21,9 @@ const Navigation = (props) => {
           <div className="row">
             <div className="col-lg-12">
               <nav className="navbar navbar-expand-lg">
-                <a className="navbar-brand logo" href="index.html">
+                <Link className="navbar-brand logo" to={"/"}>
                   <img id="logo-img" className="img-center" src={ logo } alt="Pathways to Care" />
-                </a>
+                </Link>
                 <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation"> <span></span>
                   <span></span>
                   <span></span>

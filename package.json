@@ -1,6 +1,6 @@
 {
-  "name": "react-cms-starter",
-  "description": "Point and click CMS for static sites",
+  "name": "pathways-to-care",
+  "description": "Website for Pathways to Care",
   "version": "1.0.0",
   "author": "Sharon Kennedy <sharon@nomadiclabs.com>",
   "engines": {
@@ -32,8 +32,8 @@
     "morgan": "^1.9.0",
     "node-sass": "^4.9.2",
     "prop-types": "^15.6.2",
-    "react": "latest",
-    "react-dom": "latest",
+    "react": "^16.8.0",
+    "react-dom": "^16.8.0",
     "react-easy-editables": "^0.0.4",
     "react-firebaseui": "^1.1.6",
     "react-helmet": "^5.2.0",

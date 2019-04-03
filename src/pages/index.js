@@ -1,7 +1,15 @@
 import React from "react";
 import { graphql } from "gatsby";
 import { connect } from "react-redux";
-import { EditablesContext, theme, EditableText, EditableParagraph } from 'react-easy-editables';
+import {
+  EditablesContext,
+  theme,
+  EditableText,
+  EditableParagraph,
+  EditableImageUpload,
+  EditableLink,
+} from 'react-easy-editables';
+
 import {
   updatePage,
   loadPageData,
@@ -13,8 +21,13 @@ import PlainTextEditor from "../components/editingTools/PlainTextEditor";
 import RichTextEditor from "../components/editingTools/RichTextEditor";
 
 import headerImage from "../assets/images/ptc-header.png";
-import backgroundPattern from "../assets/images/pattern/01.png"
-import backgroundBanner from "../assets/images/banner/01.png"
+import backgroundPattern from "../assets/images/pattern/01.png";
+import backgroundBanner from "../assets/images/banner/01.png";
+import pattern03 from "../assets/images/pattern/03.png";
+import newsBackground from "../assets/images/bg/02.png";
+
+import FeaturedItem from "../components/home/FeaturedItem";
+import NewsItem from "../components/home/NewsItem";
 
 
 const mapDispatchToProps = dispatch => {
@@ -38,7 +51,6 @@ const mapStateToProps = state => {
 class HomePage extends React.Component {
 
   componentDidMount() {
-    console.log(this.props)
     const initialPageData = {
       ...this.props.data.pages,
       content: JSON.parse(this.props.data.pages.content)
@@ -54,12 +66,12 @@ class HomePage extends React.Component {
   render() {
     const content = this.props.pageData ? this.props.pageData.content : {};
     const isEditingPage = this.props.isEditingPage;
-    console.log(isEditingPage);
+    console.log("isEditingPage", isEditingPage);
+    console.log("content", content)
 
     return (
       <Layout>
-        <EditablesContext.Provider value={ { showEditingControls: isEditingPage, theme: theme } }>
-
+      <EditablesContext.Provider value={ { theme: theme, showEditingControls: isEditingPage } }>
         <section className="fullscreen-banner p-0 banner o-hidden" data-bg-img={ backgroundPattern }>
           <div className="align-center">
             <div className="container">
@@ -74,314 +86,192 @@ class HomePage extends React.Component {
                 </div>
                 <div className="col-lg-7 col-md-12 order-lg-1 md-mt-5">
                   <h1 className="mb-4 wow bounceInLeft" data-wow-duration="3s" data-wow-delay="2s">
-                    Pathways to Care
+                    <EditableText content={content["header-title"]} onSave={this.onSave("header-title")} />
                   </h1>
-                  <p className="lead wow fadeInUp" data-wow-duration="1s" data-wow-delay="1s">Start working with an company that provide everything you need to generate awareness, drive traffic, connect with customers.</p>
+                  <div className="lead wow fadeInUp" data-wow-duration="1s" data-wow-delay="1s">
+                    <EditableText content={content["header-subtitle"]} onSave={this.onSave("header-subtitle")} />
+                  </div>
                 </div>
               </div>
             </div>
            </div>
         </section>
 
-
-
         <div className="page-content">
 
-
-        <section className="dark-bg pos-r">
-          <div className="container">
-            <div className="row">
-              <div className="col-lg-12 col-md-12 ml-auto md-mt-5">
-                <div className="section-title mb-4">
-                  <h6>Featured</h6>
-                  <h2 className="title">Join our first Provincial Community Consultation</h2>
-                  <p className="text-white">Black Ontarians face significantly poorer mental health and addictions outcomes and barriers to the appropriate care due to anti-Black racism, and the failure of policy frameworks, and mainstream service providers to address the specific mental health and addictions needs of Black Ontarians.</p>
-                </div>
-              </div>
-            </div>
-
-          </div>
-        </section>
-
-
-        <section className="grey-bg pos-r">
-          <div className="pattern-3">
-            <img className="img-fluid rotateme" src="images/pattern/03.png" alt=""/>
-          </div>
-          <div className="container">
-            <div className="row">
-              <div className="col-lg-12 col-md-12 ml-auto mr-auto">
-                <div className="section-title">
-                  <h6>The Problem</h6>
-                  <h2 className="title">Black Ontarians face significantly poorer mental health and addictions outcomes.</h2>
-                </div>
-                <p>Black Ontarians face significantly poorer mental health and addictions outcomes and barriers to the appropriate care due to anti-Black racism, and the failure of policy frameworks, and mainstream service providers to address the specific mental health and addictions needs of Black Ontarians.</p>
-              </div>
-            </div>
-            <div className="row">
-              <div className="col-lg-4 col-md-6">
-                <div className="featured-item text-center">
-                  <div className="featured-icon">
-                    <img className="img-center" src="images/feature/04.png" alt=""/>
-                  </div>
-                  <div className="featured-title">
-                    <h5>Digital Marketing</h5>
-                  </div>
-                  <div className="featured-desc">
-                    <p>Design must be functional, and futionality must translated into, and futionality must translated into.</p>
-                  </div>
-                </div>
-              </div>
-              <div className="col-lg-4 col-md-6 sm-mt-5">
-                <div className="featured-item text-center">
-                  <div className="featured-icon">
-                    <img className="img-center" src="images/feature/05.png" alt=""/>
-                  </div>
-                  <div className="featured-title">
-                    <h5>Content marketing</h5>
-                  </div>
-                  <div className="featured-desc">
-                    <p>Design must be functional, and futionality must translated into, and futionality must translated into.</p>
-                  </div>
-                </div>
-              </div>
-              <div className="col-lg-4 col-md-6 md-mt-3">
-                <div className="featured-item text-center">
-                  <div className="featured-icon">
-                    <img className="img-center" src="images/feature/06.png" alt=""/>
-                  </div>
-                  <div className="featured-title">
-                    <h5>Market analysis</h5>
-                  </div>
-                  <div className="featured-desc">
-                    <p>Design must be functional, and futionality must translated into, and futionality must translated into.</p>
-                  </div>
-                </div>
-              </div>
-              <div className="col-lg-4 col-md-6 mt-3">
-                <div className="featured-item text-center">
-                  <div className="featured-icon">
-                    <img className="img-center" src="images/feature/07.png" alt=""/>
-                  </div>
-                  <div className="featured-title">
-                    <h5>Email Marketing</h5>
-                  </div>
-                  <div className="featured-desc">
-                    <p>Design must be functional, and futionality must translated into, and futionality must translated into.</p>
-                  </div>
-                </div>
-              </div>
-              <div className="col-lg-4 col-md-6 mt-3">
-                <div className="featured-item text-center">
-                  <div className="featured-icon">
-                    <img className="img-center" src="images/feature/08.png" alt=""/>
-                  </div>
-                  <div className="featured-title">
-                    <h5>Link Building</h5>
-                  </div>
-                  <div className="featured-desc">
-                    <p>Design must be functional, and futionality must translated into, and futionality must translated into.</p>
-                  </div>
-                </div>
-              </div>
-              <div className="col-lg-4 col-md-6 mt-3">
-                <div className="featured-item text-center">
-                  <div className="featured-icon">
-                    <img className="img-center" src="images/feature/09.png" alt=""/>
-                  </div>
-                  <div className="featured-title">
-                    <h5>Quick Support</h5>
-                  </div>
-                  <div className="featured-desc">
-                    <p>Design must be functional, and futionality must translated into, and futionality must translated into.</p>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </section>
-
-
-
-        <section className="pos-r">
-          <div className="container">
-            <div className="row">
-              <div className="col-lg-12 col-md-12 ml-auto md-mt-5">
-                <div className="section-title mb-4">
-                  <h6>The Solution</h6>
-                  <h2 className="title">Substantial systems change is needed</h2>
-                </div>
-              </div>
-            </div>
-
-            <div className="row align-items-center">
-              <div className="col-lg-6 col-md-12 md-mt-5">
-                <p>Substantial systems change is needed to build a mental health and addictions sector that provides timely access to culturally safe services to Black Ontarians. Targeted service improvement for racialized populations leads to better outcomes and lower overall service expenditure (Mental Health Commission of Canada, 2016). Governments, service providers, and Black communities must work together to improve access to mental health and addictions services that meet the specific needs of Black Ontarians.</p>
-              </div>
-
-              <div className="col-lg-6 col-md-12">
-                <div className="info-img pos-r">
-                  <img className="img-fluid topBottom" src="images/about/02.png" alt=""/>
-                </div>
-              </div>
-            </div>
-
-            <div className="row">
-              <div className="col-lg-4 col-md-12">
-                <div className="featured-item text-center style-2">
-                  <div className="featured-icon">
-                    <img className="img-center" src="images/feature/01.png" alt="" />
-                  </div>
-                  <div className="featured-title">
-                    <h5>Online Marketing</h5>
-                  </div>
-                  <div className="featured-desc">
-                    <p>Design must be functional, and futionality must translated into, and futionality must translated into.</p>
-                  </div>
-                </div>
-              </div>
-              <div className="col-lg-4 col-md-12 md-mt-5">
-                <div className="featured-item text-center style-2">
-                  <div className="featured-icon">
-                    <img className="img-center" src="images/feature/02.png" alt="" />
-                  </div>
-                  <div className="featured-title">
-                    <h5>Data Analysis</h5>
-                  </div>
-                  <div className="featured-desc">
-                    <p>Design must be functional, and futionality must translated into, and futionality must translated into.</p>
-                  </div>
-                </div>
-              </div>
-              <div className="col-lg-4 col-md-12 md-mt-5">
-                <div className="featured-item text-center style-2">
-                  <div className="featured-icon">
-                    <img className="img-center" src="images/feature/03.png" alt="" />
-                  </div>
-                  <div className="featured-title">
-                    <h5>SEO Optimization</h5>
-                  </div>
-                  <div className="featured-desc">
-                    <p>Design must be functional, and futionality must translated into, and futionality must translated into.</p>
-                  </div>
-                </div>
-              </div>
-
-              <div className="col-lg-4 col-md-12 md-mt-5">
-                <div className="featured-item text-center style-2">
-                  <div className="featured-icon">
-                    <img className="img-center" src="images/feature/03.png" alt="" />
-                  </div>
-                  <div className="featured-title">
-                    <h5>SEO Optimization</h5>
-                  </div>
-                  <div className="featured-desc">
-                    <p>Design must be functional, and futionality must translated into, and futionality must translated into.</p>
-                  </div>
-                </div>
-              </div>
-
-              <div className="col-lg-4 col-md-12 md-mt-5">
-                <div className="featured-item text-center style-2">
-                  <div className="featured-icon">
-                    <img className="img-center" src="images/feature/03.png" alt="" />
-                  </div>
-                  <div className="featured-title">
-                    <h5>SEO Optimization</h5>
-                  </div>
-                  <div className="featured-desc">
-                    <p>Design must be functional, and futionality must translated into, and futionality must translated into.</p>
-                  </div>
-                </div>
-              </div>
-
-              <div className="col-lg-4 col-md-12 md-mt-5">
-                <div className="featured-item text-center style-2">
-                  <div className="featured-icon">
-                    <img className="img-center" src="images/feature/03.png" alt="" />
-                  </div>
-                  <div className="featured-title">
-                    <h5>SEO Optimization</h5>
-                  </div>
-                  <div className="featured-desc">
-                    <p>Design must be functional, and futionality must translated into, and futionality must translated into.</p>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-          </div>
-        </section>
-
-
-
-
-        <section className="grey-bg" data-bg-img="images/bg/02.png">
-          <div className="container">
-            <div className="row">
-              <div className="col-lg-12 col-md-12 ml-auto mr-auto">
-                <div className="section-title">
-                  <h2 className="title">Latest News and Publications</h2>
-                </div>
-              </div>
-            </div>
-            <div className="row">
-              <div className="col-lg-4 col-md-12">
-                <div className="post">
-                  <div className="post-image">
-                    <img className="img-fluid h-100 w-100" src="images/blog/01.jpg" alt=""/>
-                  </div>
-                  <div className="post-desc">
-                    <div className="post-date">23 <span>November 2018</span>
+          <section className="dark-bg pos-r">
+            <div className="container">
+              <div className="row">
+                <div className="col-lg-12 col-md-12 ml-auto md-mt-5">
+                  <div className="section-title mb-4">
+                    <h6>
+                      <EditableText content={content["featured-tag"]} onSave={this.onSave("featured-tag")} />
+                    </h6>
+                    <h2 className="title">
+                      <EditableText content={content["featured-title"]} onSave={this.onSave("featured-title")} />
+                    </h2>
+                    <div className="text-white">
+                      <EditableParagraph content={content["featured-body"]} onSave={this.onSave("featured-body")} />
+                      <EditableLink content={content["featured-link"]} onSave={this.onSave("featured-link")} />
                     </div>
-                    <div className="post-title">
-                      <h5><a href="blog-details.html">The Powerfull look for best in 2018</a></h5>
-                    </div>
-                    <p>Phasellus eget purus id felis dignissim convallis Suspendisse et augue dui gravida</p>
                   </div>
                 </div>
               </div>
 
-              <div className="col-lg-4 col-md-12">
-                <div className="post">
-                  <div className="post-image">
-                    <img className="img-fluid h-100 w-100" src="images/blog/01.jpg" alt=""/>
+            </div>
+          </section>
+
+
+          <section className="grey-bg pos-r">
+            <div className="pattern-3">
+              <img className="img-fluid rotateme" src={ pattern03 } alt=""/>
+            </div>
+            <div className="container">
+              <div className="row">
+                <div className="col-lg-12 col-md-12 ml-auto mr-auto">
+                  <div className="section-title">
+                    <h6>
+                      <EditableText content={content["problem-tag"]} onSave={this.onSave("problem-tag")} />
+                    </h6>
+                    <h2 className="title">
+                      <EditableText content={content["problem-title"]} onSave={this.onSave("problem-title")} />
+                    </h2>
                   </div>
-                  <div className="post-desc">
-                    <div className="post-date">23 <span>November 2018</span>
-                    </div>
-                    <div className="post-title">
-                      <h5><a href="blog-details.html">The Powerfull look for best in 2018</a></h5>
-                    </div>
-                    <p>Phasellus eget purus id felis dignissim convallis Suspendisse et augue dui gravida</p>
-                  </div>
+                  <EditableParagraph content={content["problem-body"]} onSave={this.onSave("problem-body")} />
                 </div>
               </div>
-
-              <div className="col-lg-4 col-md-12">
-                <div className="post">
-                  <div className="post-image">
-                    <img className="img-fluid h-100 w-100" src="images/blog/01.jpg" alt=""/>
-                  </div>
-                  <div className="post-desc">
-                    <div className="post-date">23 <span>November 2018</span>
-                    </div>
-                    <div className="post-title">
-                      <h5><a href="blog-details.html">The Powerfull look for best in 2018</a></h5>
-                    </div>
-                    <p>Phasellus eget purus id felis dignissim convallis Suspendisse et augue dui gravida</p>
-                  </div>
+              <div className="row">
+                <div className="col-lg-4 col-md-6">
+                  <FeaturedItem classes="featured-item text-center" content={content["problem-item-1"]} onSave={this.onSave("problem-item-1")} />
                 </div>
+
+                <div className="col-lg-4 col-md-6">
+                  <FeaturedItem classes="featured-item text-center" content={content["problem-item-2"]} onSave={this.onSave("problem-item-2")} />
+                </div>
+
+                <div className="col-lg-4 col-md-6">
+                  <FeaturedItem classes="featured-item text-center" content={content["problem-item-3"]} onSave={this.onSave("problem-item-3")} />
+                </div>
+
+                <div className="col-lg-4 col-md-6">
+                  <FeaturedItem classes="featured-item text-center" content={content["problem-item-4"]} onSave={this.onSave("problem-item-4")} />
+                </div>
+
+                <div className="col-lg-4 col-md-6">
+                  <FeaturedItem classes="featured-item text-center" content={content["problem-item-5"]} onSave={this.onSave("problem-item-5")} />
+                </div>
+
+                <div className="col-lg-4 col-md-6">
+                  <FeaturedItem classes="featured-item text-center" content={content["problem-item-6"]} onSave={this.onSave("problem-item-6")} />
+                </div>
+
               </div>
             </div>
-          </div>
-        </section>
+          </section>
 
 
+          <section className="pos-r">
+            <div className="container">
+              <div className="row">
+                <div className="col-lg-12 col-md-12 ml-auto md-mt-5">
+                  <div className="section-title mb-4">
+                    <h6>
+                      <EditableText content={content["solution-tag"]} onSave={this.onSave("solution-tag")} />
+                    </h6>
+                    <h2 className="title">
+                      <EditableText content={content["solution-title"]} onSave={this.onSave("solution-title")} />
+                    </h2>
+                  </div>
+                </div>
+              </div>
+
+              <div className="row align-items-center">
+                <div className="col-lg-6 col-md-12 md-mt-5">
+                  <EditableParagraph content={content["solution-description"]} onSave={this.onSave("solution-description")} />
+                </div>
+
+                <div className="col-lg-6 col-md-12">
+                  <div className="info-img pos-r">
+                    <EditableImageUpload classes="img-fluid" content={content["solution-image"]} onSave={this.onSave("solution-image")} />
+                  </div>
+                </div>
+              </div>
+
+              <div className="row">
+                <div className="col-lg-4 col-md-12">
+                  <h2 className="text-center p-5 my-3">
+                    <EditableText content={content["solution-items-header"]} onSave={this.onSave("solution-items-header")} />
+                  </h2>
+                </div>
+
+                <div className="col-lg-4 col-md-12">
+                  <FeaturedItem classes="featured-item text-center style-2" content={content["solution-item-1"]} onSave={this.onSave("solution-item-1")} />
+                </div>
+
+                <div className="col-lg-4 col-md-12">
+                  <FeaturedItem classes="featured-item text-center style-2" content={content["solution-item-2"]} onSave={this.onSave("solution-item-2")} />
+                </div>
+
+                <div className="col-lg-4 col-md-12">
+                  <FeaturedItem classes="featured-item text-center style-2" content={content["solution-item-3"]} onSave={this.onSave("solution-item-3")} />
+                </div>
+
+                <div className="col-lg-4 col-md-12">
+                  <FeaturedItem classes="featured-item text-center style-2" content={content["solution-item-4"]} onSave={this.onSave("solution-item-4")} />
+                </div>
+
+                <div className="col-lg-4 col-md-12">
+                  <FeaturedItem classes="featured-item text-center style-2" content={content["solution-item-5"]} onSave={this.onSave("solution-item-5")} />
+                </div>
+
+                <div className="col-lg-4 col-md-12">
+                  <FeaturedItem classes="featured-item text-center style-2" content={content["solution-item-6"]} onSave={this.onSave("solution-item-6")} />
+                </div>
+
+                <div className="col-lg-4 col-md-12">
+                  <FeaturedItem classes="featured-item text-center style-2" content={content["solution-item-7"]} onSave={this.onSave("solution-item-7")} />
+                </div>
+
+                <div className="col-lg-4 col-md-12">
+                  <FeaturedItem classes="featured-item text-center style-2" content={content["solution-item-8"]} onSave={this.onSave("solution-item-8")} />
+                </div>
+
+              </div>
+
+            </div>
+          </section>
+
+
+          <section className="grey-bg" data-bg-img={ newsBackground }>
+            <div className="container">
+              <div className="row">
+                <div className="col-lg-12 col-md-12 ml-auto mr-auto">
+                  <div className="section-title">
+                    <h2 className="title">
+                      <EditableText content={content["news-title"]} onSave={this.onSave("news-title")} />
+                    </h2>
+                  </div>
+                </div>
+              </div>
+              <div className="row">
+
+                <div className="col-lg-4 col-md-12">
+                  <NewsItem content={content["news-item-1"]} onSave={this.onSave("news-item-1")} />
+                </div>
+
+                <div className="col-lg-4 col-md-12">
+                  <NewsItem content={content["news-item-2"]} onSave={this.onSave("news-item-2")} />
+                </div>
+
+                <div className="col-lg-4 col-md-12">
+                  <NewsItem content={content["news-item-3"]} onSave={this.onSave("news-item-3")} />
+                </div>
+
+              </div>
+            </div>
+          </section>
         </div>
-
-
-        </EditablesContext.Provider>
+      </EditablesContext.Provider>
       </Layout>
     );
   }

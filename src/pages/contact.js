@@ -12,6 +12,11 @@ import Editable from "../components/editables/Editable";
 import PlainTextEditor from "../components/editingTools/PlainTextEditor";
 import RichTextEditor from "../components/editingTools/RichTextEditor";
 
+import headerImage from "../assets/images/ptc-graphic.png"
+import pattern05 from "../assets/images/pattern/05.png"
+import pattern07 from "../assets/images/pattern/07.png"
+import bg02 from "../assets/images/bg/02.png"
+
 const mapDispatchToProps = dispatch => {
   return {
     onUpdatePageData: (page, id, data) => {
@@ -55,7 +60,7 @@ class ContactPage extends React.Component {
       <Layout>
         <EditablesContext.Provider value={ { showEditingControls: isEditingPage, theme: theme } }>
 
-          <section className="page-title o-hidden text-center grey-bg bg-contain animatedBackground" data-bg-img="images/pattern/05.png">
+          <section className="page-title o-hidden text-center grey-bg bg-contain animatedBackground" data-bg-img={ pattern05 }>
             <div className="container">
               <div className="row align-items-center">
                 <div className="col-md-12">
@@ -69,11 +74,11 @@ class ContactPage extends React.Component {
 
         <div className="page-content">
 
-        <section className="pos-r bg-contain bg-pos-r" data-bg-img="images/bg/02.png">
+        <section className="pos-r bg-contain bg-pos-r" data-bg-img={ bg02 }>
           <div className="container">
             <div className="row">
-              <div className="col-lg-6 image-column bg-contain bg-pos-l" data-bg-img="images/pattern/07.png">
-                <img className="img-fluid" src="images/about/01.png" alt="" />
+              <div className="col-lg-6 image-column bg-contain bg-pos-l" data-bg-img={ pattern07 }>
+                <img className="img-fluid" src={headerImage} alt="" />
               </div>
               <div className="col-lg-6 col-md-12 ml-auto md-mt-5 pl-lg-5">
                 <div className="section-title">

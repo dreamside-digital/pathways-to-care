@@ -12,6 +12,10 @@ import Editable from "../components/editables/Editable";
 import PlainTextEditor from "../components/editingTools/PlainTextEditor";
 import RichTextEditor from "../components/editingTools/RichTextEditor";
 
+import pattern05 from "../assets/images/pattern/05.png"
+import fatimah from "../assets/images/fatimah.png"
+import tiyondah from "../assets/images/tiyondah.png"
+
 const mapDispatchToProps = dispatch => {
   return {
     onUpdatePageData: (page, id, data) => {
@@ -55,7 +59,7 @@ class TeamPage extends React.Component {
       <Layout>
         <EditablesContext.Provider value={ { showEditingControls: isEditingPage, theme: theme } }>
 
-          <section className="page-title o-hidden text-center grey-bg bg-contain animatedBackground" data-bg-img="images/pattern/05.png">
+          <section className="page-title o-hidden text-center grey-bg bg-contain animatedBackground" data-bg-img={ pattern05 }>
             <div className="container">
               <div className="row align-items-center">
                 <div className="col-md-12">
@@ -83,7 +87,7 @@ class TeamPage extends React.Component {
               <div className="col-lg-6 col-md-6">
                 <div className="team-member">
                   <div className="team-images">
-                    <img className="img-fluid" src="images/team/01.jpg" alt="" />
+                    <img className="img-fluid" src={ fatimah } alt="" />
                   </div>
                   <div className="team-description"> <span>Project Manager</span>
                     <h5><a href="team-single.html">Fatimah Jackson-Best</a></h5>
@@ -95,7 +99,7 @@ class TeamPage extends React.Component {
               <div className="col-lg-6 col-md-6">
                 <div className="team-member">
                   <div className="team-images">
-                    <img className="img-fluid" src="images/team/02.jpg" alt="" />
+                    <img className="img-fluid" src={ tiyondah } alt="" />
                   </div>
                   <div className="team-description"> <span>Researcher</span>
                     <h5><a href="team-single.html">Tiyondah Fante-Coleman</a></h5>
