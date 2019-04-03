@@ -73,6 +73,12 @@ export function deploy() {
   return dispatch => {
     const url = `${process.env.GATSBY_DEPLOY_ENDPOINT}`;
     console.log(`Deploy command sent to ${url}`);
+    dispatch(
+      showNotification(
+        "The website is being published - this will take a few minutes. Time to go grab a coffee :)",
+        "success"
+      )
+    );
 
     firebase
       .auth()
@@ -89,7 +95,7 @@ export function deploy() {
         if (res.data.status === "ok") {
           dispatch(
             showNotification(
-              "The website is being published - this will take a few minutes. Time to go grab a coffee :)",
+              "The website has been published. Please refresh to see your changes.",
               "success"
             )
           );
