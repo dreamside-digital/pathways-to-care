@@ -101,7 +101,7 @@ class AccountButton extends React.Component {
             onClick={openMenu}
             aria-owns={anchorEl ? "account-menu" : null}
             aria-haspopup="true"
-            color="primary"
+            color="secondary"
           >
             <span style={styles.iconLabel}>
               {accountName}

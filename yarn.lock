@@ -11230,12 +11230,10 @@ react-dom@^16.8.0:
     prop-types "^15.6.2"
     scheduler "^0.13.6"
 
-react-easy-editables@^0.0.4:
-  version "0.0.4"
-  resolved "https://registry.yarnpkg.com/react-easy-editables/-/react-easy-editables-0.0.4.tgz#c8fea246ad9a982d89ffffef9cea00ee34555aaf"
-  integrity sha512-AHH49XsA8iaUvpizdd9jMG1i07vnfWx5cl2ilGleW1SdsdMlksF1AEQtChWL1FNZrzNYDJxKMDB603oV598AKQ==
-  dependencies:
-    react-rte "^0.16.1"
+react-easy-editables@^0.1.0:
+  version "0.1.0"
+  resolved "https://registry.yarnpkg.com/react-easy-editables/-/react-easy-editables-0.1.0.tgz#25b0f0e8d8ef5a5e6f29f2cc191c55cda21b1515"
+  integrity sha512-lpJcVxwrROFwortVK/fJiAZU7Snbs0ap7O5mVM7SWFv+cckA7ZCrxCz5z9pd2ifjOs1tYUUZECoOW/dLAvLwkQ==
 
 react-error-overlay@^3.0.0:
   version "3.0.0"

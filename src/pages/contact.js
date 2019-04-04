@@ -8,9 +8,6 @@ import {
 } from "../redux/actions";
 
 import Layout from "../layouts/default.js";
-import Editable from "../components/editables/Editable";
-import PlainTextEditor from "../components/editingTools/PlainTextEditor";
-import RichTextEditor from "../components/editingTools/RichTextEditor";
 
 import headerImage from "../assets/images/ptc-graphic.png"
 import pattern05 from "../assets/images/pattern/05.png"
