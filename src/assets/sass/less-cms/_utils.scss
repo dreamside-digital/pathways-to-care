@@ -1,0 +1,32 @@
+
+.large {
+  font-size: 150%;
+}
+
+.centered{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.text-right {
+  text-align: right;
+}
+
+.text-center {
+  text-align: center;
+}
+
+.full-screen {
+  min-height: 100vh;
+}
+
+.half-screen {
+  height: 50vh;
+}
+
+.flex {
+  display: flex;
+}
+

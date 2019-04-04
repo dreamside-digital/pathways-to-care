@@ -535,6 +535,7 @@ $(document).ready(function() {
 
 $window.resize(function() {
     fullScreen();
+    databgcolor();
 });
 
 

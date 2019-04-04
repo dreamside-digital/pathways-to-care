@@ -18,10 +18,13 @@ import {
 
 import Layout from "../layouts/default.js";
 
-import  headerImage  from "../assets/images/pattern/05.png";
+import headerImage  from "../assets/images/pattern/05.png";
 import headerBg from "../assets/images/bg/06.png";
 import pattern03 from "../assets/images/pattern/03.png";
 
+import firebase from "../firebase/init";
+
+const PAGE_ID = "about"
 
 const mapDispatchToProps = dispatch => {
   return {
@@ -54,8 +57,20 @@ class AboutPage extends React.Component {
   }
 
   onSave = id => content => {
-    this.props.onUpdatePageData("home", id, content);
+    this.props.onUpdatePageData(PAGE_ID, id, content);
   };
+
+  uploadImage(image) {
+    return new Promise(resolve => {
+      const storage = firebase.storage().ref();
+      const fileRef = storage.child(`images/${image.name}`);
+
+      fileRef.put(image).then(snapshot => {
+        console.log("snapshot.downloadURL", snapshot.downloadURL)
+        resolve(snapshot.downloadURL)
+      });
+    })
+  }
 
   render() {
     const content = this.props.pageData ? this.props.pageData.content : {};
@@ -158,64 +173,40 @@ class AboutPage extends React.Component {
                       <div role="tabpanel" className="tab-pane fade show active" id="tab1-1">
                         <div className="row align-items-center">
                           <div className="col-lg-6 col-md-12">
-                            <img className="img-fluid" src="images/about/02.png" alt="" />
+                            <EditableImageUpload classes={"img-fluid"} content={content["year-1-image"]} onSave={this.onSave("year-1-image")} />
                           </div>
                           <div className="col-lg-6 col-md-12 md-mt-5">
-                            <h4 className="title">Powerful & Awesome Marketing</h4>
-                            <p>Simply dummy text of the printing and typesetting industry. standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.</p>
-                            <ul className="list-unstyled list-icon">
-                              <li className="mb-3"><i className="flaticon-tick"></i> Mattis effic iturut magna pelle ntesque sit</li>
-                              <li className="mb-3"><i className="flaticon-tick"></i> Phasellus eget purus id felis dignissim convallis</li>
-                              <li><i className="flaticon-tick"></i> Fusce enim nulla mollis eu metus in sagittis fringilla</li>
-                            </ul>
+                            <EditableParagraph content={content["year-1-description"]} onSave={this.onSave("year-1-description")} />
                           </div>
                         </div>
                       </div>
                       <div role="tabpanel" className="tab-pane fade" id="tab1-2">
                         <div className="row align-items-center">
                           <div className="col-lg-6 col-md-12">
-                            <img className="img-fluid" src="images/about/02.png" alt="" />
+                            <EditableImageUpload classes={"img-fluid"} content={content["year-2-image"]} onSave={this.onSave("year-2-image")} />
                           </div>
                           <div className="col-lg-6 col-md-12 md-mt-5">
-                            <h4 className="title">Powerful & Awesome Marketing</h4>
-                            <p>Simply dummy text of the printing and typesetting industry. standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.</p>
-                            <ul className="list-unstyled list-icon">
-                              <li className="mb-3"><i className="flaticon-tick"></i> Mattis effic iturut magna pelle ntesque sit</li>
-                              <li className="mb-3"><i className="flaticon-tick"></i> Phasellus eget purus id felis dignissim convallis</li>
-                              <li><i className="flaticon-tick"></i> Fusce enim nulla mollis eu metus in sagittis fringilla</li>
-                            </ul>
+                            <EditableParagraph content={content["year-2-description"]} onSave={this.onSave("year-2-description")} />
                           </div>
                         </div>
                       </div>
                       <div role="tabpanel" className="tab-pane fade" id="tab1-3">
                         <div className="row align-items-center">
                           <div className="col-lg-6 col-md-12">
-                            <img className="img-fluid" src="images/about/02.png" alt="" />
+                            <EditableImageUpload classes={"img-fluid"} content={content["year-3-image"]} onSave={this.onSave("year-3-image")} />
                           </div>
                           <div className="col-lg-6 col-md-12 md-mt-5">
-                            <h4 className="title">Powerful & Awesome Marketing</h4>
-                            <p>Simply dummy text of the printing and typesetting industry. standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.</p>
-                            <ul className="list-unstyled list-icon">
-                              <li className="mb-3"><i className="flaticon-tick"></i> Mattis effic iturut magna pelle ntesque sit</li>
-                              <li className="mb-3"><i className="flaticon-tick"></i> Phasellus eget purus id felis dignissim convallis</li>
-                              <li><i className="flaticon-tick"></i> Fusce enim nulla mollis eu metus in sagittis fringilla</li>
-                            </ul>
+                            <EditableParagraph content={content["year-3-description"]} onSave={this.onSave("year-3-description")} />
                           </div>
                         </div>
                       </div>
                       <div role="tabpanel" className="tab-pane fade" id="tab1-4">
                         <div className="row align-items-center">
                           <div className="col-lg-6 col-md-12">
-                            <img className="img-fluid" src="images/about/02.png" alt="" />
+                            <EditableImageUpload classes={"img-fluid"} content={content["year-4-image"]} onSave={this.onSave("year-4-image")} />
                           </div>
                           <div className="col-lg-6 col-md-12 md-mt-5">
-                            <h4 className="title">Powerful & Awesome Marketing</h4>
-                            <p>Simply dummy text of the printing and typesetting industry. standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.</p>
-                            <ul className="list-unstyled list-icon">
-                              <li className="mb-3"><i className="flaticon-tick"></i> Mattis effic iturut magna pelle ntesque sit</li>
-                              <li className="mb-3"><i className="flaticon-tick"></i> Phasellus eget purus id felis dignissim convallis</li>
-                              <li><i className="flaticon-tick"></i> Fusce enim nulla mollis eu metus in sagittis fringilla</li>
-                            </ul>
+                            <EditableParagraph content={content["year-4-description"]} onSave={this.onSave("year-4-description")} />
                           </div>
                         </div>
                       </div>
@@ -259,36 +250,46 @@ class AboutPage extends React.Component {
                 </div>
               </div>
 
-              <div className="row">
+              <div className="row justify-center">
                 <div className="col-lg-2 col-md-2 col-sm-6">
-                  <div className="counter">
-                    <img className="img-center" src="images/counter/01.png" alt="" />
-                    <h5>Stakeholder name</h5>
-                  </div>
+                  <EditableImageUpload
+                    classes="img-center"
+                    content={content["stakeholder-1-image"]}
+                    onSave={this.onSave("stakeholder-1-image")}
+                    uploadImage={this.uploadImage}
+                  />
                 </div>
                 <div className="col-lg-2 col-md-2 col-sm-6 xs-mt-5">
-                  <div className="counter">
-                    <img className="img-center" src="images/counter/02.png" alt="" />
-                    <h5>Stakeholder name</h5>
-                  </div>
+                  <EditableImageUpload
+                    classes="img-center"
+                    content={content["stakeholder-2-image"]}
+                    onSave={this.onSave("stakeholder-2-image")}
+                    uploadImage={this.uploadImage}
+                  />
                 </div>
                 <div className="col-lg-2 col-md-2 col-sm-6 sm-mt-5">
-                  <div className="counter">
-                    <img className="img-center" src="images/counter/03.png" alt="" />
-                    <h5>Stakeholder name</h5>
-                  </div>
+                  <EditableImageUpload
+                    classes="img-center"
+                    content={content["stakeholder-3-image"]}
+                    onSave={this.onSave("stakeholder-3-image")}
+                    uploadImage={this.uploadImage}
+                  />
                 </div>
                 <div className="col-lg-2 col-md-2 col-sm-6 sm-mt-5">
-                  <div className="counter">
-                    <img className="img-center" src="images/counter/04.png" alt="" />
-                    <h5>Stakeholder name</h5>
-                  </div>
+                  <EditableImageUpload
+                    classes="img-center"
+                    content={content["stakeholder-4-image"]}
+                    onSave={this.onSave("stakeholder-4-image")}
+                    uploadImage={this.uploadImage}
+                  />
                 </div>
                 <div className="col-lg-2 col-md-2 col-sm-6 sm-mt-5">
-                  <div className="counter">
-                    <img className="img-center" src="images/counter/04.png" alt="" />
-                    <h5>Stakeholder name</h5>
-                  </div>
+                  <EditableImageUpload
+                    classes="img-center"
+                    content={content["stakeholder-5-image"]}
+                    onSave={this.onSave("stakeholder-5-image")}
+                    uploadImage={this.uploadImage}
+                  />
                 </div>
               </div>
 
@@ -299,10 +300,12 @@ class AboutPage extends React.Component {
                     <img className="img-center" src="images/feature/04.png" alt=""/>
                   </div>
                   <div className="featured-title">
-                    <h5>Government Stakeholders</h5>
+                    <h5>
+                      <EditableText content={content["government-stakeholders-title"]} onSave={this.onSave("government-stakeholders-title")} />
+                    </h5>
                   </div>
                   <div className="featured-desc">
-                    <p>Design must be functional, and futionality must translated into, and futionality must translated into.</p>
+                    <EditableParagraph content={content["government-stakeholders-desc"]} onSave={this.onSave("government-stakeholders-desc")} />
                   </div>
                 </div>
               </div>
@@ -313,10 +316,12 @@ class AboutPage extends React.Component {
                     <img className="img-center" src="images/feature/04.png" alt=""/>
                   </div>
                   <div className="featured-title">
-                    <h5>Community Based Stakeholders</h5>
+                    <h5>
+                      <EditableText content={content["community-stakeholders-title"]} onSave={this.onSave("community-stakeholders-title")} />
+                    </h5>
                   </div>
                   <div className="featured-desc">
-                    <p>Design must be functional, and futionality must translated into, and futionality must translated into.</p>
+                    <EditableParagraph content={content["community-stakeholders-desc"]} onSave={this.onSave("community-stakeholders-desc")} />
                   </div>
                 </div>
               </div>
@@ -327,10 +332,12 @@ class AboutPage extends React.Component {
                     <img className="img-center" src="images/feature/04.png" alt=""/>
                   </div>
                   <div className="featured-title">
-                    <h5>Agency Stakeholders</h5>
+                    <h5>
+                      <EditableText content={content["agency-stakeholders-title"]} onSave={this.onSave("agency-stakeholders-title")} />
+                    </h5>
                   </div>
                   <div className="featured-desc">
-                    <p>Design must be functional, and futionality must translated into, and futionality must translated into.</p>
+                    <EditableParagraph content={content["agency-stakeholders-desc"]} onSave={this.onSave("agency-stakeholders-desc")} />
                   </div>
                 </div>
               </div>

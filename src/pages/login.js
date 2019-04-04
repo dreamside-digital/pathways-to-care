@@ -62,8 +62,8 @@ class LoginPage extends React.Component {
   render () {
     return (
       <div className="container full-screen" style={styles.container}>
-          <h1>Sign up / Sign in</h1>
-          <FirebaseAuth uiConfig={uiConfig} firebaseAuth={firebase.auth()} />
+        <h1>Sign up / Sign in</h1>
+        <FirebaseAuth uiConfig={uiConfig} firebaseAuth={firebase.auth()} />
       </div>
     )
   }

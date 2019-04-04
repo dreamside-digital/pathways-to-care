@@ -23,3 +23,8 @@ export const replaceRouterComponent = ({ history }) => {
 
   return ConnectedRouterWrapper;
 };
+
+export const onRouteUpdate = ({ location }) => {
+  console.log("location", location)
+  window.dispatchEvent(new Event('resize'));
+}

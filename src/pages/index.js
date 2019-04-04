@@ -16,18 +16,17 @@ import {
 } from "../redux/actions";
 
 import Layout from "../layouts/default.js";
-import Editable from "../components/editables/Editable";
-import PlainTextEditor from "../components/editingTools/PlainTextEditor";
-import RichTextEditor from "../components/editingTools/RichTextEditor";
 
 import headerImage from "../assets/images/ptc-header.png";
 import backgroundPattern from "../assets/images/pattern/01.png";
 import backgroundBanner from "../assets/images/banner/01.png";
 import pattern03 from "../assets/images/pattern/03.png";
-import newsBackground from "../assets/images/bg/02.png";
+import background02 from "../assets/images/bg/02.png";
 
 import FeaturedItem from "../components/home/FeaturedItem";
 import NewsItem from "../components/home/NewsItem";
+
+import firebase from "../firebase/init";
 
 
 const mapDispatchToProps = dispatch => {
@@ -37,7 +36,7 @@ const mapDispatchToProps = dispatch => {
     },
     onLoadPageData: data => {
       dispatch(loadPageData(data));
-    },
+    }
   };
 };
 
@@ -63,11 +62,21 @@ class HomePage extends React.Component {
     this.props.onUpdatePageData("home", id, content);
   };
 
+  uploadImage(image) {
+    return new Promise(resolve => {
+      const storage = firebase.storage().ref();
+      const fileRef = storage.child(`images/${image.name}`);
+
+      fileRef.put(image).then(snapshot => {
+        console.log("snapshot.downloadURL", snapshot.downloadURL)
+        resolve(snapshot.downloadURL)
+      });
+    })
+  }
+
   render() {
     const content = this.props.pageData ? this.props.pageData.content : {};
     const isEditingPage = this.props.isEditingPage;
-    console.log("isEditingPage", isEditingPage);
-    console.log("content", content)
 
     return (
       <Layout>
@@ -192,7 +201,12 @@ class HomePage extends React.Component {
 
                 <div className="col-lg-6 col-md-12">
                   <div className="info-img pos-r">
-                    <EditableImageUpload classes="img-fluid" content={content["solution-image"]} onSave={this.onSave("solution-image")} />
+                    <EditableImageUpload
+                      classes="img-fluid"
+                      content={content["solution-image"]}
+                      onSave={this.onSave("solution-image")}
+                      uploadImage={this.uploadImage}
+                    />
                   </div>
                 </div>
               </div>
@@ -242,7 +256,7 @@ class HomePage extends React.Component {
           </section>
 
 
-          <section className="grey-bg" data-bg-img={ newsBackground }>
+          <section className="grey-bg" data-bg-img={ background02 }>
             <div className="container">
               <div className="row">
                 <div className="col-lg-12 col-md-12 ml-auto mr-auto">
@@ -256,15 +270,15 @@ class HomePage extends React.Component {
               <div className="row">
 
                 <div className="col-lg-4 col-md-12">
-                  <NewsItem content={content["news-item-1"]} onSave={this.onSave("news-item-1")} />
+                  <NewsItem content={content["news-item-1"]} onSave={this.onSave("news-item-1")} uploadImage={this.uploadImage} />
                 </div>
 
                 <div className="col-lg-4 col-md-12">
-                  <NewsItem content={content["news-item-2"]} onSave={this.onSave("news-item-2")} />
+                  <NewsItem content={content["news-item-2"]} onSave={this.onSave("news-item-2")} uploadImage={this.uploadImage} />
                 </div>
 
                 <div className="col-lg-4 col-md-12">
-                  <NewsItem content={content["news-item-3"]} onSave={this.onSave("news-item-3")} />
+                  <NewsItem content={content["news-item-3"]} onSave={this.onSave("news-item-3")} uploadImage={this.uploadImage} />
                 </div>
 
               </div>

@@ -13,8 +13,10 @@ import PlainTextEditor from "../components/editingTools/PlainTextEditor";
 import RichTextEditor from "../components/editingTools/RichTextEditor";
 
 import pattern05 from "../assets/images/pattern/05.png"
-import fatimah from "../assets/images/fatimah.png"
-import tiyondah from "../assets/images/tiyondah.png"
+import headerBg from "../assets/images/bg/06.png";
+
+import fatimah from "../assets/images/team/fatimah.png"
+import tiyondah from "../assets/images/team/tiyondah.png"
 
 const mapDispatchToProps = dispatch => {
   return {
@@ -67,7 +69,7 @@ class TeamPage extends React.Component {
                 </div>
               </div>
             </div>
-            <div className="page-title-pattern"><img className="img-fluid" src="../assets/images/bg/06.png" alt="" /></div>
+            <div className="page-title-pattern"><img className="img-fluid" src={ headerBg } alt="" /></div>
           </section>
 
 
@@ -78,8 +80,7 @@ class TeamPage extends React.Component {
             <div className="row text-center">
               <div className="col-lg-8 col-md-12 ml-auto mr-auto">
                 <div className="section-title">
-                  <h6>Creative Team</h6>
-                  <h2 className="title">Meet Our Expert team member will ready for your service</h2>
+                  <h2 className="title">Meet the People Behind Pathways to Care</h2>
                 </div>
               </div>
             </div>

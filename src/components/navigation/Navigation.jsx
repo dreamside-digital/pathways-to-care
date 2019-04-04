@@ -31,7 +31,7 @@ const Navigation = (props) => {
                 <div className="collapse navbar-collapse" id="navbarNavDropdown">
                   <ul className="navbar-nav ml-auto">
                     <div className="nav-item">
-                      <Link className="nav-link active" to="/">Home</Link>
+                      <Link className="nav-link" to="/">Home</Link>
                     </div>
                     <div className="nav-item">
                       <Link className="nav-link" to="/about">About</Link>

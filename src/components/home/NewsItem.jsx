@@ -18,7 +18,7 @@ const NewsItem = props => {
   return (
     <div className={`post ${props.classes}`}>
       <div className="post-image">
-        <EditableImageUpload classes="img-fluid h-100 w-100" content={content["news-item-image"]} onSave={onSavePassthrough("news-item-image")} />
+        <EditableImageUpload classes="img-fluid h-100 w-100" content={content["news-item-image"]} onSave={onSavePassthrough("news-item-image")} uploadImage={props.uploadImage} />
       </div>
       <div className="post-desc">
         <div className="post-date">

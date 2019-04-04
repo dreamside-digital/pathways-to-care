@@ -3,38 +3,39 @@
 import { SheetsRegistry } from 'jss';
 import { createMuiTheme, createGenerateClassName } from '@material-ui/core/styles';
 
+
 // A theme with custom primary and secondary color.
 // It's optional.
 const theme = createMuiTheme({
   palette: {
     primary: {
-      light: "#FDDCA5",
-      main: "#FCB239", // yellow
-      dark: "#B8822A",
+      light: "#D0C5DB",
+      main: "#1F193E", // purple
+      dark: "#1F193E",
     },
     secondary: {
-      light: "#73A796",
-      main: "#005E3F", // green
-      dark: "941c5b",
+      light: "#FCD6D6",
+      main: "#933238", // red
+      dark: "D97B77",
     },
     error: {
-      light: "#FB9D5D",
-      main: "#FA7921", // orange
-      dark: "#A83512",
+      light: "#F9F6F0",
+      main: "#F5DEB5", // yellow
+      dark: "#f5ebe1",
     },
     background: {
       default: "#fff",
     }
   },
   typography: {
-    fontFamily: `'Lato', 'Helvetica', 'Arial', sans-serif`,
+    fontFamily: `'Open Sans', Helvetica, Arial, sans-serif`,
     fontSize: 18,
     fontWeightLight: 300,
     fontWeightRegular: 400,
     fontWeightMedium: 500,
     color: 'hsla(0, 0%, 0%, .8)',
     display1: {
-      fontFamily: `'Judson', 'Georgia', serif`,
+      fontFamily: `'Nunito', sans-serif`,
       letterSpacing: "0.05rem",
       textTransform: "uppercase",
       fontSize: "3.333em",
@@ -42,7 +43,7 @@ const theme = createMuiTheme({
       fontWeight: 700,
     },
     display2: {
-      fontFamily: `'Judson', 'Georgia', serif`,
+      fontFamily: `'Nunito', sans-serif`,
       letterSpacing: "0.05rem",
       textTransform: "uppercase",
       fontSize: "2.222em",
@@ -50,7 +51,7 @@ const theme = createMuiTheme({
       fontWeight: 700,
     },
     display3: {
-      fontFamily: `'Judson', 'Georgia', serif`,
+      fontFamily: `'Nunito', sans-serif`,
       letterSpacing: "0.05rem",
       textTransform: "uppercase",
       fontSize: "1.667em",
@@ -58,21 +59,21 @@ const theme = createMuiTheme({
       fontWeight: 700,
     },
     display4: {
-      fontFamily: `'Judson', 'Georgia', serif`,
+      fontFamily: `'Nunito', sans-serif`,
       textTransform: "none",
       fontSize: "1.14em",
       color: 'hsla(0, 0%, 0%, .8)',
       fontWeight: 700,
     },
     title: {
-      fontFamily: `'Judson', 'Georgia', serif`,
+      fontFamily: `'Nunito', sans-serif`,
       letterSpacing: "0.05rem",
       textTransform: "uppercase",
       color: 'hsla(0, 0%, 0%, .8)',
       fontWeight: 700,
     },
     headline: {
-      fontFamily: `'Judson', 'Georgia', serif`,
+      fontFamily: `'Nunito', sans-serif`,
       letterSpacing: "0.05rem",
       textTransform: "uppercase",
       fontSize: "1.667em",
@@ -86,7 +87,7 @@ const theme = createMuiTheme({
       color: "#fff",
     },
     body1: {
-      fontFamily: `'Lato', 'Helvetica', 'Arial', sans-serif`,
+      fontFamily: `'Open Sans', Helvetica, Arial, sans-serif`,
       fontSize: 18,
       fontWeightLight: 300,
       fontWeightRegular: 400,
@@ -95,7 +96,7 @@ const theme = createMuiTheme({
     },
   },
   status: {
-    danger: "#FA7921",
+    danger: "#933238",
   }
 });
 
