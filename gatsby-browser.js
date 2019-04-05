@@ -25,6 +25,6 @@ export const replaceRouterComponent = ({ history }) => {
 };
 
 export const onRouteUpdate = ({ location }) => {
-  console.log("location", location)
   window.dispatchEvent(new Event('resize'));
+  window.dispatchEvent(new Event('load'));
 }

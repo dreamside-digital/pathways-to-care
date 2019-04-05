@@ -8,12 +8,15 @@ import {
 } from "../redux/actions";
 
 import Layout from "../layouts/default.js";
+import Profile from "../components/team/Profile"
 
 import pattern05 from "../assets/images/pattern/05.png"
 import headerBg from "../assets/images/bg/06.png";
 
 import fatimah from "../assets/images/team/fatimah.png"
 import tiyondah from "../assets/images/team/tiyondah.png"
+
+const PAGE_ID = "team"
 
 const mapDispatchToProps = dispatch => {
   return {
@@ -46,13 +49,14 @@ class TeamPage extends React.Component {
   }
 
   onSave = id => content => {
-    this.props.onUpdatePageData("home", id, content);
+    this.props.onUpdatePageData(PAGE_ID, id, content);
   };
 
   render() {
     const content = this.props.pageData ? this.props.pageData.content : {};
     const isEditingPage = this.props.isEditingPage;
-    console.log(isEditingPage);
+
+    console.log("team content", content)
 
     return (
       <Layout>
@@ -83,16 +87,7 @@ class TeamPage extends React.Component {
             </div>
             <div className="row">
               <div className="col-lg-6 col-md-6">
-                <div className="team-member">
-                  <div className="team-images">
-                    <img className="img-fluid" src={ fatimah } alt="" />
-                  </div>
-                  <div className="team-description"> <span>Project Manager</span>
-                    <h5><a href="team-single.html">Fatimah Jackson-Best</a></h5>
-                    <p>“My hope is that through the Pathways to Care Project we can centre and prioritize the needs of Black children, youth and their families across the province, and come up with solutions that adequately serve to meet their needs.”</p>
-                    <div><a href="" className="btn btn-theme">Full bio</a></div>
-                  </div>
-                </div>
+                <Profile content={content["team-member-1"]} onSave={this.onSave("team-member-1")} />
               </div>
               <div className="col-lg-6 col-md-6">
                 <div className="team-member">
@@ -123,7 +118,7 @@ export default connect(mapStateToProps, mapDispatchToProps)(TeamPage);
 
 export const query = graphql`
   query {
-    pages(id: { eq: "home" }) {
+    pages(id: { eq: "team" }) {
       id
       content
       title

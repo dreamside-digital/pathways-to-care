@@ -1107,7 +1107,7 @@
   &:hover {
     background: $themebg;
     color: $white;
-    @include animation-name(jello);
+    @include animation-name(pulse);
     @include animation-duration(1s);
     -webkit-animation-fill-mode: both;
     animation-fill-mode: both;
@@ -1296,7 +1296,6 @@
   margin: 0 auto;
   bottom: 0;
   height: 3px;
-  @include animation(rotate 80s infinite linear);
   content: "";
   border-radius: 5px;
   background: $theme-secondary3;

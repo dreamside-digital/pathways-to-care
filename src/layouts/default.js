@@ -6,6 +6,7 @@ import Notification from "../components/notifications/Notification";
 import AccountButton from "../components/navigation/AccountButton"
 import Navigation from "../components/navigation/Navigation"
 import Footer from "../components/navigation/Footer"
+import Loader from "../components/common/Loader"
 
 import "../assets/sass/less-cms/base.scss";
 import "../assets/css/bootstrap.min.css";
@@ -48,6 +49,7 @@ const DefaultLayout = props => (
     </Helmet>
     <Notification />
     <AccountButton />
+    <Loader />
 
     <div className="page-wrapper">
 

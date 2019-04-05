@@ -24,6 +24,7 @@ import pattern03 from "../assets/images/pattern/03.png";
 import background02 from "../assets/images/bg/02.png";
 
 import FeaturedItem from "../components/home/FeaturedItem";
+import FeaturedItemWithTitle from "../components/home/FeaturedItemWithTitle";
 import NewsItem from "../components/home/NewsItem";
 
 import firebase from "../firebase/init";
@@ -151,27 +152,27 @@ class HomePage extends React.Component {
               </div>
               <div className="row">
                 <div className="col-lg-4 col-md-6">
-                  <FeaturedItem classes="featured-item text-center" content={content["problem-item-1"]} onSave={this.onSave("problem-item-1")} />
+                  <FeaturedItemWithTitle classes="featured-item text-center" content={content["problem-item-1"]} onSave={this.onSave("problem-item-1")} />
                 </div>
 
                 <div className="col-lg-4 col-md-6">
-                  <FeaturedItem classes="featured-item text-center" content={content["problem-item-2"]} onSave={this.onSave("problem-item-2")} />
+                  <FeaturedItemWithTitle classes="featured-item text-center" content={content["problem-item-2"]} onSave={this.onSave("problem-item-2")} />
                 </div>
 
                 <div className="col-lg-4 col-md-6">
-                  <FeaturedItem classes="featured-item text-center" content={content["problem-item-3"]} onSave={this.onSave("problem-item-3")} />
+                  <FeaturedItemWithTitle classes="featured-item text-center" content={content["problem-item-3"]} onSave={this.onSave("problem-item-3")} />
                 </div>
 
                 <div className="col-lg-4 col-md-6">
-                  <FeaturedItem classes="featured-item text-center" content={content["problem-item-4"]} onSave={this.onSave("problem-item-4")} />
+                  <FeaturedItemWithTitle classes="featured-item text-center" content={content["problem-item-4"]} onSave={this.onSave("problem-item-4")} />
                 </div>
 
                 <div className="col-lg-4 col-md-6">
-                  <FeaturedItem classes="featured-item text-center" content={content["problem-item-5"]} onSave={this.onSave("problem-item-5")} />
+                  <FeaturedItemWithTitle classes="featured-item text-center" content={content["problem-item-5"]} onSave={this.onSave("problem-item-5")} />
                 </div>
 
                 <div className="col-lg-4 col-md-6">
-                  <FeaturedItem classes="featured-item text-center" content={content["problem-item-6"]} onSave={this.onSave("problem-item-6")} />
+                  <FeaturedItemWithTitle classes="featured-item text-center" content={content["problem-item-6"]} onSave={this.onSave("problem-item-6")} />
                 </div>
 
               </div>

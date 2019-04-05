@@ -22,7 +22,7 @@ const styles = {
     position: "fixed",
     left: "10px",
     bottom: "10px",
-    zIndex: "1"
+    zIndex: "1400"
   },
   iconLabel: {
     display: "flex",
@@ -113,6 +113,7 @@ class AccountButton extends React.Component {
             anchorEl={anchorEl}
             open={Boolean(anchorEl)}
             onClose={closeMenu}
+            anchorOrigin={{ vertical: 'top', horizontal: 'left' }}
           >
             {props.allowEditing && (
               <MenuItem
