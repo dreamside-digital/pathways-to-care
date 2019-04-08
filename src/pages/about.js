@@ -8,8 +8,6 @@ import {
 } from "../redux/actions";
 
 import {
-  EditablesContext,
-  theme,
   EditableText,
   EditableParagraph,
   EditableImageUpload,
@@ -40,7 +38,6 @@ const mapDispatchToProps = dispatch => {
 const mapStateToProps = state => {
   return {
     pageData: state.page.data,
-    isEditingPage: state.adminTools.isEditingPage,
   };
 };
 
@@ -74,13 +71,9 @@ class AboutPage extends React.Component {
 
   render() {
     const content = this.props.pageData ? this.props.pageData.content : {};
-    const isEditingPage = this.props.isEditingPage;
-    console.log(isEditingPage);
 
     return (
       <Layout>
-        <EditablesContext.Provider value={ { showEditingControls: isEditingPage, theme: theme } }>
-
           <section className="page-title o-hidden text-center grey-bg bg-contain animatedBackground" data-bg-img={ headerImage }>
             <div className="container">
               <div className="row align-items-center">
@@ -348,8 +341,6 @@ class AboutPage extends React.Component {
 
         </div>
 
-
-        </EditablesContext.Provider>
       </Layout>
     );
   }

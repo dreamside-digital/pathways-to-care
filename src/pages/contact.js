@@ -1,19 +1,35 @@
-import React from "react";
+import React, { Fragment } from "react";
 import { graphql } from "gatsby";
 import { connect } from "react-redux";
-import { EditablesContext, theme, EditableText, EditableParagraph } from 'react-easy-editables';
+import Button from "@material-ui/core/Button"
+
+import { DEFAULT_COMPONENT_CONTENT } from "../utils/constants"
+
 import {
   updatePage,
   loadPageData,
 } from "../redux/actions";
 
+import {
+  EditableText,
+  EditableParagraph,
+  EditableImageUpload,
+  EditableLink,
+} from 'react-easy-editables';
+
+import { uploadImage } from "../firebase/operations";
+
+
 import Layout from "../layouts/default.js";
+import Ask from "../components/contact/Ask";
 
 import headerImage from "../assets/images/ptc-graphic.png"
 import pattern05 from "../assets/images/pattern/05.png"
 import pattern07 from "../assets/images/pattern/07.png"
 import bg02 from "../assets/images/bg/02.png"
 import headerBg from "../assets/images/bg/06.png";
+
+const PAGE_ID = "contact"
 
 const mapDispatchToProps = dispatch => {
   return {
@@ -46,23 +62,48 @@ class ContactPage extends React.Component {
   }
 
   onSave = id => content => {
-    this.props.onUpdatePageData("home", id, content);
+    this.props.onUpdatePageData(PAGE_ID, id, content);
   };
+
+  addListItem = listId => () => {
+    const list = this.props.pageData.content[listId] ? [...this.props.pageData.content[listId]] : [];
+    const emptyItem = DEFAULT_COMPONENT_CONTENT[listId];
+    list.push(emptyItem)
+    this.props.onUpdatePageData(PAGE_ID, listId, list)
+  }
+
+  editListItem = (listId, index) => field => content => {
+    const list = [...this.props.pageData.content[listId]];
+    const updated = {
+      ...list[index],
+      [field]: content
+    };
+
+    list[index] = updated;
+
+    this.props.onUpdatePageData(PAGE_ID, listId, list);
+  }
+
+  deleteListItem = (listId, index) => () => {
+    const list = [...this.props.pageData.content[listId]]
+    list.splice(index, 1)
+    this.props.onUpdatePageData(PAGE_ID, listId, list)
+  }
 
   render() {
     const content = this.props.pageData ? this.props.pageData.content : {};
-    const isEditingPage = this.props.isEditingPage;
-    console.log(isEditingPage);
+    const asks = content["asks"] || [];
 
     return (
       <Layout>
-        <EditablesContext.Provider value={ { showEditingControls: isEditingPage, theme: theme } }>
 
         <section className="page-title o-hidden text-center grey-bg bg-contain animatedBackground" data-bg-img={ pattern05 }>
           <div className="container">
             <div className="row align-items-center">
               <div className="col-md-12">
-                <h1 className="title">Get involved</h1>
+                <h1 className="title">
+                  <EditableText content={content["page-title"]} onSave={this.onSave("page-title")} />
+                </h1>
               </div>
             </div>
           </div>
@@ -76,36 +117,41 @@ class ContactPage extends React.Component {
             <div className="container">
               <div className="row">
                 <div className="col-lg-6 image-column bg-contain bg-pos-l" data-bg-img={ pattern07 }>
-                  <img className="img-fluid" src={headerImage} alt="" />
+                <EditableImageUpload
+                    classes="img-fluid"
+                    content={content["header-image"]}
+                    onSave={this.onSave("header-image")}
+                    uploadImage={uploadImage}
+                  />
                 </div>
                 <div className="col-lg-6 col-md-12 ml-auto md-mt-5 pl-lg-5">
                   <div className="section-title">
-                    <h2 className="title">Join our mission</h2>
+                    <h2 className="title">
+                      <EditableText content={content["get-involved-title"]} onSave={this.onSave("get-involved-title")} />
+                    </h2>
                   </div>
-                  <div className="work-process style-2">
-                    <div className="work-process-inner"> <span className="step-num" data-bg-color="#cd113a">1</span>
-                      <h4>Partner with us</h4>
-                      <p className="mb-0">Fusce enim nulla mollis eu metus in sagittis fringilla lnim nulla</p>
+                  {
+                    asks.map((content, index) => (
+                      <Fragment key={`ask-${index}`}>
+                        <Ask
+                          content={content}
+                          index={index}
+                          onSave={this.editListItem("asks", index)}
+                        />
+                        { this.props.isEditingPage &&
+                          <div className="row justify-content-end">
+                            <Button onClick={this.deleteListItem("asks", index)}>Delete</Button>
+                          </div>
+                        }
+                      </Fragment>
+                    ))
+                  }
+                  {
+                    this.props.isEditingPage &&
+                    <div className="row justify-content-end">
+                      <Button onClick={this.addListItem("asks")}>Add list item</Button>
                     </div>
-                  </div>
-                  <div className="work-process style-2 mt-5">
-                    <div className="work-process-inner"> <span className="step-num" data-bg-color="#cd113a">2</span>
-                      <h4>Volunteer</h4>
-                      <p className="mb-0">Fusce enim nulla mollis eu metus in sagittis fringilla lnim nulla</p>
-                    </div>
-                  </div>
-                  <div className="work-process style-2 mt-5">
-                    <div className="work-process-inner"> <span className="step-num" data-bg-color="#cd113a">3</span>
-                      <h4>Provincial  Community Consultations and Focus Groups</h4>
-                      <p className="mb-0">Fusce enim nulla mollis eu metus in sagittis fringilla lnim nulla</p>
-                    </div>
-                  </div>
-                  <div className="work-process style-2 mt-5">
-                    <div className="work-process-inner"> <span className="step-num" data-bg-color="#cd113a">04</span>
-                      <h4>Stay Informed</h4>
-                      <p className="mb-0">Fusce enim nulla mollis eu metus in sagittis fringilla lnim nulla</p>
-                    </div>
-                  </div>
+                  }
                 </div>
               </div>
             </div>
@@ -117,8 +163,12 @@ class ContactPage extends React.Component {
               <div className="row align-items-center">
                 <div className="col-lg-6 col-md-7">
                   <div className="section-title mb-2">
-                    <h6>Get In Touch</h6>
-                    <h2>Contact Us</h2>
+                    <h6>
+                      <EditableText content={content["contact-form-tag"]} onSave={this.onSave("contact-form-tag")} />
+                    </h6>
+                    <h2>
+                      <EditableText content={content["contact-form-heading"]} onSave={this.onSave("contact-form-heading")} />
+                    </h2>
                   </div>
                   <div className="contact-main">
                     <form id="contact-form" className="row" method="post" action="php/contact.php">
@@ -148,14 +198,20 @@ class ContactPage extends React.Component {
                 </div>
                 <div className="col-lg-5 col-md-5 ml-auto sm-mt-5">
                   <ul className="contact-info list-unstyled">
-                    <li className="mb-4"><i className="flaticon-location"></i><span>Address:</span>
-                      <p>123 Spadina Ave, Toronto, ON</p>
+                    <li className="mb-4">
+                      <i className="flaticon-location"></i>
+                      <EditableText content={content["address-label"]} onSave={this.onSave("address-label")} />
+                      <EditableParagraph content={content["address"]} onSave={this.onSave("address")} />
                     </li>
-                    <li className="mb-4"><i className="flaticon-email"></i><span>Email</span><a href="mailto:themeht23@gmail.com">hello@pathwaystocare.org</a>
+                    <li className="mb-4">
+                      <i className="flaticon-email"></i>
+                      <span><EditableText content={content["email-label"]} onSave={this.onSave("email-label")} /></span>
+                      <EditableLink content={content["email"]} onSave={this.onSave("email")} />
                     </li>
-                    <li className="mb-4"><i className="flaticon-call"></i><span>Phone:</span><a href="tel:+912345678900">(647) 123-4567</a>
-                    </li>
-                    <li><i className="flaticon-user"></i><span>Fax:</span><a href="tel:+912345678900">(647) 987-6543</a>
+                    <li className="mb-4">
+                      <i className="flaticon-call"></i>
+                      <EditableText content={content["phone-label"]} onSave={this.onSave("phone-label")} />
+                      <EditableParagraph content={content["phone"]} onSave={this.onSave("phone")} />
                     </li>
                   </ul>
                 </div>
@@ -165,8 +221,6 @@ class ContactPage extends React.Component {
 
         </div>
 
-
-        </EditablesContext.Provider>
       </Layout>
     );
   }
@@ -176,7 +230,7 @@ export default connect(mapStateToProps, mapDispatchToProps)(ContactPage);
 
 export const query = graphql`
   query {
-    pages(id: { eq: "home" }) {
+    pages(id: { eq: "contact" }) {
       id
       content
       title

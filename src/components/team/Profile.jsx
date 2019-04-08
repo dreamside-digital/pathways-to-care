@@ -9,6 +9,7 @@ import {
   EditableImageUpload,
 } from 'react-easy-editables';
 
+import { uploadImage } from "../../firebase/operations";
 
 
 class Profile extends Component {
@@ -33,7 +34,11 @@ class Profile extends Component {
     return (
       <div className="team-member">
         <div className="team-images">
-          <EditableImageUpload content={ content["headshot"]} onSave={this.onSavePassthrough("headshot")} />
+          <EditableImageUpload
+            content={ content["headshot"]}
+            onSave={this.onSavePassthrough("headshot")}
+            uploadImage={ uploadImage }
+          />
         </div>
         <div className="team-description">
           <EditableText content={content["position"]} onSave={this.onSavePassthrough("position")} />

@@ -1,6 +1,9 @@
 import React from "react";
 import { graphql } from "gatsby";
 import { connect } from "react-redux";
+import Button from "@material-ui/core/Button"
+
+import { DEFAULT_COMPONENT_CONTENT } from "../utils/constants"
 
 import {
   updatePage,
@@ -8,8 +11,6 @@ import {
 } from "../redux/actions";
 
 import {
-  EditablesContext,
-  theme,
   EditableText,
   EditableParagraph,
   EditableImageUpload,
@@ -61,14 +62,37 @@ class ResearchPage extends React.Component {
     this.props.onUpdatePageData(PAGE_ID, id, content);
   };
 
+  addListItem = listId => () => {
+    const list = this.props.pageData.content[listId] ? [...this.props.pageData.content[listId]] : [];
+    const emptyItem = DEFAULT_COMPONENT_CONTENT[listId];
+    list.push(emptyItem)
+    this.props.onUpdatePageData(PAGE_ID, listId, list)
+  }
+
+  editListItem = (listId, index) => field => content => {
+    const list = [...this.props.pageData.content[listId]];
+    const updated = {
+      ...list[index],
+      [field]: content
+    };
+
+    list[index] = updated;
+
+    this.props.onUpdatePageData(PAGE_ID, listId, list);
+  }
+
+  deleteListItem = (listId, index) => () => {
+    const list = [...this.props.pageData.content[listId]]
+    list.splice(index, 1)
+    this.props.onUpdatePageData(PAGE_ID, listId, list)
+  }
+
   render() {
     const content = this.props.pageData ? this.props.pageData.content : {};
-    const isEditingPage = this.props.isEditingPage;
-    console.log(isEditingPage);
+    const relatedPublications = content["related-publications"] ? content["related-publications"] : [];
 
     return (
       <Layout>
-        <EditablesContext.Provider value={ { showEditingControls: isEditingPage, theme: theme } }>
 
           <section className="page-title o-hidden text-center grey-bg bg-contain animatedBackground" data-bg-img={ headerImage }>
             <div className="container">
@@ -126,17 +150,30 @@ class ResearchPage extends React.Component {
               </div>
               <div className="row">
 
-                <div className="col-lg-4 col-md-12">
-                  <NewsItem content={content["news-item-1"]} onSave={this.onSave("news-item-1")} />
-                </div>
+              {
+                relatedPublications.map((content, index) => {
+                  return (
+                    <div className="col-lg-4 col-md-12" key={`related-publication-${index}`}>
+                      <NewsItem
+                        content={content["news-item-1"]}
+                        onSave={this.editListItem("related-publications", index)}
+                      />
+                      { this.props.isEditingPage &&
+                        <div className="justify-content-start">
+                          <Button onClick={this.deleteListItem("related-publications", index)}>Delete</Button>
+                        </div>
+                      }
+                    </div>
+                  )
+                })
 
-                <div className="col-lg-4 col-md-12">
-                  <NewsItem content={content["news-item-2"]} onSave={this.onSave("news-item-2")} />
+              }
+              {
+                this.props.isEditingPage &&
+                <div className="col-lg-12">
+                  <Button onClick={this.addListItem("related-publications")}>Add list item</Button>
                 </div>
-
-                <div className="col-lg-4 col-md-12">
-                  <NewsItem content={content["news-item-3"]} onSave={this.onSave("news-item-3")} />
-                </div>
+              }
 
               </div>
             </div>
@@ -145,8 +182,6 @@ class ResearchPage extends React.Component {
 
         </div>
 
-
-        </EditablesContext.Provider>
       </Layout>
     );
   }

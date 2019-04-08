@@ -1,9 +1,11 @@
 import React from "react";
 import { graphql } from "gatsby";
 import { connect } from "react-redux";
+import Button from "@material-ui/core/Button"
+
+import { DEFAULT_COMPONENT_CONTENT } from "../utils/constants"
+
 import {
-  EditablesContext,
-  theme,
   EditableText,
   EditableParagraph,
   EditableImageUpload,
@@ -27,7 +29,9 @@ import FeaturedItem from "../components/home/FeaturedItem";
 import FeaturedItemWithTitle from "../components/home/FeaturedItemWithTitle";
 import NewsItem from "../components/home/NewsItem";
 
-import firebase from "../firebase/init";
+import { uploadImage } from "../firebase/operations";
+
+const PAGE_ID = "home";
 
 
 const mapDispatchToProps = dispatch => {
@@ -60,45 +64,59 @@ class HomePage extends React.Component {
   }
 
   onSave = id => content => {
-    this.props.onUpdatePageData("home", id, content);
+    this.props.onUpdatePageData(PAGE_ID, id, content);
   };
 
-  uploadImage(image) {
-    return new Promise(resolve => {
-      const storage = firebase.storage().ref();
-      const fileRef = storage.child(`images/${image.name}`);
-
-      fileRef.put(image).then(snapshot => {
-        console.log("snapshot.downloadURL", snapshot.downloadURL)
-        resolve(snapshot.downloadURL)
-      });
-    })
+  addListItem = listId => () => {
+    const list = this.props.pageData.content[listId] ? [...this.props.pageData.content[listId]] : [];
+    const emptyItem = DEFAULT_COMPONENT_CONTENT[listId];
+    list.push(emptyItem)
+    this.props.onUpdatePageData(PAGE_ID, listId, list)
   }
+
+  editListItem = (listId, index) => field => content => {
+    const list = [...this.props.pageData.content[listId]];
+    const updated = {
+      ...list[index],
+      [field]: content
+    };
+
+    list[index] = updated;
+
+    this.props.onUpdatePageData(PAGE_ID, listId, list);
+  }
+
+  deleteListItem = (listId, index) => () => {
+    const list = [...this.props.pageData.content[listId]]
+    list.splice(index, 1)
+    this.props.onUpdatePageData(PAGE_ID, listId, list)
+  }
+
 
   render() {
     const content = this.props.pageData ? this.props.pageData.content : {};
-    const isEditingPage = this.props.isEditingPage;
+    const problemItems = content["problem-items"] ? content["problem-items"] : [];
+    const solutionItems = content["solution-items"] ? content["solution-items"] : [];
 
     return (
       <Layout>
-      <EditablesContext.Provider value={ { theme: theme, showEditingControls: isEditingPage } }>
         <section className="fullscreen-banner p-0 banner o-hidden" data-bg-img={ backgroundPattern }>
           <div className="align-center">
             <div className="container">
               <div className="row align-items-center">
-                <div className="col-lg-5 col-md-12 order-lg-12">
+                <div className="col-lg-6 col-md-12 order-lg-12">
                   <div className="mouse-parallax">
-                    <div className="bnr-img1 wow fadeInRight" data-wow-duration="1s" data-wow-delay="4s">
+                    <div className="bnr-img1 wow fadeInRight" data-wow-duration="1s" data-wow-delay="1s">
                       <img className="img-center rotateme" src={ backgroundBanner } alt="" />
                     </div>
-                    <img className="img-center bnr-img2 wow zoomIn" data-wow-duration="2s" data-wow-delay="5s" src={ headerImage } alt="" />
+                    <img className="img-center bnr-img2 wow zoomIn" data-wow-duration="2s" data-wow-delay="1.5s" src={ headerImage } alt="" />
                   </div>
                 </div>
-                <div className="col-lg-7 col-md-12 order-lg-1 md-mt-5">
-                  <h1 className="mb-4 wow bounceInLeft" data-wow-duration="3s" data-wow-delay="2s">
+                <div className="col-lg-6 col-md-12 order-lg-1 md-mt-5">
+                  <h1 className="mb-4 wow bounceInLeft" data-wow-duration="3s" data-wow-delay="500ms">
                     <EditableText content={content["header-title"]} onSave={this.onSave("header-title")} />
                   </h1>
-                  <div className="lead wow fadeInUp" data-wow-duration="1s" data-wow-delay="1s">
+                  <div className="lead wow fadeInUp" data-wow-duration="1s">
                     <EditableText content={content["header-subtitle"]} onSave={this.onSave("header-subtitle")} />
                   </div>
                 </div>
@@ -151,29 +169,31 @@ class HomePage extends React.Component {
                 </div>
               </div>
               <div className="row">
-                <div className="col-lg-4 col-md-6">
-                  <FeaturedItemWithTitle classes="featured-item text-center" content={content["problem-item-1"]} onSave={this.onSave("problem-item-1")} />
-                </div>
+                {
+                  problemItems.map((content, index) => {
+                    return (
+                      <div className="col-lg-4 col-md-6" key={`problem-item-${index}`}>
+                        <FeaturedItemWithTitle
+                          classes="featured-item text-center"
+                          content={content}
+                          onSave={this.editListItem("problem-items", index)}
+                        />
+                        { this.props.isEditingPage &&
+                          <div className="row justify-content-end">
+                            <Button onClick={this.deleteListItem("problem-items", index)}>Delete</Button>
+                          </div>
+                        }
+                      </div>
+                    )
+                  })
 
-                <div className="col-lg-4 col-md-6">
-                  <FeaturedItemWithTitle classes="featured-item text-center" content={content["problem-item-2"]} onSave={this.onSave("problem-item-2")} />
-                </div>
-
-                <div className="col-lg-4 col-md-6">
-                  <FeaturedItemWithTitle classes="featured-item text-center" content={content["problem-item-3"]} onSave={this.onSave("problem-item-3")} />
-                </div>
-
-                <div className="col-lg-4 col-md-6">
-                  <FeaturedItemWithTitle classes="featured-item text-center" content={content["problem-item-4"]} onSave={this.onSave("problem-item-4")} />
-                </div>
-
-                <div className="col-lg-4 col-md-6">
-                  <FeaturedItemWithTitle classes="featured-item text-center" content={content["problem-item-5"]} onSave={this.onSave("problem-item-5")} />
-                </div>
-
-                <div className="col-lg-4 col-md-6">
-                  <FeaturedItemWithTitle classes="featured-item text-center" content={content["problem-item-6"]} onSave={this.onSave("problem-item-6")} />
-                </div>
+                }
+                {
+                  this.props.isEditingPage &&
+                  <div className="col-lg-12">
+                    <Button onClick={this.addListItem("problem-items")}>Add list item</Button>
+                  </div>
+                }
 
               </div>
             </div>
@@ -206,7 +226,7 @@ class HomePage extends React.Component {
                       classes="img-fluid"
                       content={content["solution-image"]}
                       onSave={this.onSave("solution-image")}
-                      uploadImage={this.uploadImage}
+                      uploadImage={uploadImage}
                     />
                   </div>
                 </div>
@@ -219,37 +239,31 @@ class HomePage extends React.Component {
                   </h2>
                 </div>
 
-                <div className="col-lg-4 col-md-12">
-                  <FeaturedItem classes="featured-item text-center style-2" content={content["solution-item-1"]} onSave={this.onSave("solution-item-1")} />
-                </div>
+                {
+                  solutionItems.map((content, index) => {
+                    return (
+                      <div className="col-lg-4 col-md-6" key={`solution-item-${index}`}>
+                        <FeaturedItem
+                          classes="featured-item text-center style-2"
+                          content={content}
+                          onSave={this.editListItem("solution-items", index)}
+                        />
+                        { this.props.isEditingPage &&
+                          <div className="row">
+                            <Button onClick={this.deleteListItem("solution-items", index)}>Delete</Button>
+                          </div>
+                        }
+                      </div>
+                    )
+                  })
 
-                <div className="col-lg-4 col-md-12">
-                  <FeaturedItem classes="featured-item text-center style-2" content={content["solution-item-2"]} onSave={this.onSave("solution-item-2")} />
-                </div>
-
-                <div className="col-lg-4 col-md-12">
-                  <FeaturedItem classes="featured-item text-center style-2" content={content["solution-item-3"]} onSave={this.onSave("solution-item-3")} />
-                </div>
-
-                <div className="col-lg-4 col-md-12">
-                  <FeaturedItem classes="featured-item text-center style-2" content={content["solution-item-4"]} onSave={this.onSave("solution-item-4")} />
-                </div>
-
-                <div className="col-lg-4 col-md-12">
-                  <FeaturedItem classes="featured-item text-center style-2" content={content["solution-item-5"]} onSave={this.onSave("solution-item-5")} />
-                </div>
-
-                <div className="col-lg-4 col-md-12">
-                  <FeaturedItem classes="featured-item text-center style-2" content={content["solution-item-6"]} onSave={this.onSave("solution-item-6")} />
-                </div>
-
-                <div className="col-lg-4 col-md-12">
-                  <FeaturedItem classes="featured-item text-center style-2" content={content["solution-item-7"]} onSave={this.onSave("solution-item-7")} />
-                </div>
-
-                <div className="col-lg-4 col-md-12">
-                  <FeaturedItem classes="featured-item text-center style-2" content={content["solution-item-8"]} onSave={this.onSave("solution-item-8")} />
-                </div>
+                }
+                {
+                  this.props.isEditingPage &&
+                  <div className="col-lg-4 col-md-6 row justify-content-center align-items-center">
+                    <Button onClick={this.addListItem("solution-items")}>Add list item</Button>
+                  </div>
+                }
 
               </div>
 
@@ -271,22 +285,21 @@ class HomePage extends React.Component {
               <div className="row">
 
                 <div className="col-lg-4 col-md-12">
-                  <NewsItem content={content["news-item-1"]} onSave={this.onSave("news-item-1")} uploadImage={this.uploadImage} />
+                  <NewsItem content={content["news-item-1"]} onSave={this.onSave("news-item-1")} uploadImage={uploadImage} />
                 </div>
 
                 <div className="col-lg-4 col-md-12">
-                  <NewsItem content={content["news-item-2"]} onSave={this.onSave("news-item-2")} uploadImage={this.uploadImage} />
+                  <NewsItem content={content["news-item-2"]} onSave={this.onSave("news-item-2")} uploadImage={uploadImage} />
                 </div>
 
                 <div className="col-lg-4 col-md-12">
-                  <NewsItem content={content["news-item-3"]} onSave={this.onSave("news-item-3")} uploadImage={this.uploadImage} />
+                  <NewsItem content={content["news-item-3"]} onSave={this.onSave("news-item-3")} uploadImage={uploadImage} />
                 </div>
 
               </div>
             </div>
           </section>
         </div>
-      </EditablesContext.Provider>
       </Layout>
     );
   }
