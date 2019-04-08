@@ -97,6 +97,7 @@ class HomePage extends React.Component {
     const content = this.props.pageData ? this.props.pageData.content : {};
     const problemItems = content["problem-items"] ? content["problem-items"] : [];
     const solutionItems = content["solution-items"] ? content["solution-items"] : [];
+    const newsItems = content["news-items"] ? content["news-items"] : [];
 
     return (
       <Layout>
@@ -282,21 +283,36 @@ class HomePage extends React.Component {
                   </div>
                 </div>
               </div>
+
               <div className="row">
 
-                <div className="col-lg-4 col-md-12">
-                  <NewsItem content={content["news-item-1"]} onSave={this.onSave("news-item-1")} uploadImage={uploadImage} />
-                </div>
+              {
+                newsItems.map((content, index) => {
+                  return (
+                    <div className="col-lg-4 col-md-12" key={`news-item-${index}`}>
+                      <NewsItem
+                        content={content}
+                        onSave={this.editListItem("news-items", index)}
+                      />
+                      { this.props.isEditingPage &&
+                        <div className="justify-content-start">
+                          <Button onClick={this.deleteListItem("news-items", index)}>Delete</Button>
+                        </div>
+                      }
+                    </div>
+                  )
+                })
 
-                <div className="col-lg-4 col-md-12">
-                  <NewsItem content={content["news-item-2"]} onSave={this.onSave("news-item-2")} uploadImage={uploadImage} />
+              }
+              {
+                this.props.isEditingPage &&
+                <div className="col-lg-12">
+                  <Button onClick={this.addListItem("news-items")}>Add list item</Button>
                 </div>
-
-                <div className="col-lg-4 col-md-12">
-                  <NewsItem content={content["news-item-3"]} onSave={this.onSave("news-item-3")} uploadImage={uploadImage} />
-                </div>
+              }
 
               </div>
+
             </div>
           </section>
         </div>

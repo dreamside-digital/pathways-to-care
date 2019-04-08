@@ -17,6 +17,16 @@ export const DEFAULT_COMPONENT_CONTENT = {
   "solution-items" : {
     "featured-item-description": { "text": "Placeholder" }
   },
-  "related-publications": {},
-  "news-items": {},
+  "related-publications": {
+    "news-item-image": {},
+    "news-item-date": {},
+    "news-item-link": {},
+    "news-item-description": {},
+  },
+  "news-items": {
+    "news-item-image": {},
+    "news-item-date": {},
+    "news-item-link": {},
+    "news-item-description": {},
+  },
 }
