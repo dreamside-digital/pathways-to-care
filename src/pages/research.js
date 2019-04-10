@@ -21,7 +21,7 @@ import Layout from "../layouts/default.js";
 import NewsItem from "../components/home/NewsItem";
 
 import headerPattern from "../assets/images/pattern/secondary-banner.png";
-import headerBg from "../assets/images/bg/06.png";
+import headerBg from "../assets/images/bg/squiggle.svg";
 import background02 from "../assets/images/bg/02.png";
 
 const PAGE_ID = "research"

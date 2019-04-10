@@ -1,45 +1,61 @@
 import React from "react";
-import { Link } from "gatsby";
+import { Link, StaticQuery, graphql } from "gatsby";
 
 
 const Footer = (props) => {
 
   return (
-    <footer className="footer white-bg pos-r o-hidden bg-contain" data-bg-img="images/pattern/01.png">
-      <div className="primary-footer">
-        <div className="container py-5">
-          <div className="row">
+    <StaticQuery
+      query={graphql`
+      query FooterQuery {
+        pages(id: {eq: "contact"}) {
+          content
+        }
+      }
+    `}
+      render={ data => {
+        const content = JSON.parse(data.pages.content) || {};
+        const address = content.address ? content.address.text : "Set an address on the contact page";
+        const phone = content.phone ? content.phone.text : "Set a phone number on the contact page";
 
-            <div className="col-lg-4 col-md-6 sm-mt-5">
-              <h4 className="title">Pathways to Care</h4>
-              <ul className="media-icon list-unstyled">
-                <li>
-                  <p className="mb-0">123 Spadina Ave, Toronto, ON</p>
-                </li>
-                <li><a href="mailto:hello@pathwaystocare.org">hello@pathwaystocare.org</a>
-                </li>
-                <li><a href="tel:+16471234567">(647) 123-4567</a>
-                </li>
-                <li><a href="tel:+16479876543">(647) 987-6543</a>
-                </li>
-              </ul>
-            </div>
+        return(
+          <footer className="footer white-bg pos-r o-hidden bg-contain" data-bg-img="images/pattern/01.png">
+            <div className="primary-footer">
+              <div className="container py-5">
+                <div className="row">
 
-            <div className="col-lg-8 col-md-12 mr-auto">
-              <div className="align-items-center white-bg box-shadow px-3 py-3 radius d-md-flex justify-content-between">
-                <h4 className="mb-0">Subscribe</h4>
-                <div className="subscribe-form sm-mt-2">
-                  <form id="mc-form" className="group">
-                    <input type="email" name="EMAIL" className="email" id="mc-email" placeholder="Email Address" required="" />
-                    <input className="btn btn-theme" type="submit" name="subscribe" />
-                  </form>
+                  <div className="col-lg-4 col-md-6 sm-mt-5">
+                    <h4 className="title">Pathways to Care</h4>
+                    <ul className="media-icon list-unstyled">
+                      <li>
+                        <div dangerouslySetInnerHTML={ {__html: address} } />
+                      </li>
+                      <li><a href={content.email ? content.email.link : ""}>{content.email ? content.email.anchor : "Set an email address on the contact page"}</a>
+                      </li>
+                      <li>
+                        <div dangerouslySetInnerHTML={ {__html: phone} } />
+                      </li>
+                    </ul>
+                  </div>
+
+                  <div className="col-lg-8 col-md-12 mr-auto">
+                    <div className="align-items-center white-bg box-shadow px-3 py-3 radius d-md-flex justify-content-between">
+                      <h4 className="mb-0">Subscribe</h4>
+                      <div className="subscribe-form sm-mt-2">
+                        <form id="mc-form" className="group">
+                          <input type="email" name="EMAIL" className="email" id="mc-email" placeholder="Email Address" required="" />
+                          <input className="btn btn-theme" type="submit" name="subscribe" />
+                        </form>
+                      </div>
+                    </div>
+                  </div>
                 </div>
               </div>
             </div>
-          </div>
-        </div>
-      </div>
-    </footer>
+          </footer>
+        )}
+      }
+    />
   );
 }
 

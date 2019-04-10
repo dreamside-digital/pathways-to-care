@@ -20,8 +20,8 @@ import {
 import Layout from "../layouts/default.js";
 
 import headerImage from "../assets/images/ptc-header.png";
-import headerPattern from "../assets/images/pattern/home-banner.png";
-import backgroundBanner from "../assets/images/banner/01.png";
+import headerPattern from "../assets/images/pattern/home-banner3.png";
+import backgroundBanner from "../assets/images/banner/blob-home.svg";
 import background02 from "../assets/images/bg/02.png";
 
 import FeaturedItem from "../components/home/FeaturedItem";

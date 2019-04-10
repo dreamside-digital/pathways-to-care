@@ -27,7 +27,7 @@ import headerImage from "../assets/images/ptc-graphic.png"
 import headerPattern  from "../assets/images/pattern/secondary-banner.png";
 import pattern07 from "../assets/images/pattern/07.png"
 import bg02 from "../assets/images/bg/02.png"
-import headerBg from "../assets/images/bg/06.png";
+import headerBg from "../assets/images/bg/squiggle.svg";
 
 const PAGE_ID = "contact"
 

@@ -17,7 +17,7 @@ import {
 import Layout from "../layouts/default.js";
 
 import headerPattern  from "../assets/images/pattern/secondary-banner.png";
-import headerBg from "../assets/images/bg/06.png";
+import headerBg from "../assets/images/bg/squiggle.svg";
 
 import firebase from "../firebase/init";
 
@@ -216,7 +216,7 @@ class AboutPage extends React.Component {
                   </div>
                 </div>
                 <div className="col-lg-8 col-md-6 sm-mt-5">
-                  <div className="map-canvas md-iframe" data-zoom="12" data-lat="-37.817085" data-lng="144.955631" data-type="roadmap" data-hue="#ffc400" data-title="Envato" data-icon-path="images/marker.png" data-content="Melbourne VIC 3000, Australia<br><a href='mailto:info@youremail.com'>info@youremail.com</a>"></div>
+                  <div className="map-canvas md-iframe iframe-h" data-zoom="8" data-lat="43.653908" data-lng="-79.384293" data-type="roadmap" data-hue="#ffc400" data-title="Envato" data-icon-path="images/marker.png" data-content="Melbourne VIC 3000, Australia<br><a href='mailto:info@youremail.com'>info@youremail.com</a>"></div>
                 </div>
 
               </div>

@@ -11,7 +11,7 @@ import Layout from "../layouts/default.js";
 import Profile from "../components/team/Profile"
 
 import headerPattern from "../assets/images/pattern/secondary-banner.png";
-import headerBg from "../assets/images/bg/06.png";
+import headerBg from "../assets/images/bg/squiggle.svg";
 
 const PAGE_ID = "team"
 
