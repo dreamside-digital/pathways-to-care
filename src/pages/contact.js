@@ -24,7 +24,7 @@ import Layout from "../layouts/default.js";
 import Ask from "../components/contact/Ask";
 
 import headerImage from "../assets/images/ptc-graphic.png"
-import pattern05 from "../assets/images/pattern/05.png"
+import headerPattern  from "../assets/images/pattern/secondary-banner.png";
 import pattern07 from "../assets/images/pattern/07.png"
 import bg02 from "../assets/images/bg/02.png"
 import headerBg from "../assets/images/bg/06.png";
@@ -97,7 +97,7 @@ class ContactPage extends React.Component {
     return (
       <Layout>
 
-        <section className="page-title o-hidden text-center grey-bg bg-contain animatedBackground" data-bg-img={ pattern05 }>
+        <section className="page-title o-hidden text-center grey-bg bg-contain animatedBackground" data-bg-img={ headerPattern }>
           <div className="container">
             <div className="row align-items-center">
               <div className="col-md-12">

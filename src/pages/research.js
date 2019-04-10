@@ -20,9 +20,8 @@ import {
 import Layout from "../layouts/default.js";
 import NewsItem from "../components/home/NewsItem";
 
-import headerImage  from "../assets/images/pattern/05.png";
+import headerPattern from "../assets/images/pattern/secondary-banner.png";
 import headerBg from "../assets/images/bg/06.png";
-import pattern03 from "../assets/images/pattern/03.png";
 import background02 from "../assets/images/bg/02.png";
 
 const PAGE_ID = "research"
@@ -94,7 +93,7 @@ class ResearchPage extends React.Component {
     return (
       <Layout>
 
-          <section className="page-title o-hidden text-center grey-bg bg-contain animatedBackground" data-bg-img={ headerImage }>
+          <section className="page-title o-hidden text-center grey-bg bg-contain animatedBackground" data-bg-img={ headerPattern }>
             <div className="container">
               <div className="row align-items-center">
                 <div className="col-md-12">
@@ -112,9 +111,6 @@ class ResearchPage extends React.Component {
 
 
           <section className="pos-r o-hidden">
-            <div className="pattern-3">
-              <img className="img-fluid rotateme" src={ pattern03 } alt="" />
-            </div>
             <div className="container">
 
               <div className="row align-items-center">

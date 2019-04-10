@@ -20,9 +20,8 @@ import {
 import Layout from "../layouts/default.js";
 
 import headerImage from "../assets/images/ptc-header.png";
-import backgroundPattern from "../assets/images/pattern/01.png";
+import headerPattern from "../assets/images/pattern/home-banner.png";
 import backgroundBanner from "../assets/images/banner/01.png";
-import pattern03 from "../assets/images/pattern/03.png";
 import background02 from "../assets/images/bg/02.png";
 
 import FeaturedItem from "../components/home/FeaturedItem";
@@ -101,7 +100,7 @@ class HomePage extends React.Component {
 
     return (
       <Layout>
-        <section className="fullscreen-banner p-0 banner o-hidden" data-bg-img={ backgroundPattern }>
+        <section className="fullscreen-banner p-0 banner o-hidden" data-bg-img={ headerPattern }>
           <div className="align-center">
             <div className="container">
               <div className="row align-items-center">
@@ -152,9 +151,6 @@ class HomePage extends React.Component {
 
 
           <section className="grey-bg pos-r">
-            <div className="pattern-3">
-              <img className="img-fluid rotateme" src={ pattern03 } alt=""/>
-            </div>
             <div className="container">
               <div className="row">
                 <div className="col-lg-12 col-md-12 ml-auto mr-auto">

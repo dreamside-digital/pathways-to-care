@@ -10,7 +10,7 @@ import {
 import Layout from "../layouts/default.js";
 import Profile from "../components/team/Profile"
 
-import pattern05 from "../assets/images/pattern/05.png"
+import headerPattern from "../assets/images/pattern/secondary-banner.png";
 import headerBg from "../assets/images/bg/06.png";
 
 const PAGE_ID = "team"
@@ -53,7 +53,7 @@ class TeamPage extends React.Component {
 
     return (
       <Layout>
-          <section className="page-title o-hidden text-center grey-bg bg-contain animatedBackground" data-bg-img={ pattern05 }>
+          <section className="page-title o-hidden text-center grey-bg bg-contain animatedBackground" data-bg-img={ headerPattern }>
             <div className="container">
               <div className="row align-items-center">
                 <div className="col-md-12">
