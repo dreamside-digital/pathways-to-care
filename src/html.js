@@ -38,7 +38,7 @@ export default class HTML extends React.Component {
           <script src={ withPrefix("/js/contact-form/contact-form.js")} type="text/javascript"></script>
           <script src={ withPrefix("/js/contact-form/jquery.validate.min.js")} type="text/javascript"></script>
 
-          <script src={`https://maps.googleapis.com/maps/api/js?key=${process.env.GATSBY_GOOGLE_MAPS_API_KEY}`} type="text/javascript"></script>
+          <script src={"https://maps.googleapis.com/maps/api/js?key=AIzaSyDsXmgBWiCiuRzWQz4I5ClTGxfFPl01EGY"} type="text/javascript"></script>
           <script src={ withPrefix("/js/map.js")} type="text/javascript"></script>
 
           <script src={ withPrefix("/js/wow.min.js")} type="text/javascript"></script>
