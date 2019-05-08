@@ -42,8 +42,17 @@ const Footer = (props) => {
                     <div className="align-items-center white-bg box-shadow px-3 py-3 radius d-md-flex justify-content-between">
                       <h4 className="mb-0">Subscribe</h4>
                       <div className="subscribe-form sm-mt-2">
-                        <form id="mc-form" className="group">
-                          <input type="email" name="EMAIL" className="email" id="mc-email" placeholder="Email Address" required="" />
+                        <form
+                          id="mc-embedded-subscribe-form"
+                          className="group validate"
+                          action="https://blackhealthalliance.us20.list-manage.com/subscribe/post?u=538e030e0d8a3cbfa9fa8c536&amp;id=b902029dd6"
+                          method="post"
+                          name="mc-embedded-subscribe-form"
+                          target="_blank"
+                          novalidate
+                        >
+                          <div style={{position: "absolute", left: "-5000px"}} aria-hidden="true"><input type="text" name="b_538e030e0d8a3cbfa9fa8c536_b902029dd6" tabindex="-1" value="" /></div>
+                          <input type="email" name="EMAIL" className="required email" id="mce-EMAIL" placeholder="Email Address" required="true" />
                           <input className="btn btn-theme" type="submit" name="subscribe" />
                         </form>
                       </div>

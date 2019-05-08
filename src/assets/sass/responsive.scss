@@ -302,7 +302,7 @@
   .dropdown.show > .dropdown-toggle::after {
     content: '-';
   }
-  .dropdown-submenu .dropdown-toggle::after {    
+  .dropdown-submenu .dropdown-toggle::after {
     border: none;
     line-height: 1.4em;
   }
@@ -808,7 +808,7 @@
     width: 60px;
   }
   /*Subscribe*/
-  #mc-form .btn {
+  #mc-embedded-subscribe-form .btn {
     width: 100%;
     border-radius: 5px;
     position: inherit;
