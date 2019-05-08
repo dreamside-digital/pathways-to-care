@@ -1,7 +1,7 @@
 # Project dependencies
 node_modules
 .cache/
-.firebase/
+.firebase
 
 # Build directory
 public/

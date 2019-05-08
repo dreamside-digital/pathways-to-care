@@ -238,7 +238,7 @@ class AboutPage extends React.Component {
 
           <section className="pos-r o-hidden" data-bg-img="images/pattern/01.png">
             <div className="container">
-              <div className="row align-items-center">
+              <div className="row">
                 <div className="col-lg-4 col-md-6">
                   <div className="section-title mb-0">
                     <h2 className="title">
@@ -248,7 +248,7 @@ class AboutPage extends React.Component {
                   </div>
                 </div>
                 <div className="col-lg-8 col-md-6 sm-mt-5">
-                  <div className="map-canvas md-iframe iframe-h" data-zoom="8" data-lat="43.653908" data-lng="-79.384293" data-type="roadmap" data-hue="#ffc400" data-title="Envato" data-icon-path="images/marker.png" data-content="Melbourne VIC 3000, Australia<br><a href='mailto:info@youremail.com'>info@youremail.com</a>"></div>
+                  <div className="map-canvas md-iframe iframe-h" data-zoom="6" data-lat="43.653908" data-lng="-79.384293" data-type="roadmap"></div>
                 </div>
 
               </div>
