@@ -14,6 +14,8 @@ import {
   EditableLink,
 } from 'react-easy-editables';
 
+import { uploadImage } from "../firebase/operations";
+
 import Layout from "../layouts/default.js";
 
 import headerPattern  from "../assets/images/pattern/secondary-banner.png";
@@ -105,7 +107,12 @@ class AboutPage extends React.Component {
 
                 <div className="col-lg-6 col-md-12">
                   <div className="info-img pos-r">
-                    <EditableImageUpload classes={"img-fluid"} content={content["mission-image"]} onSave={this.onSave("mission-image")} />
+                    <EditableImageUpload
+                      classes={"img-fluid"}
+                      content={content["mission-image"]}
+                      onSave={this.onSave("mission-image")}
+                      uploadImage={uploadImage}
+                    />
                   </div>
                 </div>
               </div>
@@ -120,7 +127,12 @@ class AboutPage extends React.Component {
               <div className="row align-items-center">
                 <div className="col-lg-6 col-md-12">
                   <div className="info-img pos-r">
-                    <EditableImageUpload classes={"img-fluid"} content={content["vision-image"]} onSave={this.onSave("vision-image")} />
+                    <EditableImageUpload
+                      classes={"img-fluid"}
+                      content={content["vision-image"]}
+                      onSave={this.onSave("vision-image")}
+                      uploadImage={uploadImage}
+                    />
                   </div>
                 </div>
 
@@ -159,7 +171,12 @@ class AboutPage extends React.Component {
                       <div role="tabpanel" className="tab-pane fade show active" id="tab1-1">
                         <div className="row align-items-center">
                           <div className="col-lg-6 col-md-12">
-                            <EditableImageUpload classes={"img-fluid"} content={content["year-1-image"]} onSave={this.onSave("year-1-image")} />
+                            <EditableImageUpload
+                              classes={"img-fluid"}
+                              content={content["year-1-image"]}
+                              onSave={this.onSave("year-1-image")}
+                              uploadImage={uploadImage}
+                            />
                           </div>
                           <div className="col-lg-6 col-md-12 md-mt-5">
                             <EditableParagraph content={content["year-1-description"]} onSave={this.onSave("year-1-description")} />
@@ -169,7 +186,12 @@ class AboutPage extends React.Component {
                       <div role="tabpanel" className="tab-pane fade" id="tab1-2">
                         <div className="row align-items-center">
                           <div className="col-lg-6 col-md-12">
-                            <EditableImageUpload classes={"img-fluid"} content={content["year-2-image"]} onSave={this.onSave("year-2-image")} />
+                            <EditableImageUpload
+                              classes={"img-fluid"}
+                              content={content["year-2-image"]}
+                              onSave={this.onSave("year-2-image")}
+                              uploadImage={uploadImage}
+                            />
                           </div>
                           <div className="col-lg-6 col-md-12 md-mt-5">
                             <EditableParagraph content={content["year-2-description"]} onSave={this.onSave("year-2-description")} />
@@ -179,7 +201,12 @@ class AboutPage extends React.Component {
                       <div role="tabpanel" className="tab-pane fade" id="tab1-3">
                         <div className="row align-items-center">
                           <div className="col-lg-6 col-md-12">
-                            <EditableImageUpload classes={"img-fluid"} content={content["year-3-image"]} onSave={this.onSave("year-3-image")} />
+                            <EditableImageUpload
+                              classes={"img-fluid"}
+                              content={content["year-3-image"]}
+                              onSave={this.onSave("year-3-image")}
+                              uploadImage={uploadImage}
+                            />
                           </div>
                           <div className="col-lg-6 col-md-12 md-mt-5">
                             <EditableParagraph content={content["year-3-description"]} onSave={this.onSave("year-3-description")} />
@@ -189,7 +216,12 @@ class AboutPage extends React.Component {
                       <div role="tabpanel" className="tab-pane fade" id="tab1-4">
                         <div className="row align-items-center">
                           <div className="col-lg-6 col-md-12">
-                            <EditableImageUpload classes={"img-fluid"} content={content["year-4-image"]} onSave={this.onSave("year-4-image")} />
+                            <EditableImageUpload
+                              classes={"img-fluid"}
+                              content={content["year-4-image"]}
+                              onSave={this.onSave("year-4-image")}
+                              uploadImage={uploadImage}
+                            />
                           </div>
                           <div className="col-lg-6 col-md-12 md-mt-5">
                             <EditableParagraph content={content["year-4-description"]} onSave={this.onSave("year-4-description")} />

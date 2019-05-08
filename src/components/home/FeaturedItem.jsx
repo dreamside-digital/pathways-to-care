@@ -2,9 +2,8 @@ import React from "react";
 
 import {
   EditableText,
-  EditableParagraph,
-  EditableImageUpload,
 } from 'react-easy-editables';
+
 
 const FeaturedItem = props => {
   const content = props.content || {};

@@ -17,6 +17,8 @@ import {
   EditableLink,
 } from 'react-easy-editables';
 
+import { uploadImage } from "../firebase/operations";
+
 import Layout from "../layouts/default.js";
 import NewsItem from "../components/home/NewsItem";
 
@@ -95,7 +97,7 @@ class ResearchPage extends React.Component {
 
           <section className="page-title o-hidden text-center grey-bg bg-contain animatedBackground" data-bg-img={ headerPattern }>
             <div className="container">
-              <div className="row align-items-center">
+              <div className="row">
                 <div className="col-md-12">
                   <h1 className="title">
                     <EditableText content={content["page-title"]} onSave={this.onSave("page-title")} />
@@ -125,7 +127,12 @@ class ResearchPage extends React.Component {
 
                 <div className="col-lg-6 col-md-12">
                   <div className="info-img pos-r">
-                    <EditableImageUpload classes={"img-fluid"} content={content["goals-image"]} onSave={this.onSave("goals-image")} />
+                    <EditableImageUpload
+                      classes={"img-fluid"}
+                      content={content["goals-image"]}
+                      onSave={this.onSave("goals-image")}
+                      uploadImage={uploadImage}
+                    />
                   </div>
                 </div>
               </div>
@@ -134,6 +141,39 @@ class ResearchPage extends React.Component {
 
 
           <section className="grey-bg" data-bg-img={ background02 }>
+            <div className="container">
+
+              <div className="row">
+
+                <div className="col-12 md-mt-5">
+                  <div className="section-title mb-4">
+                    <h2 className="title">
+                      <EditableText content={content["toc-title"]} onSave={this.onSave("toc-title")} />
+                    </h2>
+                  </div>
+                  <EditableParagraph content={content["toc-description"]} onSave={this.onSave("toc-description")} />
+                </div>
+              </div>
+
+              <div className="row justify-content-center">
+
+                <div className="col-12 col-md-8 mt-5">
+                  <div className="info-img pos-r">
+                    <EditableImageUpload
+                      classes={"img-fluid"}
+                      content={content["toc-image"]}
+                      onSave={this.onSave("toc-image")}
+                      uploadImage={uploadImage}
+                    />
+                  </div>
+                </div>
+
+              </div>
+            </div>
+          </section>
+
+
+          <section>
             <div className="container">
               <div className="row">
                 <div className="col-lg-12 col-md-12 ml-auto mr-auto">
@@ -145,6 +185,12 @@ class ResearchPage extends React.Component {
                 </div>
               </div>
               <div className="row">
+              {
+                (relatedPublications.length < 1) &&
+                <div className="col-12">
+                  <p>Coming soon...</p>
+                </div>
+              }
 
               {
                 relatedPublications.map((content, index) => {

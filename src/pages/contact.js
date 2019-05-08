@@ -171,27 +171,60 @@ class ContactPage extends React.Component {
                     </h2>
                   </div>
                   <div className="contact-main">
-                    <form id="contact-form" className="row" method="post" action="php/contact.php">
+                    <form id="contact-form" className="row" method="post" action={`https://formsubmit.co/ptc@blackhealthalliance.ca`}>
                       <div className="messages"></div>
                       <div className="form-group col-md-6">
-                        <input id="form_name" type="text" name="name" className="form-control" placeholder="Name" required="required" data-error="Name is required." />
+                        <input
+                          id="form_name"
+                          type="text"
+                          name="Name"
+                          className="form-control"
+                          placeholder="Name"
+                          required="required"
+                          data-error="Name is required."
+                        />
                         <div className="help-block with-errors"></div>
                       </div>
                       <div className="form-group col-md-6">
-                        <input id="form_email" type="email" name="email" className="form-control" placeholder="Email" required="required" data-error="Valid email is required." />
+                        <input
+                          id="form_email"
+                          type="email"
+                          name="Email"
+                          className="form-control"
+                          placeholder="Email"
+                          required="required"
+                          data-error="Valid email is required."
+                        />
                         <div className="help-block with-errors"></div>
                       </div>
                       <div className="form-group col-md-12">
-                        <input id="form_phone" type="tel" name="phone" className="form-control" placeholder="Phone" required="required" data-error="Phone is required" />
+                        <input
+                          id="form_phone"
+                          type="tel"
+                          name="Phone"
+                          className="form-control"
+                          placeholder="Phone"
+                          data-error="Please enter a valid phone number."
+                        />
                         <div className="help-block with-errors"></div>
                       </div>
                       <div className="form-group col-md-12">
-                        <textarea id="form_message" name="message" className="form-control" placeholder="Message" rows="4" required="required" data-error="Please,leave us a message."></textarea>
+                        <textarea
+                          id="form_message"
+                          name="message"
+                          className="form-control"
+                          placeholder="Message"
+                          rows="4"
+                          required="required"
+                          data-error="Please, leave us a message.">
+                        </textarea>
                         <div className="help-block with-errors"></div>
                       </div>
                       <div className="col-md-12">
-                      <button className="btn btn-theme btn-radius"><span>Send Message</span>
-                      </button>
+                        <input type="hidden" name="_next" value="https://pathways-to-care.firebaseapp.com/thanks" />
+                        <input type="text" name="_honey" style={{display:"none"}} />
+                        <button className="btn btn-theme btn-radius" type="submit"><span>Send Message</span>
+                        </button>
                       </div>
                     </form>
                   </div>
@@ -200,7 +233,7 @@ class ContactPage extends React.Component {
                   <ul className="contact-info list-unstyled">
                     <li className="mb-4">
                       <i className="flaticon-location"></i>
-                      <EditableText content={content["address-label"]} onSave={this.onSave("address-label")} />
+                      <span><EditableText content={content["address-label"]} onSave={this.onSave("address-label")} /></span>
                       <EditableParagraph content={content["address"]} onSave={this.onSave("address")} />
                     </li>
                     <li className="mb-4">
@@ -210,7 +243,7 @@ class ContactPage extends React.Component {
                     </li>
                     <li className="mb-4">
                       <i className="flaticon-call"></i>
-                      <EditableText content={content["phone-label"]} onSave={this.onSave("phone-label")} />
+                      <span><EditableText content={content["phone-label"]} onSave={this.onSave("phone-label")} /></span>
                       <EditableParagraph content={content["phone"]} onSave={this.onSave("phone")} />
                     </li>
                   </ul>
