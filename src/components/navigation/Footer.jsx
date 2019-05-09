@@ -46,7 +46,7 @@ const Footer = (props) => {
                           id="mc-embedded-subscribe-form"
                           className="group validate"
                           action="https://blackhealthalliance.us20.list-manage.com/subscribe/post?u=538e030e0d8a3cbfa9fa8c536&amp;id=b902029dd6"
-                          method="post"
+                          method="POST"
                           name="mc-embedded-subscribe-form"
                           target="_blank"
                           noValidate
