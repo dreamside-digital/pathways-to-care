@@ -35,7 +35,7 @@
     "prop-types": "^15.6.2",
     "react": "^16.8.0",
     "react-dom": "^16.8.0",
-    "react-easy-editables": "^0.3.0",
+    "react-easy-editables": "^0.4.0",
     "react-firebaseui": "^1.1.6",
     "react-helmet": "^5.2.0",
     "react-jss": "^8.6.1",
