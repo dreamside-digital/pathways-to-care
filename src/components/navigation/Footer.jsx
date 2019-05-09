@@ -49,10 +49,10 @@ const Footer = (props) => {
                           method="post"
                           name="mc-embedded-subscribe-form"
                           target="_blank"
-                          novalidate
+                          noValidate
                         >
-                          <div style={{position: "absolute", left: "-5000px"}} aria-hidden="true"><input type="text" name="b_538e030e0d8a3cbfa9fa8c536_b902029dd6" tabindex="-1" value="" /></div>
-                          <input type="email" name="EMAIL" className="required email" id="mce-EMAIL" placeholder="Email Address" required="true" />
+                          <div style={{position: "absolute", left: "-5000px"}} aria-hidden="true"><input type="text" name="b_538e030e0d8a3cbfa9fa8c536_b902029dd6" tabIndex="-1" defaultValue="" /></div>
+                          <input type="email" name="EMAIL" className="required email" id="mce-EMAIL" placeholder="Email Address" required={true} />
                           <input className="btn btn-theme" type="submit" name="subscribe" />
                         </form>
                       </div>

@@ -27,6 +27,7 @@ import background02 from "../assets/images/bg/02.png";
 import FeaturedItem from "../components/home/FeaturedItem";
 import FeaturedItemWithTitle from "../components/home/FeaturedItemWithTitle";
 import NewsItem from "../components/home/NewsItem";
+import Carousel from "../components/common/Carousel";
 
 import { uploadImage } from "../firebase/operations";
 
@@ -280,34 +281,14 @@ class HomePage extends React.Component {
                 </div>
               </div>
 
-              <div className="row">
-
-              {
-                newsItems.map((content, index) => {
-                  return (
-                    <div className="col-lg-4 col-md-12" key={`news-item-${index}`}>
-                      <NewsItem
-                        content={content}
-                        onSave={this.editListItem("news-items", index)}
-                      />
-                      { this.props.isEditingPage &&
-                        <div className="justify-content-start">
-                          <Button onClick={this.deleteListItem("news-items", index)}>Delete</Button>
-                        </div>
-                      }
-                    </div>
-                  )
-                })
-
-              }
-              {
-                this.props.isEditingPage &&
-                <div className="col-lg-12">
-                  <Button onClick={this.addListItem("news-items")}>Add list item</Button>
-                </div>
-              }
-
-              </div>
+              <Carousel
+                collection={newsItems}
+                SlideComponent={NewsItem}
+                onSave={this.onSave('news-items')}
+                slidesToShow={3}
+                isEditingPage={this.props.isEditingPage}
+                defaultContent={DEFAULT_COMPONENT_CONTENT['news-items']}
+              />
 
             </div>
           </section>
