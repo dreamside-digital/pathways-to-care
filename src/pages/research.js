@@ -20,7 +20,8 @@ import {
 import { uploadImage } from "../firebase/operations";
 
 import Layout from "../layouts/default.js";
-import NewsItem from "../components/home/NewsItem";
+import Publication from "../components/common/Publication";
+import Carousel from "../components/common/Carousel";
 
 import headerPattern from "../assets/images/pattern/secondary-banner.png";
 import headerBg from "../assets/images/bg/squiggle.svg";
@@ -186,37 +187,25 @@ class ResearchPage extends React.Component {
               </div>
               <div className="row">
               {
-                (relatedPublications.length < 1) &&
+                (relatedPublications.length < 1 && !this.props.isEditingPage) &&
                 <div className="col-12">
                   <p>Coming soon...</p>
                 </div>
               }
 
               {
-                relatedPublications.map((content, index) => {
-                  return (
-                    <div className="col-lg-4 col-md-12" key={`related-publication-${index}`}>
-                      <NewsItem
-                        content={content["news-item-1"]}
-                        onSave={this.editListItem("related-publications", index)}
-                      />
-                      { this.props.isEditingPage &&
-                        <div className="justify-content-start">
-                          <Button onClick={this.deleteListItem("related-publications", index)}>Delete</Button>
-                        </div>
-                      }
-                    </div>
-                  )
-                })
-
-              }
-              {
-                this.props.isEditingPage &&
-                <div className="col-lg-12">
-                  <Button onClick={this.addListItem("related-publications")}>Add list item</Button>
+                (relatedPublications.length > 0 || this.props.isEditingPage) &&
+                <div className="col-12">
+                  <Carousel
+                    collection={relatedPublications}
+                    SlideComponent={Publication}
+                    onSave={this.onSave('related-publications')}
+                    options={{slidesToShow: 3}}
+                    isEditingPage={this.props.isEditingPage}
+                    defaultContent={DEFAULT_COMPONENT_CONTENT['related-publications']}
+                  />
                 </div>
               }
-
               </div>
             </div>
           </section>

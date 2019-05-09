@@ -5,13 +5,13 @@ import {
   PlainTextEditor,
   RichTextEditor,
   ImageUploadEditor,
-  LinkEditor,
+  FileUploadEditor,
   Editable
 } from 'react-easy-editables';
 
-import { uploadImage } from "../../firebase/operations"
+import { uploadImage, uploadFile } from "../../firebase/operations"
 
-class NewsItemEditor extends React.Component {
+class PublicationEditor extends React.Component {
   constructor(props) {
     super(props);
     this.state = { content: this.props.content };
@@ -37,29 +37,34 @@ class NewsItemEditor extends React.Component {
           <div className="post-image">
             <ImageUploadEditor
               classes="img-fluid h-100 w-100"
-              content={content["news-item-image"]}
-              handleEditorChange={this.handleEditorChange("news-item-image")}
+              content={content["publication-item-image"]}
+              handleEditorChange={this.handleEditorChange("publication-item-image")}
               uploadImage={uploadImage}
             />
           </div>
           <div className="post-desc">
             <div className="post-date">
               <PlainTextEditor
-                content={content["news-item-date"]}
-                handleEditorChange={this.handleEditorChange("news-item-date")}
+                content={content["publication-item-date"]}
+                handleEditorChange={this.handleEditorChange("publication-item-date")}
               />
             </div>
             <div className="post-title mb-4">
               <h4>
-                <LinkEditor
-                  content={content["news-item-link"]}
-                  handleEditorChange={this.handleEditorChange("news-item-link")}
+                <PlainTextEditor
+                  content={content["publication-item-title"]}
+                  handleEditorChange={this.handleEditorChange("publication-item-title")}
                 />
               </h4>
             </div>
             <RichTextEditor
-              content={content["news-item-description"]}
-              handleEditorChange={this.handleEditorChange("news-item-description")}
+              content={content["publication-item-description"]}
+              handleEditorChange={this.handleEditorChange("publication-item-description")}
+            />
+            <FileUploadEditor
+              content={content["publication-item-file"]}
+              handleEditorChange={this.handleEditorChange("publication-item-file")}
+              uploadFile={uploadFile}
             />
           </div>
         </div>
@@ -68,7 +73,7 @@ class NewsItemEditor extends React.Component {
   }
 }
 
-const NewsItem = props => {
+const Publication = props => {
 
   const content = props.content || {};
 
@@ -78,37 +83,41 @@ const NewsItem = props => {
 
   return (
     <Editable
-      Editor={NewsItemEditor}
+      Editor={PublicationEditor}
       handleSave={handleSave}
       content={content}
       {...props}
     >
       <div className={`post ${props.classes}`}>
         <div className="post-image">
-          <a href={content["news-item-image"]["imageSrc"]} target="_blank">
+          <a href={content["publication-item-image"]["imageSrc"]} target="_blank">
             <img
               className="img-fluid h-100 w-100"
-              src={content["news-item-image"]["imageSrc"]}
-              alt={content["news-item-image"]["caption"]}
+              src={content["publication-item-image"]["imageSrc"]}
+              alt={content["publication-item-image"]["caption"]}
             />
           </a>
         </div>
         <div className="post-desc">
           <div className="post-date">
-            {content["news-item-date"]["text"]}
+            {content["publication-item-date"]["text"]}
           </div>
           <div className="post-title">
             <h4>
-              <a href={ content["news-item-link"]["link"] }>
-                { content["news-item-link"]["anchor"] }
-              </a>
+              { content["publication-item-title"]["text"] }
             </h4>
           </div>
-          <div dangerouslySetInnerHTML={ {__html: content["news-item-description"]["text"]} } />
+          <div dangerouslySetInnerHTML={ {__html: content["publication-item-description"]["text"]} } />
+
+          <div className="action-link">
+            <a href={content["publication-item-file"]["filepath"]} target="_blank" rel="noopener noreferrer">
+              { `Download publication`}
+            </a>
+          </div>
         </div>
       </div>
     </Editable>
   );
 };
 
-export default NewsItem;
+export default Publication;

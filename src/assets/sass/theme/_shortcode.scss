@@ -534,12 +534,17 @@
     padding: 30px 30px;
     background: $whitebg;
     margin-bottom: 25px;
-    h5 {
+
+    .post-date {
+      font-weight: 500;
+    }
+
+    .post-title h4 {
       margin: 15px 0 0;
       text-transform: capitalize;
-      font-weight: 500;
+
       a {
-        color: $black;
+        color: $theme-color2;
         display: inline-block;
         &:hover {
           color: $theme-color;
@@ -548,15 +553,6 @@
     }
     p {
       margin: 15px 0;
-    }
-    .post-date {
-      color: $theme-color2;
-      font-size: 24px;
-      font-weight: 500;
-      span {
-        font-size: 15px;
-        color: $body-color;
-      }
     }
   }
 }

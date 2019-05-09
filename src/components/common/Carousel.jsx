@@ -4,10 +4,9 @@ import Carousel from "nuka-carousel"
 import Button from "@material-ui/core/Button"
 
 
-const EditableCarousel = ({ collection, SlideComponent, onSave, isEditingPage, maxSlides, defaultContent }) => {
+const EditableCarousel = ({ collection, SlideComponent, onSave, isEditingPage, maxSlides, defaultContent, options }) => {
 
   const onSaveItem = (index) => item => {
-    console.log(item)
     const newCollection = [...collection]
     newCollection[index] = item
     onSave(newCollection)
@@ -37,17 +36,18 @@ const EditableCarousel = ({ collection, SlideComponent, onSave, isEditingPage, m
     onSave(newCollection)
   }
 
-  const options = {
+  const defaultOptions = {
     wrapAround: true,
     slidesToShow: 3,
     slidesToScroll: 1,
     cellSpacing: 30,
-    framePadding: 15,
   }
+
+  const carouselOptions = { ...defaultOptions, ...options }
 
   return (
     <>
-      <Carousel { ...options }>
+      <Carousel { ...carouselOptions }>
         {collection.map((content, i) => {
           return(
             <SlideComponent
@@ -61,7 +61,11 @@ const EditableCarousel = ({ collection, SlideComponent, onSave, isEditingPage, m
       </Carousel>
       {
         isEditingPage &&
-        <Button onClick={onAddItem}>Add item</Button>
+        <div className="row mt-4">
+          <div className="col-12">
+            <Button onClick={onAddItem}>Add item</Button>
+          </div>
+        </div>
       }
     </>
   );
@@ -70,7 +74,7 @@ const EditableCarousel = ({ collection, SlideComponent, onSave, isEditingPage, m
 EditableCarousel.defaultProps = {
   collection: [],
   isEditingPage: false,
-
+  options: {}
 }
 
 export default EditableCarousel;

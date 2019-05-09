@@ -18,10 +18,11 @@ export const DEFAULT_COMPONENT_CONTENT = {
     "featured-item-description": { "text": "Placeholder" }
   },
   "related-publications": {
-    "news-item-image": {},
-    "news-item-date": {},
-    "news-item-link": {},
-    "news-item-description": {},
+    "publication-item-image": { "imageSrc": "https://www.nomadiclabs.ca/img/logo-03.png", "caption": "" },
+    "publication-item-date": { "text": "Publication date" },
+    "publication-item-title": { "text": "Publication title" },
+    "publication-item-description": { "text": "<p>Summary</p>" },
+    "publication-item-file": { "filepath": "/" },
   },
   "news-items": {
     "news-item-image": { "imageSrc": "https://www.nomadiclabs.ca/img/logo-03.png", "caption": "" },
