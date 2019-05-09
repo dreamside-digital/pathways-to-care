@@ -7,6 +7,7 @@ import Button from "@material-ui/core/Button"
 const EditableCarousel = ({ collection, SlideComponent, onSave, isEditingPage, maxSlides, defaultContent }) => {
 
   const onSaveItem = (index) => item => {
+    console.log(item)
     const newCollection = [...collection]
     newCollection[index] = item
     onSave(newCollection)
@@ -40,6 +41,8 @@ const EditableCarousel = ({ collection, SlideComponent, onSave, isEditingPage, m
     wrapAround: true,
     slidesToShow: 3,
     slidesToScroll: 1,
+    cellSpacing: 30,
+    framePadding: 15,
   }
 
   return (
@@ -50,8 +53,8 @@ const EditableCarousel = ({ collection, SlideComponent, onSave, isEditingPage, m
             <SlideComponent
               key={`slide-${i}`}
               content={content}
-              onSave={() => console.log('save!')}
-              onDelete={() => console.log('delete!')}
+              onSave={onSaveItem(i)}
+              onDelete={onDeleteItem(i)}
             />
           )
         })}
@@ -66,7 +69,6 @@ const EditableCarousel = ({ collection, SlideComponent, onSave, isEditingPage, m
 
 EditableCarousel.defaultProps = {
   collection: [],
-  maxSlides: 1,
   isEditingPage: false,
 
 }

@@ -24,9 +24,9 @@ export const DEFAULT_COMPONENT_CONTENT = {
     "news-item-description": {},
   },
   "news-items": {
-    "news-item-image": {},
-    "news-item-date": {},
-    "news-item-link": {},
-    "news-item-description": {},
+    "news-item-image": { "imageSrc": "https://www.nomadiclabs.ca/img/logo-03.png", "caption": "" },
+    "news-item-date": { "text": "Date" },
+    "news-item-link": { "anchor": "News item title", "link": "/" },
+    "news-item-description": { "text": "<p>Description</p>" },
   },
 }
