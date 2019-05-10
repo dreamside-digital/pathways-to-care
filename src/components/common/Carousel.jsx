@@ -1,7 +1,10 @@
 import React from "react";
-import Carousel from "nuka-carousel"
+import Slider from "react-slick"
 
 import Button from "@material-ui/core/Button"
+
+import "slick-carousel/slick/slick.css";
+import "slick-carousel/slick/slick-theme.css";
 
 const DEFAULT_SLIDES_TO_SHOW = 3;
 const MAX_MOBILE_VIEWPORT_WIDTH = 992;
@@ -29,68 +32,60 @@ class EditableCarousel extends React.Component {
     this.setState({ viewportWidth: window.innerWidth });
   }
 
-  onSaveItem = (index) => item => {
-    const newCollection = [...this.props.collection]
-    newCollection[index] = item
+  onSaveItem = itemId => item => {
+    const newCollection = {
+      ...this.props.collection,
+      [itemId]: item
+    }
+
     this.props.onSave(newCollection)
   }
 
-  onDeleteItem = (index) => () => {
-    const newCollection = [...this.props.collection]
-    newCollection.splice(index, 1)
-    this.props.onSave(newCollection)
+  onDeleteItem = itemId => () => {
+    this.props.onDeleteItem(itemId)
   }
 
   onAddItem = () => {
-    const newCollection = [...this.props.collection]
-    newCollection.push(this.props.defaultContent)
-    this.props.onSave(newCollection)
+    this.props.onAddItem(this.props.defaultContent)
   }
 
-  onEditItem = (index) => field => content => {
-    const newCollection = [...this.props.collection]
-    const updated = {
-      ...newCollection[index],
-      [field]: content
-    };
-
-    newCollection[index] = updated;
-
-    this.props.onSave(newCollection)
-  }
 
   render() {
     const { viewportWidth } = this.state;
     const isMobile = Boolean(viewportWidth <= MAX_MOBILE_VIEWPORT_WIDTH)
     const { collection, SlideComponent, isEditingPage, options } = this.props;
 
-    const allowControls = options.slidesToShow ? (collection.length < options.slidesToShow) : (collection.length < DEFAULT_SLIDES_TO_SHOW)
     const slidesToShow = isMobile ? 1 : options.slidesToShow || DEFAULT_SLIDES_TO_SHOW;
 
     const carouselOptions = {
-      wrapAround: options.wrapAround || true,
+      infinite: false,
       slidesToShow: slidesToShow,
       slidesToScroll: options.slidesToShow || 1,
-      cellSpacing: options.cellSpacing || 30,
-      withoutControls: allowControls,
-      dragging: isEditingPage ? false : !allowControls,
-      swiping: !allowControls,
+      draggable: !isEditingPage,
+      swipe: !isEditingPage,
+    }
+
+    const collectionKeys = Object.keys(collection);
+
+    if (!isEditingPage && (collectionKeys.length < 1)) {
+      return <p>Coming soon!</p>
     }
 
     return (
       <>
-        <Carousel { ...carouselOptions }>
-          {collection.map((content, i) => {
+        <Slider { ...carouselOptions }>
+          {collectionKeys.map(key => {
+            const content = collection[key];
             return(
               <SlideComponent
-                key={`slide-${i}`}
+                key={`slide-${key}`}
                 content={content}
-                onSave={this.onSaveItem(i)}
-                onDelete={this.onDeleteItem(i)}
+                onSave={this.onSaveItem(key)}
+                onDelete={this.onDeleteItem(key)}
               />
             )
           })}
-        </Carousel>
+        </Slider>
         {
           isEditingPage &&
           <div className="row mt-4">
@@ -106,7 +101,7 @@ class EditableCarousel extends React.Component {
 
 
 EditableCarousel.defaultProps = {
-  collection: [],
+  collection: {},
   isEditingPage: false,
   options: {}
 }

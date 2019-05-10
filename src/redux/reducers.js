@@ -59,17 +59,32 @@ export const page = (state={}, action) => {
         ...state,
         data: action.data
       }
-    case 'UPDATE_PAGE_DATA':
+    case 'UPDATE_PAGE_CONTENT':
       return {
         ...state,
         data: {
           ...state.data,
           content: {
             ...state.data.content,
-            [action.contentId]: action.content
+            [action.location]: {
+              ...state.data.content[action.location],
+              ...action.content
+            }
           }
         }
       }
+    case 'SET_PAGE_CONTENT':
+      return {
+        ...state,
+        data: {
+          ...state.data,
+          content: {
+            ...state.data.content,
+            [action.location]: action.content
+          }
+        }
+      }
+
     default:
       return state
   }

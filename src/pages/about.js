@@ -3,7 +3,7 @@ import { graphql } from "gatsby";
 import { connect } from "react-redux";
 
 import {
-  updatePage,
+  updatePageContent,
   loadPageData,
 } from "../redux/actions";
 
@@ -23,12 +23,11 @@ import headerBg from "../assets/images/bg/squiggle.svg";
 
 import firebase from "../firebase/init";
 
-const PAGE_ID = "about"
 
 const mapDispatchToProps = dispatch => {
   return {
-    onUpdatePageData: (page, id, data) => {
-      dispatch(updatePage(page, id, data));
+    onUpdatePageContent: (location, data) => {
+      dispatch(updatePageContent(location, data));
     },
     onLoadPageData: data => {
       dispatch(loadPageData(data));
@@ -45,7 +44,6 @@ const mapStateToProps = state => {
 class AboutPage extends React.Component {
 
   componentDidMount() {
-    console.log(this.props)
     const initialPageData = {
       ...this.props.data.pages,
       content: JSON.parse(this.props.data.pages.content)
@@ -55,20 +53,9 @@ class AboutPage extends React.Component {
   }
 
   onSave = id => content => {
-    this.props.onUpdatePageData(PAGE_ID, id, content);
+    this.props.onUpdatePageContent(id, content);
   };
 
-  uploadImage(image) {
-    return new Promise(resolve => {
-      const storage = firebase.storage().ref();
-      const fileRef = storage.child(`images/${image.name}`);
-
-      fileRef.put(image).then(snapshot => {
-        console.log("snapshot.downloadURL", snapshot.downloadURL)
-        resolve(snapshot.downloadURL)
-      });
-    })
-  }
 
   render() {
     const content = this.props.pageData ? this.props.pageData.content : {};
@@ -274,7 +261,7 @@ class AboutPage extends React.Component {
                     classes="img-center"
                     content={content["stakeholder-1-image"]}
                     onSave={this.onSave("stakeholder-1-image")}
-                    uploadImage={this.uploadImage}
+                    uploadImage={uploadImage}
                   />
                 </div>
                 <div className="col-lg-2 col-md-2 col-sm-6 xs-mt-5">
@@ -282,7 +269,7 @@ class AboutPage extends React.Component {
                     classes="img-center"
                     content={content["stakeholder-2-image"]}
                     onSave={this.onSave("stakeholder-2-image")}
-                    uploadImage={this.uploadImage}
+                    uploadImage={uploadImage}
                   />
                 </div>
                 <div className="col-lg-2 col-md-2 col-sm-6 sm-mt-5">
@@ -290,7 +277,7 @@ class AboutPage extends React.Component {
                     classes="img-center"
                     content={content["stakeholder-3-image"]}
                     onSave={this.onSave("stakeholder-3-image")}
-                    uploadImage={this.uploadImage}
+                    uploadImage={uploadImage}
                   />
                 </div>
                 <div className="col-lg-2 col-md-2 col-sm-6 sm-mt-5">
@@ -298,7 +285,7 @@ class AboutPage extends React.Component {
                     classes="img-center"
                     content={content["stakeholder-4-image"]}
                     onSave={this.onSave("stakeholder-4-image")}
-                    uploadImage={this.uploadImage}
+                    uploadImage={uploadImage}
                   />
                 </div>
                 <div className="col-lg-2 col-md-2 col-sm-6 sm-mt-5">
@@ -306,7 +293,7 @@ class AboutPage extends React.Component {
                     classes="img-center"
                     content={content["stakeholder-5-image"]}
                     onSave={this.onSave("stakeholder-5-image")}
-                    uploadImage={this.uploadImage}
+                    uploadImage={uploadImage}
                   />
                 </div>
               </div>

@@ -149,7 +149,7 @@ a, i, .btn, button, img, span, .animatedBackground, .navbar-nav .nav-link:before
 }
 
 .team-member {
-  &:hover .team-description, &.active .team-description, &:hover .team-social-icon, &.active .team-social-icon {
+  &:hover, &.active {
     @include box-shadow(0px 5px 15px rgba(0, 0, 0, 0.1));
   }
 }

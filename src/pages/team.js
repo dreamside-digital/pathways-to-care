@@ -1,11 +1,16 @@
 import React from "react";
 import { graphql } from "gatsby";
 import { connect } from "react-redux";
+import Button from "@material-ui/core/Button"
 import { EditablesContext, theme, EditableText, EditableParagraph } from 'react-easy-editables';
 import {
-  updatePage,
+  updatePageContent,
+  pushContentItem,
+  removeContentItem,
   loadPageData,
 } from "../redux/actions";
+
+import { DEFAULT_COMPONENT_CONTENT } from "../utils/constants"
 
 import Layout from "../layouts/default.js";
 import Profile from "../components/team/Profile"
@@ -13,29 +18,34 @@ import Profile from "../components/team/Profile"
 import headerPattern from "../assets/images/pattern/secondary-banner.png";
 import headerBg from "../assets/images/bg/squiggle.svg";
 
-const PAGE_ID = "team"
 
 const mapDispatchToProps = dispatch => {
   return {
-    onUpdatePageData: (page, id, data) => {
-      dispatch(updatePage(page, id, data));
+    onUpdatePageContent: (location, data) => {
+      dispatch(updatePageContent(location, data));
+    },
+    onPushContentItem: (location, data) => {
+      dispatch(pushContentItem(location, data))
+    },
+    onRemoveContentItem: (location, itemId) => {
+      dispatch(removeContentItem(location, itemId))
     },
     onLoadPageData: data => {
       dispatch(loadPageData(data));
-    },
+    }
   };
 };
 
 const mapStateToProps = state => {
   return {
     pageData: state.page.data,
+    isEditingPage: state.adminTools.isEditingPage,
   };
 };
 
 class TeamPage extends React.Component {
 
   componentDidMount() {
-    console.log(this.props)
     const initialPageData = {
       ...this.props.data.pages,
       content: JSON.parse(this.props.data.pages.content)
@@ -45,11 +55,33 @@ class TeamPage extends React.Component {
   }
 
   onSave = id => content => {
-    this.props.onUpdatePageData(PAGE_ID, id, content);
+    this.props.onUpdatePageContent(id, content);
   };
+
+  addListItem = listId => () => {
+    const emptyItem = DEFAULT_COMPONENT_CONTENT[listId];
+    this.props.onPushContentItem(listId, emptyItem);
+  }
+
+  deleteListItem = (listId, itemId) => () => {
+    this.props.onRemoveContentItem(listId, itemId)
+  }
+
+  editListItem = (listId, key) => field => content => {
+    const list = {
+      ...this.props.pageData.content[listId],
+      [key]: {
+        ...this.props.pageData.content[listId][key],
+        [field]: content
+      }
+    };
+
+    this.props.onUpdatePageContent(listId, list);
+  }
 
   render() {
     const content = this.props.pageData ? this.props.pageData.content : {};
+    const teamMembers = content["team-members"] ? content["team-members"] : {};
 
     return (
       <Layout>
@@ -81,13 +113,26 @@ class TeamPage extends React.Component {
               </div>
             </div>
             <div className="row">
-              <div className="col-lg-6 col-md-6">
-                <Profile content={content["team-member-1"]} onSave={this.onSave("team-member-1")} />
-              </div>
-              <div className="col-lg-6 col-md-6">
-                <Profile content={content["team-member-2"]} onSave={this.onSave("team-member-2")} />
-              </div>
+              {
+                Object.keys(teamMembers).map(key => {
+                  const content = teamMembers[key];
 
+                  return (
+                    <div className="col-lg-6 col-md-6" key={`team-member-${key}`}>
+                      <Profile content={content} onSave={this.editListItem("team-members", key)} />
+                      { this.props.isEditingPage &&
+                        <Button onClick={this.deleteListItem("team-members", key)}>Delete</Button>
+                      }
+                    </div>
+                  )
+                })
+              }
+              {
+                this.props.isEditingPage &&
+                <div className="col-lg-12">
+                  <Button onClick={this.addListItem("team-members")}>Add item</Button>
+                </div>
+              }
             </div>
           </div>
         </section>

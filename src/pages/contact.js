@@ -6,7 +6,7 @@ import Button from "@material-ui/core/Button"
 import { DEFAULT_COMPONENT_CONTENT } from "../utils/constants"
 
 import {
-  updatePage,
+  updatePageContent,
   loadPageData,
 } from "../redux/actions";
 
@@ -29,12 +29,11 @@ import pattern07 from "../assets/images/pattern/07.png"
 import bg02 from "../assets/images/bg/02.png"
 import headerBg from "../assets/images/bg/squiggle.svg";
 
-const PAGE_ID = "contact"
 
 const mapDispatchToProps = dispatch => {
   return {
-    onUpdatePageData: (page, id, data) => {
-      dispatch(updatePage(page, id, data));
+    onUpdatePageContent: (location, data) => {
+      dispatch(updatePageContent(location, data));
     },
     onLoadPageData: data => {
       dispatch(loadPageData(data));
@@ -52,7 +51,6 @@ const mapStateToProps = state => {
 class ContactPage extends React.Component {
 
   componentDidMount() {
-    console.log(this.props)
     const initialPageData = {
       ...this.props.data.pages,
       content: JSON.parse(this.props.data.pages.content)
@@ -62,14 +60,14 @@ class ContactPage extends React.Component {
   }
 
   onSave = id => content => {
-    this.props.onUpdatePageData(PAGE_ID, id, content);
+    this.props.onUpdatePageContent(id, content);
   };
 
   addListItem = listId => () => {
     const list = this.props.pageData.content[listId] ? [...this.props.pageData.content[listId]] : [];
     const emptyItem = DEFAULT_COMPONENT_CONTENT[listId];
     list.push(emptyItem)
-    this.props.onUpdatePageData(PAGE_ID, listId, list)
+    this.props.onUpdatePageContent(listId, list)
   }
 
   editListItem = (listId, index) => field => content => {
@@ -81,13 +79,13 @@ class ContactPage extends React.Component {
 
     list[index] = updated;
 
-    this.props.onUpdatePageData(PAGE_ID, listId, list);
+    this.props.onUpdatePageContent(listId, list);
   }
 
   deleteListItem = (listId, index) => () => {
     const list = [...this.props.pageData.content[listId]]
     list.splice(index, 1)
-    this.props.onUpdatePageData(PAGE_ID, listId, list)
+    this.props.onUpdatePageContent(listId, list)
   }
 
   render() {

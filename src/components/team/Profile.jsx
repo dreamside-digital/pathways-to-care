@@ -17,33 +17,26 @@ class Profile extends Component {
     showFullBio: false
   }
 
-  onSavePassthrough = id => editedContent => {
-    const newContent = { ...this.props.content, [id]: editedContent }
-    this.props.onSave(newContent);
-  };
-
   onToggleModal = () => {
     this.setState({ showFullBio: !this.state.showFullBio })
   }
 
   render() {
     const content = this.props.content || {};
-    console.log(content)
-
 
     return (
       <div className="team-member">
         <div className="team-images">
           <EditableImageUpload
             content={ content["headshot"]}
-            onSave={this.onSavePassthrough("headshot")}
+            onSave={this.props.onSave("headshot")}
             uploadImage={ uploadImage }
           />
         </div>
         <div className="team-description">
-          <EditableText content={content["position"]} onSave={this.onSavePassthrough("position")} />
-          <h5><EditableText content={content["name"]} onSave={this.onSavePassthrough("name")} /></h5>
-          <EditableParagraph content={content["quote"]} onSave={this.onSavePassthrough("quote")} />
+          <EditableText content={content["position"]} onSave={this.props.onSave("position")} />
+          <h5><EditableText content={content["name"]} onSave={this.props.onSave("name")} /></h5>
+          <EditableParagraph content={content["quote"]} onSave={this.props.onSave("quote")} />
           <div><button onClick={ this.onToggleModal } className="btn btn-theme">Full bio</button></div>
         </div>
         <Dialog
@@ -53,7 +46,7 @@ class Profile extends Component {
         >
           <DialogTitle id="registration-dialogue">{content["name"] ? content["name"]["text"] : ""}</DialogTitle>
           <DialogContent className="modal-body">
-            <EditableParagraph content={content["fullBio"]} onSave={this.onSavePassthrough("fullBio")} />
+            <EditableParagraph content={content["fullBio"]} onSave={this.props.onSave("fullBio")} />
           </DialogContent>
         </Dialog>
       </div>

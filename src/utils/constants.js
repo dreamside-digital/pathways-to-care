@@ -30,4 +30,22 @@ export const DEFAULT_COMPONENT_CONTENT = {
     "news-item-link": { "anchor": "News item title", "link": "/" },
     "news-item-description": { "text": "<p>Description</p>" },
   },
+  "team-members": {
+    "fullBio" : {
+      "text" : "<p>Full bio</p>"
+    },
+    "headshot" : {
+      "caption" : "",
+      "imageSrc" : "https://www.nomadiclabs.ca/img/logo-03.png"
+    },
+    "name" : {
+      "text" : "Name"
+    },
+    "position" : {
+      "text" : "Position"
+    },
+    "quote" : {
+      "text" : "<p>Quote</p>"
+    }
+  }
 }

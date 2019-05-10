@@ -6,7 +6,9 @@ import Button from "@material-ui/core/Button"
 import { DEFAULT_COMPONENT_CONTENT } from "../utils/constants"
 
 import {
-  updatePage,
+  updatePageContent,
+  pushContentItem,
+  removeContentItem,
   loadPageData,
 } from "../redux/actions";
 
@@ -27,17 +29,21 @@ import headerPattern from "../assets/images/pattern/secondary-banner.png";
 import headerBg from "../assets/images/bg/squiggle.svg";
 import background02 from "../assets/images/bg/02.png";
 
-const PAGE_ID = "research"
-
 
 const mapDispatchToProps = dispatch => {
   return {
-    onUpdatePageData: (page, id, data) => {
-      dispatch(updatePage(page, id, data));
+    onUpdatePageContent: (location, data) => {
+      dispatch(updatePageContent(location, data));
+    },
+    onPushContentItem: (location, data) => {
+      dispatch(pushContentItem(location, data))
+    },
+    onRemoveContentItem: (location, itemId) => {
+      dispatch(removeContentItem(location, itemId))
     },
     onLoadPageData: data => {
       dispatch(loadPageData(data));
-    },
+    }
   };
 };
 
@@ -61,14 +67,22 @@ class ResearchPage extends React.Component {
   }
 
   onSave = id => content => {
-    this.props.onUpdatePageData(PAGE_ID, id, content);
+    this.props.onUpdatePageContent(id, content);
   };
+
+  onAddItem = id => content => {
+    this.props.onPushContentItem(id, content);
+  }
+
+  onDeleteItem = id => itemId => {
+    this.props.onRemoveContentItem(id, itemId)
+  }
 
   addListItem = listId => () => {
     const list = this.props.pageData.content[listId] ? [...this.props.pageData.content[listId]] : [];
     const emptyItem = DEFAULT_COMPONENT_CONTENT[listId];
     list.push(emptyItem)
-    this.props.onUpdatePageData(PAGE_ID, listId, list)
+    this.props.onUpdatePageContent(listId, list)
   }
 
   editListItem = (listId, index) => field => content => {
@@ -80,18 +94,17 @@ class ResearchPage extends React.Component {
 
     list[index] = updated;
 
-    this.props.onUpdatePageData(PAGE_ID, listId, list);
+    this.props.onUpdatePageContent(listId, list);
   }
 
   deleteListItem = (listId, index) => () => {
     const list = [...this.props.pageData.content[listId]]
     list.splice(index, 1)
-    this.props.onUpdatePageData(PAGE_ID, listId, list)
+    this.props.onUpdatePageContent(listId, list)
   }
 
   render() {
     const content = this.props.pageData ? this.props.pageData.content : {};
-    const relatedPublications = content["related-publications"] ? content["related-publications"] : [];
 
     return (
       <Layout>
@@ -186,26 +199,18 @@ class ResearchPage extends React.Component {
                 </div>
               </div>
               <div className="row">
-              {
-                (relatedPublications.length < 1 && !this.props.isEditingPage) &&
-                <div className="col-12">
-                  <p>Coming soon...</p>
-                </div>
-              }
-
-              {
-                (relatedPublications.length > 0 || this.props.isEditingPage) &&
                 <div className="col-12">
                   <Carousel
-                    collection={relatedPublications}
+                    collection={content["related-publications"]}
                     SlideComponent={Publication}
                     onSave={this.onSave('related-publications')}
+                    onAddItem={this.onAddItem('related-publications')}
+                    onDeleteItem={this.onDeleteItem('related-publications')}
                     options={{slidesToShow: 3}}
                     isEditingPage={this.props.isEditingPage}
                     defaultContent={DEFAULT_COMPONENT_CONTENT['related-publications']}
                   />
                 </div>
-              }
               </div>
             </div>
           </section>

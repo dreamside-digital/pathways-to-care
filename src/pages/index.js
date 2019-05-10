@@ -13,7 +13,9 @@ import {
 } from 'react-easy-editables';
 
 import {
-  updatePage,
+  updatePageContent,
+  pushContentItem,
+  removeContentItem,
   loadPageData,
 } from "../redux/actions";
 
@@ -31,13 +33,17 @@ import Carousel from "../components/common/Carousel";
 
 import { uploadImage } from "../firebase/operations";
 
-const PAGE_ID = "home";
-
 
 const mapDispatchToProps = dispatch => {
   return {
-    onUpdatePageData: (page, id, data) => {
-      dispatch(updatePage(page, id, data));
+    onUpdatePageContent: (location, data) => {
+      dispatch(updatePageContent(location, data));
+    },
+    onPushContentItem: (location, data) => {
+      dispatch(pushContentItem(location, data))
+    },
+    onRemoveContentItem: (location, itemId) => {
+      dispatch(removeContentItem(location, itemId))
     },
     onLoadPageData: data => {
       dispatch(loadPageData(data));
@@ -64,40 +70,43 @@ class HomePage extends React.Component {
   }
 
   onSave = id => content => {
-    this.props.onUpdatePageData(PAGE_ID, id, content);
+    this.props.onUpdatePageContent(id, content);
   };
 
-  addListItem = listId => () => {
-    const list = this.props.pageData.content[listId] ? [...this.props.pageData.content[listId]] : [];
-    const emptyItem = DEFAULT_COMPONENT_CONTENT[listId];
-    list.push(emptyItem)
-    this.props.onUpdatePageData(PAGE_ID, listId, list)
+  onAddItem = id => content => {
+    this.props.onPushContentItem(id, content);
   }
 
-  editListItem = (listId, index) => field => content => {
-    const list = [...this.props.pageData.content[listId]];
-    const updated = {
-      ...list[index],
-      [field]: content
+  onDeleteItem = id => itemId => {
+    this.props.onRemoveContentItem(id, itemId)
+  }
+
+  addListItem = listId => () => {
+    const emptyItem = DEFAULT_COMPONENT_CONTENT[listId];
+    this.props.onPushContentItem(listId, emptyItem);
+  }
+
+  deleteListItem = (listId, itemId) => () => {
+    this.props.onRemoveContentItem(listId, itemId)
+  }
+
+  editListItem = (listId, key) => field => content => {
+    const list = {
+      ...this.props.pageData.content[listId],
+      [key]: {
+        ...this.props.pageData.content[listId][key],
+        [field]: content
+      }
     };
 
-    list[index] = updated;
-
-    this.props.onUpdatePageData(PAGE_ID, listId, list);
-  }
-
-  deleteListItem = (listId, index) => () => {
-    const list = [...this.props.pageData.content[listId]]
-    list.splice(index, 1)
-    this.props.onUpdatePageData(PAGE_ID, listId, list)
+    this.props.onUpdatePageContent(listId, list);
   }
 
 
   render() {
     const content = this.props.pageData ? this.props.pageData.content : {};
-    const problemItems = content["problem-items"] ? content["problem-items"] : [];
-    const solutionItems = content["solution-items"] ? content["solution-items"] : [];
-    const newsItems = content["news-items"] ? content["news-items"] : [];
+    const problemItems = content["problem-items"] ? content["problem-items"] : {};
+    const solutionItems = content["solution-items"] ? content["solution-items"] : {};
 
     return (
       <Layout>
@@ -168,23 +177,24 @@ class HomePage extends React.Component {
               </div>
               <div className="row">
                 {
-                  problemItems.map((content, index) => {
+                  Object.keys(problemItems).map(key => {
+                    const content = problemItems[key];
+
                     return (
-                      <div className="col-lg-4 col-md-6" key={`problem-item-${index}`}>
+                      <div className="col-lg-4 col-md-6" key={`problem-item-${key}`}>
                         <FeaturedItemWithTitle
                           classes="featured-item text-center"
                           content={content}
-                          onSave={this.editListItem("problem-items", index)}
+                          onSave={this.editListItem("problem-items", key)}
                         />
                         { this.props.isEditingPage &&
                           <div className="row justify-content-end">
-                            <Button onClick={this.deleteListItem("problem-items", index)}>Delete</Button>
+                            <Button onClick={this.deleteListItem("problem-items", key)}>Delete</Button>
                           </div>
                         }
                       </div>
                     )
                   })
-
                 }
                 {
                   this.props.isEditingPage &&
@@ -238,27 +248,28 @@ class HomePage extends React.Component {
                 </div>
 
                 {
-                  solutionItems.map((content, index) => {
+                  Object.keys(solutionItems).map(key => {
+                    const content = solutionItems[key];
+
                     return (
-                      <div className="col-lg-4 col-md-6" key={`solution-item-${index}`}>
+                      <div className="col-lg-4 col-md-6" key={`solution-item-${key}`}>
                         <FeaturedItem
                           classes="featured-item text-center style-2"
                           content={content}
-                          onSave={this.editListItem("solution-items", index)}
+                          onSave={this.editListItem("solution-items", key)}
                         />
                         { this.props.isEditingPage &&
                           <div className="row">
-                            <Button onClick={this.deleteListItem("solution-items", index)}>Delete</Button>
+                            <Button onClick={this.deleteListItem("solution-items", key)}>Delete</Button>
                           </div>
                         }
                       </div>
                     )
                   })
-
                 }
                 {
                   this.props.isEditingPage &&
-                  <div className="col-lg-4 col-md-6 row justify-content-center align-items-center">
+                  <div className="col-lg-4 col-md-6 row align-items-center">
                     <Button onClick={this.addListItem("solution-items")}>Add list item</Button>
                   </div>
                 }
@@ -282,9 +293,11 @@ class HomePage extends React.Component {
               </div>
 
               <Carousel
-                collection={newsItems}
+                collection={content["news-items"]}
                 SlideComponent={NewsItem}
                 onSave={this.onSave('news-items')}
+                onAddItem={this.onAddItem('news-items')}
+                onDeleteItem={this.onDeleteItem('news-items')}
                 slidesToShow={3}
                 isEditingPage={this.props.isEditingPage}
                 defaultContent={DEFAULT_COMPONENT_CONTENT['news-items']}
