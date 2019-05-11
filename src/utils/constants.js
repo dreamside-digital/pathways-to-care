@@ -47,5 +47,8 @@ export const DEFAULT_COMPONENT_CONTENT = {
     "quote" : {
       "text" : "<p>Quote</p>"
     }
+  },
+  "values-items": {
+    "description": { "text": "Value description" }
   }
 }

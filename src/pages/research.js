@@ -16,10 +16,11 @@ import {
   EditableText,
   EditableParagraph,
   EditableImageUpload,
+  EditableFileUpload,
   EditableLink,
 } from 'react-easy-editables';
 
-import { uploadImage } from "../firebase/operations";
+import { uploadImage, uploadFile } from "../firebase/operations";
 
 import Layout from "../layouts/default.js";
 import Publication from "../components/common/Publication";
@@ -166,6 +167,14 @@ class ResearchPage extends React.Component {
                     </h2>
                   </div>
                   <EditableParagraph content={content["toc-description"]} onSave={this.onSave("toc-description")} />
+                  <div className="d-flex">
+                    <div className="mr-2">Download the PDF:</div>
+                    <EditableFileUpload
+                      content={content["toc-pdf"]}
+                      onSave={this.onSave("toc-pdf")}
+                      uploadFile={uploadFile}
+                    />
+                  </div>
                 </div>
               </div>
 

@@ -559,10 +559,7 @@ a, i, .btn, button, img, span, .animatedBackground, .navbar-nav .nav-link:before
 ------------------------*/
 
 .subscribe-form {
-  margin: 0;
-  padding: 0;
   position: relative;
-  width: 350px;
 }
 
 #mc-embedded-subscribe-form {
@@ -591,6 +588,7 @@ a, i, .btn, button, img, span, .animatedBackground, .navbar-nav .nav-link:before
     padding: 12px 25px;
     transition: 0.20s;
     height: 50px;
+    margin-right: 15px;
   }
 }
 

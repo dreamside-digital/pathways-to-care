@@ -1,9 +1,14 @@
-import React from "react";
+import React, { Fragment } from "react";
 import { graphql } from "gatsby";
 import { connect } from "react-redux";
+import Button from "@material-ui/core/Button"
+
+import { DEFAULT_COMPONENT_CONTENT } from "../utils/constants"
 
 import {
   updatePageContent,
+  pushContentItem,
+  removeContentItem,
   loadPageData,
 } from "../redux/actions";
 
@@ -29,15 +34,22 @@ const mapDispatchToProps = dispatch => {
     onUpdatePageContent: (location, data) => {
       dispatch(updatePageContent(location, data));
     },
+    onPushContentItem: (location, data) => {
+      dispatch(pushContentItem(location, data))
+    },
+    onRemoveContentItem: (location, itemId) => {
+      dispatch(removeContentItem(location, itemId))
+    },
     onLoadPageData: data => {
       dispatch(loadPageData(data));
-    },
+    }
   };
 };
 
 const mapStateToProps = state => {
   return {
     pageData: state.page.data,
+    isEditingPage: state.adminTools.isEditingPage,
   };
 };
 
@@ -56,9 +68,31 @@ class AboutPage extends React.Component {
     this.props.onUpdatePageContent(id, content);
   };
 
+  addListItem = listId => () => {
+    const emptyItem = DEFAULT_COMPONENT_CONTENT[listId];
+    this.props.onPushContentItem(listId, emptyItem);
+  }
+
+  deleteListItem = (listId, itemId) => () => {
+    this.props.onRemoveContentItem(listId, itemId)
+  }
+
+  editListItem = (listId, key) => field => content => {
+    const list = {
+      ...this.props.pageData.content[listId],
+      [key]: {
+        ...this.props.pageData.content[listId][key],
+        [field]: content
+      }
+    };
+
+    this.props.onUpdatePageContent(listId, list);
+  }
+
 
   render() {
     const content = this.props.pageData ? this.props.pageData.content : {};
+    const values = content["values-items"] || {};
 
     return (
       <Layout>
@@ -130,6 +164,43 @@ class AboutPage extends React.Component {
                     </h2>
                   </div>
                   <EditableParagraph content={content["vision-description"]} onSave={this.onSave("vision-description")} />
+                  {
+                    Object.keys(values).map((key, index) => {
+                      const content = values[key];
+                      const number = index + 1;
+                      const onSaveValue = this.editListItem("values-items", key);
+
+                      return (
+                        <div className="row" key={`values-${index}`}>
+                          <div className="col-12">
+                            <div className="work-process style-2 mb-1">
+                              <div className="work-process-inner">
+                                <span className="step-num" data-bg-color="#cd113a">{ number }</span>
+                                <h6>
+                                  <EditableText
+                                    classes="mb-0"
+                                    content={content["description"]}
+                                    onSave={onSaveValue("description")}
+                                  />
+                                </h6>
+                              </div>
+                            </div>
+                            { this.props.isEditingPage &&
+                              <div className="row justify-content-end">
+                                <Button onClick={this.deleteListItem("values-items", index)}>Delete</Button>
+                              </div>
+                            }
+                          </div>
+                        </div>
+                      )
+                    })
+                  }
+                  {
+                    this.props.isEditingPage &&
+                    <div className="">
+                      <Button onClick={this.addListItem("values-items")}>Add item</Button>
+                    </div>
+                  }
                 </div>
               </div>
             </div>

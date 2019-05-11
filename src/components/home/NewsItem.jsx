@@ -85,7 +85,7 @@ const NewsItem = props => {
     >
       <div className={`post ${props.classes}`}>
         <div className="post-image">
-          <a href={content["news-item-image"]["imageSrc"]} target="_blank">
+          <a href={ content["news-item-link"]["link"] }>
             <img
               className="img-fluid h-100 w-100"
               src={content["news-item-image"]["imageSrc"]}

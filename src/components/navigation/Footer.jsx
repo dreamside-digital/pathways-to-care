@@ -39,9 +39,12 @@ const Footer = (props) => {
                   </div>
 
                   <div className="col-lg-8 col-md-12 mr-auto">
-                    <div className="align-items-center white-bg box-shadow px-3 py-3 radius d-md-flex justify-content-between">
-                      <h4 className="mb-0">Subscribe</h4>
-                      <div className="subscribe-form sm-mt-2">
+                    <div className="align-items-center white-bg box-shadow px-3 py-3 radius justify-content-between">
+                      <div className="col-12">
+                        <h4 className="">Subscribe</h4>
+                        <p>Sign up to our listserv and be the first to hear about our new Pathways to Care research, events, and upcoming community consultations!</p>
+                      </div>
+                      <div className="subscribe-form sm-mt-2 col-12">
                         <form
                           id="mc-embedded-subscribe-form"
                           className="group validate"
