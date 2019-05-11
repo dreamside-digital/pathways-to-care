@@ -1,4 +1,5 @@
 import React, { Fragment } from "react";
+import Helmet from "react-helmet"
 import { graphql } from "gatsby";
 import { connect } from "react-redux";
 import Button from "@material-ui/core/Button"
@@ -94,6 +95,12 @@ class ContactPage extends React.Component {
 
     return (
       <Layout>
+        <Helmet>
+          <script type="text/javascript" src={`//downloads.mailchimp.com/js/signup-forms/popup/unique-methods/embed.js`} data-dojo-config="usePlainJson: true, isDebug: false"></script>
+          <script type="text/javascript">
+            { `setTimeout(function(){ window.dojoRequire(["mojo/signup-forms/Loader"], function(L) { L.start({"baseUrl":"mc.us20.list-manage.com","uuid":"538e030e0d8a3cbfa9fa8c536","lid":"b902029dd6","uniqueMethods":true}) }) }, 500);` }
+          </script>
+        </Helmet>
 
         <section className="page-title o-hidden text-center grey-bg bg-contain animatedBackground" data-bg-img={ headerPattern }>
           <div className="container">
@@ -251,7 +258,6 @@ class ContactPage extends React.Component {
           </section>
 
         </div>
-
       </Layout>
     );
   }

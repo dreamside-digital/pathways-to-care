@@ -30,6 +30,7 @@ import FeaturedItem from "../components/home/FeaturedItem";
 import FeaturedItemWithTitle from "../components/home/FeaturedItemWithTitle";
 import NewsItem from "../components/home/NewsItem";
 import Carousel from "../components/common/Carousel";
+import MailchimpSubscriptionForm from "../components/common/MailchimpSubscriptionForm"
 
 import { uploadImage } from "../firebase/operations";
 
@@ -116,17 +117,17 @@ class HomePage extends React.Component {
               <div className="row align-items-center">
                 <div className="col-lg-6 col-md-12 order-lg-12">
                   <div className="mouse-parallax">
-                    <div className="bnr-img1 wow fadeInRight" data-wow-duration="1s" data-wow-delay="1s">
+                    <div className="bnr-img1 wow fadeInRight" data-wow-duration="500ms" data-wow-delay="500ms">
                       <img className="img-center rotateme" src={ backgroundBanner } alt="" />
                     </div>
-                    <img className="img-center bnr-img2 wow zoomIn" data-wow-duration="2s" data-wow-delay="1.5s" src={ headerImage } alt="" />
+                    <img className="img-center bnr-img2 wow zoomIn" data-wow-duration="1s" data-wow-delay="1s" src={ headerImage } alt="" />
                   </div>
                 </div>
                 <div className="col-lg-6 col-md-12 order-lg-1 md-mt-5">
-                  <h1 className="mb-4 wow bounceInLeft" data-wow-duration="3s" data-wow-delay="500ms">
+                  <h1 className="mb-4 wow bounceInLeft" data-wow-duration="500ms" data-wow-delay="500ms">
                     <EditableText content={content["header-title"]} onSave={this.onSave("header-title")} />
                   </h1>
-                  <div className="lead wow fadeInUp" data-wow-duration="1s">
+                  <div className="lead wow fadeInUp" data-wow-duration="500ms">
                     <EditableText content={content["header-subtitle"]} onSave={this.onSave("header-subtitle")} />
                   </div>
                 </div>
@@ -150,8 +151,11 @@ class HomePage extends React.Component {
                     </h2>
                     <div className="text-white">
                       <EditableParagraph content={content["featured-body"]} onSave={this.onSave("featured-body")} />
-                      <EditableLink content={content["featured-link"]} onSave={this.onSave("featured-link")} />
                     </div>
+                  </div>
+
+                  <div className="mt-5">
+                    <MailchimpSubscriptionForm />
                   </div>
                 </div>
               </div>
