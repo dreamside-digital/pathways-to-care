@@ -98,7 +98,7 @@ class ContactPage extends React.Component {
         <Helmet>
           <script type="text/javascript" src={`//downloads.mailchimp.com/js/signup-forms/popup/unique-methods/embed.js`} data-dojo-config="usePlainJson: true, isDebug: false"></script>
           <script type="text/javascript">
-            { `setTimeout(function(){ window.dojoRequire(["mojo/signup-forms/Loader"], function(L) { L.start({"baseUrl":"mc.us20.list-manage.com","uuid":"538e030e0d8a3cbfa9fa8c536","lid":"b902029dd6","uniqueMethods":true}) }) }, 500);` }
+            { `setTimeout(function(){ window.dojoRequire(["mojo/signup-forms/Loader"], function(L) { L.start({"baseUrl":"mc.us20.list-manage.com","uuid":"292290d73967901b7173fd01d","lid":"34682564c1","uniqueMethods":true}) }) }, 500);` }
           </script>
         </Helmet>
 
