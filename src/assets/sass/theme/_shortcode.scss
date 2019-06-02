@@ -999,8 +999,14 @@
 }
 
 .dark-bg {
-  .featured-title h5, .featured-desc {
-    color: $white;
+  .featured-item {
+    &:hover {
+      background: transparentize($whitebg, 0.9);
+    }
+
+    .featured-title, .featured-desc {
+      color: $white;
+    }
   }
 }
 

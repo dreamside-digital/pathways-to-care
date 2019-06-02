@@ -17,6 +17,11 @@ export const DEFAULT_COMPONENT_CONTENT = {
   "solution-items" : {
     "featured-item-description": { "text": "Placeholder" }
   },
+  "outcome-items" : {
+    "featured-item-image": { "imageSrc": "https://www.nomadiclabs.ca/img/logo-03.png", "caption": "" },
+    "featured-item-title": { "text": "Placeholder" },
+    "featured-item-description": { "text": "Placeholder" }
+  },
   "related-publications": {
     "publication-item-image": { "imageSrc": "https://www.nomadiclabs.ca/img/logo-03.png", "caption": "" },
     "publication-item-date": { "text": "Publication date" },

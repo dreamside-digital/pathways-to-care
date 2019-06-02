@@ -28,6 +28,7 @@ import background02 from "../assets/images/bg/02.png";
 
 import FeaturedItem from "../components/home/FeaturedItem";
 import FeaturedItemWithTitle from "../components/home/FeaturedItemWithTitle";
+import FeaturedItemWithImage from "../components/home/FeaturedItemWithImage";
 import NewsItem from "../components/home/NewsItem";
 import Carousel from "../components/common/Carousel";
 import MailchimpSubscriptionForm from "../components/common/MailchimpSubscriptionForm"
@@ -107,7 +108,7 @@ class HomePage extends React.Component {
   render() {
     const content = this.props.pageData ? this.props.pageData.content : {};
     const problemItems = content["problem-items"] ? content["problem-items"] : {};
-    const solutionItems = content["solution-items"] ? content["solution-items"] : {};
+    const outcomeItems = content["outcome-items"] ? content["outcome-items"] : {};
 
     return (
       <Layout>
@@ -138,85 +139,61 @@ class HomePage extends React.Component {
 
         <div className="page-content">
 
-          <section className="dark-bg pos-r">
-            <div className="container">
-              <div className="row">
-                <div className="col-lg-12 col-md-12 ml-auto md-mt-5">
-                  <div className="section-title mb-4">
-                    <h6>
-                      <EditableText content={content["featured-tag"]} onSave={this.onSave("featured-tag")} />
-                    </h6>
-                    <h2 className="title">
-                      <EditableText content={content["featured-title"]} onSave={this.onSave("featured-title")} />
-                    </h2>
-                    <div className="text-white">
-                      <EditableParagraph content={content["featured-body"]} onSave={this.onSave("featured-body")} />
+        <section className="dark-bg pos-r">
+          <div className="container">
+            <div className="row">
+              <div className="col-lg-12 col-md-12 ml-auto mr-auto">
+                <div className="section-title">
+                  <h6>
+                    <EditableText content={content["problem-tag"]} onSave={this.onSave("problem-tag")} />
+                  </h6>
+                  <h2 className="title">
+                    <EditableText content={content["problem-title"]} onSave={this.onSave("problem-title")} />
+                  </h2>
+                </div>
+                <div className="text-white">
+                  <EditableParagraph content={content["problem-summary"]} onSave={this.onSave("problem-summary")} />
+                </div>
+              </div>
+            </div>
+            <div className="row">
+              {
+                Object.keys(problemItems).map(key => {
+                  const content = problemItems[key];
+
+                  return (
+                    <div className="col-lg-4 col-md-6" key={`problem-item-${key}`}>
+                      <FeaturedItemWithTitle
+                        classes="featured-item text-center"
+                        content={content}
+                        onSave={this.editListItem("problem-items", key)}
+                      />
+                      { this.props.isEditingPage &&
+                        <div className="row justify-content-end">
+                          <Button onClick={this.deleteListItem("problem-items", key)}>Delete</Button>
+                        </div>
+                      }
                     </div>
-                  </div>
-
-                  <div className="mt-5">
-                    <MailchimpSubscriptionForm />
-                  </div>
+                  )
+                })
+              }
+              {
+                this.props.isEditingPage &&
+                <div className="col-lg-12">
+                  <Button onClick={this.addListItem("problem-items")}>Add list item</Button>
                 </div>
-              </div>
+              }
 
             </div>
-          </section>
-
-
-          <section className="grey-bg pos-r">
-            <div className="container">
-              <div className="row">
-                <div className="col-lg-12 col-md-12 ml-auto mr-auto">
-                  <div className="section-title">
-                    <h6>
-                      <EditableText content={content["problem-tag"]} onSave={this.onSave("problem-tag")} />
-                    </h6>
-                    <h2 className="title">
-                      <EditableText content={content["problem-title"]} onSave={this.onSave("problem-title")} />
-                    </h2>
-                  </div>
-                  <EditableParagraph content={content["problem-body"]} onSave={this.onSave("problem-body")} />
-                </div>
-              </div>
-              <div className="row">
-                {
-                  Object.keys(problemItems).map(key => {
-                    const content = problemItems[key];
-
-                    return (
-                      <div className="col-lg-4 col-md-6" key={`problem-item-${key}`}>
-                        <FeaturedItemWithTitle
-                          classes="featured-item text-center"
-                          content={content}
-                          onSave={this.editListItem("problem-items", key)}
-                        />
-                        { this.props.isEditingPage &&
-                          <div className="row justify-content-end">
-                            <Button onClick={this.deleteListItem("problem-items", key)}>Delete</Button>
-                          </div>
-                        }
-                      </div>
-                    )
-                  })
-                }
-                {
-                  this.props.isEditingPage &&
-                  <div className="col-lg-12">
-                    <Button onClick={this.addListItem("problem-items")}>Add list item</Button>
-                  </div>
-                }
-
-              </div>
-            </div>
-          </section>
+          </div>
+        </section>
 
 
           <section className="pos-r">
             <div className="container">
               <div className="row">
-                <div className="col-lg-12 col-md-12 ml-auto md-mt-5">
-                  <div className="section-title mb-4">
+                <div className="col-lg-6 col-md-12">
+                  <div className="section-title">
                     <h6>
                       <EditableText content={content["solution-tag"]} onSave={this.onSave("solution-tag")} />
                     </h6>
@@ -224,12 +201,10 @@ class HomePage extends React.Component {
                       <EditableText content={content["solution-title"]} onSave={this.onSave("solution-title")} />
                     </h2>
                   </div>
-                </div>
-              </div>
-
-              <div className="row align-items-center">
-                <div className="col-lg-6 col-md-12 md-mt-5">
-                  <EditableParagraph content={content["solution-description"]} onSave={this.onSave("solution-description")} />
+                  <div className="">
+                    <EditableParagraph content={content["solution-summary"]} onSave={this.onSave("solution-summary")} />
+                    <EditableLink classes="btn btn-theme mt-3" content={content["solution-read-more"]} onSave={this.onSave("solution-read-more")} />
+                  </div>
                 </div>
 
                 <div className="col-lg-6 col-md-12">
@@ -243,28 +218,44 @@ class HomePage extends React.Component {
                   </div>
                 </div>
               </div>
+            </div>
+          </section>
 
-              <div className="row">
-                <div className="col-lg-4 col-md-12">
-                  <h2 className="text-center p-5 my-3">
-                    <EditableText content={content["solution-items-header"]} onSave={this.onSave("solution-items-header")} />
+          <section className="grey-bg pos-r" data-bg-img={ background02 }>
+            <div className="container">
+
+            <div className="row">
+              <div className="col-lg-12 col-md-12 ml-auto mr-auto">
+                <div className="section-title">
+                  <h6>
+                    <EditableText content={content["outcomes-tag"]} onSave={this.onSave("outcomes-tag")} />
+                  </h6>
+                  <h2 className="title">
+                    <EditableText content={content["outcomes-title"]} onSave={this.onSave("outcomes-title")} />
                   </h2>
                 </div>
+                <div className="">
+                  <EditableParagraph content={content["outcomes-summary"]} onSave={this.onSave("outcomes-summary")} />
+                </div>
+              </div>
+            </div>
 
+              <div className="row">
                 {
-                  Object.keys(solutionItems).map(key => {
-                    const content = solutionItems[key];
+                  Object.keys(outcomeItems).map(key => {
+                    const content = outcomeItems[key];
 
                     return (
-                      <div className="col-lg-4 col-md-6" key={`solution-item-${key}`}>
-                        <FeaturedItem
+                      <div className="col-lg-4 col-md-6" key={`outcome-item-${key}`}>
+                        <FeaturedItemWithImage
                           classes="featured-item text-center style-2"
                           content={content}
-                          onSave={this.editListItem("solution-items", key)}
+                          onSave={this.editListItem("outcome-items", key)}
+                          uploadImage={uploadImage}
                         />
                         { this.props.isEditingPage &&
                           <div className="row">
-                            <Button onClick={this.deleteListItem("solution-items", key)}>Delete</Button>
+                            <Button onClick={this.deleteListItem("outcome-items", key)}>Delete</Button>
                           </div>
                         }
                       </div>
@@ -274,17 +265,23 @@ class HomePage extends React.Component {
                 {
                   this.props.isEditingPage &&
                   <div className="col-lg-4 col-md-6 row align-items-center">
-                    <Button onClick={this.addListItem("solution-items")}>Add list item</Button>
+                    <Button onClick={this.addListItem("outcome-items")}>Add list item</Button>
                   </div>
                 }
 
+              </div>
+
+              <div className="row">
+                <div className="col-12 text-center">
+                  <EditableLink classes="btn btn-theme mt-5" content={content["outcomes-read-more"]} onSave={this.onSave("outcomes-read-more")} />
+                </div>
               </div>
 
             </div>
           </section>
 
 
-          <section className="grey-bg" data-bg-img={ background02 }>
+          <section className="" data-bg-img={ background02 }>
             <div className="container">
               <div className="row">
                 <div className="col-lg-12 col-md-12 ml-auto mr-auto">

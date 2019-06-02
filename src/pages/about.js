@@ -206,6 +206,132 @@ class AboutPage extends React.Component {
             </div>
           </section>
 
+          <section className="grey-bg pos-r">
+            <div className="container">
+              <div className="row">
+                <div className="col-lg-12 col-md-12 ml-auto mr-auto">
+                  <div className="section-title">
+                    <h6>
+                      <EditableText content={content["problem-tag"]} onSave={this.onSave("problem-tag")} />
+                    </h6>
+                    <h2 className="title">
+                      <EditableText content={content["problem-title"]} onSave={this.onSave("problem-title")} />
+                    </h2>
+                  </div>
+                  <div className="text-white">
+                    <EditableParagraph content={content["problem-body"]} onSave={this.onSave("problem-body")} />
+                  </div>
+                </div>
+              </div>
+              <div className="row">
+                {
+                  Object.keys(problemItems).map(key => {
+                    const content = problemItems[key];
+
+                    return (
+                      <div className="col-lg-4 col-md-6" key={`problem-item-${key}`}>
+                        <FeaturedItemWithTitle
+                          classes="featured-item text-center"
+                          content={content}
+                          onSave={this.editListItem("problem-items", key)}
+                        />
+                        { this.props.isEditingPage &&
+                          <div className="row justify-content-end">
+                            <Button onClick={this.deleteListItem("problem-items", key)}>Delete</Button>
+                          </div>
+                        }
+                      </div>
+                    )
+                  })
+                }
+                {
+                  this.props.isEditingPage &&
+                  <div className="col-lg-12">
+                    <Button onClick={this.addListItem("problem-items")}>Add list item</Button>
+                  </div>
+                }
+
+              </div>
+            </div>
+          </section>
+
+          <section className="pos-r">
+            <div className="container">
+              <div className="row">
+                <div className="col-12">
+                  <div className="section-title">
+                    <h6>
+                      <EditableText content={content["solution-tag"]} onSave={this.onSave("solution-tag")} />
+                    </h6>
+                    <h2 className="title">
+                      <EditableText content={content["solution-title"]} onSave={this.onSave("solution-title")} />
+                    </h2>
+                  </div>
+                </div>
+              </div>
+
+              <div className="row">
+                <div className="col-lg-6 col-md-12">
+                  <div className="info-img pos-r">
+                    <EditableImageUpload
+                      classes="img-fluid"
+                      content={content["solution-image"]}
+                      onSave={this.onSave("solution-image")}
+                      uploadImage={uploadImage}
+                    />
+                  </div>
+                </div>
+
+                <div className="col-lg-6 col-md-12">
+                  <div className="info-img pos-r">
+                    <EditableImageUpload
+                      classes="img-fluid"
+                      content={content["solution-image"]}
+                      onSave={this.onSave("solution-image")}
+                      uploadImage={uploadImage}
+                    />
+                  </div>
+                </div>
+              </div>
+
+              <div className="row">
+                <div className="col-lg-4 col-md-12">
+                  <h2 className="text-center p-5 my-3">
+                    <EditableText content={content["solution-items-header"]} onSave={this.onSave("solution-items-header")} />
+                  </h2>
+                </div>
+
+                {
+                  Object.keys(solutionItems).map(key => {
+                    const content = solutionItems[key];
+
+                    return (
+                      <div className="col-lg-4 col-md-6" key={`solution-item-${key}`}>
+                        <FeaturedItem
+                          classes="featured-item text-center style-2"
+                          content={content}
+                          onSave={this.editListItem("solution-items", key)}
+                        />
+                        { this.props.isEditingPage &&
+                          <div className="row">
+                            <Button onClick={this.deleteListItem("solution-items", key)}>Delete</Button>
+                          </div>
+                        }
+                      </div>
+                    )
+                  })
+                }
+                {
+                  this.props.isEditingPage &&
+                  <div className="col-lg-4 col-md-6 row align-items-center">
+                    <Button onClick={this.addListItem("solution-items")}>Add list item</Button>
+                  </div>
+                }
+
+              </div>
+            </div>
+          </section>
+
 
 
           <section className="grey-bg animatedBackground" data-bg-img="images/pattern/05.png">

@@ -20,18 +20,18 @@ const Footer = (props) => {
         const phone = content.phone ? content.phone.text : "Set a phone number on the contact page";
 
         return(
-          <footer className="footer white-bg pos-r o-hidden bg-contain" data-bg-img="images/pattern/01.png">
+          <footer className="footer dark-bg pos-r o-hidden bg-contain" data-bg-img="images/pattern/01.png">
             <div className="primary-footer">
               <div className="container py-5">
                 <div className="row">
 
                   <div className="col-lg-4 col-md-6 sm-mt-5">
                     <h4 className="title">Pathways to Care</h4>
-                    <ul className="media-icon list-unstyled">
+                    <ul className="media-icon list-unstyled text-white">
                       <li>
                         <div dangerouslySetInnerHTML={ {__html: address} } />
                       </li>
-                      <li><a href={content.email ? content.email.link : ""}>{content.email ? content.email.anchor : "Set an email address on the contact page"}</a>
+                      <li><a className="text-white" href={content.email ? content.email.link : ""}>{content.email ? content.email.anchor : "Set an email address on the contact page"}</a>
                       </li>
                       <li>
                         <div dangerouslySetInnerHTML={ {__html: phone} } />
