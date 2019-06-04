@@ -109,7 +109,7 @@ class TeamPage extends React.Component {
 
         <div className="page-content">
 
-          <section className="bg-contain" data-bg-img="images/pattern/02.png">
+          <section className="bg-contain" data-bg-img="images/pattern/02.png" id="team-members">
             <div className="container">
               <div className="row text-center">
                 <div className="col-lg-8 col-md-12 ml-auto mr-auto">
@@ -145,7 +145,7 @@ class TeamPage extends React.Component {
             </div>
           </section>
 
-          <section className="pos-r grey-bg">
+          <section className="pos-r grey-bg" id="partners">
             <div className="container">
               <div className="row">
                 <div className="col-lg-12">

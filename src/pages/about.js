@@ -1,5 +1,5 @@
 import React, { Fragment } from "react";
-import { graphql } from "gatsby";
+import { graphql, Link } from "gatsby";
 import { connect } from "react-redux";
 import Button from "@material-ui/core/Button"
 
@@ -141,6 +141,25 @@ class AboutPage extends React.Component {
                 <h1 className="title">
                   <EditableText content={content["page-title"]} onSave={this.onSave("page-title")} />
                 </h1>
+                <nav aria-label="breadcrumb" className="page-breadcrumb">
+                  <ol className="breadcrumb">
+                    <li className="breadcrumb-item">
+                      <Link to="#story">Our Story</Link>
+                    </li>
+                    <li className="breadcrumb-item">
+                      <Link to="#mission">Our Mission</Link>
+                    </li>
+                    <li className="breadcrumb-item">
+                      <Link to="#values">Our Values</Link>
+                    </li>
+                    <li className="breadcrumb-item">
+                      <Link to="#approach">Our Approach</Link>
+                    </li>
+                    <li className="breadcrumb-item">
+                      <Link to="#roadmap">Project Roadmap</Link>
+                    </li>
+                  </ol>
+                </nav>
               </div>
             </div>
           </div>
@@ -150,17 +169,17 @@ class AboutPage extends React.Component {
 
         <div className="page-content">
 
-        <section className="pos-r o-hidden">
-          <div className="container">
-            <div className="section-title mb-4">
-              <h2 className="title">
-                <EditableText content={content["story-title"]} onSave={this.onSave("story-title")} />
-              </h2>
+          <section className="pos-r o-hidden" id="story">
+            <div className="container">
+              <div className="section-title mb-4">
+                <h2 className="title">
+                  <EditableText content={content["story-title"]} onSave={this.onSave("story-title")} />
+                </h2>
+              </div>
             </div>
-          </div>
-        </section>
+          </section>
 
-          <section className="grey-bg pos-r o-hidden">
+          <section className="grey-bg pos-r o-hidden" id="mission">
             <div className="container">
               <div className="section-title mb-4">
                 <h2 className="title">
@@ -197,7 +216,7 @@ class AboutPage extends React.Component {
           </section>
 
 
-          <section className="pos-r o-hidden">
+          <section className="pos-r o-hidden" id="values">
             <div className="container">
               <div className="section-title mb-4">
                 <h2 className="title">
@@ -261,60 +280,11 @@ class AboutPage extends React.Component {
             </div>
           </section>
 
-          <section className="grey-bg pos-r">
-            <div className="container">
-              <div className="section-title">
-                <h6>
-                  <EditableText content={content["problem-tag"]} onSave={this.onSave("problem-tag")} />
-                </h6>
-                <h2 className="title">
-                  <EditableText content={content["problem-title"]} onSave={this.onSave("problem-title")} />
-                </h2>
-              </div>
-              <div className="row">
-                {
-                  Object.keys(problemItems).map(key => {
-                    const content = problemItems[key];
-
-                    return (
-                      <div className="col-lg-4 col-md-6" key={`problem-item-${key}`}>
-                        <FeaturedItemWithTitle
-                          classes="featured-item text-center"
-                          content={content}
-                          onSave={this.editListItem("problem-items", key)}
-                        />
-                        { this.props.isEditingPage &&
-                          <div className="row justify-content-end">
-                            <Button onClick={this.deleteListItem("problem-items", key)}>Delete</Button>
-                          </div>
-                        }
-                      </div>
-                    )
-                  })
-                }
-                {
-                  this.props.isEditingPage &&
-                  <div className="col-lg-12">
-                    <Button onClick={this.addListItem("problem-items")}>Add list item</Button>
-                  </div>
-                }
-              </div>
-              <div className="row">
-                <div className="col-lg-12 col-md-12 ml-auto mr-auto mt-4">
-                  <EditableParagraph content={content["problem-body"]} onSave={this.onSave("problem-body")} />
-                </div>
-              </div>
-            </div>
-          </section>
-
-          <section className="pos-r">
+          <section className="pos-r grey-bg" id="approach">
             <div className="container">
               <div className="row">
                 <div className="col-12">
                   <div className="section-title">
-                    <h6>
-                      <EditableText content={content["solution-tag"]} onSave={this.onSave("solution-tag")} />
-                    </h6>
                     <h2 className="title">
                       <EditableText content={content["solution-title"]} onSave={this.onSave("solution-title")} />
                     </h2>
@@ -380,7 +350,7 @@ class AboutPage extends React.Component {
 
 
 
-          <section className="grey-bg animatedBackground" data-bg-img="images/pattern/05.png">
+          <section className="animatedBackground" data-bg-img="images/pattern/05.png" id="roadmap">
             <div className="container">
               <div className="row">
                 <div className="col-sm-12">
@@ -466,7 +436,7 @@ class AboutPage extends React.Component {
           </section>
 
 
-          <section className="pos-r o-hidden" data-bg-img="images/pattern/01.png">
+          <section className="pos-r o-hidden" data-bg-img="images/pattern/01.png" id="cities">
             <div className="container">
               <div className="row">
                 <div className="col-lg-4 col-md-6">

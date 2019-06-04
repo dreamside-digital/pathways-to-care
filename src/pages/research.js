@@ -126,7 +126,7 @@ class ResearchPage extends React.Component {
 
         <div className="page-content">
 
-          <section className="pos-r o-hidden">
+          <section className="pos-r o-hidden" id="research-goals">
             <div className="container">
               <div className="section-title mb-4">
                 <h2 className="title">
@@ -163,7 +163,7 @@ class ResearchPage extends React.Component {
           </section>
 
 
-          <section className="grey-bg" data-bg-img={ background02 }>
+          <section className="grey-bg" data-bg-img={ background02 } id="theory-of-change">
             <div className="container">
               <div className="section-title mb-4">
                 <h2 className="title">
@@ -213,7 +213,7 @@ class ResearchPage extends React.Component {
           </section>
 
           {/*
-          <section>
+          <section id="publications">
             <div className="container">
               <div className="row">
                 <div className="col-lg-12 col-md-12 ml-auto mr-auto">

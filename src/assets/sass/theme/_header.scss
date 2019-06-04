@@ -69,11 +69,11 @@ css/* ------------------------
 }
 
 .logo img {
-  height: 70px;
+  height: 60px;
 }
 
 #header-wrap.fixed-header .logo img {
-  height: 60px;
+  height: 50px;
 }
 
 /*--navigation--*/
@@ -212,7 +212,6 @@ css/* ------------------------
     font-weight: 500;
     padding: 15px 10px !important;
     border-radius: 0;
-    text-transform: capitalize;
     overflow: hidden;
     position: relative;
     &:before {

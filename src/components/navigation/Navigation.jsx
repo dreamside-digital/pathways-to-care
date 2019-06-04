@@ -34,13 +34,13 @@ const Navigation = (props) => {
                       <Link className="nav-link" to="/">Home</Link>
                     </div>
                     <div className="nav-item">
-                      <Link className="nav-link" to="/about">About</Link>
+                      <Link className="nav-link" to="/about">About the Project</Link>
                     </div>
                     <div className="nav-item">
                       <Link className="nav-link" to="/research">Research</Link>
                     </div>
                     <div className="nav-item">
-                      <Link className="nav-link" to="/team">Team</Link>
+                      <Link className="nav-link" to="/team">Who We Are</Link>
                     </div>
                     <div className="nav-item">
                       <Link className="nav-link" to="/contact">Get Involved</Link>

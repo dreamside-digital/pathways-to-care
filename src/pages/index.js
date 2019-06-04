@@ -147,7 +147,7 @@ class HomePage extends React.Component {
 
         <div className="page-content">
 
-        <section className="dark-bg pos-r">
+        <section className="dark-bg pos-r" id="problem">
           <div className="container">
             <div className="section-title">
               <h6>
@@ -195,7 +195,7 @@ class HomePage extends React.Component {
         </section>
 
 
-          <section className="pos-r">
+          <section className="pos-r" id="solution">
             <div className="container">
               <div className="row">
                 <div className="col-lg-6 col-md-12">
@@ -227,7 +227,7 @@ class HomePage extends React.Component {
             </div>
           </section>
 
-          <section className="grey-bg pos-r">
+          <section className="grey-bg pos-r" id="outcomes">
             <div className="container">
 
             <div className="row">
@@ -287,7 +287,7 @@ class HomePage extends React.Component {
           </section>
 
 
-          <section className="" data-bg-img={ background02 }>
+          <section className="" data-bg-img={ background02 } id="news">
             <div className="container">
               <div className="row">
                 <div className="col-lg-12 col-md-12 ml-auto mr-auto">
