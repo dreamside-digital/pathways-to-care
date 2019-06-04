@@ -1,5 +1,5 @@
 import React from "react";
-import { graphql } from "gatsby";
+import { graphql, Link } from "gatsby";
 import { connect } from "react-redux";
 import Button from "@material-ui/core/Button"
 import {
@@ -100,6 +100,16 @@ class TeamPage extends React.Component {
                   <h1 className="title">
                     <EditableText content={content["page-title"]} onSave={this.onSave("page-title")} />
                   </h1>
+                  <nav aria-label="breadcrumb" className="page-breadcrumb">
+                    <ol className="breadcrumb">
+                      <li className="breadcrumb-item">
+                        <Link to="#team-members">Team</Link>
+                      </li>
+                      <li className="breadcrumb-item">
+                        <Link to="#partners">Core Stakeholders</Link>
+                      </li>
+                    </ol>
+                  </nav>
                 </div>
               </div>
             </div>
