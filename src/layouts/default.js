@@ -113,7 +113,7 @@ const DefaultLayout = props => (
     </Helmet>
     <Notification />
     <AccountButton />
-  {/* <Loader /> */}
+    <Loader />
 
 
     <EditablesContext.Provider value={ { theme: customTheme, showEditingControls: props.isEditingPage } }>
