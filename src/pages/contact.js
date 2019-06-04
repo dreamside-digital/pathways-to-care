@@ -135,6 +135,12 @@ class ContactPage extends React.Component {
                       <EditableText content={content["get-involved-title"]} onSave={this.onSave("get-involved-title")} />
                     </h2>
                   </div>
+
+                  <EditableParagraph
+                    classes="mb-5"
+                    content={content["get-involved-intro"]}
+                    onSave={this.onSave("get-involved-intro")}
+                  />
                   {
                     asks.map((content, index) => (
                       <Fragment key={`ask-${index}`}>

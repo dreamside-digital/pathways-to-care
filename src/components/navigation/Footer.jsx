@@ -1,6 +1,8 @@
 import React from "react";
 import { Link, StaticQuery, graphql } from "gatsby";
+
 import MailchimpSubscriptionForm from "../common/MailchimpSubscriptionForm"
+import otf from "../../assets/images/otf_logo.png"
 
 
 const Footer = (props) => {
@@ -25,15 +27,19 @@ const Footer = (props) => {
               <div className="container py-5">
                 <div className="row">
 
-                  <div className="col-lg-4 col-md-6 sm-mt-5">
+                  <div className="col-lg-4 col-md-6 sm-mt-5 sm-mb-5 md-mb-5">
                     <h4 className="title">Pathways to Care</h4>
                     <ul className="media-icon list-unstyled text-white">
-                      <li>
-                        <div dangerouslySetInnerHTML={ {__html: address} } />
+                      <li className="d-flex">
+                          <i className="flaticon-location mr-3"></i>
+                          <div dangerouslySetInnerHTML={ {__html: address} } />
                       </li>
-                      <li><a className="text-white" href={content.email ? content.email.link : ""}>{content.email ? content.email.anchor : "Set an email address on the contact page"}</a>
+                      <li className="d-flex">
+                        <i className="flaticon-email mr-3"></i>
+                        <a className="text-white" href={content.email ? content.email.link : ""}>{content.email ? content.email.anchor : "Set an email address on the contact page"}</a>
                       </li>
-                      <li>
+                      <li className="d-flex">
+                        <i className="flaticon-call mr-3"></i>
                         <div dangerouslySetInnerHTML={ {__html: phone} } />
                       </li>
                     </ul>
@@ -41,6 +47,22 @@ const Footer = (props) => {
 
                   <div className="col-lg-8 col-md-12 mr-auto">
                     <MailchimpSubscriptionForm prompt="Sign up to our mailing list and be the first to hear about our new Pathways to Care research, events, and upcoming community consultations!" />
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div className="secondary-footer">
+              <div className="container">
+                <div className="copyright">
+                  <div className="row align-items-center">
+                    <div className="col-md-6">
+                      <span>Copyright 2019 | Illustrations by Melisse Watson</span>
+                    </div>
+                    <div className="col-md-6 text-md-right sm-mt-2">
+                      <span className="mr-3" >Funded by</span>
+                      <img src={otf} alt="Ontario Trillium Foundation" style={{ width: '130px'}} />
+                    </div>
                   </div>
                 </div>
               </div>

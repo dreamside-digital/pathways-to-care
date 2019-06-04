@@ -22,6 +22,9 @@ import {
 import { uploadImage } from "../firebase/operations";
 
 import Layout from "../layouts/default.js";
+import FeaturedItemWithTitle from "../components/home/FeaturedItemWithTitle";
+import FeaturedItem from "../components/home/FeaturedItem";
+import Collection from "../components/common/Collection";
 
 import headerPattern  from "../assets/images/pattern/secondary-banner.png";
 import headerBg from "../assets/images/bg/squiggle.svg";
@@ -53,6 +56,30 @@ const mapStateToProps = state => {
   };
 };
 
+const MissionItem = props => {
+  const content = props.content || {};
+
+  const handleSave = field => newContent => {
+    props.onSave({ [field]: newContent })
+  }
+  return(
+    <div className="work-process style-2 mb-1">
+      <div className="work-process-inner">
+        <span className="step-num">{ props.index + 1 }</span>
+        <h6>
+          <EditableText
+            classes="mb-0"
+            content={content["description"]}
+            onSave={handleSave("description")}
+            onDelete={props.onDelete}
+          />
+        </h6>
+      </div>
+    </div>
+  )
+}
+
+
 class AboutPage extends React.Component {
 
   componentDidMount() {
@@ -67,6 +94,15 @@ class AboutPage extends React.Component {
   onSave = id => content => {
     this.props.onUpdatePageContent(id, content);
   };
+
+
+  onAddItem = id => content => {
+    this.props.onPushContentItem(id, content);
+  }
+
+  onDeleteItem = id => itemId => {
+    this.props.onRemoveContentItem(id, itemId)
+  }
 
   addListItem = listId => () => {
     const emptyItem = DEFAULT_COMPONENT_CONTENT[listId];
@@ -93,37 +129,57 @@ class AboutPage extends React.Component {
   render() {
     const content = this.props.pageData ? this.props.pageData.content : {};
     const values = content["values-items"] || {};
+    const problemItems = content["problem-items"] ? content["problem-items"] : {};
+    const solutionItems = content["solution-items"] ? content["solution-items"] : {};
 
     return (
       <Layout>
-          <section className="page-title o-hidden text-center grey-bg bg-contain animatedBackground" data-bg-img={ headerPattern }>
-            <div className="container">
-              <div className="row align-items-center">
-                <div className="col-md-12">
-                  <h1 className="title">
-                    <EditableText content={content["page-title"]} onSave={this.onSave("page-title")} />
-                  </h1>
-                </div>
+        <section className="page-title o-hidden text-center grey-bg bg-contain animatedBackground" data-bg-img={ headerPattern }>
+          <div className="container">
+            <div className="row align-items-center">
+              <div className="col-md-12">
+                <h1 className="title">
+                  <EditableText content={content["page-title"]} onSave={this.onSave("page-title")} />
+                </h1>
               </div>
             </div>
-            <div className="page-title-pattern"><img className="img-fluid" src={ headerBg } alt="" /></div>
-          </section>
+          </div>
+          <div className="page-title-pattern"><img className="img-fluid" src={ headerBg } alt="" /></div>
+        </section>
 
 
         <div className="page-content">
 
+        <section className="pos-r o-hidden">
+          <div className="container">
+            <div className="section-title mb-4">
+              <h2 className="title">
+                <EditableText content={content["story-title"]} onSave={this.onSave("story-title")} />
+              </h2>
+            </div>
+          </div>
+        </section>
 
-          <section className="pos-r o-hidden">
+          <section className="grey-bg pos-r o-hidden">
             <div className="container">
+              <div className="section-title mb-4">
+                <h2 className="title">
+                  <EditableText content={content["mission-title"]} onSave={this.onSave("mission-title")} />
+                </h2>
+              </div>
 
-              <div className="row align-items-center">
+              <div className="row">
                 <div className="col-lg-6 col-md-12 md-mt-5">
-                  <div className="section-title mb-4">
-                    <h2 className="title">
-                      <EditableText content={content["mission-title"]} onSave={this.onSave("mission-title")} />
-                    </h2>
-                  </div>
                   <EditableParagraph content={content["mission-description"]} onSave={this.onSave("mission-description")} />
+                  <Collection
+                    items={content["mission-items"]}
+                    Component={MissionItem}
+                    onSave={this.onSave('mission-items')}
+                    onAddItem={this.onAddItem('mission-items')}
+                    onDeleteItem={this.onDeleteItem('mission-items')}
+                    isEditingPage={this.props.isEditingPage}
+                    defaultContent={DEFAULT_COMPONENT_CONTENT['mission-items']}
+                  />
                 </div>
 
                 <div className="col-lg-6 col-md-12">
@@ -141,11 +197,16 @@ class AboutPage extends React.Component {
           </section>
 
 
-
           <section className="pos-r o-hidden">
             <div className="container">
+              <div className="section-title mb-4">
+                <h2 className="title">
+                  <EditableText content={content["vision-title"]} onSave={this.onSave("vision-title")} />
+                </h2>
+                <EditableParagraph content={content["vision-description"]} onSave={this.onSave("vision-description")} />
+              </div>
 
-              <div className="row align-items-center">
+              <div className="row">
                 <div className="col-lg-6 col-md-12">
                   <div className="info-img pos-r">
                     <EditableImageUpload
@@ -158,12 +219,6 @@ class AboutPage extends React.Component {
                 </div>
 
                 <div className="col-lg-6 col-md-12 md-mt-5">
-                  <div className="section-title mb-4">
-                    <h2 className="title">
-                      <EditableText content={content["vision-title"]} onSave={this.onSave("vision-title")} />
-                    </h2>
-                  </div>
-                  <EditableParagraph content={content["vision-description"]} onSave={this.onSave("vision-description")} />
                   {
                     Object.keys(values).map((key, index) => {
                       const content = values[key];
@@ -175,7 +230,7 @@ class AboutPage extends React.Component {
                           <div className="col-12">
                             <div className="work-process style-2 mb-1">
                               <div className="work-process-inner">
-                                <span className="step-num" data-bg-color="#cd113a">{ number }</span>
+                                <span className="step-num">{ number }</span>
                                 <h6>
                                   <EditableText
                                     classes="mb-0"
@@ -208,20 +263,13 @@ class AboutPage extends React.Component {
 
           <section className="grey-bg pos-r">
             <div className="container">
-              <div className="row">
-                <div className="col-lg-12 col-md-12 ml-auto mr-auto">
-                  <div className="section-title">
-                    <h6>
-                      <EditableText content={content["problem-tag"]} onSave={this.onSave("problem-tag")} />
-                    </h6>
-                    <h2 className="title">
-                      <EditableText content={content["problem-title"]} onSave={this.onSave("problem-title")} />
-                    </h2>
-                  </div>
-                  <div className="text-white">
-                    <EditableParagraph content={content["problem-body"]} onSave={this.onSave("problem-body")} />
-                  </div>
-                </div>
+              <div className="section-title">
+                <h6>
+                  <EditableText content={content["problem-tag"]} onSave={this.onSave("problem-tag")} />
+                </h6>
+                <h2 className="title">
+                  <EditableText content={content["problem-title"]} onSave={this.onSave("problem-title")} />
+                </h2>
               </div>
               <div className="row">
                 {
@@ -250,7 +298,11 @@ class AboutPage extends React.Component {
                     <Button onClick={this.addListItem("problem-items")}>Add list item</Button>
                   </div>
                 }
-
+              </div>
+              <div className="row">
+                <div className="col-lg-12 col-md-12 ml-auto mr-auto mt-4">
+                  <EditableParagraph content={content["problem-body"]} onSave={this.onSave("problem-body")} />
+                </div>
               </div>
             </div>
           </section>
@@ -272,14 +324,7 @@ class AboutPage extends React.Component {
 
               <div className="row">
                 <div className="col-lg-6 col-md-12">
-                  <div className="info-img pos-r">
-                    <EditableImageUpload
-                      classes="img-fluid"
-                      content={content["solution-image"]}
-                      onSave={this.onSave("solution-image")}
-                      uploadImage={uploadImage}
-                    />
-                  </div>
+                  <EditableParagraph content={content["solution-summary"]} onSave={this.onSave("solution-summary")} />
                 </div>
 
                 <div className="col-lg-6 col-md-12">
@@ -296,19 +341,20 @@ class AboutPage extends React.Component {
 
               <div className="row">
                 <div className="col-lg-4 col-md-12">
-                  <h2 className="text-center p-5 my-3">
+                  <h2 className="text-center p-4 my-3">
                     <EditableText content={content["solution-items-header"]} onSave={this.onSave("solution-items-header")} />
                   </h2>
                 </div>
 
                 {
-                  Object.keys(solutionItems).map(key => {
+                  Object.keys(solutionItems).map((key, index) => {
                     const content = solutionItems[key];
 
                     return (
                       <div className="col-lg-4 col-md-6" key={`solution-item-${key}`}>
                         <FeaturedItem
-                          classes="featured-item text-center style-2"
+                          index={index}
+                          classes="featured-item text-center style-1 pos-relative"
                           content={content}
                           onSave={this.editListItem("solution-items", key)}
                         />
@@ -435,114 +481,6 @@ class AboutPage extends React.Component {
                   <div className="map-canvas md-iframe iframe-h" data-zoom="6" data-lat="43.653908" data-lng="-79.384293" data-type="roadmap"></div>
                 </div>
 
-              </div>
-            </div>
-          </section>
-
-
-          <section className="pos-r grey-bg">
-            <div className="container">
-              <div className="row">
-                <div className="col-lg-12">
-                  <div className="section-title mb-0 text-center">
-                    <h2 className="title">
-                      <EditableText content={content["stakeholders-title"]} onSave={this.onSave("stakeholders-title")} />
-                    </h2>
-                  </div>
-                </div>
-              </div>
-
-              <div className="row justify-center">
-                <div className="col-lg-2 col-md-2 col-sm-6">
-                  <EditableImageUpload
-                    classes="img-center"
-                    content={content["stakeholder-1-image"]}
-                    onSave={this.onSave("stakeholder-1-image")}
-                    uploadImage={uploadImage}
-                  />
-                </div>
-                <div className="col-lg-2 col-md-2 col-sm-6 xs-mt-5">
-                  <EditableImageUpload
-                    classes="img-center"
-                    content={content["stakeholder-2-image"]}
-                    onSave={this.onSave("stakeholder-2-image")}
-                    uploadImage={uploadImage}
-                  />
-                </div>
-                <div className="col-lg-2 col-md-2 col-sm-6 sm-mt-5">
-                  <EditableImageUpload
-                    classes="img-center"
-                    content={content["stakeholder-3-image"]}
-                    onSave={this.onSave("stakeholder-3-image")}
-                    uploadImage={uploadImage}
-                  />
-                </div>
-                <div className="col-lg-2 col-md-2 col-sm-6 sm-mt-5">
-                  <EditableImageUpload
-                    classes="img-center"
-                    content={content["stakeholder-4-image"]}
-                    onSave={this.onSave("stakeholder-4-image")}
-                    uploadImage={uploadImage}
-                  />
-                </div>
-                <div className="col-lg-2 col-md-2 col-sm-6 sm-mt-5">
-                  <EditableImageUpload
-                    classes="img-center"
-                    content={content["stakeholder-5-image"]}
-                    onSave={this.onSave("stakeholder-5-image")}
-                    uploadImage={uploadImage}
-                  />
-                </div>
-              </div>
-
-              <div className="row">
-                <div className="col-lg-4 col-md-6">
-                <div className="featured-item text-center">
-                  <div className="featured-icon">
-                    <img className="img-center" src="images/feature/04.png" alt=""/>
-                  </div>
-                  <div className="featured-title">
-                    <h5>
-                      <EditableText content={content["government-stakeholders-title"]} onSave={this.onSave("government-stakeholders-title")} />
-                    </h5>
-                  </div>
-                  <div className="featured-desc">
-                    <EditableParagraph content={content["government-stakeholders-desc"]} onSave={this.onSave("government-stakeholders-desc")} />
-                  </div>
-                </div>
-              </div>
-
-              <div className="col-lg-4 col-md-6">
-                <div className="featured-item text-center">
-                  <div className="featured-icon">
-                    <img className="img-center" src="images/feature/04.png" alt=""/>
-                  </div>
-                  <div className="featured-title">
-                    <h5>
-                      <EditableText content={content["community-stakeholders-title"]} onSave={this.onSave("community-stakeholders-title")} />
-                    </h5>
-                  </div>
-                  <div className="featured-desc">
-                    <EditableParagraph content={content["community-stakeholders-desc"]} onSave={this.onSave("community-stakeholders-desc")} />
-                  </div>
-                </div>
-              </div>
-
-              <div className="col-lg-4 col-md-6">
-                <div className="featured-item text-center">
-                  <div className="featured-icon">
-                    <img className="img-center" src="images/feature/04.png" alt=""/>
-                  </div>
-                  <div className="featured-title">
-                    <h5>
-                      <EditableText content={content["agency-stakeholders-title"]} onSave={this.onSave("agency-stakeholders-title")} />
-                    </h5>
-                  </div>
-                  <div className="featured-desc">
-                    <EditableParagraph content={content["agency-stakeholders-desc"]} onSave={this.onSave("agency-stakeholders-desc")} />
-                  </div>
-                </div>
-              </div>
               </div>
             </div>
           </section>

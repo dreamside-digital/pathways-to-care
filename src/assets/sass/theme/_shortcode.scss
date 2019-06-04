@@ -299,7 +299,6 @@
 
 .team-member {
   position: relative;
-  text-align: center;
 }
 
 .owl-carousel .team-member {
@@ -308,7 +307,6 @@
 
 .team-member .team-description {
   padding: 20px;
-  text-align: center;
   background: $whitebg;
   span {
     color: $theme-color2;
@@ -378,6 +376,39 @@
     line-height: 24px;
     vertical-align: middle;
     margin-right: 10px;
+  }
+}
+
+.team-images {
+  padding: 20px;
+  > div {
+      background: #e5e8f5;
+      border-radius: 50%;
+      display: flex;
+      flex-shrink: 0;
+      justify-content: center;
+      overflow: hidden;
+      padding-top: 100%;
+      position: relative;
+      width: 100%;
+
+    > img {
+        bottom: 0;
+        height: 100%;
+        left: 0;
+        -o-object-fit: cover;
+        object-fit: cover;
+        position: absolute;
+        top: 0;
+        width: 100%;
+    }
+  }
+}
+
+.team-description {
+  .quote {
+    font-size: 1em;
+    font-style: italic;
   }
 }
 
@@ -529,6 +560,7 @@
   .post-image {
     overflow: hidden;
     position: relative;
+    max-height: 320px;
   }
   .post-desc {
     padding: 30px 30px;
@@ -554,6 +586,10 @@
     p {
       margin: 15px 0;
     }
+  }
+
+  &:hover {
+    @include box-shadow(0px 15px 35px rgba(0, 0, 0, 0.1));
   }
 }
 
@@ -1021,6 +1057,25 @@
 }
 
 .featured-item {
+  &.style-1 {
+    background: $whitebg;
+    border: 2px dashed $theme-light;
+    border-radius: 10px;
+    box-shadow: none;
+    padding: 30px;
+    margin: 20px;
+
+    .step-num {
+      left: inherit;
+      right: -20px;
+      top: -20px;
+      border: none;
+      width: 40px;
+      height: 40px;
+      line-height: 40px;
+      font-size: 20px;
+    }
+  }
   &.style-2 {
     background: $whitebg;
     padding: 60px 30px;

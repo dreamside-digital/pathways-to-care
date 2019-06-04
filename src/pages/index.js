@@ -17,6 +17,7 @@ import {
   pushContentItem,
   removeContentItem,
   loadPageData,
+  showNotification,
 } from "../redux/actions";
 
 import Layout from "../layouts/default.js";
@@ -49,6 +50,9 @@ const mapDispatchToProps = dispatch => {
     },
     onLoadPageData: data => {
       dispatch(loadPageData(data));
+    },
+    showNotification: message => {
+      dispatch(showNotification(message));
     }
   };
 };
@@ -69,6 +73,10 @@ class HomePage extends React.Component {
     };
 
     this.props.onLoadPageData(initialPageData);
+
+    window.setTimeout(() => {
+      this.props.showNotification("If you are in crisis, please call 911 or go to your nearest emergency department for assistance.")
+    }, 3000)
   }
 
   onSave = id => content => {
@@ -141,20 +149,13 @@ class HomePage extends React.Component {
 
         <section className="dark-bg pos-r">
           <div className="container">
-            <div className="row">
-              <div className="col-lg-12 col-md-12 ml-auto mr-auto">
-                <div className="section-title">
-                  <h6>
-                    <EditableText content={content["problem-tag"]} onSave={this.onSave("problem-tag")} />
-                  </h6>
-                  <h2 className="title">
-                    <EditableText content={content["problem-title"]} onSave={this.onSave("problem-title")} />
-                  </h2>
-                </div>
-                <div className="text-white">
-                  <EditableParagraph content={content["problem-summary"]} onSave={this.onSave("problem-summary")} />
-                </div>
-              </div>
+            <div className="section-title">
+              <h6>
+                <EditableText content={content["problem-tag"]} onSave={this.onSave("problem-tag")} />
+              </h6>
+              <h2 className="title">
+                <EditableText content={content["problem-title"]} onSave={this.onSave("problem-title")} />
+              </h2>
             </div>
             <div className="row">
               {
@@ -183,7 +184,12 @@ class HomePage extends React.Component {
                   <Button onClick={this.addListItem("problem-items")}>Add list item</Button>
                 </div>
               }
+            </div>
 
+            <div className="row mt-3">
+              <div className="col-lg-12 col-md-12 text-white">
+                <EditableParagraph content={content["problem-summary"]} onSave={this.onSave("problem-summary")} />
+              </div>
             </div>
           </div>
         </section>
@@ -221,7 +227,7 @@ class HomePage extends React.Component {
             </div>
           </section>
 
-          <section className="grey-bg pos-r" data-bg-img={ background02 }>
+          <section className="grey-bg pos-r">
             <div className="container">
 
             <div className="row">
@@ -303,6 +309,12 @@ class HomePage extends React.Component {
                 isEditingPage={this.props.isEditingPage}
                 defaultContent={DEFAULT_COMPONENT_CONTENT['news-items']}
               />
+
+              <div className="row">
+                <div className="col-12 text-center">
+                  <EditableLink classes="btn btn-theme mt-5" content={content["research-read-more"]} onSave={this.onSave("research-read-more")} />
+                </div>
+              </div>
 
             </div>
           </section>

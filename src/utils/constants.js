@@ -55,5 +55,11 @@ export const DEFAULT_COMPONENT_CONTENT = {
   },
   "values-items": {
     "description": { "text": "Value description" }
+  },
+  "mission-items": {
+    "description": { "text": "Mission description" }
+  },
+  "research-goals": {
+    "description": { "text": "Research goal description" }
   }
 }

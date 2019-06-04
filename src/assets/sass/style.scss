@@ -57,7 +57,6 @@ h1, h2, h3, h4, h5, h6 {
   font-weight: normal;
   margin-top: 0px;
   margin-bottom: 0px;
-  text-transform: capitalize;
   letter-spacing: 2px;
 }
 
@@ -532,8 +531,7 @@ section {
 }
 
 .step-num {
-  background: $theme-primary3;
-  background: linear-gradient(90deg, $theme-secondary3 0%, $theme-primary3 50%);
+  background: $theme-color;
   border: 5px solid #fff;
   border-radius: 50%;
   color: $white;
@@ -561,20 +559,20 @@ section {
 
 .work-process.style-2 {
   .work-process-inner {
-    padding-left: 80px;
-    min-height: 60px;
+    padding-left: 60px;
+    min-height: 40px;
     margin-bottom: 20px;
-    padding-top: 15px;
   }
+
   .step-num {
     right: inherit;
     left: 0;
     top: 0;
     border: none;
-    width: 60px;
-    height: 60px;
-    line-height: 60px;
-    font-size: 24px;
+    width: 40px;
+    height: 40px;
+    line-height: 40px;
+    font-size: 20px;
   }
 }
 

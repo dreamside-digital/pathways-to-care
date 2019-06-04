@@ -16,7 +16,7 @@ const Ask = props => {
 
   return (
     <div className="work-process style-2 mb-1">
-      <div className="work-process-inner"> <span className="step-num" data-bg-color="#cd113a">{ number }</span>
+      <div className="work-process-inner"> <span className="step-num">{ number }</span>
         <h4>
           <EditableText content={content["ask-title"]} onSave={props.onSave("ask-title")} />
         </h4>

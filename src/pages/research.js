@@ -25,6 +25,7 @@ import { uploadImage, uploadFile } from "../firebase/operations";
 import Layout from "../layouts/default.js";
 import Publication from "../components/common/Publication";
 import Carousel from "../components/common/Carousel";
+import Collection from "../components/common/Collection";
 
 import headerPattern from "../assets/images/pattern/secondary-banner.png";
 import headerBg from "../assets/images/bg/squiggle.svg";
@@ -55,6 +56,29 @@ const mapStateToProps = state => {
   };
 };
 
+const ResearchGoal = props => {
+  const content = props.content || {};
+
+  const handleSave = field => newContent => {
+    props.onSave({ [field]: newContent })
+  }
+  return(
+    <div className="work-process style-2 mb-1">
+      <div className="work-process-inner">
+        <span className="step-num">{ props.index + 1 }</span>
+        <h6>
+          <EditableText
+            classes="mb-0"
+            content={content["description"]}
+            onSave={handleSave("description")}
+            onDelete={props.onDelete}
+          />
+        </h6>
+      </div>
+    </div>
+  )
+}
+
 class ResearchPage extends React.Component {
 
   componentDidMount() {
@@ -79,33 +103,9 @@ class ResearchPage extends React.Component {
     this.props.onRemoveContentItem(id, itemId)
   }
 
-  addListItem = listId => () => {
-    const list = this.props.pageData.content[listId] ? [...this.props.pageData.content[listId]] : [];
-    const emptyItem = DEFAULT_COMPONENT_CONTENT[listId];
-    list.push(emptyItem)
-    this.props.onUpdatePageContent(listId, list)
-  }
-
-  editListItem = (listId, index) => field => content => {
-    const list = [...this.props.pageData.content[listId]];
-    const updated = {
-      ...list[index],
-      [field]: content
-    };
-
-    list[index] = updated;
-
-    this.props.onUpdatePageContent(listId, list);
-  }
-
-  deleteListItem = (listId, index) => () => {
-    const list = [...this.props.pageData.content[listId]]
-    list.splice(index, 1)
-    this.props.onUpdatePageContent(listId, list)
-  }
-
   render() {
     const content = this.props.pageData ? this.props.pageData.content : {};
+    const researchGoals = content["research-goals-items"] || {};
 
     return (
       <Layout>
@@ -126,20 +126,16 @@ class ResearchPage extends React.Component {
 
         <div className="page-content">
 
-
           <section className="pos-r o-hidden">
             <div className="container">
+              <div className="section-title mb-4">
+                <h2 className="title">
+                  <EditableText content={content["goals-title"]} onSave={this.onSave("goals-title")} />
+                </h2>
+                <EditableParagraph content={content["goals-description"]} onSave={this.onSave("goals-description")} />
+              </div>
 
-              <div className="row align-items-center">
-                <div className="col-lg-6 col-md-12 md-mt-5">
-                  <div className="section-title mb-4">
-                    <h2 className="title">
-                      <EditableText content={content["goals-title"]} onSave={this.onSave("goals-title")} />
-                    </h2>
-                  </div>
-                  <EditableParagraph content={content["goals-description"]} onSave={this.onSave("goals-description")} />
-                </div>
-
+              <div className="row">
                 <div className="col-lg-6 col-md-12">
                   <div className="info-img pos-r">
                     <EditableImageUpload
@@ -150,6 +146,18 @@ class ResearchPage extends React.Component {
                     />
                   </div>
                 </div>
+
+                <div className="col-lg-6 col-md-12 md-mt-5">
+                  <Collection
+                    items={content["research-goals"]}
+                    Component={ResearchGoal}
+                    onSave={this.onSave('research-goals')}
+                    onAddItem={this.onAddItem('research-goals')}
+                    onDeleteItem={this.onDeleteItem('research-goals')}
+                    isEditingPage={this.props.isEditingPage}
+                    defaultContent={DEFAULT_COMPONENT_CONTENT['research-goals']}
+                  />
+                </div>
               </div>
             </div>
           </section>
@@ -157,45 +165,54 @@ class ResearchPage extends React.Component {
 
           <section className="grey-bg" data-bg-img={ background02 }>
             <div className="container">
+              <div className="section-title mb-4">
+                <h2 className="title">
+                  <EditableText content={content["toc-title"]} onSave={this.onSave("toc-title")} />
+                </h2>
+              </div>
 
               <div className="row">
 
-                <div className="col-12 md-mt-5">
-                  <div className="section-title mb-4">
-                    <h2 className="title">
-                      <EditableText content={content["toc-title"]} onSave={this.onSave("toc-title")} />
-                    </h2>
+                <div className="col-md-4">
+                  <div className={`post`}>
+                    <div className="post-image">
+                      <EditableImageUpload
+                        classes={"img-fluid"}
+                        content={content["toc-image"]}
+                        onSave={this.onSave("toc-image")}
+                        uploadImage={uploadImage}
+                      />
+                    </div>
+                    <div className="post-desc">
+                      <div className="post-title">
+                        <h4 className="text-theme mb-3">
+                          <EditableText content={content["toc-title"]} onSave={this.onSave("toc-title")} />
+                        </h4>
+                      </div>
+                      <EditableParagraph classes="mb-3" content={content["toc-summary"]} onSave={this.onSave("toc-summary")} />
+
+                      <div className="action-link">
+                        <EditableFileUpload
+                          content={content["toc-pdf"]}
+                          onSave={this.onSave("toc-pdf")}
+                          uploadFile={uploadFile}
+                          linkClasses="btn btn-theme"
+                          linkText="Download the PDF"
+                        />
+                      </div>
+                    </div>
                   </div>
+                </div>
+
+                <div className="col-md-8 md-mt-5">
                   <EditableParagraph content={content["toc-description"]} onSave={this.onSave("toc-description")} />
-                  <div className="d-flex">
-                    <div className="mr-2">Download the PDF:</div>
-                    <EditableFileUpload
-                      content={content["toc-pdf"]}
-                      onSave={this.onSave("toc-pdf")}
-                      uploadFile={uploadFile}
-                    />
-                  </div>
                 </div>
               </div>
 
-              <div className="row justify-content-center">
-
-                <div className="col-12 col-md-8 mt-5">
-                  <div className="info-img pos-r">
-                    <EditableImageUpload
-                      classes={"img-fluid"}
-                      content={content["toc-image"]}
-                      onSave={this.onSave("toc-image")}
-                      uploadImage={uploadImage}
-                    />
-                  </div>
-                </div>
-
-              </div>
             </div>
           </section>
 
-
+          {/*
           <section>
             <div className="container">
               <div className="row">
@@ -223,6 +240,7 @@ class ResearchPage extends React.Component {
               </div>
             </div>
           </section>
+          */}
 
 
         </div>
