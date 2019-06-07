@@ -381,7 +381,8 @@
 
 .team-images {
   padding: 20px;
-  > div {
+
+  > div.profile-image {
       background: #e5e8f5;
       border-radius: 50%;
       display: flex;

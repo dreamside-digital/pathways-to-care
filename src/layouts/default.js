@@ -101,7 +101,7 @@ const DefaultLayout = props => (
   <div style={styles.container}>
     <Helmet>
       <title>
-        Pathways to Care
+        { props.title || `Pathways to Care`}
       </title>
       <meta
         charSet="utf-8"

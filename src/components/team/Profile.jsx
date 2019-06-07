@@ -22,6 +22,7 @@ class Profile extends Component {
           <div className="col-md-4">
             <div className="team-images">
               <EditableImageUpload
+                classes="profile-image"
                 content={ content["headshot"]}
                 onSave={this.props.onSave("headshot")}
                 uploadImage={ uploadImage }

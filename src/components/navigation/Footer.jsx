@@ -3,6 +3,8 @@ import { Link, StaticQuery, graphql } from "gatsby";
 
 import MailchimpSubscriptionForm from "../common/MailchimpSubscriptionForm"
 import otf from "../../assets/images/otf_logo.png"
+import phac from "../../assets/images/phac_logo.png"
+
 
 
 const Footer = (props) => {
@@ -56,12 +58,15 @@ const Footer = (props) => {
               <div className="container">
                 <div className="copyright">
                   <div className="row align-items-center">
-                    <div className="col-md-6">
+                    <div className="col-lg-6">
                       <span>Copyright 2019 | Illustrations by Melisse Watson</span>
                     </div>
-                    <div className="col-md-6 text-md-right sm-mt-2">
-                      <span className="mr-3" >Funded by</span>
-                      <img src={otf} alt="Ontario Trillium Foundation" style={{ width: '130px'}} />
+                    <div className="col-lg-6 text-lg-right sm-mt-2 d-block d-lg-flex align-items-center justify-content-end">
+                      <div className="mr-4">Funded by</div>
+                      <div>
+                        <img className="mr-4" src={otf} alt="Ontario Trillium Foundation" style={{ width: '130px'}} />
+                        <img src={phac} alt="Public Health Agency of Canada" style={{ width: '130px'}} />
+                      </div>
                     </div>
                   </div>
                 </div>

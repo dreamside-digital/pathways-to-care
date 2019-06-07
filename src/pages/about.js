@@ -128,12 +128,11 @@ class AboutPage extends React.Component {
 
   render() {
     const content = this.props.pageData ? this.props.pageData.content : {};
-    const values = content["values-items"] || {};
     const problemItems = content["problem-items"] ? content["problem-items"] : {};
     const solutionItems = content["solution-items"] ? content["solution-items"] : {};
 
     return (
-      <Layout>
+      <Layout title={content["page-title"] ? content["page-title"]["text"] : "About the Project"}>
         <section className="page-title o-hidden text-center grey-bg bg-contain animatedBackground" data-bg-img={ headerPattern }>
           <div className="container">
             <div className="row align-items-center">
@@ -254,43 +253,15 @@ class AboutPage extends React.Component {
                 </div>
 
                 <div className="col-lg-6 col-md-12 md-mt-5">
-                  {
-                    Object.keys(values).map((key, index) => {
-                      const content = values[key];
-                      const number = index + 1;
-                      const onSaveValue = this.editListItem("values-items", key);
-
-                      return (
-                        <div className="row" key={`values-${index}`}>
-                          <div className="col-12">
-                            <div className="work-process style-2 mb-1">
-                              <div className="work-process-inner">
-                                <span className="step-num">{ number }</span>
-                                <h6>
-                                  <EditableText
-                                    classes="mb-0"
-                                    content={content["description"]}
-                                    onSave={onSaveValue("description")}
-                                  />
-                                </h6>
-                              </div>
-                            </div>
-                            { this.props.isEditingPage &&
-                              <div className="row justify-content-end">
-                                <Button onClick={this.deleteListItem("values-items", index)}>Delete</Button>
-                              </div>
-                            }
-                          </div>
-                        </div>
-                      )
-                    })
-                  }
-                  {
-                    this.props.isEditingPage &&
-                    <div className="">
-                      <Button onClick={this.addListItem("values-items")}>Add item</Button>
-                    </div>
-                  }
+                  <Collection
+                    items={content["values-items"]}
+                    Component={MissionItem}
+                    onSave={this.onSave('values-items')}
+                    onAddItem={this.onAddItem('values-items')}
+                    onDeleteItem={this.onDeleteItem('values-items')}
+                    isEditingPage={this.props.isEditingPage}
+                    defaultContent={DEFAULT_COMPONENT_CONTENT['values-items']}
+                  />
                 </div>
               </div>
             </div>

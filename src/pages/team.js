@@ -65,6 +65,7 @@ const Logo = props => {
         classes="img-center"
         content={content["logo"]}
         onSave={handleSave("logo")}
+        onDelete={props.onDelete}
         uploadImage={uploadImage}
       />
     </div>
@@ -120,7 +121,7 @@ class TeamPage extends React.Component {
     const teamMembers = content["team-members"] ? content["team-members"] : {};
 
     return (
-      <Layout>
+      <Layout title={content["page-title"] ? content["page-title"]["text"] : "Team"}>
           <section className="page-title o-hidden text-center grey-bg bg-contain animatedBackground" data-bg-img={ headerPattern }>
             <div className="container">
               <div className="row align-items-center">
@@ -195,48 +196,16 @@ class TeamPage extends React.Component {
                 </div>
               </div>
 
-              <div className="row justify-center">
-                <div className="col-lg-2 col-md-2 col-sm-6">
-                  <EditableImageUpload
-                    classes="img-center"
-                    content={content["stakeholder-1-image"]}
-                    onSave={this.onSave("stakeholder-1-image")}
-                    uploadImage={uploadImage}
-                  />
-                </div>
-                <div className="col-lg-2 col-md-2 col-sm-6 xs-mt-5">
-                  <EditableImageUpload
-                    classes="img-center"
-                    content={content["stakeholder-2-image"]}
-                    onSave={this.onSave("stakeholder-2-image")}
-                    uploadImage={uploadImage}
-                  />
-                </div>
-                <div className="col-lg-2 col-md-2 col-sm-6 sm-mt-5">
-                  <EditableImageUpload
-                    classes="img-center"
-                    content={content["stakeholder-3-image"]}
-                    onSave={this.onSave("stakeholder-3-image")}
-                    uploadImage={uploadImage}
-                  />
-                </div>
-                <div className="col-lg-2 col-md-2 col-sm-6 sm-mt-5">
-                  <EditableImageUpload
-                    classes="img-center"
-                    content={content["stakeholder-4-image"]}
-                    onSave={this.onSave("stakeholder-4-image")}
-                    uploadImage={uploadImage}
-                  />
-                </div>
-                <div className="col-lg-2 col-md-2 col-sm-6 sm-mt-5">
-                  <EditableImageUpload
-                    classes="img-center"
-                    content={content["stakeholder-5-image"]}
-                    onSave={this.onSave("stakeholder-5-image")}
-                    uploadImage={uploadImage}
-                  />
-                </div>
-              </div>
+              <Collection
+                classes="row justify-center"
+                items={content["core-stakeholders"]}
+                Component={Logo}
+                onSave={this.onSave('core-stakeholders')}
+                onAddItem={this.onAddItem('core-stakeholders')}
+                onDeleteItem={this.onDeleteItem('core-stakeholders')}
+                isEditingPage={this.props.isEditingPage}
+                defaultContent={{ "logo": { "caption": "", "title": "", imageSrc: "https://www.nomadiclabs.ca/img/logo-03.png" } }}
+              />
 
               <div className="row mt-4">
                 <div className="col-12 mt-4 mb-4">

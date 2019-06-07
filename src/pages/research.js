@@ -108,7 +108,7 @@ class ResearchPage extends React.Component {
     const researchGoals = content["research-goals-items"] || {};
 
     return (
-      <Layout>
+      <Layout title={content["page-title"] ? content["page-title"]["text"] : "Research"}>
 
           <section className="page-title o-hidden text-center grey-bg bg-contain animatedBackground" data-bg-img={ headerPattern }>
             <div className="container">
