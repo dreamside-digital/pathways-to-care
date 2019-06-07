@@ -22,6 +22,7 @@ import { DEFAULT_COMPONENT_CONTENT } from "../utils/constants"
 
 import Layout from "../layouts/default.js";
 import Profile from "../components/team/Profile"
+import Collection from "../components/common/Collection"
 
 import headerPattern from "../assets/images/pattern/secondary-banner.png";
 import headerBg from "../assets/images/bg/squiggle.svg";
@@ -51,6 +52,25 @@ const mapStateToProps = state => {
   };
 };
 
+const Logo = props => {
+  const content = props.content || {};
+
+  const handleSave = field => newContent => {
+    props.onSave({ [field]: newContent })
+  }
+
+  return(
+    <div className="col-lg-2 col-md-2 col-sm-6 xs-mt-5">
+      <EditableImageUpload
+        classes="img-center"
+        content={content["logo"]}
+        onSave={handleSave("logo")}
+        uploadImage={uploadImage}
+      />
+    </div>
+  )
+}
+
 class TeamPage extends React.Component {
 
   componentDidMount() {
@@ -65,6 +85,14 @@ class TeamPage extends React.Component {
   onSave = id => content => {
     this.props.onUpdatePageContent(id, content);
   };
+
+  onAddItem = id => content => {
+    this.props.onPushContentItem(id, content);
+  }
+
+  onDeleteItem = id => itemId => {
+    this.props.onRemoveContentItem(id, itemId)
+  }
 
   addListItem = listId => () => {
     const emptyItem = DEFAULT_COMPONENT_CONTENT[listId];
@@ -210,15 +238,37 @@ class TeamPage extends React.Component {
                 </div>
               </div>
 
-              <div className="row">
+              <div className="row mt-4">
                 <div className="col-12 mt-4 mb-4">
                   <EditableParagraph content={content["partners-description"]} onSave={this.onSave("partners-description")} />
                 </div>
               </div>
+
+              <div className="row mt-5">
+                <div className="col-lg-12">
+                  <div className="section-title mb-0 text-center">
+                    <h2 className="title">
+                      <EditableText content={content["toronto-partners-title"]} onSave={this.onSave("toronto-partners-title")} />
+                    </h2>
+                  </div>
+                </div>
+              </div>
+
+              <Collection
+                classes="row justify-center"
+                items={content["toronto-partners"]}
+                Component={Logo}
+                onSave={this.onSave('toronto-partners')}
+                onAddItem={this.onAddItem('toronto-partners')}
+                onDeleteItem={this.onDeleteItem('toronto-partners')}
+                isEditingPage={this.props.isEditingPage}
+                defaultContent={{ "logo": { "caption": "", "title": "", imageSrc: "https://www.nomadiclabs.ca/img/logo-03.png" } }}
+              />
+
             </div>
           </section>
-        </div>
 
+        </div>
 
       </Layout>
     );

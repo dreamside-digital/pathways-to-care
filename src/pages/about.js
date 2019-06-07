@@ -176,6 +176,22 @@ class AboutPage extends React.Component {
                   <EditableText content={content["story-title"]} onSave={this.onSave("story-title")} />
                 </h2>
               </div>
+              <div className="row">
+                <div className="col-lg-6 col-md-12">
+                  <EditableParagraph content={content["story-description"]} onSave={this.onSave("story-description")} />
+                </div>
+
+                <div className="col-lg-6 col-md-12">
+                  <div className="info-img pos-r">
+                    <EditableImageUpload
+                      classes={"img-fluid"}
+                      content={content["story-image"]}
+                      onSave={this.onSave("story-image")}
+                      uploadImage={uploadImage}
+                    />
+                  </div>
+                </div>
+              </div>
             </div>
           </section>
 
@@ -293,19 +309,8 @@ class AboutPage extends React.Component {
               </div>
 
               <div className="row">
-                <div className="col-lg-6 col-md-12">
+                <div className="col-12">
                   <EditableParagraph content={content["solution-summary"]} onSave={this.onSave("solution-summary")} />
-                </div>
-
-                <div className="col-lg-6 col-md-12">
-                  <div className="info-img pos-r">
-                    <EditableImageUpload
-                      classes="img-fluid"
-                      content={content["solution-image"]}
-                      onSave={this.onSave("solution-image")}
-                      uploadImage={uploadImage}
-                    />
-                  </div>
                 </div>
               </div>
 
@@ -364,7 +369,7 @@ class AboutPage extends React.Component {
                       <div className="nav nav-tabs" id="nav-tab" role="tablist"> <a className="nav-item nav-link active" id="nav-tab1" data-toggle="tab" href="#tab1-1" role="tab" aria-selected="true">Year 1</a>
                         <a className="nav-item nav-link" id="nav-tab2" data-toggle="tab" href="#tab1-2" role="tab" aria-selected="false">Year 2</a>
                         <a className="nav-item nav-link" id="nav-tab3" data-toggle="tab" href="#tab1-3" role="tab" aria-selected="false">Year 3</a>
-                        <a className="nav-item nav-link" id="nav-tab4" data-toggle="tab" href="#tab1-4" role="tab" aria-selected="false">Year 4</a>
+                        <a className="nav-item nav-link" id="nav-tab4" data-toggle="tab" href="#tab1-4" role="tab" aria-selected="false">Year 4 and beyond</a>
                       </div>
                     </nav>
                     <div className="tab-content" id="nav-tabContent">

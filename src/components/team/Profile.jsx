@@ -18,7 +18,7 @@ class Profile extends Component {
 
     return (
       <div className="team-member mb-4">
-        <div className="row align-items-center">
+        <div className="row">
           <div className="col-md-4">
             <div className="team-images">
               <EditableImageUpload
@@ -30,21 +30,13 @@ class Profile extends Component {
           </div>
 
           <div className="col-md-8">
-            <div className="team-description">
+             <div className="team-description">
               <strong><EditableText content={content["position"]} onSave={this.props.onSave("position")} /></strong>
               <h3 className="text-theme mt-2"><EditableText content={content["name"]} onSave={this.props.onSave("name")} /></h3>
-              <EditableParagraph classes="quote" content={content["quote"]} onSave={this.props.onSave("quote")} />
-            </div>
-          </div>
-
-        </div>
-
-        <div className="row">
-          <div className="col-12">
-             <div className="team-description">
               <EditableParagraph content={content["fullBio"]} onSave={this.props.onSave("fullBio")} />
             </div>
           </div>
+
         </div>
       </div>
     );
