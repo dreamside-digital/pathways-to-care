@@ -121,7 +121,10 @@ class TeamPage extends React.Component {
     const teamMembers = content["team-members"] ? content["team-members"] : {};
 
     return (
-      <Layout title={content["page-title"] ? content["page-title"]["text"] : "Team"}>
+      <Layout
+        title={content["page-title"] ? content["page-title"]["text"] : "Team"}
+        pathname={this.props.location.pathname}
+      >
           <section className="page-title o-hidden text-center grey-bg bg-contain animatedBackground" data-bg-img={ headerPattern }>
             <div className="container">
               <div className="row align-items-center">

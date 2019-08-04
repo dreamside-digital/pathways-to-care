@@ -6,8 +6,8 @@ import Layout from '../layouts/default';
 import bg06 from "../assets/images/bg/06.png";
 
 
-const NotFoundPage = props => (
-  <Layout>
+const MessageSentConfirmation = props => (
+  <Layout title={'Thank you'}>
     <section className="fullscreen-banner p-0 o-hidden text-center white-overlay error-page" data-bg-img={ bg06 } data-overlay="9">
       <div className="align-center">
         <div className="container">
@@ -26,4 +26,4 @@ const NotFoundPage = props => (
   </Layout>
 )
 
-export default NotFoundPage
+export default MessageSentConfirmation

@@ -1,4 +1,5 @@
 import React, { Fragment } from "react";
+import PropTypes from "prop-types"
 import Helmet from "react-helmet";
 import { connect } from "react-redux";
 import withRoot from '../utils/withRoot';
@@ -8,6 +9,7 @@ import AccountButton from "../components/navigation/AccountButton"
 import Navigation from "../components/navigation/Navigation"
 import Footer from "../components/navigation/Footer"
 import Loader from "../components/common/Loader"
+import SEO from "./SEO"
 
 import {
   EditablesContext,
@@ -24,8 +26,6 @@ import "../assets/css/owl-carousel/owl.carousel.css";
 import "../assets/sass/base.scss";
 import "../assets/sass/style.scss";
 import "../assets/sass/responsive.scss";
-
-import favicon from '../assets/images/icon.png'
 
 
 const styles = {
@@ -99,22 +99,15 @@ const mapStateToProps = state => {
 
 const DefaultLayout = props => (
   <div style={styles.container}>
-    <Helmet>
-      <title>
-        { props.title || `Pathways to Care`}
-      </title>
-      <meta
-        charSet="utf-8"
-        description="Simple and flexible CMS for static sites"
-        keywords="static site, CMS, React, Gatsby"
-        viewport="width=device-width,initial-scale=1.0,maximum-scale=1"
-      />
-      <link rel="icon" href={favicon} type="image/x-icon" />
-    </Helmet>
+    <SEO
+      title={ props.title }
+      description={ props.description }
+      image={ props.image }
+      pathname={ props.pathname }
+    />
     <Notification />
     <AccountButton />
     <Loader />
-
 
     <EditablesContext.Provider value={ { theme: customTheme, showEditingControls: props.isEditingPage } }>
       <div className="page-wrapper">
@@ -129,6 +122,14 @@ const DefaultLayout = props => (
     </EditablesContext.Provider>
   </div>
 );
+
+DefaultLayout.defaultProps = {
+  title: 'Pathways to Care',
+}
+
+DefaultLayout.propTypes = {
+  title: PropTypes.string.isRequired,
+}
 
 export default withRoot(connect(mapStateToProps, null)(DefaultLayout));
 

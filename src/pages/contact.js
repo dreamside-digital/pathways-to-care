@@ -93,7 +93,11 @@ class ContactPage extends React.Component {
     const asks = content["asks"] || [];
 
     return (
-      <Layout title={content["page-title"] ? content["page-title"]["text"] : "Get Involved"}>
+      <Layout
+        title={content["page-title"] ? content["page-title"]["text"] : "Get Involved"}
+        pathname={this.props.location.pathname}
+        image={content["header-image"] ? content["header-image"]["imageSrc"] : null }
+      >
         <Helmet>
           <script type="text/javascript" src={`//downloads.mailchimp.com/js/signup-forms/popup/unique-methods/embed.js`} data-dojo-config="usePlainJson: true, isDebug: false"></script>
           <script type="text/javascript">

@@ -2,7 +2,12 @@ const firebaseConfig = require("./config/firebase-config.json")
 
 module.exports = {
   siteMetadata: {
-    title: process.env.GATSBY_PROJECT_TITLE,
+    title: 'Pathways to Care',
+    description:
+      "Improving Mental Health & Addictions Care For Black Children & Youth",
+    url: "https://www.pathwaystocare.ca", // No trailing slash allowed!
+    image: "/ptc-header.png", // Path to your image you placed in the 'static' folder
+    keywords: "Pathways to Care, Black Health Alliance, mental health, additions, black community, community building, children and youth, black families"
   },
   pathPrefix: `/`,
   plugins: [

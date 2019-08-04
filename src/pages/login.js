@@ -31,7 +31,7 @@ const styles = {
 class LoginPage extends React.Component {
   componentDidMount() {
     firebase.auth().onAuthStateChanged(user => {
-      console.log('logged in1', user)
+      console.log('logged in!', user)
       if (user) {
         const ref = firebase
           .app()

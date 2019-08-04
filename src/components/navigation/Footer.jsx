@@ -29,7 +29,7 @@ const Footer = (props) => {
               <div className="container py-5">
                 <div className="row">
 
-                  <div className="col-lg-4 col-md-6 sm-mt-5 sm-mb-5 md-mb-5">
+                  <div className="col-lg-5 col-md-6 sm-mt-5 sm-mb-5 md-mb-5">
                     <h4 className="title">Pathways to Care</h4>
                     <ul className="media-icon list-unstyled text-white">
                       <li className="d-flex">
@@ -45,9 +45,20 @@ const Footer = (props) => {
                         <div dangerouslySetInnerHTML={ {__html: phone} } />
                       </li>
                     </ul>
+
+                    <div className="social-icons social-border circle social-hover text-white mt-3">
+                      <ul className="list-inline">
+                        <li className=""><a href="https://www.facebook.com/BlackHealthAlliance"><i className="fab fa-facebook-f"></i></a>
+                        </li>
+                        <li className=""><a href="https://www.instagram.com/blackhealthalliance/"><i className="fab fa-instagram"></i></a>
+                        </li>
+                        <li className=""><a href="https://twitter.com/blackhealthall"><i className="fab fa-twitter"></i></a>
+                        </li>
+                      </ul>
+                    </div>
                   </div>
 
-                  <div className="col-lg-8 col-md-12 mr-auto">
+                  <div className="col-lg-7 col-md-12 mr-auto">
                     <MailchimpSubscriptionForm prompt="Sign up to our mailing list and be the first to hear about our new Pathways to Care research, events, and upcoming community consultations!" />
                   </div>
                 </div>

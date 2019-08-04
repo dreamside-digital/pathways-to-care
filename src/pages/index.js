@@ -119,7 +119,7 @@ class HomePage extends React.Component {
     const outcomeItems = content["outcome-items"] ? content["outcome-items"] : {};
 
     return (
-      <Layout>
+      <Layout title={'Home'}>
         <section className="fullscreen-banner p-0 banner o-hidden" data-bg-img={ headerPattern }>
           <div className="align-center">
             <div className="container">
@@ -127,9 +127,9 @@ class HomePage extends React.Component {
                 <div className="col-lg-6 col-md-12 order-lg-12">
                   <div className="mouse-parallax">
                     <div className="bnr-img1 wow fadeInRight" data-wow-duration="500ms" data-wow-delay="500ms">
-                      <img className="img-center rotateme" src={ backgroundBanner } alt="" />
+                      <img className="img-center rotateme" src={ backgroundBanner } />
                     </div>
-                    <img className="img-center bnr-img2 wow zoomIn" data-wow-duration="1s" data-wow-delay="1s" src={ headerImage } alt="" />
+                    <img className="img-center bnr-img2 wow zoomIn" data-wow-duration="1s" data-wow-delay="1s" src={ headerImage } alt="Illustration of a diverse group of smiling black people" />
                   </div>
                 </div>
                 <div className="col-lg-6 col-md-12 order-lg-1 md-mt-5">

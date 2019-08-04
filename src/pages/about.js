@@ -132,7 +132,11 @@ class AboutPage extends React.Component {
     const solutionItems = content["solution-items"] ? content["solution-items"] : {};
 
     return (
-      <Layout title={content["page-title"] ? content["page-title"]["text"] : "About the Project"}>
+      <Layout
+        title={content["page-title"] ? content["page-title"]["text"] : "About the Project"}
+        pathname={this.props.location.pathname}
+        image={content["story-image"] ? content["story-image"]["imageSrc"] : null }
+      >
         <section className="page-title o-hidden text-center grey-bg bg-contain animatedBackground" data-bg-img={ headerPattern }>
           <div className="container">
             <div className="row align-items-center">
@@ -156,6 +160,9 @@ class AboutPage extends React.Component {
                     </li>
                     <li className="breadcrumb-item">
                       <Link to="#roadmap">Project Roadmap</Link>
+                    </li>
+                    <li className="breadcrumb-item">
+                      <Link to="#cities">Target Cities</Link>
                     </li>
                   </ol>
                 </nav>
