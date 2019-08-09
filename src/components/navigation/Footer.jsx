@@ -48,11 +48,11 @@ const Footer = (props) => {
 
                     <div className="social-icons social-border circle social-hover text-white mt-3">
                       <ul className="list-inline">
-                        <li className=""><a href="https://www.facebook.com/BlackHealthAlliance"><i className="fab fa-facebook-f"></i></a>
+                        <li className=""><a href="https://www.facebook.com/PathwaysON"><i className="fab fa-facebook-f"></i></a>
                         </li>
-                        <li className=""><a href="https://www.instagram.com/blackhealthalliance/"><i className="fab fa-instagram"></i></a>
+                        <li className=""><a href="https://www.instagram.com/Pathways_ON/"><i className="fab fa-instagram"></i></a>
                         </li>
-                        <li className=""><a href="https://twitter.com/blackhealthall"><i className="fab fa-twitter"></i></a>
+                        <li className=""><a href="https://twitter.com/Pathways_ON"><i className="fab fa-twitter"></i></a>
                         </li>
                       </ul>
                     </div>
