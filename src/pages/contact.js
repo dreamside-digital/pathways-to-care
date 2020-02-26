@@ -235,7 +235,7 @@ class ContactPage extends React.Component {
                         <div className="help-block with-errors"></div>
                       </div>
                       <div className="col-md-12">
-                        <input type="hidden" name="_next" value="https://pathways-to-care.firebaseapp.com/thanks" />
+                        <input type="hidden" name="_next" value="https://www.pathwaystocare.ca/thanks/" />
                         <input type="text" name="_honey" style={{display:"none"}} />
                         <button className="btn btn-theme btn-radius" type="submit"><span>Send Message</span>
                         </button>
