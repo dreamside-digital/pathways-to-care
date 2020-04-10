@@ -38,7 +38,7 @@ class PublicationEditor extends React.Component {
             <ImageUploadEditor
               classes="img-fluid h-100 w-100"
               content={content["publication-item-image"]}
-              handleEditorChange={this.handleEditorChange("publication-item-image")}
+              onContentChange={this.handleEditorChange("publication-item-image")}
               uploadImage={uploadImage}
             />
           </div>
@@ -46,24 +46,24 @@ class PublicationEditor extends React.Component {
             <div className="post-date">
               <PlainTextEditor
                 content={content["publication-item-date"]}
-                handleEditorChange={this.handleEditorChange("publication-item-date")}
+                onContentChange={this.handleEditorChange("publication-item-date")}
               />
             </div>
             <div className="post-title mb-4">
               <h4>
                 <PlainTextEditor
                   content={content["publication-item-title"]}
-                  handleEditorChange={this.handleEditorChange("publication-item-title")}
+                  onContentChange={this.handleEditorChange("publication-item-title")}
                 />
               </h4>
             </div>
             <RichTextEditor
               content={content["publication-item-description"]}
-              handleEditorChange={this.handleEditorChange("publication-item-description")}
+              onContentChange={this.handleEditorChange("publication-item-description")}
             />
             <FileUploadEditor
               content={content["publication-item-file"]}
-              handleEditorChange={this.handleEditorChange("publication-item-file")}
+              onContentChange={this.handleEditorChange("publication-item-file")}
               uploadFile={uploadFile}
             />
           </div>
