@@ -7,7 +7,6 @@ import Button from "@material-ui/core/Button"
 import {
   userLoggedIn,
   userLoggedOut,
-  toggleRegistrationModal,
   deploy,
   toggleEditing
 } from "../../redux/actions";
@@ -15,7 +14,6 @@ import {
 import ArrowDropDown from "@material-ui/icons/ArrowDropDown";
 import MenuItem from "@material-ui/core/MenuItem";
 import Menu from "@material-ui/core/Menu";
-import RegistrationModal from "./RegistrationModal";
 
 const styles = {
   container: {
@@ -60,10 +58,6 @@ class AccountButton extends React.Component {
       } else {
         this.props.userLoggedOut();
       }
-
-      if (this.props.showRegistrationModal) {
-        this.props.onToggleRegistrationModal();
-      }
     });
   }
 
@@ -71,10 +65,6 @@ class AccountButton extends React.Component {
     firebase.auth().signOut();
     this.props.userLoggedOut();
     push("/");
-  };
-
-  login = e => {
-    this.props.onToggleRegistrationModal();
   };
 
   openMenu = e => {
@@ -163,7 +153,6 @@ const mapStateToProps = state => {
   return {
     isLoggedIn: state.adminTools.isLoggedIn,
     user: state.adminTools.user,
-    showRegistrationModal: state.adminTools.showRegistrationModal,
     isEditingPage: state.adminTools.isEditingPage,
     allowEditing: allowEditing
   };
@@ -176,9 +165,6 @@ const mapDispatchToProps = dispatch => {
     },
     userLoggedOut: () => {
       dispatch(userLoggedOut());
-    },
-    onToggleRegistrationModal: () => {
-      dispatch(toggleRegistrationModal());
     },
     onToggleEditing: () => {
       dispatch(toggleEditing());

@@ -5,7 +5,6 @@ import { StaticQuery, graphql } from "gatsby";
 import {
   userLoggedIn,
   userLoggedOut,
-  toggleRegistrationModal,
 } from "../redux/actions";
 
 import Navigation from "../components/navigation/Navigation";
@@ -13,7 +12,6 @@ import Navigation from "../components/navigation/Navigation";
 const mapStateToProps = state => {
   return {
     isLoggedIn: state.adminTools.isLoggedIn,
-    showRegistrationModal: state.adminTools.showRegistrationModal,
     showMenu: state.navigation.showMenu,
     user: state.adminTools.user,
   };
@@ -26,9 +24,6 @@ const mapDispatchToProps = dispatch => {
     },
     userLoggedOut: () => {
       dispatch(userLoggedOut());
-    },
-    onToggleRegistrationModal: () => {
-      dispatch(toggleRegistrationModal());
     },
   };
 };

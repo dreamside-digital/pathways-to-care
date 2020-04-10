@@ -9,8 +9,6 @@ export const adminTools = (state={}, action) => {
       return { ...state, isLoggedIn: false, isEditingPage: false }
     case 'TOGGLE_EDITING':
       return { ...state, isEditingPage: !state.isEditingPage }
-    case 'TOGGLE_REGISTRATION_MODAL':
-      return { ...state, showRegistrationModal: !state.showRegistrationModal }
     default:
       return state
   }

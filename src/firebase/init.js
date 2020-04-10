@@ -1,6 +1,9 @@
-import * as config from "../../config/firebase-config.json";
-import firebase from "firebase";
+import firebase from "firebase/app"
+import "firebase/auth"
+import "firebase/database"
+import "firebase/storage"
 
-firebase.initializeApp(config.default);
+const config = require(`../../config/firebase-config.json`)
+firebase.initializeApp(config);
 
 export default firebase;
