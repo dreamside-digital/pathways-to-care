@@ -124,13 +124,13 @@ class ResearchPage extends React.Component {
                   <nav aria-label="breadcrumb" className="page-breadcrumb">
                     <ol className="breadcrumb">
                       <li className="breadcrumb-item">
-                        <Link to="#research-goals">Research Goals</Link>
+                        <Link to="/research#research-goals">Research Goals</Link>
                       </li>
                       <li className="breadcrumb-item">
-                        <Link to="#theory-of-change">Theory of Change</Link>
+                        <Link to="/research#theory-of-change">Theory of Change</Link>
                       </li>
                       <li className="breadcrumb-item">
-                        <Link to="#scoping-review">Scoping Review</Link>
+                        <Link to="/research#scoping-review">Scoping Review</Link>
                       </li>
                     </ol>
                   </nav>

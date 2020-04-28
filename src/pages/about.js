@@ -147,22 +147,22 @@ class AboutPage extends React.Component {
                 <nav aria-label="breadcrumb" className="page-breadcrumb">
                   <ol className="breadcrumb">
                     <li className="breadcrumb-item">
-                      <Link to="#story">Our Story</Link>
+                      <Link to="/about#story">Our Story</Link>
                     </li>
                     <li className="breadcrumb-item">
-                      <Link to="#mission">Our Mission</Link>
+                      <Link to="/about#mission">Our Mission</Link>
                     </li>
                     <li className="breadcrumb-item">
-                      <Link to="#values">Our Values</Link>
+                      <Link to="/about#values">Our Values</Link>
                     </li>
                     <li className="breadcrumb-item">
-                      <Link to="#approach">Our Approach</Link>
+                      <Link to="/about#approach">Our Approach</Link>
                     </li>
                     <li className="breadcrumb-item">
-                      <Link to="#roadmap">Project Roadmap</Link>
+                      <Link to="/about#roadmap">Project Roadmap</Link>
                     </li>
                     <li className="breadcrumb-item">
-                      <Link to="#cities">Target Cities</Link>
+                      <Link to="/about#cities">Target Cities</Link>
                     </li>
                   </ol>
                 </nav>

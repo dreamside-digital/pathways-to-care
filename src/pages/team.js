@@ -135,10 +135,10 @@ class TeamPage extends React.Component {
                   <nav aria-label="breadcrumb" className="page-breadcrumb">
                     <ol className="breadcrumb">
                       <li className="breadcrumb-item">
-                        <Link to="#team-members">Team</Link>
+                        <Link to="/team#team-members">Team</Link>
                       </li>
                       <li className="breadcrumb-item">
-                        <Link to="#partners">Core Stakeholders</Link>
+                        <Link to="/team#partners">Core Stakeholders</Link>
                       </li>
                     </ol>
                   </nav>
