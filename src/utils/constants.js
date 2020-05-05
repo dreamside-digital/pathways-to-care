@@ -63,3 +63,12 @@ export const DEFAULT_COMPONENT_CONTENT = {
     "description": { "text": "Research goal description" }
   }
 }
+
+export const PAGE_TYPES = [
+  { label: "Report page", value: { type: "report_page", template: "report-page.js" } },
+];
+
+export const CATEGORY_OPTIONS = [
+  { label: "Report page", value: "research" },
+  { label: "Uncategorized", value: "uncategorized" },
+];

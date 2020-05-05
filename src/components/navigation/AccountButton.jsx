@@ -8,7 +8,8 @@ import {
   userLoggedIn,
   userLoggedOut,
   deploy,
-  toggleEditing
+  toggleEditing,
+  toggleNewPageModal,
 } from "../../redux/actions";
 
 import ArrowDropDown from "@material-ui/icons/ArrowDropDown";
@@ -120,6 +121,30 @@ class AccountButton extends React.Component {
             {props.allowEditing && (
               <MenuItem
                 onClick={() => {
+                  props.onToggleNewPageModal({ edit: true });
+                  closeMenu();
+                }}
+              >
+                Page configuration
+              </MenuItem>
+            )}
+
+
+            {props.allowEditing && (
+              <MenuItem
+                onClick={() => {
+                  props.onToggleNewPageModal({ new: true });
+                  closeMenu();
+                }}
+              >
+                Add new page
+              </MenuItem>
+            )}
+
+
+            {props.allowEditing && (
+              <MenuItem
+                onClick={() => {
                   props.deploy();
                   closeMenu();
                 }}
@@ -171,7 +196,10 @@ const mapDispatchToProps = dispatch => {
     },
     deploy: () => {
       dispatch(deploy());
-    }
+    },
+    onToggleNewPageModal: (options={}) => {
+      dispatch(toggleNewPageModal(options));
+    },
   };
 };
 

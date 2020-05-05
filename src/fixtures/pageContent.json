@@ -1,7 +1,16 @@
-[{
-  "type": "section",
-  "content": [
-    { "type": "header", "text": "Header placeholder" },
-    { "type": "paragraph", "text": "<p>Paragraph placeholder</p>" }
-  ]
-}]
+{
+  "download-pdf" : {},
+  "download-title" : {
+    "text" : "Loved the report? You can take it with you!"
+  },
+  "page-subtitle" : {
+    "text" : "A scoping review"
+  },
+  "page-title" : {
+    "text" : "Barriers and Facilitators to Accessing Mental Healthcare for Black Children & Youth"
+  },
+  "publications-title" : {
+    "text" : "Additional Research"
+  },
+  "related-publications" : {}
+}

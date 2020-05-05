@@ -9,6 +9,8 @@ export const adminTools = (state={}, action) => {
       return { ...state, isLoggedIn: false, isEditingPage: false }
     case 'TOGGLE_EDITING':
       return { ...state, isEditingPage: !state.isEditingPage }
+    case 'TOGGLE_NEW_PAGE_MODAL':
+      return { ...state, showNewPageModal: !state.showNewPageModal, options: action.options }
     default:
       return state
   }
@@ -88,6 +90,23 @@ export const page = (state={}, action) => {
   }
 }
 
+export const pages = (state={ pages: {}}, action) => {
+  switch (action.type) {
+    case 'SET_PAGES':
+      return {
+        ...state,
+        pages: action.pages
+      }
+    case 'SET_ORDERED_PAGES':
+      return {
+        ...state,
+        orderedPages: action.orderedPages
+      }
+    default:
+      return state
+  }
+}
+
 export const projectForm = (state={}, action) => {
   switch (action.type) {
     case 'UPDATE_PROJECT_FORM':
@@ -128,6 +147,7 @@ export const appReducers = (state = {}, action) => {
     adminTools: adminTools(state.adminTools, action),
     navigation: navigation(state.navigation, action),
     page: page(state.page, action),
+    pages: pages(state.pages, action),
     projectForm: projectForm(state.projectForm, action),
     projects: projects(state.projects, action),
   }

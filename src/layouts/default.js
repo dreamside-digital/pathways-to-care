@@ -9,6 +9,7 @@ import AccountButton from "../components/navigation/AccountButton"
 import Navigation from "../components/navigation/Navigation"
 import Footer from "../components/navigation/Footer"
 import Loader from "../components/common/Loader"
+import CreatePageModal from "../components/editing/CreatePageModal";
 import SEO from "./SEO"
 
 import {
@@ -119,6 +120,7 @@ const DefaultLayout = props => (
         <div className="scroll-top"><a className="smoothscroll" href="#top"><i className="flaticon-upload"></i></a></div>
 
       </div>
+      <CreatePageModal />
     </EditablesContext.Provider>
   </div>
 );

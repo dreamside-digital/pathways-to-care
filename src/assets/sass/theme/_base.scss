@@ -637,6 +637,22 @@ a, i, .btn, button, img, span, .animatedBackground, .navbar-nav .nav-link:before
 
   .img-fluid {
     width: 100vw;
+    transform: translateY(1px);
+  }
+}
+
+#report-download {
+  .title {
+    text-align: center;
+    &:before {
+      display: none;
+    }
+  }
+
+  .download-link {
+    .action-link {
+      justify-content: center;
+    }
   }
 }
 

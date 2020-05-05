@@ -36,9 +36,84 @@ export function toggleEditing() {
   return { type: "TOGGLE_EDITING" };
 }
 
-export function toggleNewPageModal() {
-  return { type: "TOGGLE_NEW_PAGE_MODAL" };
+export function toggleNewPageModal(options) {
+  return { type: "TOGGLE_NEW_PAGE_MODAL", options };
 }
+
+export function savePage(pageData, pageId) {
+  return dispatch => {
+    const db = firebase.database();
+    db
+      .ref(`pages/${pageId}/`)
+      .update(pageData)
+      .then(snap => {
+        dispatch(toggleNewPageModal());
+        dispatch(
+          showNotification(
+            "Your page has been saved. Publish your changes to view and edit the page.",
+            "success"
+          )
+        );
+      });
+  };
+}
+
+export function updateFirebaseData(updates, callback=null) {
+  return (dispatch, getState) => {
+    const db = firebase.database();
+    console.log(updates)
+
+    db.ref().update(updates, error => {
+      if (error) {
+        console.log('FIREBASE ERROR', error)
+        return dispatch(
+          showNotification(
+            `There was an error saving your changes: ${error}`,
+            "success"
+          )
+        );
+      }
+
+      if (callback) {
+        callback()
+      }
+
+      dispatch(
+        showNotification(
+          "Your changes have been saved. Publish your changes to make them public.",
+          "success"
+        )
+      );
+    });
+  };
+}
+
+
+export function setPages(pages) {
+  return { type: "SET_PAGES", pages }
+}
+
+export function fetchPages() {
+  return (dispatch, getState) => {
+    const db = firebase.database();
+
+    db.ref(`pages`)
+      .once('value')
+      .then(snap => {
+        const pages = Object.entries(snap.val()).reduce((obj, [id, page]) => {
+          obj[id] = {...page, id}
+          return obj
+        }, {})
+
+        console.log("Fetched pages", pages)
+        dispatch(setPages(pages));
+      })
+      .catch(error => {
+        console.log("Error fetching pages", error)
+      })
+  };
+}
+
 
 export function updatePageContent(location, content) {
   return (dispatch, getState) => {
