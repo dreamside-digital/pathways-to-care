@@ -40,6 +40,27 @@ export function toggleNewPageModal(options) {
   return { type: "TOGGLE_NEW_PAGE_MODAL", options };
 }
 
+export function updateSectionContent(sectionIndex, contentIndex, newContent) {
+  return {
+    type: "UPDATE_SECTION_CONTENT",
+    sectionIndex,
+    contentIndex,
+    newContent
+  };
+}
+
+export function addSection(sectionIndex, sectionType="default") {
+  return { type: "ADD_SECTION", sectionIndex, sectionType };
+}
+
+export function duplicateSection(sectionIndex) {
+  return { type: "DUPLICATE_SECTION", sectionIndex };
+}
+
+export function deleteSection(sectionIndex) {
+  return { type: "DELETE_SECTION", sectionIndex };
+}
+
 export function savePage(pageData, pageId) {
   return dispatch => {
     const db = firebase.database();
@@ -55,6 +76,41 @@ export function savePage(pageData, pageId) {
           )
         );
       });
+  };
+}
+
+export function savePageContent(innerFunction) {
+  return (dispatch, getState) => {
+    Promise.resolve(dispatch(innerFunction)).then(() => {
+      const content = getState().page.data.content;
+      const pageId = getState().page.data.id;
+
+      console.log("content", content)
+      console.log("pageId", pageId)
+
+      const db = firebase.database();
+
+      db.ref(`pages/${pageId}/content/`)
+        .update(content)
+        .then(res => {
+          console.log('res', res)
+          dispatch(
+            showNotification(
+              "Your changes have been saved. Publish your changes to make them public.",
+              "success"
+            )
+          );
+        })
+        .catch(error => {
+          console.log('error', error)
+          return dispatch(
+            showNotification(
+              `There was an error saving your changes: ${error}`,
+              "success"
+            )
+          );
+        })
+    });
   };
 }
 

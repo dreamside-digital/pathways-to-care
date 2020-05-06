@@ -11,7 +11,6 @@ import {
   addContentItem,
   updateContentItem,
   deleteContentItem,
-  editSectionTag,
 } from "../../redux/actions";
 
 import Header from "../common/Header";
@@ -19,15 +18,9 @@ import SubHeading from "../common/SubHeading";
 import Paragraph from "../common/Paragraph";
 import Image from "../common/Image";
 import ImageCarousel from "../common/ImageCarousel";
-import Readings from "../common/Readings";
-import Questions from "../common/Questions";
-import Podcasts from "../common/Podcasts";
-import Resources from "../common/Resources";
 import EmbeddedIframe from "../common/EmbeddedIframe";
 import Button from "../common/Button";
 import Link from "../common/Link";
-import Quote from "../common/Quote";
-import YoutubeVideoPlaylist from "../common/YoutubeVideoPlaylist";
 import ExpandableText from "../common/ExpandableText";
 import SectionEditingActions from "./SectionEditingActions";
 
@@ -40,12 +33,6 @@ const componentMap = {
   embeddedIframe: EmbeddedIframe,
   button: Button,
   link: Link,
-  quote: Quote,
-  readings: Readings,
-  questions: Questions,
-  podcasts: Podcasts,
-  resources: Resources,
-  videos: YoutubeVideoPlaylist,
   expandableText: ExpandableText,
 }
 
@@ -85,7 +72,6 @@ const mapStateToProps = state => {
   return {
     pageData: state.page.data,
     isEditingPage: state.adminTools.isEditingPage,
-    selectedTag: state.tags.selectedTag,
   };
 };
 

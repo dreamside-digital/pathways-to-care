@@ -7,7 +7,6 @@ import IconButton from "@material-ui/core/IconButton";
 import Menu from "@material-ui/core/Menu";
 import MenuItem from "@material-ui/core/MenuItem";
 import { withStyles } from "@material-ui/core/styles";
-import SectionTagEditor from './SectionTagEditor'
 
 const styles = {
   editActions: {
@@ -38,7 +37,6 @@ const styles = {
 class SectionEditingActions extends React.Component {
   state = {
     anchorEl: null,
-    tagAnchor: null,
   };
 
   openMenu = e => {
@@ -49,17 +47,8 @@ class SectionEditingActions extends React.Component {
     this.setState({ anchorEl: null });
   };
 
-  openTagEditor = e => {
-    this.setState({ tagAnchor: e.currentTarget });
-  };
-
-  closeTagEditor = e => {
-    this.setState({ tagAnchor: null });
-  };
-
   render() {
     const open = Boolean(this.state.anchorEl);
-    const openTagEditor = Boolean(this.state.tagAnchor);
 
     return (
       <div className={this.props.classes.editActions}>
@@ -80,36 +69,6 @@ class SectionEditingActions extends React.Component {
           >
             <DeleteIcon className={this.props.classes.icon} />
           </IconButton>
-        )}
-
-        {
-          this.props.onEditSectionTag && (
-          <div>
-            <IconButton
-              aria-owns={openTagEditor ? "menu-section-tags" : null}
-              aria-haspopup="true"
-              onClick={this.openTagEditor}
-              className={this.props.classes.button}
-            >
-              <LabelIcon className={this.props.classes.icon} />
-            </IconButton>
-            <Menu
-              id="menu-section-tags"
-              anchorEl={this.state.tagAnchor}
-              anchorOrigin={{
-                vertical: "top",
-                horizontal: "left"
-              }}
-              transformOrigin={{
-                vertical: "top",
-                horizontal: "left"
-              }}
-              open={openTagEditor}
-              onClose={this.closeTagEditor}
-            >
-              <SectionTagEditor onEditSectionTag={this.props.onEditSectionTag} />
-            </Menu>
-          </div>
         )}
 
         {this.props.onAddContentItem && (
@@ -172,24 +131,16 @@ class SectionEditingActions extends React.Component {
                 Highlight Section
               </MenuItem>
 
-              <MenuItem onClick={() => this.props.onAddSection("watch")}>
-                Watch Section
+              <MenuItem onClick={() => this.props.onAddSection("report")}>
+                Embedded Report Section
               </MenuItem>
 
-              <MenuItem onClick={() => this.props.onAddSection("read")}>
-                Read Section
+              <MenuItem onClick={() => this.props.onAddSection("download")}>
+                Download PDF Section
               </MenuItem>
 
-              <MenuItem onClick={() => this.props.onAddSection("engage")}>
-                Engage Section
-              </MenuItem>
-
-              <MenuItem onClick={() => this.props.onAddSection("listen")}>
-                Listen Section
-              </MenuItem>
-
-              <MenuItem onClick={() => this.props.onAddSection("resources")}>
-                Additional Resources Section
+              <MenuItem onClick={() => this.props.onAddSection("research")}>
+                Additional Research Section
               </MenuItem>
             </Menu>
           </div>

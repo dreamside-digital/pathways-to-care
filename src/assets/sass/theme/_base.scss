@@ -54,6 +54,8 @@ button, input {
   text-shadow: none;
 }
 
+
+
 /* ------------------------
     Transition
 ------------------------*/
@@ -633,10 +635,15 @@ a, i, .btn, button, img, span, .animatedBackground, .navbar-nav .nav-link:before
 
 .page-title-pattern {
   bottom: 0;
+  left: 0;
+  right: 0;
   position: absolute;
+  width: 100vw;
+  overflow: hidden;
 
   .img-fluid {
-    width: 100vw;
+    width: 102vw;
+    max-width: unset;
     transform: translateY(1px);
   }
 }

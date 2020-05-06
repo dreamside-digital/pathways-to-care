@@ -26,11 +26,13 @@ import {
 import { DEFAULT_COMPONENT_CONTENT } from "../utils/constants"
 
 import Layout from "../layouts/default.js";
+import DynamicSection from "../components/editing/DynamicSection";
 import headerImage from "../assets/images/ptc-header.png";
 import headerPattern from "../assets/images/pattern/home-banner3.png";
 import headerBg from "../assets/images/bg/squiggle-dark.svg";
 import Carousel from "../components/common/Carousel";
 import Publication from "../components/common/Publication";
+import EditableEmbeddedVismeReport from "../components/editing/EditableEmbeddedVismeReport"
 
 
 const mapDispatchToProps = dispatch => {
@@ -111,6 +113,9 @@ class ReportPage extends React.Component {
         title={pageData["title"]}
         pathname={this.props.location.pathname}
       >
+        <Helmet>
+          <script src="https://my.visme.co/visme.js"></script>
+        </Helmet>
         <section className="page-title o-hidden text-center grey-bg bg-contain animatedBackground" data-bg-img={ headerPattern }>
           <div className="container">
             <div className="row align-items-center">
@@ -131,66 +136,23 @@ class ReportPage extends React.Component {
           <div className="page-title-pattern"><img className="img-fluid" src={ headerBg } alt="" /></div>
         </section>
 
-        <section className="dark-bg pos-r o-hidden" id="report">
-          <div className="container">
-            <div className="row">
-              <div className="col-12">
-                <div className="info-img pos-r">
-                  <EditableEmbeddedIframe
-                    content={content["report-iframe"]}
-                    onSave={this.onSave("report-iframe")}
-                  />
-                </div>
-              </div>
-            </div>
-          </div>
-        </section>
+        {
+          sections.map((section, index) => {
+            if (!section || !section.content) {
+              return null
+            }
 
-        <section className="grey-bg pos-r o-hidden" id="report-download">
-          <div className="container">
-
-            <div className="section-title mb-4">
-              <h2 className="title">
-                <EditableText content={content["download-title"]} onSave={this.onSave("download-title")} />
-              </h2>
-              <div className="download-link">
-                <EditableFileUpload
-                  linkClasses={'btn btn-theme'}
-                  content={content["download-pdf"]}
-                  onSave={this.onSave("download-pdf")}
-                  uploadFile={uploadFile}
-                />
-              </div>
-            </div>
-
-          </div>
-        </section>
-
-        <section id="publications">
-          <div className="container">
-            <div className="row">
-              <div className="col-lg-12 col-md-12 ml-auto mr-auto">
-                <div className="section-title">
-                  <h2 className="title">
-                    <EditableText content={content["publications-title"]} onSave={this.onSave("publications-title")} />
-                  </h2>
-                </div>
-              </div>
-            </div>
-
-            <Carousel
-              collection={content["related-publications"]}
-              SlideComponent={Publication}
-              onSave={this.onSave('related-publications')}
-              onAddItem={this.onAddItem('related-publications')}
-              onDeleteItem={this.onDeleteItem('related-publications')}
-              slidesToShow={3}
-              isEditingPage={this.props.isEditingPage}
-              defaultContent={DEFAULT_COMPONENT_CONTENT['related-publications']}
-            />
-
-          </div>
-        </section>
+            return(
+              <DynamicSection
+                content={ section.content }
+                sectionIndex={index}
+                key={index}
+                type={ section.type }
+                sectionTag={ section.tag }
+              />
+            )
+          })
+        }
 
 
       </Layout>

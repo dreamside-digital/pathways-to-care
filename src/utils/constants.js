@@ -72,3 +72,47 @@ export const CATEGORY_OPTIONS = [
   { label: "Report page", value: "research" },
   { label: "Uncategorized", value: "uncategorized" },
 ];
+
+export const SECTION_MAP = {
+  default: { content: [] },
+  highlight: {
+    type: "highlight",
+    content: [
+      { type: "header", content: { text: "Header text" }},
+      { type: "paragraph", content: { text: "<p>Section text</p>" }},
+    ]
+  },
+  read: {
+    type: "report",
+    content: [
+      { type: "embeddedIframe", content: { src: "https://www.youtube.com/embed/g5rCi-WI-s8" }},
+    ]
+  },
+  download: {
+    type: "download",
+    content: [
+      { type: "header", content: { text: "Loved the report? You can take it with you!" }},
+      { type: "fileUpload", content: {} }
+    ]
+  },
+  research: {
+    type: "research",
+    content: [
+      { type: "subHeading", content: { text: "Listen" }},
+      { type: "publications", content: {} }
+    ]
+  }
+}
+
+export const CONTENT_MAP = {
+  header: { type: "header", content: { text: "Header" } },
+  subHeading: { type: "subHeading", content: { text: "Sub-heading" } },
+  paragraph: { type: "paragraph", content: { text: "Paragraph" } },
+  image: { type: "image" },
+  imageCarousel: { type: "imageCarousel", content: {} },
+  embeddedIframe: { type: "embeddedIframe" },
+  button: { type: "button", content: { anchor: "Button", link: "/" } },
+  link: { type: "link", content: { anchor: "Link text", link: "/" } },
+  expandableText: { type: "expandableText", content: { header: "Name", description: "<p>Bio</p>" } },
+  readings: { type: "publications", content: {} },
+}
