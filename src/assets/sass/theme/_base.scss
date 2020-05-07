@@ -648,21 +648,6 @@ a, i, .btn, button, img, span, .animatedBackground, .navbar-nav .nav-link:before
   }
 }
 
-#report-download {
-  .title {
-    text-align: center;
-    &:before {
-      display: none;
-    }
-  }
-
-  .download-link {
-    .action-link {
-      justify-content: center;
-    }
-  }
-}
-
 /* ------------------------
     Flat Icon
 ------------------------*/

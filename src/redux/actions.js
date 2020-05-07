@@ -61,6 +61,44 @@ export function deleteSection(sectionIndex) {
   return { type: "DELETE_SECTION", sectionIndex };
 }
 
+export function addContentItem(sectionIndex, contentType) {
+  return { type: "ADD_CONTENT_ITEM", sectionIndex, contentType };
+}
+
+export function updateContentItem(sectionIndex, contentIndex, content) {
+  return { type: "UPDATE_CONTENT_ITEM", sectionIndex, contentIndex , content};
+}
+
+export function deleteContentItem(sectionIndex, contentIndex) {
+  return { type: "DELETE_CONTENT_ITEM", sectionIndex, contentIndex };
+}
+
+export function updateTitle(title) {
+  return (dispatch, getState) => {
+    const db = firebase.database();
+    const pageId = getState().page.data.id;
+
+    db.ref(`pages/${pageId}/`).update({ title }, error => {
+      if (error) {
+        return dispatch(
+          showNotification(
+            `There was an error saving your changes: ${error}`,
+            "success"
+          )
+        );
+      }
+
+      dispatch(updatePageTitle(title));
+      dispatch(
+        showNotification(
+          "Your changes have been saved. Publish your changes to make them public.",
+          "success"
+        )
+      );
+    });
+  };
+}
+
 export function savePage(pageData, pageId) {
   return dispatch => {
     const db = firebase.database();
@@ -76,6 +114,32 @@ export function savePage(pageData, pageId) {
           )
         );
       });
+  };
+}
+
+// rename to updateContent
+export function updatePage(pageId, contentId, content) {
+  return dispatch => {
+    const db = firebase.database();
+
+    db.ref(`pages/${pageId}/content/${contentId}/`).update(content, error => {
+      if (error) {
+        return dispatch(
+          showNotification(
+            `There was an error saving your changes: ${error}`,
+            "success"
+          )
+        );
+      }
+
+      dispatch(updatePageData(contentId, content));
+      dispatch(
+        showNotification(
+          "Your changes have been saved. Publish your changes to make them public.",
+          "success"
+        )
+      );
+    });
   };
 }
 

@@ -27,7 +27,8 @@ class VismeEditor extends React.Component {
     this.state = { content: this.props.content };
   }
 
-  handleEditorChange = field => text => {
+  handleEditorChange = field => event => {
+    const text = event.currentTarget.value;
     this.setState({
       content: {
         ...this.state.content,
@@ -82,7 +83,7 @@ const EmbeddedVismeReport = props => {
 
 EmbeddedVismeReport.defaultProps = {
   content: {
-    "visme-embed-code": { "text": `<div className="visme_d" data-url="1jr3q6km-pathways-to-care-report" data-w="816" data-h="1056" data-domain="my"></div>` },
+    "visme-embed-code": { "text": `<div class="visme_d" data-url="1jr3q6km-pathways-to-care-report" data-w="816" data-h="1056" data-domain="my"></div>` },
   },
   classes: "",
   onSave: () => { console.log('implement a function to save changes') }

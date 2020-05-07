@@ -1,16 +1,43 @@
 {
-  "download-pdf" : {},
-  "download-title" : {
-    "text" : "Loved the report? You can take it with you!"
-  },
-  "page-subtitle" : {
-    "text" : "A scoping review"
-  },
-  "page-title" : {
-    "text" : "Barriers and Facilitators to Accessing Mental Healthcare for Black Children & Youth"
-  },
-  "publications-title" : {
-    "text" : "Additional Research"
-  },
-  "related-publications" : {}
+  "sections": [
+    {
+      "type": "report",
+      "content": [
+        {
+          "type": "vismeReport",
+          "content": {}
+        }
+      ]
+    },
+    {
+      "type": "download",
+      "content": [
+        {
+          "type": "header",
+          "content": {
+            "text": "Loved the report? You can take it with you!"
+          }
+        },
+        {
+          "type": "fileUpload",
+          "content": {}
+        }
+      ]
+    },
+    {
+      "type": "research",
+      "content": [
+        {
+          "type": "subHeading",
+          "content": {
+            "text": "Related Publications"
+          }
+        },
+        {
+          "type": "publications",
+          "content": {}
+        }
+      ]
+    }
+  ]
 }

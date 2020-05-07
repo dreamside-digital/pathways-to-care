@@ -21,7 +21,10 @@ import ImageCarousel from "../common/ImageCarousel";
 import EmbeddedIframe from "../common/EmbeddedIframe";
 import Button from "../common/Button";
 import Link from "../common/Link";
+import FileUpload from "../common/FileUpload";
 import ExpandableText from "../common/ExpandableText";
+import Publications from "../common/Publications";
+import EmbeddedVismeReport from "./EditableEmbeddedVismeReport";
 import SectionEditingActions from "./SectionEditingActions";
 
 const componentMap = {
@@ -34,6 +37,9 @@ const componentMap = {
   button: Button,
   link: Link,
   expandableText: ExpandableText,
+  publications: Publications,
+  fileUpload: FileUpload,
+  vismeReport: EmbeddedVismeReport,
 }
 
 const mapDispatchToProps = dispatch => {
@@ -112,12 +118,14 @@ const DynamicSection = ({ content, type, sectionIndex, pageData, isEditingPage, 
     }
   }
 
+
   return(
     <section className={`dynamic-section pos-relative ${type}`}>
       <Container maxWidth="md">
       {
         content.map((component, index ) => {
           const Component = componentMap[component.type];
+          console.log('Component', Component)
           return (
             <Component
               content={component.content}

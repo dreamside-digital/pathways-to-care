@@ -74,7 +74,10 @@ export const CATEGORY_OPTIONS = [
 ];
 
 export const SECTION_MAP = {
-  default: { content: [] },
+  default: {
+    type: "default",
+    content: []
+  },
   highlight: {
     type: "highlight",
     content: [
@@ -82,10 +85,10 @@ export const SECTION_MAP = {
       { type: "paragraph", content: { text: "<p>Section text</p>" }},
     ]
   },
-  read: {
+  report: {
     type: "report",
     content: [
-      { type: "embeddedIframe", content: { src: "https://www.youtube.com/embed/g5rCi-WI-s8" }},
+      { type: "vismeReport", content: {}},
     ]
   },
   download: {
@@ -111,6 +114,7 @@ export const CONTENT_MAP = {
   image: { type: "image" },
   imageCarousel: { type: "imageCarousel", content: {} },
   embeddedIframe: { type: "embeddedIframe" },
+  vismeReport: { type: "vismeReport" },
   button: { type: "button", content: { anchor: "Button", link: "/" } },
   link: { type: "link", content: { anchor: "Link text", link: "/" } },
   expandableText: { type: "expandableText", content: { header: "Name", description: "<p>Bio</p>" } },

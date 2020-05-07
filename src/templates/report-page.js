@@ -20,7 +20,6 @@ import {
   removeContentItem,
   loadPageData,
   updateTitle,
-  updateHeaderImage,
 } from "../redux/actions";
 
 import { DEFAULT_COMPONENT_CONTENT } from "../utils/constants"
@@ -45,9 +44,6 @@ const mapDispatchToProps = dispatch => {
     },
     onUpdateTitle: title => {
       dispatch(updateTitle(title));
-    },
-    onUpdateHeaderImage: image => {
-      dispatch(updateHeaderImage(image));
     },
     onPushContentItem: (location, data) => {
       dispatch(pushContentItem(location, data))
@@ -95,18 +91,12 @@ class ReportPage extends React.Component {
     this.props.onUpdateTitle(content.text)
   }
 
-  onUpdateHeaderImage = content => {
-    this.props.onUpdateHeaderImage(content)
-  }
-
   render() {
     const pageData = this.props.pageData ? this.props.pageData : this.props.data.pages;
     const content = this.props.pageData ? this.props.pageData.content : JSON.parse(this.props.data.pages.content);
     const sections = content.sections && content.sections.length > 0 ? content.sections : [{ content: [] }];
     const pageOrder = findIndex(this.props.orderedPages, p => p.id === pageData.id) + 1;
     const nextPage = this.props.pages[pageData.next];
-
-    console.log("related-publications", content["related-publications"])
 
     return (
       <Layout
