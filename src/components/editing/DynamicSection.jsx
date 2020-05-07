@@ -125,7 +125,6 @@ const DynamicSection = ({ content, type, sectionIndex, pageData, isEditingPage, 
       {
         content.map((component, index ) => {
           const Component = componentMap[component.type];
-          console.log('Component', Component)
           return (
             <Component
               content={component.content}

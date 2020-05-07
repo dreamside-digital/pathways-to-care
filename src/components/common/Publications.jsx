@@ -20,6 +20,8 @@ class Publications extends React.Component {
   };
 
   onAddItem = id => content => {
+    console.log("id", id)
+    console.log("content", content)
     this.props.onPushContentItem(id, content);
   }
 
@@ -29,6 +31,7 @@ class Publications extends React.Component {
 
   render() {
     const { content } = this.props;
+    console.log("publicatiosn props", this.props)
 
     return (
       <Carousel
