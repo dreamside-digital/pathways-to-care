@@ -5,6 +5,6 @@ import { uploadFile } from "../../firebase/operations";
 
 export default (props) => {
   return (
-    <EditableFileUpload { ...props } uploadFile={uploadFile} linkClasses="btn btn-theme mt-4" />
+    <EditableFileUpload { ...props } uploadFile={uploadFile} linkClasses="btn btn-theme mt-4" linkText={"Download the PDF"} />
   );
 };
