@@ -841,6 +841,13 @@
   dependencies:
     regenerator-runtime "^0.13.4"
 
+"@babel/runtime@^7.9.6":
+  version "7.9.6"
+  resolved "https://registry.yarnpkg.com/@babel/runtime/-/runtime-7.9.6.tgz#a9102eb5cadedf3f31d08a9ecf294af7827ea29f"
+  integrity sha512-64AF1xY3OAkFHqOb9s4jpgk1Mm5vDZ4L3acHvAml+53nO1XbXLuDodsVpO4OIUsmemlUHMxNdYMNJmsvOwLrvQ==
+  dependencies:
+    regenerator-runtime "^0.13.4"
+
 "@babel/template@^7.8.3", "@babel/template@^7.8.6":
   version "7.8.6"
   resolved "https://registry.yarnpkg.com/@babel/template/-/template-7.8.6.tgz#86b22af15f828dfb086474f964dcc3e39c43ce2b"
@@ -6687,6 +6694,13 @@ gatsby-plugin-google-analytics@^2.1.7:
     "@babel/runtime" "^7.8.7"
     minimatch "3.0.4"
 
+gatsby-plugin-google-tagmanager@^2.3.1:
+  version "2.3.1"
+  resolved "https://registry.yarnpkg.com/gatsby-plugin-google-tagmanager/-/gatsby-plugin-google-tagmanager-2.3.1.tgz#377824a10eacaf209b962527750647d2562bb8a5"
+  integrity sha512-8d6KwBKAeB3MxUuDfKuJG2gcqrLNIyUACd83D99hXSsqLNChTB5uRBq+0pfPtUEEqVpNvzr45wvxNUYwcmHTuA==
+  dependencies:
+    "@babel/runtime" "^7.9.6"
+
 gatsby-plugin-manifest@^2.2.31:
   version "2.3.3"
   resolved "https://registry.yarnpkg.com/gatsby-plugin-manifest/-/gatsby-plugin-manifest-2.3.3.tgz#119b9e648428a0db8979d577d2fdb20a9f3c18b7"
@@ -10493,7 +10507,7 @@ node-object-hash@^2.0.0:
   resolved "https://registry.yarnpkg.com/node-object-hash/-/node-object-hash-2.0.0.tgz#9971fcdb7d254f05016bd9ccf508352bee11116b"
   integrity sha512-VZR0zroAusy1ETZMZiGeLkdu50LGjG5U1KHZqTruqtTyQ2wfWhHG2Ow4nsUbfTFGlaREgNHcCWoM/OzEm6p+NQ==
 
-node-pre-gyp@*, node-pre-gyp@^0.14.0:
+node-pre-gyp@^0.14.0:
   version "0.14.0"
   resolved "https://registry.yarnpkg.com/node-pre-gyp/-/node-pre-gyp-0.14.0.tgz#9a0596533b877289bcad4e143982ca3d904ddc83"
   integrity sha512-+CvDC7ZttU/sSt9rFjix/P05iS43qHCOOGzcr3Ry99bXG7VX953+vFyEuph/tfqoYu8dttBkE86JSKBO2OzcxA==
@@ -12300,10 +12314,10 @@ react-dom@^16.8.0:
     prop-types "^15.6.2"
     scheduler "^0.19.1"
 
-react-easy-editables@^0.8.1s:
-  version "0.8.1"
-  resolved "https://registry.yarnpkg.com/react-easy-editables/-/react-easy-editables-0.8.1.tgz#e7ece33de72c29b22b1a0b9ac6a7b9033e66fb2f"
-  integrity sha512-kSEc07cOGqOO6p+PBo3+a1WBlQjX/CfX1+3LsZ40sR9JSLN+uGvj+64uKjdD5MxsvLhcinx2ZMGB5QizZorAcg==
+react-easy-editables@^0.8.2:
+  version "0.8.3"
+  resolved "https://registry.yarnpkg.com/react-easy-editables/-/react-easy-editables-0.8.3.tgz#db52ef5795749ad119a837a21178bcca23fcf9e3"
+  integrity sha512-vl4GyqTn8IqSaNiaMvpD3TtsNawnBh7kcSSAylMv0nhyftG7xCjqN3/ZOanSFVnAk7XGJeZyyD5lUtQAA4mZ1Q==
   dependencies:
     react-gsheets-timeline "^0.5.4"
     react-image-lightbox "^5.1.0"
