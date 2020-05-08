@@ -23,7 +23,7 @@ import Button from "../common/Button";
 import Link from "../common/Link";
 import FileUpload from "../common/FileUpload";
 import ExpandableText from "../common/ExpandableText";
-import Publications from "../common/Publications";
+import Reports from "../common/Reports";
 import EmbeddedVismeReport from "./EditableEmbeddedVismeReport";
 import SectionEditingActions from "./SectionEditingActions";
 
@@ -37,7 +37,7 @@ const componentMap = {
   button: Button,
   link: Link,
   expandableText: ExpandableText,
-  publications: Publications,
+  reports: Reports,
   fileUpload: FileUpload,
   vismeReport: EmbeddedVismeReport,
 }
@@ -121,7 +121,7 @@ const DynamicSection = ({ content, type, sectionIndex, pageData, isEditingPage, 
 
   return(
     <section className={`dynamic-section pos-relative ${type}`}>
-      <Container maxWidth="md">
+      <div className="container">
       {
         content.map((component, index ) => {
           const Component = componentMap[component.type];
@@ -136,7 +136,7 @@ const DynamicSection = ({ content, type, sectionIndex, pageData, isEditingPage, 
           )
         })
       }
-      </Container>
+      </div>
       {
         isEditingPage &&
         <SectionEditingActions

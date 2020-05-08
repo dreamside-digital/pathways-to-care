@@ -23,6 +23,21 @@
           "content": {}
         }
       ]
+    },
+    {
+      "type": "research",
+      "content": [
+        {
+          "type": "subHeading",
+          "content": {
+            "text": "Related Publications"
+          }
+        },
+        {
+          "type": "reports",
+          "content": {}
+        }
+      ]
     }
   ]
 }

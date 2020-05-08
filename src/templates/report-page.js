@@ -144,7 +144,6 @@ class ReportPage extends React.Component {
           })
         }
 
-
       </Layout>
     );
   }

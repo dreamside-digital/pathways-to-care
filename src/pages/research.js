@@ -23,7 +23,7 @@ import {
 import { uploadImage, uploadFile } from "../firebase/operations";
 
 import Layout from "../layouts/default.js";
-import Publication from "../components/common/Publication";
+import Report from "../components/common/Report";
 import Carousel from "../components/common/Carousel";
 import Collection from "../components/common/Collection";
 
@@ -179,113 +179,13 @@ class ResearchPage extends React.Component {
             </div>
           </section>
 
-
-          <section className="grey-bg" data-bg-img={ background02 } id="theory-of-change">
-            <div className="container">
-              <div className="section-title mb-4">
-                <h2 className="title">
-                  <EditableText content={content["toc-title"]} onSave={this.onSave("toc-title")} />
-                </h2>
-              </div>
-
-              <div className="row">
-
-                <div className="col-md-4">
-                  <div className={`post`}>
-                    <div className="post-image">
-                      <EditableImageUpload
-                        classes={"img-fluid"}
-                        content={content["toc-image"]}
-                        onSave={this.onSave("toc-image")}
-                        uploadImage={uploadImage}
-                      />
-                    </div>
-                    <div className="post-desc">
-                      <div className="post-title">
-                        <h4 className="text-theme mb-3">
-                          <EditableText content={content["toc-title"]} onSave={this.onSave("toc-title")} />
-                        </h4>
-                      </div>
-                      <EditableParagraph classes="mb-3" content={content["toc-summary"]} onSave={this.onSave("toc-summary")} />
-
-                      <div className="action-link">
-                        <EditableFileUpload
-                          content={content["toc-pdf"]}
-                          onSave={this.onSave("toc-pdf")}
-                          uploadFile={uploadFile}
-                          linkClasses="btn btn-theme"
-                          linkText="Download the PDF"
-                        />
-                      </div>
-                    </div>
-                  </div>
-                </div>
-
-                <div className="col-md-8 md-mt-5">
-                  <EditableParagraph content={content["toc-description"]} onSave={this.onSave("toc-description")} />
-                </div>
-              </div>
-
-            </div>
-          </section>
-
-          <section className="" id="scoping-review">
-            <div className="container">
-              <div className="section-title mb-4">
-                <h2 className="title">
-                  <EditableText content={content["scoping-review-title"]} onSave={this.onSave("scoping-review-title")} />
-                </h2>
-              </div>
-
-              <div className="row">
-
-                <div className="col-md-4">
-                  <div className={`post`}>
-                    <div className="post-image">
-                      <EditableImageUpload
-                        classes={"img-fluid"}
-                        content={content["scoping-review-image"]}
-                        onSave={this.onSave("scoping-review-image")}
-                        uploadImage={uploadImage}
-                      />
-                    </div>
-                    <div className="post-desc">
-                      <div className="post-title">
-                        <h4 className="text-theme mb-3">
-                          <EditableText content={content["scoping-review-doc-title"]} onSave={this.onSave("scoping-review-doc-title")} />
-                        </h4>
-                      </div>
-                      <EditableParagraph classes="mb-3" content={content["scoping-review-summary"]} onSave={this.onSave("scoping-review-summary")} />
-
-                      <div className="action-link">
-                        <EditableFileUpload
-                          content={content["scoping-review-pdf"]}
-                          onSave={this.onSave("scoping-review-pdf")}
-                          uploadFile={uploadFile}
-                          linkClasses="btn btn-theme"
-                          linkText="Download the PDF"
-                        />
-                      </div>
-                    </div>
-                  </div>
-                </div>
-
-                <div className="col-md-8 md-mt-5">
-                  <EditableParagraph content={content["scoping-review-description"]} onSave={this.onSave("scoping-review-description")} />
-                </div>
-              </div>
-
-            </div>
-          </section>
-
-          {/*
-          <section id="publications">
+          <section id="reports">
             <div className="container">
               <div className="row">
                 <div className="col-lg-12 col-md-12 ml-auto mr-auto">
                   <div className="section-title">
                     <h2 className="title">
-                      <EditableText content={content["news-title"]} onSave={this.onSave("news-title")} />
+                      <EditableText content={content["reports-title"]} onSave={this.onSave("reports-title")} />
                     </h2>
                   </div>
                 </div>
@@ -293,20 +193,19 @@ class ResearchPage extends React.Component {
               <div className="row">
                 <div className="col-12">
                   <Carousel
-                    collection={content["related-publications"]}
-                    SlideComponent={Publication}
-                    onSave={this.onSave('related-publications')}
-                    onAddItem={this.onAddItem('related-publications')}
-                    onDeleteItem={this.onDeleteItem('related-publications')}
+                    collection={content["reports"]}
+                    SlideComponent={Report}
+                    onSave={this.onSave('reports')}
+                    onAddItem={this.onAddItem('reports')}
+                    onDeleteItem={this.onDeleteItem('reports')}
                     options={{slidesToShow: 3}}
                     isEditingPage={this.props.isEditingPage}
-                    defaultContent={DEFAULT_COMPONENT_CONTENT['related-publications']}
+                    defaultContent={DEFAULT_COMPONENT_CONTENT['reports']}
                   />
                 </div>
               </div>
             </div>
           </section>
-          */}
 
 
         </div>

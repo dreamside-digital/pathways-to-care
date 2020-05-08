@@ -33,6 +33,8 @@ class EditableCarousel extends React.Component {
   }
 
   onSaveItem = itemId => item => {
+    console.log("itemId", itemId)
+    console.log("item", item)
     const newCollection = {
       ...this.props.collection,
       [itemId]: item

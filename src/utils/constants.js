@@ -29,6 +29,13 @@ export const DEFAULT_COMPONENT_CONTENT = {
     "publication-item-description": { "text": "<p>Summary</p>" },
     "publication-item-file": { "filepath": "/" },
   },
+  "reports": {
+    "report-item-image": { "imageSrc": "https://www.nomadiclabs.ca/img/logo-03.png", "caption": "" },
+    "report-item-date": { "text": "Report date" },
+    "report-item-title": { "text": "Report title" },
+    "report-item-description": { "text": "<p>Summary</p>" },
+    "report-item-link": { "anchor": "Read the report", "link": "/" },
+  },
   "news-items": {
     "news-item-image": { "imageSrc": "https://www.nomadiclabs.ca/img/logo-03.png", "caption": "" },
     "news-item-date": { "text": "Date" },
