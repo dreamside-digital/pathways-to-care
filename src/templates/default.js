@@ -85,6 +85,7 @@ class ReportPage extends React.Component {
 
   render() {
     const pageData = this.props.pageData ? this.props.pageData : this.props.data.pages;
+    const title = pageData.displayTitle ? pageData.displayTitle : pageData.title;
     const content = this.props.pageData ? this.props.pageData.content : JSON.parse(this.props.data.pages.content);
     const sections = content.sections && content.sections.length > 0 ? content.sections : [{ content: [] }];
     const pageOrder = findIndex(this.props.orderedPages, p => p.id === pageData.id) + 1;
@@ -93,6 +94,7 @@ class ReportPage extends React.Component {
     return (
       <Layout
         title={pageData["title"]}
+        description={pageData["description"]}
         pathname={this.props.location.pathname}
       >
         <section className="page-title o-hidden text-center grey-bg bg-contain animatedBackground" data-bg-img={ headerPattern }>

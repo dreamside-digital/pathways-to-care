@@ -104,12 +104,15 @@ class ResearchPage extends React.Component {
   }
 
   render() {
-    const content = this.props.pageData ? this.props.pageData.content : {};
+    const pageData = this.props.pageData ? this.props.pageData : this.props.data.pages;
+    const title = pageData.displayTitle ? pageData.displayTitle : pageData.title;
+    const content = this.props.pageData ? this.props.pageData.content : JSON.parse(this.props.data.pages.content);
     const researchGoals = content["research-goals-items"] || {};
 
     return (
       <Layout
         title={content["page-title"] ? content["page-title"]["text"] : "Research"}
+        description={pageData["description"]}
         pathname={this.props.location.pathname}
         image={content["goals-image"] ? content["goals-image"]["imageSrc"] : null }
       >
@@ -223,6 +226,7 @@ export const query = graphql`
       id
       content
       title
+      description
       slug
     }
   }

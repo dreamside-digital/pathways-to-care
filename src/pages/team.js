@@ -117,12 +117,15 @@ class TeamPage extends React.Component {
   }
 
   render() {
-    const content = this.props.pageData ? this.props.pageData.content : {};
+    const pageData = this.props.pageData ? this.props.pageData : this.props.data.pages;
+    const title = pageData.displayTitle ? pageData.displayTitle : pageData.title;
+    const content = this.props.pageData ? this.props.pageData.content : JSON.parse(this.props.data.pages.content);
     const teamMembers = content["team-members"] ? content["team-members"] : {};
 
     return (
       <Layout
         title={content["page-title"] ? content["page-title"]["text"] : "Team"}
+        description={pageData["description"]}
         pathname={this.props.location.pathname}
       >
           <section className="page-title o-hidden text-center grey-bg bg-contain animatedBackground" data-bg-img={ headerPattern }>
@@ -255,6 +258,7 @@ export const query = graphql`
       id
       content
       title
+      description
       slug
     }
   }

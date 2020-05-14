@@ -37,10 +37,15 @@ class Reports extends React.Component {
   }
 
   render() {
+    const { isEditingPage, classes } = this.props;
     const itemsKeys = Object.keys(this.props.content);
 
+    if (itemsKeys.length === 0 && !isEditingPage) {
+      return null;
+    }
+
     return (
-      <div className={`collection mt-4 ${this.props.classes}`}>
+      <div className={`collection mt-4 ${classes}`}>
         <Grid container spacing={2}>
         {itemsKeys.map((key,index) => {
           const content = this.props.content[key];
@@ -56,7 +61,7 @@ class Reports extends React.Component {
           )
         })}
         {
-          this.props.isEditingPage &&
+          isEditingPage &&
           <div className="row mt-4">
             <div className="col-12">
               <Button onClick={this.onAddItem}>Add item</Button>

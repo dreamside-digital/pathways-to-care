@@ -114,12 +114,14 @@ class HomePage extends React.Component {
 
 
   render() {
-    const content = this.props.pageData ? this.props.pageData.content : {};
+    const pageData = this.props.pageData ? this.props.pageData : this.props.data.pages;
+    const title = pageData.displayTitle ? pageData.displayTitle : pageData.title;
+    const content = this.props.pageData ? this.props.pageData.content : JSON.parse(this.props.data.pages.content);
     const problemItems = content["problem-items"] ? content["problem-items"] : {};
     const outcomeItems = content["outcome-items"] ? content["outcome-items"] : {};
 
     return (
-      <Layout title={'Home'}>
+      <Layout title={title} description={pageData["description"]}>
         <section className="fullscreen-banner p-0 banner o-hidden" data-bg-img={ headerPattern }>
           <div className="align-center">
             <div className="container">
@@ -332,6 +334,8 @@ export const query = graphql`
       id
       content
       title
+      displayTitle
+      description
       slug
     }
   }

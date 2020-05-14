@@ -89,12 +89,15 @@ class ContactPage extends React.Component {
   }
 
   render() {
-    const content = this.props.pageData ? this.props.pageData.content : {};
+    const pageData = this.props.pageData ? this.props.pageData : this.props.data.pages;
+    const title = pageData.displayTitle ? pageData.displayTitle : pageData.title;
+    const content = this.props.pageData ? this.props.pageData.content : JSON.parse(this.props.data.pages.content);
     const asks = content["asks"] || [];
 
     return (
       <Layout
         title={content["page-title"] ? content["page-title"]["text"] : "Get Involved"}
+        description={pageData["description"]}
         pathname={this.props.location.pathname}
         image={content["header-image"] ? content["header-image"]["imageSrc"] : null }
       >
@@ -280,6 +283,7 @@ export const query = graphql`
       id
       content
       title
+      description
       slug
     }
   }

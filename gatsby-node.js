@@ -1,5 +1,22 @@
 const path = require("path");
 
+exports.createSchemaCustomization = ({ actions }) => {
+  const { createTypes } = actions
+  const typeDefs = `
+    type Pages implements Node {
+      title: String!
+      slug: String!
+      template: String!
+      content: JSON!
+      next: String
+      head: Boolean
+      description: String
+      displayTitle: String
+    }
+  `
+  createTypes(typeDefs)
+}
+
 exports.createPages = ({ graphql, actions }) => {
   const { createPage } = actions;
 
@@ -17,6 +34,7 @@ exports.createPages = ({ graphql, actions }) => {
                 content
                 next
                 head
+                description
               }
             }
           }

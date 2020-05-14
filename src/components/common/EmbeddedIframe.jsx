@@ -1,7 +1,7 @@
 /* eslint-disable */
 
 import React from "react";
-import { EditableEmbeddedIframe } from "react-easy-editables";
+import EditableEmbeddedIframe from "../editing/EditableEmbeddedIframe";
 
 class EmbeddedIframe extends React.Component {
   constructor(props) {

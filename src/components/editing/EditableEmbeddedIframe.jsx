@@ -1,7 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
 
-import { Editable, EmbeddedIFrameEditor } from "react-easy-editables";
+import { Editable, EmbeddedIframeEditor } from "react-easy-editables";
 
 
 const EmbeddedIframe = ({ className, ...props }) => {
@@ -22,7 +22,7 @@ const EmbeddedIframe = ({ className, ...props }) => {
       maxWidth: "100%",
     },
     iframe: {
-      position: absolute,
+      position: "absolute",
       top: 0,
       left: 0,
       width: "100%",
@@ -38,6 +38,9 @@ const EmbeddedIframe = ({ className, ...props }) => {
       {...props}
     >
       <div className="embedded-iframe" style={styles.iframeContainer}>
+        <div className="loader-container">
+          <div className="loader">loading...</div>
+        </div>
         <iframe
           title="iframe"
           src={ src }

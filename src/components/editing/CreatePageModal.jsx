@@ -178,7 +178,6 @@ class CreatePageModal extends React.Component {
 
   render() {
     const open = Boolean(this.props.showNewPageModal);
-    console.log("this.state", this.state)
 
     return (
       <Dialog open={open} aria-labelledby="create-page-dialogue">
