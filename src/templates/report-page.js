@@ -97,9 +97,6 @@ class ReportPage extends React.Component {
         description={pageData["description"]}
         pathname={this.props.location.pathname}
       >
-        <Helmet>
-          <script src="https://my.visme.co/visme.js"></script>
-        </Helmet>
         <section className="page-title o-hidden text-center grey-bg bg-contain animatedBackground" data-bg-img={ headerPattern }>
           <div className="container">
             <div className="row align-items-center">
