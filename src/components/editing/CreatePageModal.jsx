@@ -21,9 +21,9 @@ import MenuItem from "@material-ui/core/MenuItem";
 import FormControl from "@material-ui/core/FormControl";
 import Select from "@material-ui/core/Select";
 
-import { PAGE_TYPES, CATEGORY_OPTIONS } from "../../utils/constants";
+import { PAGE_TYPES } from "../../utils/constants";
 
-import defaultContentJSON from "../../fixtures/pageContent.json";
+import defaultContentJSON from "../../fixtures/default.json";
 
 const mapStateToProps = state => {
   return {
@@ -51,13 +51,13 @@ const mapDispatchToProps = dispatch => {
   };
 };
 
+// Defautls to report page
 const emptyPage = {
     title: "",
     description: "",
-    category: CATEGORY_OPTIONS[0].value,
-    type: PAGE_TYPES[0].value,
+    type: PAGE_TYPES[1].value,
     content: defaultContentJSON,
-    template: PAGE_TYPES[0].value.template,
+    template: PAGE_TYPES[1].value.template
   }
 
 class CreatePageModal extends React.Component {
@@ -127,22 +127,30 @@ class CreatePageModal extends React.Component {
       })
     }
 
-    const prevPage = find(this.props.pages, (page => page.category === this.state.page.category && !page.next));
+    const isCategoryEmpty = !(find(this.props.pages, (page => page.type && page.type.id === this.state.page.type.id)))
+    const prevPage = find(this.props.pages, (page => page.type && page.type.id === this.state.page.type.id && !page.next));
+    const slug = this.state.page.type.category ? `/${this.state.page.type.category}/${pageId}` : `/${pageId}`
+    const content = require(`../../fixtures/${this.state.page.type.id}.json`);
 
     let pageData = {
       ...this.state.page,
       id: pageId,
-      slug: `/${this.state.page.category}/${pageId}`,
-      next: null,
+      slug: slug,
+      template: this.state.page.type.template,
+      next: "",
       content: {
-        ...this.state.page.content,
+        ...content,
         "page-title": { text: this.state.page.title }
       }
     };
 
+    if (isCategoryEmpty) {
+      pageData["head"] = true
+    }
+
     this.props.savePage(pageData, pageId);
 
-    if (this.state.page.category !== CATEGORY_OPTIONS[1].value && prevPage) { // don't add next page for uncategorized pages
+    if (prevPage) {
       this.props.updateFirebaseData({
         [`pages/${prevPage.id}/next`]: pageId,
       })
@@ -170,6 +178,7 @@ class CreatePageModal extends React.Component {
 
   render() {
     const open = Boolean(this.props.showNewPageModal);
+    console.log("this.state", this.state)
 
     return (
       <Dialog open={open} aria-labelledby="create-page-dialogue">
@@ -202,19 +211,19 @@ class CreatePageModal extends React.Component {
           {
             this.props.options.new &&
             <FormControl fullWidth margin="normal">
-              <InputLabel htmlFor="menu-group">Category</InputLabel>
+              <InputLabel htmlFor="menu-group">Page type</InputLabel>
               <Select
-                value={this.state.page.category}
+                value={this.state.page.type}
                 onChange={selected =>
-                  this.updatePage("category", selected.target.value)
+                  this.updatePage("type", selected.target.value)
                 }
                 inputProps={{
                   name: "menu-group",
                   id: "menu-group"
                 }}
               >
-                {CATEGORY_OPTIONS.map(option => (
-                  <MenuItem key={option.value} value={option.value}>
+                {PAGE_TYPES.map(option => (
+                  <MenuItem key={option.value.id} value={option.value}>
                     {option.label}
                   </MenuItem>
                 ))}

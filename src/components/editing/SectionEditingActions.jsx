@@ -103,10 +103,6 @@ class SectionEditingActions extends React.Component {
                 Paragraph
               </MenuItem>
 
-              <MenuItem onClick={() => this.props.onAddContentItem("quote")}>
-                Quote
-              </MenuItem>
-
               <MenuItem onClick={() => this.props.onAddContentItem("button")}>
                 Button
               </MenuItem>
@@ -119,12 +115,32 @@ class SectionEditingActions extends React.Component {
                 Image
               </MenuItem>
 
-              <MenuItem onClick={() => this.props.onAddContentItem("expandableText")} divider>
+              <MenuItem onClick={() => this.props.onAddContentItem("imageCarousel")}>
+                Image carousel
+              </MenuItem>
+
+              <MenuItem onClick={() => this.props.onAddContentItem("expandableText")}>
                 Expandable text
               </MenuItem>
 
+              <MenuItem onClick={() => this.props.onAddContentItem("embeddedIframe")}>
+                Responsive iframe
+              </MenuItem>
+
+              <MenuItem onClick={() => this.props.onAddContentItem("fileUpload")}>
+                File upload
+              </MenuItem>
+
+              <MenuItem onClick={() => this.props.onAddContentItem("vismeReport")} divider>
+                Visme report
+              </MenuItem>
+
               <MenuItem onClick={() => this.props.onAddSection("default")}>
-                Empty Section
+                Default Section
+              </MenuItem>
+
+              <MenuItem onClick={() => this.props.onAddSection("light")}>
+                Light Section
               </MenuItem>
 
               <MenuItem onClick={() => this.props.onAddSection("highlight")}>

@@ -37,10 +37,7 @@ const NavigationComponent = props => (
             node {
               title
               slug
-              navigation {
-                order
-                displayTitle
-              }
+              displayTitle
             }
           }
         }

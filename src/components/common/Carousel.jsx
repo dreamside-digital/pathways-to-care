@@ -33,8 +33,6 @@ class EditableCarousel extends React.Component {
   }
 
   onSaveItem = itemId => item => {
-    console.log("itemId", itemId)
-    console.log("item", item)
     const newCollection = {
       ...this.props.collection,
       [itemId]: item
@@ -56,8 +54,6 @@ class EditableCarousel extends React.Component {
     const { viewportWidth } = this.state;
     const isMobile = Boolean(viewportWidth <= MAX_MOBILE_VIEWPORT_WIDTH)
     const { collection, SlideComponent, isEditingPage, options } = this.props;
-    console.log("collection", collection)
-    console.log("this.props", this.props)
 
     const slidesToShow = isMobile ? 1 : options.slidesToShow || DEFAULT_SLIDES_TO_SHOW;
 

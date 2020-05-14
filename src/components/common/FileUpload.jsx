@@ -1,5 +1,6 @@
 import React from "react";
-import { EditableFileUpload } from "react-easy-editables";
+// import { EditableFileUpload } from 'react-easy-editables';
+import EditableFileUpload from "../editing/EditableFileUpload";
 import { uploadFile } from "../../firebase/operations";
 
 

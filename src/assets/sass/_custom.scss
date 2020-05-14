@@ -13,23 +13,6 @@
   }
 }
 
-.embedded-iframe {
-  position: relative;
-  padding-bottom: 56.25%;
-  height: 0;
-  overflow: hidden;
-  width: 100%;
-  max-width: 100%;
-
-  iframe {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-  }
-}
-
 section.report {
   background: $darkbg;
 }
@@ -49,4 +32,9 @@ section.download {
 
 section.research {
   background: $whitebg;
+}
+
+.my-40 {
+  margin-top: 40px;
+  margin-bottom: 40px;
 }

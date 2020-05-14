@@ -118,9 +118,16 @@ const DynamicSection = ({ content, type, sectionIndex, pageData, isEditingPage, 
     }
   }
 
+  const sectionClassMap = {
+    default: "",
+    highlight: "dark-bg",
+    light: "grey-bg",
+  }
+
+  const sectionClasses = sectionClassMap[type]
 
   return(
-    <section className={`dynamic-section pos-relative ${type}`}>
+    <section className={`dynamic-section pos-relative ${type} ${sectionClasses}`}>
       <div className="container">
       {
         content.map((component, index ) => {

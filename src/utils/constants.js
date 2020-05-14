@@ -72,18 +72,24 @@ export const DEFAULT_COMPONENT_CONTENT = {
 }
 
 export const PAGE_TYPES = [
-  { label: "Report page", value: { type: "report_page", template: "report-page.js" } },
-];
-
-export const CATEGORY_OPTIONS = [
-  { label: "Report page", value: "research" },
-  { label: "Uncategorized", value: "uncategorized" },
+  { label: "Default page", value: { id: "default", category: null, template: "default.js" } },
+  { label: "Report page", value: { id: "report_page", category: 'research', template: "report-page.js" } },
 ];
 
 export const SECTION_MAP = {
   default: {
     type: "default",
-    content: []
+    content: [
+      { type: "header", content: { text: "Header text" }},
+      { type: "paragraph", content: { text: "<p>Section text</p>" }},
+    ]
+  },
+  light: {
+    type: "light",
+    content: [
+      { type: "header", content: { text: "Header text" }},
+      { type: "paragraph", content: { text: "<p>Section text</p>" }},
+    ]
   },
   highlight: {
     type: "highlight",
@@ -122,8 +128,18 @@ export const CONTENT_MAP = {
   imageCarousel: { type: "imageCarousel", content: {} },
   embeddedIframe: { type: "embeddedIframe" },
   vismeReport: { type: "vismeReport" },
+  fileUpload: { type: "fileUpload" },
   button: { type: "button", content: { anchor: "Button", link: "/" } },
   link: { type: "link", content: { anchor: "Link text", link: "/" } },
   expandableText: { type: "expandableText", content: { header: "Name", description: "<p>Bio</p>" } },
   readings: { type: "publications", content: {} },
 }
+
+export const PERMANENT_PAGES = [
+  "home",
+  "about",
+  "research",
+  "team",
+  "contact",
+]
+

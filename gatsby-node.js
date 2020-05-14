@@ -7,7 +7,7 @@ exports.createPages = ({ graphql, actions }) => {
       graphql(
         `
           {
-          allPages(filter: {template: { in: ["report-page.js"]}}) {
+          allPages(filter: {template: { in: ["report-page.js", "default.js"]}}) {
             edges {
               node {
                 id
@@ -15,7 +15,6 @@ exports.createPages = ({ graphql, actions }) => {
                 slug
                 template
                 content
-                category
                 next
                 head
               }

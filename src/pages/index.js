@@ -147,52 +147,52 @@ class HomePage extends React.Component {
 
         <div className="page-content">
 
-        <section className="dark-bg pos-r" id="problem">
-          <div className="container">
-            <div className="section-title">
-              <h6>
-                <EditableText content={content["problem-tag"]} onSave={this.onSave("problem-tag")} />
-              </h6>
-              <h2 className="title">
-                <EditableText content={content["problem-title"]} onSave={this.onSave("problem-title")} />
-              </h2>
-            </div>
-            <div className="row">
-              {
-                Object.keys(problemItems).map(key => {
-                  const content = problemItems[key];
+          <section className="dark-bg pos-r" id="problem">
+            <div className="container">
+              <div className="section-title">
+                <h6>
+                  <EditableText content={content["problem-tag"]} onSave={this.onSave("problem-tag")} />
+                </h6>
+                <h2 className="title">
+                  <EditableText content={content["problem-title"]} onSave={this.onSave("problem-title")} />
+                </h2>
+              </div>
+              <div className="row">
+                {
+                  Object.keys(problemItems).map(key => {
+                    const content = problemItems[key];
 
-                  return (
-                    <div className="col-lg-4 col-md-6" key={`problem-item-${key}`}>
-                      <FeaturedItemWithTitle
-                        classes="featured-item text-center"
-                        content={content}
-                        onSave={this.editListItem("problem-items", key)}
-                      />
-                      { this.props.isEditingPage &&
-                        <div className="row justify-content-end">
-                          <Button onClick={this.deleteListItem("problem-items", key)}>Delete</Button>
-                        </div>
-                      }
-                    </div>
-                  )
-                })
-              }
-              {
-                this.props.isEditingPage &&
-                <div className="col-lg-12">
-                  <Button onClick={this.addListItem("problem-items")}>Add list item</Button>
+                    return (
+                      <div className="col-lg-4 col-md-6" key={`problem-item-${key}`}>
+                        <FeaturedItemWithTitle
+                          classes="featured-item text-center"
+                          content={content}
+                          onSave={this.editListItem("problem-items", key)}
+                        />
+                        { this.props.isEditingPage &&
+                          <div className="row justify-content-end">
+                            <Button onClick={this.deleteListItem("problem-items", key)}>Delete</Button>
+                          </div>
+                        }
+                      </div>
+                    )
+                  })
+                }
+                {
+                  this.props.isEditingPage &&
+                  <div className="col-lg-12">
+                    <Button onClick={this.addListItem("problem-items")}>Add list item</Button>
+                  </div>
+                }
+              </div>
+
+              <div className="row mt-3">
+                <div className="col-lg-12 col-md-12 text-white">
+                  <EditableParagraph content={content["problem-summary"]} onSave={this.onSave("problem-summary")} />
                 </div>
-              }
-            </div>
-
-            <div className="row mt-3">
-              <div className="col-lg-12 col-md-12 text-white">
-                <EditableParagraph content={content["problem-summary"]} onSave={this.onSave("problem-summary")} />
               </div>
             </div>
-          </div>
-        </section>
+          </section>
 
 
           <section className="pos-r" id="solution">

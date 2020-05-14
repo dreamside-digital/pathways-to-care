@@ -1,0 +1,15 @@
+{
+  "sections": [
+    {
+      "type": "default",
+      "content": [
+        {
+          "type": "header",
+          "content": {
+            "text": "New section"
+          }
+        }
+      ]
+    }
+  ]
+}

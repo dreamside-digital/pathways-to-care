@@ -100,8 +100,10 @@ export function updateTitle(title) {
 }
 
 export function savePage(pageData, pageId) {
-  return dispatch => {
+  return (dispatch) => {
     const db = firebase.database();
+    console.log("saving page", pageId)
+    console.log("pageData", pageData)
     db
       .ref(`pages/${pageId}/`)
       .update(pageData)
