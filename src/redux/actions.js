@@ -1,5 +1,6 @@
 import axios from "axios";
 import firebase from "../firebase/init";
+import { copyContentFromStaging } from "../firebase/operations"
 import slugify from "slugify";
 import { NOTIFICATION_MESSAGES } from "../utils/constants";
 
@@ -366,6 +367,29 @@ export function deploy() {
         );
       });
   };
+}
+
+export function deployWithStagingContent() {
+  return dispatch => {
+    copyContentFromStaging()
+      .then(() => {
+        dispatch(
+          showNotification(
+            "Your content has been copied from the staging site.",
+            "success"
+          )
+        );
+        dispatch(deploy())
+      })
+      .catch(err => {
+        dispatch(
+          showNotification(
+            `There was an error copying the content from the staging site: ${err}`,
+            "danger"
+          )
+        );
+      })
+  }
 }
 
 export function loadPageData(data) {
