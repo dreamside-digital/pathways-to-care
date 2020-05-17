@@ -161,7 +161,6 @@ class AccountButton extends React.Component {
                   props.deploy();
                   closeMenu();
                 }}
-                divider
               >
                 Publish changes
               </MenuItem>
