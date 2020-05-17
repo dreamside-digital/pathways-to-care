@@ -130,10 +130,7 @@ class ResearchPage extends React.Component {
                         <Link to="/research#research-goals">Research Goals</Link>
                       </li>
                       <li className="breadcrumb-item">
-                        <Link to="/research#theory-of-change">Theory of Change</Link>
-                      </li>
-                      <li className="breadcrumb-item">
-                        <Link to="/research#scoping-review">Scoping Review</Link>
+                        <Link to="/research#reports">Publications</Link>
                       </li>
                     </ol>
                   </nav>
