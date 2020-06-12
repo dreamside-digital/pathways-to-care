@@ -11,61 +11,51 @@ import {
 
 import { uploadImage } from "../../firebase/operations"
 
-class NewsItemEditor extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = { content: this.props.content };
-  }
+const NewsItemEditor = ({ content, onContentChange }) => {
 
-  handleEditorChange = field => item => {
-    this.setState({
-      content: {
-        ...this.state.content,
-        [field]: {
-          ...item
-        }
+  const handleEditorChange = field => item => {
+    onContentChange({
+      ...content,
+      [field]: {
+        ...item
       }
     });
   }
 
-  render() {
-    const { content } = this.state;
-
-    return(
-      <div className={`p-3`}>
-        <div className={`post`}>
-          <div className="post-image">
-            <ImageUploadEditor
-              classes="img-fluid h-100 w-100"
-              content={content["news-item-image"]}
-              onContentChange={this.handleEditorChange("news-item-image")}
-              uploadImage={uploadImage}
+  return(
+    <div className={`p-3`}>
+      <div className={`post`}>
+        <div className="post-image">
+          <ImageUploadEditor
+            classes="img-fluid h-100 w-100"
+            content={content["news-item-image"]}
+            onContentChange={handleEditorChange("news-item-image")}
+            uploadImage={uploadImage}
+          />
+        </div>
+        <div className="post-desc">
+          <div className="post-date">
+            <PlainTextEditor
+              content={content["news-item-date"]}
+              onContentChange={handleEditorChange("news-item-date")}
             />
           </div>
-          <div className="post-desc">
-            <div className="post-date">
-              <PlainTextEditor
-                content={content["news-item-date"]}
-                onContentChange={this.handleEditorChange("news-item-date")}
+          <div className="post-title mb-4">
+            <h4>
+              <LinkEditor
+                content={content["news-item-link"]}
+                onContentChange={handleEditorChange("news-item-link")}
               />
-            </div>
-            <div className="post-title mb-4">
-              <h4>
-                <LinkEditor
-                  content={content["news-item-link"]}
-                  onContentChange={this.handleEditorChange("news-item-link")}
-                />
-              </h4>
-            </div>
-            <RichTextEditor
-              content={content["news-item-description"]}
-              onContentChange={this.handleEditorChange("news-item-description")}
-            />
+            </h4>
           </div>
+          <RichTextEditor
+            content={content["news-item-description"]}
+            onContentChange={handleEditorChange("news-item-description")}
+          />
         </div>
       </div>
-    )
-  }
+    </div>
+  )
 }
 
 const NewsItem = props => {

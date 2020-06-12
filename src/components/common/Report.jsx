@@ -78,14 +78,13 @@ const Report = props => {
       {...props}
     >
       <div className={`post ${props.classes}`}>
+        <a href={content["report-item-link"]["link"]} target="_blank" rel="noopener noreferrer">
         <div className="post-image">
-          <a href={content["report-item-image"]["imageSrc"]} target="_blank">
-            <img
-              className="img-fluid h-100 w-100"
-              src={content["report-item-image"]["imageSrc"]}
-              alt={content["report-item-image"]["caption"]}
-            />
-          </a>
+          <img
+            className="img-fluid h-100 w-100"
+            src={content["report-item-image"]["imageSrc"]}
+            alt={content["report-item-image"]["caption"]}
+          />
         </div>
         <div className="post-desc">
           <div className="post-date">
@@ -96,14 +95,13 @@ const Report = props => {
               { content["report-item-title"]["text"] }
             </h4>
           </div>
-          <div dangerouslySetInnerHTML={ {__html: content["report-item-description"]["text"]} } />
+          <div className="text-dark" dangerouslySetInnerHTML={ {__html: content["report-item-description"]["text"]} } />
 
           <div className="action-link">
-            <a href={content["report-item-link"]["link"]} target="_blank" rel="noopener noreferrer">
               {content["report-item-link"]["anchor"]}
-            </a>
           </div>
         </div>
+         </a>
       </div>
     </Editable>
   );
