@@ -53,7 +53,7 @@ class EditableCarousel extends React.Component {
   render() {
     const { viewportWidth } = this.state;
     const isMobile = Boolean(viewportWidth <= MAX_MOBILE_VIEWPORT_WIDTH)
-    const { collection, SlideComponent, isEditingPage, options } = this.props;
+    const { collection, SlideComponent, isEditingPage, options, reverseOrder } = this.props;
 
     const slidesToShow = isMobile ? 1 : options.slidesToShow || DEFAULT_SLIDES_TO_SHOW;
 
@@ -65,7 +65,12 @@ class EditableCarousel extends React.Component {
       swipe: !isEditingPage,
     }
 
-    const collectionKeys = Object.keys(collection);
+    let collectionKeys = Object.keys(collection);
+
+    if (reverseOrder) {
+      collectionKeys = collectionKeys.reverse()
+    }
+
 
     if (!isEditingPage && (collectionKeys.length < 1)) {
       return <p>Coming soon!</p>
@@ -103,7 +108,8 @@ class EditableCarousel extends React.Component {
 EditableCarousel.defaultProps = {
   collection: {},
   isEditingPage: false,
-  options: {}
+  options: {},
+  reverseOrder: false,
 }
 
 export default EditableCarousel;

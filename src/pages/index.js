@@ -119,6 +119,7 @@ class HomePage extends React.Component {
     const content = this.props.pageData ? this.props.pageData.content : JSON.parse(this.props.data.pages.content);
     const problemItems = content["problem-items"] ? content["problem-items"] : {};
     const outcomeItems = content["outcome-items"] ? content["outcome-items"] : {};
+    const newsItems = content["news-items"] ? content["news-items"] : {};
 
     return (
       <Layout title={title} description={pageData["description"]}>
@@ -302,7 +303,7 @@ class HomePage extends React.Component {
               </div>
 
               <Carousel
-                collection={content["news-items"]}
+                collection={newsItems}
                 SlideComponent={NewsItem}
                 onSave={this.onSave('news-items')}
                 onAddItem={this.onAddItem('news-items')}
@@ -310,6 +311,7 @@ class HomePage extends React.Component {
                 slidesToShow={3}
                 isEditingPage={this.props.isEditingPage}
                 defaultContent={DEFAULT_COMPONENT_CONTENT['news-items']}
+                reverseOrder={true}
               />
 
               <div className="row">

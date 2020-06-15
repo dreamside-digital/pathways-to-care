@@ -201,6 +201,7 @@ class ResearchPage extends React.Component {
                     options={{slidesToShow: 3}}
                     isEditingPage={this.props.isEditingPage}
                     defaultContent={DEFAULT_COMPONENT_CONTENT['reports']}
+                    reverseOrder={true}
                   />
                 </div>
               </div>
