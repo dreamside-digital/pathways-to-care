@@ -11,10 +11,7 @@
 ## Local development
 
 - clone the repo
-- create `.env.development` file and populate the variables
-```
-GATSBY_FIREBASE_ENVIRONMENT="staging"
-```
+- copy `.env.sample` to `.env.development` file and populate the variables
 - create `/config/firebase-config.staging.json` file and populate with firebase credentials
 - install the firebase cli locally and log in
 ```
