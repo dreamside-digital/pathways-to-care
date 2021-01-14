@@ -197,7 +197,6 @@ class HomePage extends React.Component {
             </div>
           </section>
 
-
           <section className="pos-r" id="solution">
             <div className="container">
               <div className="row">
@@ -289,6 +288,37 @@ class HomePage extends React.Component {
             </div>
           </section>
 
+          <section className="dark-bg" id="map">
+            <div className="container">
+              <div className="row">
+                <div className="col-12">
+                  <div className="section-title">
+                    <h6>
+                      <EditableText content={content["map-tag"]} onSave={this.onSave("map-tag")} />
+                    </h6>
+                    <h2 className="title">
+                      <EditableText content={content["map-title"]} onSave={this.onSave("map-title")} />
+                    </h2>
+                  </div>
+                </div>
+              </div>
+              <div className="row">
+                <div className="col-12">
+                  <div className="info-img pos-r">
+                    <EditableImageUpload
+                      classes="img-fluid"
+                      content={content["map-image"]}
+                      onSave={this.onSave("map-image")}
+                      uploadImage={uploadImage}
+                    />
+                  </div>
+                </div>
+                <div className="col-12 text-center">
+                  <EditableLink classes="btn btn-theme mt-5" content={content["map-read-more"]} onSave={this.onSave("map-read-more")} />
+                </div>
+              </div>
+            </div>
+          </section>
 
           <section className="" data-bg-img={ background02 } id="news">
             <div className="container">

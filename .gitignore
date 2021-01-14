@@ -10,7 +10,9 @@ yarn-error.log
 
 
 # Config files
-.env.*
+.env.development
+.env.staging
+.env.production
 config/firebase-config.*.json
 app.yaml
 
