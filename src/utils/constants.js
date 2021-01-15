@@ -127,6 +127,7 @@ export const CONTENT_MAP = {
   image: { type: "image" },
   imageCarousel: { type: "imageCarousel", content: {} },
   embeddedIframe: { type: "embeddedIframe" },
+  responsiveIframe: { type: "responsiveIframe" },
   vismeReport: { type: "vismeReport" },
   fileUpload: { type: "fileUpload" },
   button: { type: "button", content: { anchor: "Button", link: "/" } },

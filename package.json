@@ -34,7 +34,7 @@
     "react": "^16.8.0",
     "react-collapsible": "^2.6.0",
     "react-dom": "^16.8.0",
-    "react-easy-editables": "^0.8.6",
+    "react-easy-editables": "^0.9.0",
     "react-firebaseui": "^4.0.0",
     "react-helmet": "^5.2.0",
     "react-jss": "^8.6.1",

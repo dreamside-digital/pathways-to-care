@@ -19,6 +19,7 @@ import Paragraph from "../common/Paragraph";
 import Image from "../common/Image";
 import ImageCarousel from "../common/ImageCarousel";
 import EmbeddedIframe from "../common/EmbeddedIframe";
+import ResponsiveIframe from "../common/ResponsiveIframe";
 import Button from "../common/Button";
 import Link from "../common/Link";
 import FileUpload from "../common/FileUpload";
@@ -34,6 +35,7 @@ const componentMap = {
   image: Image,
   imageCarousel: ImageCarousel,
   embeddedIframe: EmbeddedIframe,
+  responsiveIframe: ResponsiveIframe,
   button: Button,
   link: Link,
   expandableText: ExpandableText,

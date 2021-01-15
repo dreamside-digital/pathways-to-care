@@ -124,6 +124,10 @@ class SectionEditingActions extends React.Component {
               </MenuItem>
 
               <MenuItem onClick={() => this.props.onAddContentItem("embeddedIframe")}>
+                Embedded iframe (for video)
+              </MenuItem>
+
+              <MenuItem onClick={() => this.props.onAddContentItem("responsiveIframe")}>
                 Responsive iframe
               </MenuItem>
 

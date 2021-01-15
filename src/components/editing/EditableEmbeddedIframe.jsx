@@ -27,6 +27,13 @@ const EmbeddedIframe = ({ className, ...props }) => {
       left: 0,
       width: "100%",
       height: "100%",
+    },
+    loader: {
+      position: "absolute",
+      top: 0,
+      left: 0,
+      width: "100%",
+      height: "100%",
     }
   }
 
@@ -38,7 +45,7 @@ const EmbeddedIframe = ({ className, ...props }) => {
       {...props}
     >
       <div className="embedded-iframe" style={styles.iframeContainer}>
-        <div className="loader-container">
+        <div className="loader-container" style={styles.loader}>
           <div className="loader">loading...</div>
         </div>
         <iframe
