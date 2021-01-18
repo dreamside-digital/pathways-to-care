@@ -21,7 +21,7 @@ class EmbeddedIframe extends React.Component {
         onMouseLeave={this.disableScroll}
         className={`iframe-container my-4 ${this.props.classes || ''} ${this.state.scrollEnabled ? "clicked" : ""}`}
       >
-        <EditableResponsiveIframe { ...this.props } />
+        <EditableResponsiveIframe iframeProps={{ allow: "geolocation" }} { ...this.props } />
       </div>
     );
   }
