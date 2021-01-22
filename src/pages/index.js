@@ -150,7 +150,40 @@ class HomePage extends React.Component {
 
         <div className="page-content">
 
-          <section className="dark-bg pos-r" id="problem">
+          <section className="dark-bg" id="map">
+            <div className="container">
+              <div className="row">
+                <div className="col-12">
+                  <div className="section-title">
+                    <h6>
+                      <EditableText content={content["map-tag"]} onSave={this.onSave("map-tag")} />
+                    </h6>
+                    <h2 className="title">
+                      <EditableText content={content["map-title"]} onSave={this.onSave("map-title")} />
+                    </h2>
+                  </div>
+                </div>
+              </div>
+              <div className="row">
+                <div className="col-12">
+                  <div className="info-img pos-r">
+                    <EditableImageUpload
+                      classes="img-fluid"
+                      content={content["map-image"]}
+                      onSave={this.onSave("map-image")}
+                      uploadImage={uploadImage}
+                    />
+                  </div>
+                </div>
+                <div className="col-12 text-center">
+                  <EditableLink classes="btn btn-theme mt-5" content={content["map-read-more"]} onSave={this.onSave("map-read-more")} />
+                </div>
+              </div>
+            </div>
+          </section>
+
+
+          <section className="grey-bg pos-r" id="problem">
             <div className="container">
               <div className="section-title">
                 <h6>
@@ -190,7 +223,7 @@ class HomePage extends React.Component {
               </div>
 
               <div className="row mt-3">
-                <div className="col-lg-12 col-md-12 text-white">
+                <div className="col-lg-12 col-md-12">
                   <EditableParagraph content={content["problem-summary"]} onSave={this.onSave("problem-summary")} />
                 </div>
               </div>
@@ -285,38 +318,6 @@ class HomePage extends React.Component {
                 </div>
               </div>
 
-            </div>
-          </section>
-
-          <section className="dark-bg" id="map">
-            <div className="container">
-              <div className="row">
-                <div className="col-12">
-                  <div className="section-title">
-                    <h6>
-                      <EditableText content={content["map-tag"]} onSave={this.onSave("map-tag")} />
-                    </h6>
-                    <h2 className="title">
-                      <EditableText content={content["map-title"]} onSave={this.onSave("map-title")} />
-                    </h2>
-                  </div>
-                </div>
-              </div>
-              <div className="row">
-                <div className="col-12">
-                  <div className="info-img pos-r">
-                    <EditableImageUpload
-                      classes="img-fluid"
-                      content={content["map-image"]}
-                      onSave={this.onSave("map-image")}
-                      uploadImage={uploadImage}
-                    />
-                  </div>
-                </div>
-                <div className="col-12 text-center">
-                  <EditableLink classes="btn btn-theme mt-5" content={content["map-read-more"]} onSave={this.onSave("map-read-more")} />
-                </div>
-              </div>
             </div>
           </section>
 
