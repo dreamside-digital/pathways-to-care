@@ -37,6 +37,7 @@
     "react-easy-editables": "^0.9.1",
     "react-firebaseui": "^4.0.0",
     "react-helmet": "^5.2.0",
+    "react-icons": "^4.2.0",
     "react-jss": "^8.6.1",
     "react-redux": "latest",
     "react-rte": "^0.16.1",

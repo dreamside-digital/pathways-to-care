@@ -399,6 +399,16 @@ export const projects = (state={}, action) => {
   }
 }
 
+export const search = (state={searchTerms:{}}, action) => {
+  switch (action.type) {
+    case 'SAVE_SEARCH_VALUES':
+      return { ...state, searchTerms: action.payload}
+    default:
+      return state;
+  }
+};
+
+
 export const appReducers = (state = {}, action) => {
   return {
     notifications: notifications(state.notifications, action),
@@ -408,6 +418,7 @@ export const appReducers = (state = {}, action) => {
     pages: pages(state.pages, action),
     projectForm: projectForm(state.projectForm, action),
     projects: projects(state.projects, action),
+    search: search(state.search, action),
   }
 }
 

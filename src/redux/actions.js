@@ -513,3 +513,10 @@ export function getProjects() {
       });
   };
 }
+
+
+// CONNECT ME ------------------------
+
+export const saveSearchValues = searchValues => ({
+  type: 'SAVE_SEARCH_VALUES', payload: searchValues
+});
