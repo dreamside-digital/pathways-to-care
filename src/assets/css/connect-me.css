@@ -122,18 +122,6 @@ h1 {
   margin: 20px;
 }
 
-.organizationResultTitle {
-  font-style: normal;
-  font-weight: 600;
-  font-size: 32px;
-  line-height: 60px;
-  display: flex;
-  align-items: center;
-  text-align: center;
-  padding-top: 45px;
-  color: #1F193E;
-}
-
 .organizationResultDescription {
   font-style: normal;
   font-weight: 600;

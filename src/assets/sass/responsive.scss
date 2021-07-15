@@ -19,7 +19,7 @@
     font-size: 32px;
     line-height: 40px;
   }
-  h3 {
+  h3, .subtitle {
     font-size: 28px;
     line-height: 38px;
   }
@@ -129,7 +129,7 @@
     font-size: 30px;
     line-height: 40px;
   }
-  h3 {
+  h3, .subtitle {
     font-size: 24px;
     line-height: 30px;
   }
@@ -202,8 +202,11 @@
   }
   /*Header*/
 #header-wrap {
-  padding: 5px 0;
-}
+    padding: 5px 0;
+    &.fixed-header {
+      padding: 5px 0;
+    }
+  }
 
 .navbar {
   justify-content: flex-end;
@@ -218,6 +221,10 @@
   top: 50%;
   padding: 0;
   @include transform(translateY(-50%));
+}
+
+.logo img {
+  max-width: calc(100vw - 100px);
 }
 
 .navbar-toggler {
@@ -376,7 +383,7 @@
   h2 {
     font-size: 28px;
   }
-  h3 {
+  h3, .subtitle {
     font-size: 22px;
     line-height: 30px;
   }
@@ -579,7 +586,7 @@
     line-height: 34px;
     margin-bottom: 10px;
   }
-  h3 {
+  h3, .subtitle {
     font-size: 20px;
     line-height: 28px;
   }
@@ -656,7 +663,7 @@
   }
   /*header*/
   #header-wrap {
-    padding: 70px 0 15px;
+    padding: 15px 0;
     &.fixed-header {
       padding: 15px 0;
     }

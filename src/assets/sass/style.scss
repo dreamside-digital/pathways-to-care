@@ -52,7 +52,7 @@ body {
     Typography
 ------------------------*/
 
-h1, h2, h3, h4, h5, h6 {
+h1, h2, h3, h4, h5, h6, .header-font {
   font-family: $header-font;
   font-weight: normal;
   margin-top: 0px;
@@ -85,7 +85,7 @@ h2 {
   position: relative;
 }
 
-h3 {
+h3, .subtitle {
   font-size: 30px;
   font-style: normal;
   line-height: 36px;

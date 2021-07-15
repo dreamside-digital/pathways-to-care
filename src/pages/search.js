@@ -126,8 +126,7 @@ function Search({ saveSearchValues }) {
 
   return (
     <Layout title={'ConnectMe - Search'}>
-      <section className="fullscreen-banner p-0 o-hidden text-center white-overlay error-page" data-bg-img={ bg06 } data-overlay="9">
-        <div className="align-center">
+        <div className="page-content pt-10">
           <div className="container">
             <div className="row">
               <div className="col-md-12 text-center text-black">
@@ -136,7 +135,6 @@ function Search({ saveSearchValues }) {
             </div>
           </div>
         </div>
-      </section>
     </Layout>
   )
 }

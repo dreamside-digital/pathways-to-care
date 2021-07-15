@@ -61,35 +61,32 @@ function Results({searchTerms}) {
 
   return (
     <Layout title={'ConnectMe - Results'}>
-      <div className="page-content">
-        <section className="pos-r o-hidden">
-            <div className="container">
+      <div className="page-content pt-10">
+        <div className="container">
+          <div className="row">
+            <div className="col-md-12 text-black">
+              <p className="header-font subtitle mb-3">Here are the resources that best meet your specific needs:</p>
+              <div className="flex mb-2 align-item-top">
+                <img className="spotlightImg mr-2" src={spotlightIcon} alt="spotlight"/>
+                <p className="mb-0">A Star indicates services that are Black-led, Black-Serving, and Black-focused</p>
+              </div>
               <div className="row">
-                <div className="col-md-12 text-black">
-                  <label className="organizationResultTitle">Here are the resources that best meet your specific needs:</label>
-                  <br />
-                  <div className="flex mb-2 align-item-middle">
-                    <img className="spotlightImg mr-2" src={spotlightIcon} alt="spotlight"/>
-                    <p className="mb-0">A Star indicates services that are Black-led, Black-Serving, and Black-focused</p>
-                  </div>
-                  <div className="row">
-                    {
-                      createOrganizationCells()
-                    }
-                  </div>
-                  <br />
-                  <br />
-                  <center>
-                    {!showEverything && <h2>Didn't find what you were looking for?</h2>}
-                    {!showEverything && <button className="nextButton" onClick={() => loadEverything()}>Browse all organizations</button>}
-                    <button className="nextButton" onClick={() => returnToSearch()}>Try the search again</button>
-                  </center>
-                 </div>
-               </div>
-             </div>
-          </section>
+                {
+                  createOrganizationCells()
+                }
+              </div>
+              <div className="row">
+                <center>
+                  {!showEverything && <h2>Didn't find what you were looking for?</h2>}
+                  {!showEverything && <button className="nextButton" onClick={() => loadEverything()}>Browse all organizations</button>}
+                  <button className="nextButton" onClick={() => returnToSearch()}>Try the search again</button>
+                </center>
+              </div>
+            </div>
+          </div>
         </div>
-     </Layout>
+      </div>
+    </Layout>
   )
 }
 
