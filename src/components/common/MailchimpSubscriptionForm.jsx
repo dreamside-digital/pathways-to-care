@@ -16,7 +16,7 @@ const MailchimpSubscriptionForm = props => {
         <form
           id="mc-embedded-subscribe-form"
           className="group validate"
-          action="https://blackhealthalliance.us20.list-manage.com/subscribe/post?u=538e030e0d8a3cbfa9fa8c536&amp;id=b902029dd6"
+          action="https://pathwaystocare.us20.list-manage.com/subscribe/post?u=292290d73967901b7173fd01d&amp;id=34682564c1"
           method="POST"
           name="mc-embedded-subscribe-form"
           target="_blank"

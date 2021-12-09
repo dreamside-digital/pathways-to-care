@@ -102,6 +102,9 @@ class ContactPage extends React.Component {
         image={content["header-image"] ? content["header-image"]["imageSrc"] : null }
       >
         <Helmet>
+          <script id="mcjs">
+            { `!function(c,h,i,m,p){m=c.createElement(h),p=c.getElementsByTagName(h)[0],m.async=1,m.src=i,p.parentNode.insertBefore(m,p)}(document,"script","https://chimpstatic.com/mcjs-connected/js/users/292290d73967901b7173fd01d/a1f480f50f130efa894b59361.js");` }
+          </script>
         </Helmet>
 
         <section className="page-title o-hidden text-center grey-bg bg-contain animatedBackground" data-bg-img={ headerPattern }>

@@ -13,9 +13,6 @@ export default class HTML extends React.Component {
             name="viewport"
             content="width=device-width, initial-scale=1, shrink-to-fit=no"
           />
-          <script id="mcjs">
-            { `!function(c,h,i,m,p){m=c.createElement(h),p=c.getElementsByTagName(h)[0],m.async=1,m.src=i,p.parentNode.insertBefore(m,p)}(document,"script","https://chimpstatic.com/mcjs-connected/js/users/292290d73967901b7173fd01d/a1f480f50f130efa894b59361.js");` }
-          </script>
           {this.props.headComponents}
         </head>
         <body {...this.props.bodyAttributes}>
