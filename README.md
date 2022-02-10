@@ -1,5 +1,7 @@
 # Pathways to Care
 
+Archived, current version is at https://github.com/PathwaystoCare/ptc-next
+
 ## Tech stack
 
 - [Firebase](https://firebase.google.com/) for authentication, database, file storage, and hosting
