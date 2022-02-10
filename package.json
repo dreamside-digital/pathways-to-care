@@ -28,7 +28,7 @@
     "jss": "^9.8.7",
     "lodash": "^4.17.4",
     "mapbox-gl": "^0.47.0",
-    "node-sass": "^4.9.2",
+    "node-sass": "^7.0.0",
     "prop-types": "^15.6.2",
     "query-string": "^6.9.0",
     "react": "^16.8.0",
